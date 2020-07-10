@@ -1,0 +1,15 @@
+name: pre-commit
+
+on:
+  push:
+
+jobs:
+  build:
+    name: 'Lint README.md'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: cloudposse/build-harness@master
+        with:
+          entrypoint: /usr/bin/make
+          args: readme/lint
