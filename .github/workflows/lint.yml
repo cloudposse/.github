@@ -2,13 +2,15 @@ name: Lint
 
 on:
   push:
+    branches:
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
 
 
 jobs:
   lint-readme:
-    name: Lint README.md
+    name: README.md
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -17,7 +19,7 @@ jobs:
           entrypoint: /usr/bin/make
           args: readme/lint
   super-linter:
-    name: Lint Code Base
+    name: Code Base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
