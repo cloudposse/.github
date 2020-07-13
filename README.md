@@ -1,14 +1,10 @@
-<!-- 
+# .github [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
+[![README Header][readme_header_img]][readme_header_link]
 
+[![Cloud Posse][logo]](https://cpco.io/homepage)
 
-
-
-
-
-
-
-
+<!--
 
 
 
@@ -27,25 +23,9 @@
 
 
 
+-->
 
-
-
-
-
-
-
-
-
-
-  -->
-[![README Header][readme_header_img]][readme_header_link]
-
-[![Cloud Posse][logo]](https://cpco.io/homepage)
-
-# .github [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
-
-
-### .github
+## .github
 Community health files for the @CloudPosse organization
 
 For more information, please see the article on [creating a default community health file for your organization](https://help.github.com/en/articles/creating-a-default-community-health-file-for-your-organization).
