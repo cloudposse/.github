@@ -1,4 +1,4 @@
-name: Lint
+name: lint
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   lint-readme:
-    name: README.md
+    name: readme
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -19,7 +19,7 @@ jobs:
           entrypoint: /usr/bin/make
           args: readme/lint
   super-linter:
-    name: Code Base
+    name: superlinter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
