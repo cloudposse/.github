@@ -1,6 +1,6 @@
 <!-- markdownlint-disable-file MD041 -->
 ## Makefile Targets
-```
+```text
 Available targets:
 
   help                                Help screen

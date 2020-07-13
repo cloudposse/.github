@@ -28,6 +28,3 @@ jobs:
         uses: docker://github/super-linter:v3
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
-
-
