@@ -1,6 +1,5 @@
 <!-- markdownlint-disable-file MD041 -->
 ## Makefile Targets
-<!-- markdownlint-enable-file MD041 -->
 ```text
 Available targets:
 
@@ -9,3 +8,4 @@ Available targets:
   help/short                          This help short screen
 
 ```
+<!-- markdownlint-enable-file MD041 -->
