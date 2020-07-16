@@ -1,0 +1,53 @@
+---
+# 
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: .github
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: "APACHE2"
+
+# Copyrights
+copyrights:
+  - name: "Cloud Posse, LLC"
+    url: "https://cloudposse.com"
+    year: "2020"
+
+# Canonical GitHub repo 
+github_repo: cloudposse/.github
+
+# Badges to display
+badges:
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/badge.svg"
+    url: "https://slack.cloudposse.com"
+
+# Short description of this project
+description: |-
+  ## .github
+  Community health files for the @CloudPosse organization
+
+  For more information, please see the article on [creating a default community health file for your organization](https://help.github.com/en/articles/creating-a-default-community-health-file-for-your-organization).
+
+
+# Example usage
+#examples: |-
+
+# How to get started quickly
+#quickstart: |-
+
+# Other files to include in this README from the project folder
+#include:
+#  - "docs/targets.md"
+#  - "docs/extensions.md"
+
+# Contributors to this project
+contributors:
+  - name: "Marcin Brański"
+    github: "3h4x"

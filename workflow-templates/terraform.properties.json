@@ -1,0 +1,8 @@
+{
+    "name": "Terraform Workflow",
+    "description": "Terraform Workflow Template",
+    "iconName": "example-icon",
+    "categories": [
+        "terraform"
+    ]
+}

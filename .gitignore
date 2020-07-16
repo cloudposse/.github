@@ -1,0 +1,7 @@
+# Module directory
+.terraform
+.idea
+*.iml
+
+.build-harness
+build-harness
