@@ -14,10 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: cloudposse/build-harness@markdown-lint-changes
+      - uses: cloudposse/build-harness@0.38.0
         with:
           entrypoint: /usr/bin/make
           args: readme/lint
+
   super-linter:
     name: superlinter
     runs-on: ubuntu-latest
