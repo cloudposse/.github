@@ -1,7 +1,7 @@
 {
-    "name": "Terraform Workflow",
-    "description": "Terraform Workflow Template",
-    "iconName": "example-icon",
+    "name": "CloudPosse Terraform Workflow",
+    "description": "Cloudposse Terraform Workflow Template",
+    "iconName": "terraform",
     "categories": [
         "terraform"
     ]
