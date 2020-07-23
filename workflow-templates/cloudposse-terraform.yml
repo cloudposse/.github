@@ -1,4 +1,4 @@
-name: pre-commit
+name: cloudposse-terraform-workflow
 
 on:
   pull_request:
