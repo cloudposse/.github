@@ -1,0 +1,8 @@
+{
+    "name": "CloudPosse pre-commit Workflow",
+    "description": "Cloudposse pre-commit Workflow Template",
+    "iconName": "terraform",
+    "categories": [
+        "pre-commit"
+    ]
+}
