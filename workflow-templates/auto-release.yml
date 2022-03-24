@@ -1,0 +1,15 @@
+name: "auto-release"
+on:
+  push:
+    branches:
+      - main
+      - master
+      - production
+
+jobs:
+  auto-release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cloudposse/github-action-auto-release@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,12 @@
+name: "validate-codeowners"
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-codeowners:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cloudposse/github-action-validate-codeowners@main
+      with:
+        special-token: ${{ secrets.GITHUB_TOKEN }}

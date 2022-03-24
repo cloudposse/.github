@@ -1,0 +1,7 @@
+{
+    "name": "CloudPosse Auto-release workflow",
+    "description": "Cloudposse auto-release Workflow Template",
+    "categories": [
+        "ci"
+    ]
+}
