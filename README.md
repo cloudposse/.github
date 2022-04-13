@@ -208,12 +208,14 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 ### Contributors
 
 <!-- markdownlint-disable -->
-|  [![Marcin Brański][3h4x_avatar]][3h4x_homepage]<br/>[Marcin Brański][3h4x_homepage] |
-|---|
+|  [![Marcin Brański][3h4x_avatar]][3h4x_homepage]<br/>[Marcin Brański][3h4x_homepage] | [![Dylan Bannon][dylanbannon_avatar]][dylanbannon_homepage]<br/>[Dylan Bannon][dylanbannon_homepage] |
+|---|---|
 <!-- markdownlint-restore -->
 
   [3h4x_homepage]: https://github.com/3h4x
   [3h4x_avatar]: https://img.cloudposse.com/150x150/https://github.com/3h4x.png
+  [dylanbannon_homepage]: https://github.com/dylanbannon
+  [dylanbannon_avatar]: https://img.cloudposse.com/150x150/https://github.com/dylanbannon.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
