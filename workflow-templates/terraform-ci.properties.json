@@ -1,9 +1,0 @@
-{
-    "name": "CloudPosse Terraform CI Workflow",
-    "description": "Cloudposse Terraform CI Workflow Template",
-    "iconName": "terraform",
-    "categories": [
-        "ci",
-        "terraform"
-    ]
-}

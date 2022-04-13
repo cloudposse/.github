@@ -1,7 +1,0 @@
-{
-    "name": "CloudPosse validate CODEOWNERS Workflow",
-    "description": "Cloudposse validate CODEOWNERS Workflow Template",
-    "categories": [
-        "ci"
-    ]
-}

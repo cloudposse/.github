@@ -1,8 +1,0 @@
-{
-    "name": "CloudPosse Terraform Auto-context Workflow",
-    "description": "Cloudposse Terraform auto-context Workflow Template",
-    "iconName": "terraform",
-    "categories": [
-        "ci"
-    ]
-}

@@ -7,9 +7,6 @@
 # Name of this project
 name: .github
 
-# Logo for this project
-#logo: docs/logo.png
-
 # License of this project
 license: "APACHE2"
 
@@ -31,21 +28,13 @@ badges:
 # Short description of this project
 description: |-
   ## .github
-  Community health files for the @CloudPosse organization
-
-  For more information, please see the article on [creating a default community health file for your organization](https://help.github.com/en/articles/creating-a-default-community-health-file-for-your-organization).
-
+  Standard repository backbone file for the @CloudPosse repositories. Also, some @CloudPosse org-specific files, such as `profile/README.md`.
 
 # Example usage
-#examples: |-
-
-# How to get started quickly
-#quickstart: |-
-
-# Other files to include in this README from the project folder
-#include:
-#  - "docs/targets.md"
-#  - "docs/extensions.md"
+examples: |-
+  To add all repository backbone files to a new repo:
+    1. Copy everything in the `.github` folder (not repository) to the `.github folder of the destination repository.
+    2. Copy the top-level `renovate.json` and `Makefile` files to the top-level of the destination repository.
 
 # Contributors to this project
 contributors:

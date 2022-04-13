@@ -1,0 +1,150 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "regexManagers": [
+    {
+      "description": "Updating unannotated Helm chart default values in tfvars files",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "chart\\s+= \"(?<depName>[^\\s\"]+)\"\\s*",
+        "chart_repository\\s+= \"(?<registryUrl>[^\\s\"]+)\"\\s*",
+        "chart_version\\s+= \"(?<currentValue>[^\\s\"]+)\"\\s*"
+      ],
+      "matchStringsStrategy": "combination",
+      "datasourceTemplate": "helm",
+      "versioningTemplate": "cargo",
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": "Updating annotated Helm chart defaults values in tfvars files",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "# renovate: (datasource=\\S+ )?depName=(?<depName>\\S+) registryUrl=(?<registryUrl>\\S+)\\nchart_version\\s+= \"(?<currentValue>[^\\s\"]+)\"\\s*"
+      ],
+      "datasourceTemplate": "helm"
+    },
+
+    {
+      "description": "Updating 0.12 series version in Terraform version map",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "terraform_version_map {\n(  \"[0-9]+(.[0-9]+)?\" = \"[0-9]+.[0-9]+.[0-9]+\"\n)*  \"0.12\" = \"(?<currentValue>\\S+)\"\n"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform",
+      "versioningTemplate": "regex:v?(?<major>0)\\.(?<minor>12)\\.(?<patch>\\d+)$"
+    },
+    {
+      "description": "Updating 0.13 series version in Terraform version map",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "terraform_version_map {\n(  \"[0-9]+(.[0-9]+)?\" = \"[0-9]+.[0-9]+.[0-9]+\"\n)*  \"0.13\" = \"(?<currentValue>\\S+)\"\n"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform",
+      "versioningTemplate": "regex:v?(?<major>0)\\.(?<minor>13)\\.(?<patch>\\d+)$"
+    },
+    {
+      "description": "Updating 0.14 series version in Terraform version map",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "terraform_version_map {\n(  \"[0-9]+(.[0-9]+)?\" = \"[0-9]+.[0-9]+.[0-9]+\"\n)*  \"0.14\" = \"(?<currentValue>\\S+)\"\n"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform",
+      "versioningTemplate": "regex:v?(?<major>0)\\.(?<minor>14)\\.(?<patch>\\d+)$"
+    },
+    {
+      "description": "Updating 0.15 series version in Terraform version map",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "terraform_version_map {\n(  \"[0-9]+(.[0-9]+)?\" = \"[0-9]+.[0-9]+.[0-9]+\"\n)*  \"0.15\" = \"(?<currentValue>\\S+)\"\n"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform",
+      "versioningTemplate": "regex:v?(?<major>0)\\.(?<minor>15)\\.(?<patch>\\d+)$"
+    },
+    {
+      "description": "Updating 1.x series version in Terraform version map",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "terraform_version_map {\n(  \"[0-9]+(.[0-9]+)?\" = \"[0-9]+.[0-9]+.[0-9]+\"\n)*  \"1\" = \"(?<currentValue>\\S+)\"\n"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform",
+      "versioningTemplate": "regex:v?(?<major>1)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
+    },
+    {
+      "description": "Updating latest Terraform version in tfvars files",
+      "fileMatch": ["(^|/)*.tfvars$"],
+      "matchStrings": [
+        "terraform_version = \"(?<currentValue>\\S+)\"\n"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform"
+    },
+
+    {
+      "description": "Updating unannotated Docker image versions specified in YAML files",
+      "fileMatch": ["(^|/)*.ya?ml$"],
+      "matchStrings": [
+        " {4}(?<depName>):\\n((( {6,}[.-[\\n]]+)|)\\n)+",
+        " {6}vars:\\n((( {8,}[.-[\\n]]+)|)\\n)+",
+        " {8}values:\\n((( {10,}[.-[\\n]]+)|)\\n)+",
+        " {10}image:\\n((( {12,}[.-[\\n]]+)|)\\n)+",
+        " {12}repository: \"(?<registryUrl>[^\\s\"]+)\"\\n {12}tag: \"(?<currentValue>[0-9v.]+)\"\\n"
+      ],
+      "matchStringsStrategy": "recursive",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Updating annotated Docker image versions in YAML files",
+      "fileMatch": ["(^|/)*.ya?ml$"],
+      "matchStrings": [
+        " {4}(?<depName>):\\n((( {6,}[.-[\\n]]+)|)\\n)+",
+        " {6,}# renovate: (datasource=\\S+ )?depName=(?<depName>\\S+) registryUrl=(?<registryUrl>\\S+)\\n {6,}image_tag: \"(?<currentValue>[0-9v.]+)\""
+      ],
+      "matchStringsStrategy": "recursive",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Updating unannotated Helm chart versions in YAML files",
+      "fileMatch": ["(^|/)*.ya?ml$"],
+      "matchStrings": [
+        " {4}(?<depName>):\\n((( {6,}[.-[\\n]]+)|)\\n)+",
+        " {6}vars:\\n((( {8,}[.-[\\n]]+)|)\\n)+",
+        " {8}chart_repository: \"?(?<registryUrl>[^\\s\"]+)\"?\\n {8}chart_version: \"?(?<currentValue>[^\\s\"]+)\"?\\n"
+      ],
+      "matchStringsStrategy": "recursive",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "description": "Updating annotated Helm chart versions in YAML files",
+      "fileMatch": ["(^|/)*.ya?ml$"],
+      "matchStrings": [
+        " {4}(?<depName>):\\n((( {6,}[.-[\\n]]+)|)\\n)+",
+        " {6,}# renovate: (datasource=\\S+)? ?(depName=(?<depName>\\S+))? ?registryUrl=(?<registryUrl>\\S+)\\n {6}chart_version: \"?(?<currentValue>[^\\s\"]+)\"?\\n"
+      ],
+      "matchStringsStrategy": "recursive",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "description": "Updating the EKS cluster version",
+      "fileMatch": ["(^|/)stacks/defaults/eks.yaml$"],
+      "matchStrings": [
+        "        cluster_kubernetes_version: \"(?<currentValue>[0-9.]+)\""
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "kubernetes/kubernetes"
+    },
+
+    {
+      "description": "Updating annotated package versions in Dockerfiles",
+      "fileMatch": ["(^|/)[.-[/]]*Dockerfile[.-[/]]*$"],
+      "matchStrings": [
+        "# renovate: (datasource=(?<datasource>\\S+))? ?(depName=(?<depName>\\S+))? ?(registryUrl=(?<registryUrl>\\S+))? ?(versioning=(?<versioning>\\s+))?\\n(ENV|ARG) [\\S]+_VERSION=(?<currentValue>\\S+)"
+      ]
+    }
+  ]
+}
