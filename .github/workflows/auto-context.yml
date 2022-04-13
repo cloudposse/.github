@@ -9,3 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: cloudposse/github-action-terraform-auto-context@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
