@@ -43,7 +43,7 @@ This repository fulfills several unique functions functions for Cloud Posse.
     - `.github/ISSUE_TEMPLATE/*`
     - `Makefile`
     - `.github/PULL_REQUEST_TEMPLATE.md`
-    - `.github/renovate.json`
+    - `renovate.json`
     - `.github/workflows/*`
 
 ---
@@ -163,7 +163,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyrights
 
-Copyright © 2020-2022 [Cloud Posse, LLC](https://cloudposse.com)
+Copyright © 2022-2022 [Cloud Posse, LLC](https://cloudposse.com)
 
 
 

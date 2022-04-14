@@ -14,7 +14,7 @@ license: "APACHE2"
 copyrights:
   - name: "Cloud Posse, LLC"
     url: "https://cloudposse.com"
-    year: "2020"
+    year: "2022"
 
 # Canonical GitHub repo 
 github_repo: cloudposse/.github
@@ -42,7 +42,7 @@ description: |-
       - `.github/ISSUE_TEMPLATE/*`
       - `Makefile`
       - `.github/PULL_REQUEST_TEMPLATE.md`
-      - `.github/renovate.json`
+      - `renovate.json`
       - `.github/workflows/*`
 
 # Example usage
