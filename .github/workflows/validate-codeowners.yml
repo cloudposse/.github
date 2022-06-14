@@ -1,12 +1,12 @@
 name: "validate-codeowners"
 on:
   pull_request_target:
-  workflow_dispatch:
 
 jobs:
   validate-codeowners:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: cloudposse/github-action-validate-codeowners@main
-      with:
-        token: ${{ secrets.CODEOWNERS_VALIDATOR_TOKEN_PUBLIC }}
+    # For development reasons, this action is pinned to the `main` branch.
+    # However, we recommend that you choose a specific release to pin to.
+    # Consult https://github.com/cloudposse/github-action-validate-codeowners/releases for a list of available releases.
+    uses: cloudposse/github-action-validate-codeowners/.github/workflows/validate-codeowners-reusable.yml@main
+    secrets:
+      token: ${{ secrets.CODEOWNERS_VALIDATOR_TOKEN_PUBLIC }}

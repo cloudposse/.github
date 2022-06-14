@@ -3,11 +3,18 @@ on:
   schedule:
   # Update context.tf nightly (assuming your time zone is GMT-7)
   - cron:  '0 7 * * *'
+  workflow_dispatch:
 
 jobs:
   auto-context:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: cloudposse/github-action-terraform-auto-context@main
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    # For development reasons, this action is pinned to the `main` branch.
+    # However, we recommend that you choose a specific release to pin to.
+    # Consult https://github.com/cloudposse/github-action-auto-context/releases for a list of available releases.
+    uses: cloudposse/github-action-terraform-auto-context/.github/workflows/auto-context-reusable.yml@main
+    with:
+      # Name of branch to commit updated context.tf to
+      branch-name: auto-update/context.tf
+      # GitHub username to use for automated commits (should be a real GitHub user)
+      bot-name: cloudpossebot
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
