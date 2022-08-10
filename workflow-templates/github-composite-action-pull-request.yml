@@ -1,0 +1,9 @@
+name: Pull Request
+on:
+  pull_request:
+    branches: [ $default-branch ]
+    types: [opened, synchronize, reopened, closed, labeled, unlabeled]
+
+jobs:
+  default:
+    uses: cloudposse/github-actions-workflows/.github/workflows/github-composite-action-pull-request.yml@main

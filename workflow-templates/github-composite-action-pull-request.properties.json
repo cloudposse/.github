@@ -1,0 +1,10 @@
+{
+    "name": "Github action - Composite - Pull Request",
+    "description": "Pull Request pipeline for github composite type action",
+    "categories": [
+        "YAML"
+    ],
+    "filePatterns": [
+        "action.yaml$"
+    ]
+}

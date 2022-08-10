@@ -1,0 +1,10 @@
+{
+    "name": "Github action - Composite - Bleeding edge",
+    "description": "Bleeding edge pipeline for github composite type action",
+    "categories": [
+        "YAML"
+    ],
+    "filePatterns": [
+        "action.yaml$"
+    ]
+}
