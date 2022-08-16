@@ -12,9 +12,6 @@ jobs:
     if: ${{ !( (github.event_name == 'pull_request') && (github.event.pull_request.head.repo.full_name != github.repository) ) }}
     runs-on: ubuntu-latest
     steps:
-    - name: "Checkout commit"
-      uses: actions/checkout@v2
-
     - uses: cloudposse/github-action-auto-format@main
       with:
         format-task: readme,github_format,terraform_format
