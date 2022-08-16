@@ -15,5 +15,5 @@ jobs:
     - uses: cloudposse/github-action-auto-format@main
       with:
         format-task: readme,github_format,terraform_format
-        workflow-token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
+        workflow-token: ${{ secrets.TOKEN_WITH_WORKFLOWS_PERMISSION }}
         bot-name: cloudpossebot
