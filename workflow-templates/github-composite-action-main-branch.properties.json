@@ -1,6 +1,6 @@
 {
     "name": "Github action - Composite - Main branch",
-    "description": "Bleeding edge pipeline for github composite type action",
+    "description": "Main branch pipeline for github composite type action",
     "categories": [
         "YAML"
     ],
