@@ -1,0 +1,11 @@
+name: Main branch
+on:
+  push:
+    branches: [ $default-branch ]
+
+permissions:
+  contents: write
+
+jobs:
+  default:
+    uses: cloudposse/github-actions-workflows/.github/workflows/github-composite-action-main-branch.yml@main

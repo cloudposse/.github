@@ -1,5 +1,5 @@
 {
-    "name": "Github action - Composite - Pull Request",
+    "name": "Github action - Composite - Feature branch",
     "description": "Pull Request pipeline for github composite type action",
     "categories": [
         "YAML"
