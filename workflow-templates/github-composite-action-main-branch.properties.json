@@ -1,0 +1,10 @@
+{
+    "name": "Github action - Composite - Main branch",
+    "description": "Main branch pipeline for github composite type action",
+    "categories": [
+        "YAML"
+    ],
+    "filePatterns": [
+        "action.yaml$"
+    ]
+}
