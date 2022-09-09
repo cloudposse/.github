@@ -7,3 +7,9 @@ on:
 jobs:
   default:
     uses: cloudposse/github-actions-workflows/.github/workflows/github-composite-action-feature-branch.yml@main
+    with:
+      organization: "${{ github.event.repository.owner.login }}"
+      repository: "${{ github.event.repository.name }}"
+      ref: "${{ github.event.pull_request.head.ref  }}"
+    secrets:
+      github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
