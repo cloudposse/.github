@@ -1,0 +1,11 @@
+{
+    "name": "Auto Readme",
+    "description": "Generate README.md based on README.yaml",
+    "categories": [
+        "mdoc"
+    ],
+    "filePatterns": [
+        "README.yaml$",
+        "README.yml$"
+    ]
+}
