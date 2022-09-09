@@ -1,0 +1,11 @@
+{
+    "name": "Github action test",
+    "description": "Test GitHub Action. Workflow should started from `test-` prefix.",
+    "categories": [
+        "YAML"
+    ],
+    "filePatterns": [
+        "action.yml$",
+        "action.yaml$"
+    ]
+}
