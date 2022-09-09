@@ -5,6 +5,6 @@
         "YAML"
     ],
     "filePatterns": [
-        "action.yaml$"
+        "action.yml"
     ]
 }
