@@ -1,0 +1,19 @@
+name: Main Branch
+on:
+  push:
+    branches: [ $default-branch ]
+
+permissions:
+  contents: write
+
+jobs:
+  perform:
+    uses: cloudposse/github-actions-workflows/.github/workflows/dockerized-app-main-branch.yml@main
+    with:
+      organization: "${{ github.event.repository.owner.login }}"
+      repository: "${{ github.event.repository.name }}"
+      registry: registry.hub.docker.com
+    secrets:
+      docker-login: "${{ secrets.DOCKERHUB_USERNAME }}"
+      docker-password: "${{ secrets.DOCKERHUB_PASSWORD }}"
+      github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"

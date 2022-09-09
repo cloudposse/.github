@@ -1,0 +1,15 @@
+{
+    "name": "Dockerized app - Feature branch",
+    "description": "Pull Request pipeline for dockerize app",
+    "categories": [
+        "Dockerfile"
+    ],
+    "filePatterns": [
+        "Dockerfile$",
+        "deploy/helmfile.yaml$",
+        "deploy/helmfile.yml$",
+        "test/docker-compose.yaml$",
+        "test/docker-compose.yml$",
+        "test/test.sh$"
+    ]
+}

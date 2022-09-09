@@ -1,0 +1,15 @@
+{
+    "name": "Dockerized app - Main branch",
+    "description": "Main branch pipeline for dockerized app",
+    "categories": [
+        "Dockerfile"
+    ],
+    "filePatterns": [
+        "Dockerfile$",
+        "deploy/helmfile.yaml$",
+        "deploy/helmfile.yml$",
+        "test/docker-compose.yaml$",
+        "test/docker-compose.yml$",
+        "test/test.sh$"
+    ]
+}
