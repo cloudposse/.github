@@ -22,34 +22,34 @@ jobs:
     - id: metadata
       uses: ahmadnassri/action-metadata@v2
 
-		- name: Determine Repo Type
-			id: repo
-			run: |
-				if [[ "${{ steps.metadata.outputs.repository_name }}" == "terraform-*-provider" ]]; then
-					echo "Setting repo type to Terraform Provider"
-					echo "type=Terraform Provider" >> $GITHUB_OUTPUT
+    - name: Determine Repo Type
+      id: repo
+      run: |
+        if [[ "${{ steps.metadata.outputs.repository_name }}" == "terraform-*-provider" ]]; then
+          echo "Setting repo type to Terraform Provider"
+          echo "type=Terraform Provider" >> $GITHUB_OUTPUT
           echo "name=${${{ steps.metadata.outputs.repository_name }}#terraform-}" >> $GITHUB_OUTPUT
-				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "terraform-aws*" ]]; then
-					echo "Setting repo type to Terraform Module"
-					echo "type=Terraform Module" >> $GITHUB_OUTPUT
+        elif [[ "${{ steps.metadata.outputs.repository_name }}" == "terraform-aws*" ]]; then
+          echo "Setting repo type to Terraform Module"
+          echo "type=Terraform Module" >> $GITHUB_OUTPUT
           echo "name=${${{ steps.metadata.outputs.repository_name }}#terraform-}" >> $GITHUB_OUTPUT
-				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "github-action-*" ]]; then
-					echo "Setting repo type to GitHub Action"
-					echo "type=GitHub Action" >> $GITHUB_OUTPUT
+        elif [[ "${{ steps.metadata.outputs.repository_name }}" == "github-action-*" ]]; then
+          echo "Setting repo type to GitHub Action"
+          echo "type=GitHub Action" >> $GITHUB_OUTPUT
           echo "name=${${{ steps.metadata.outputs.repository_name }}#github-action-}" >> $GITHUB_OUTPUT
-				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "example-*" ]]; then
-					echo "Setting repo type to Example"
-					echo "type=Example" >> $GITHUB_OUTPUT
+        elif [[ "${{ steps.metadata.outputs.repository_name }}" == "example-*" ]]; then
+          echo "Setting repo type to Example"
+          echo "type=Example" >> $GITHUB_OUTPUT
           echo "name=${${{ steps.metadata.outputs.repository_name }}#example-}" >> $GITHUB_OUTPUT
-				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "infra-*" ]]; then
-					echo "Setting repo type to Infrastructure"
-					echo "type=Infrastructure" >> $GITHUB_OUTPUT
+        elif [[ "${{ steps.metadata.outputs.repository_name }}" == "infra-*" ]]; then
+          echo "Setting repo type to Infrastructure"
+          echo "type=Infrastructure" >> $GITHUB_OUTPUT
           echo "name=${${{ steps.metadata.outputs.repository_name }}#infra-}" >> $GITHUB_OUTPUT
-				else
-					echo "Repo type is undetermined"
-					echo "type=Project" >> $GITHUB_OUTPUT
+        else
+          echo "Repo type is undetermined"
+          echo "type=Project" >> $GITHUB_OUTPUT
           echo "name=${{ steps.metadata.outputs.repository_name }}" >> $GITHUB_OUTPUT
-				fi
+        fi
 
     - name: Generate banner image
       id: screenshot
