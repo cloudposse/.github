@@ -47,8 +47,8 @@ jobs:
           echo "name=${name#infra-}" >> $GITHUB_OUTPUT
         else
           echo "Repo type is indeterminable"
-				  echo "name=${name}" >> $GITHUB_OUTPUT
-				  echo "type=${type}" >> $GITHUB_OUTPUT
+          echo "name=${name}" >> $GITHUB_OUTPUT
+          echo "type=${type}" >> $GITHUB_OUTPUT
         fi
 
         if [[ "${desc}" == "null" ]]; then
