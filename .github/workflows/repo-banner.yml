@@ -17,11 +17,23 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v3
-
     - name: Fetch repo metadata
       id: metadata
       uses: ahmadnassri/action-metadata@v2
+
+    - name: Checkout ${{ steps.metadata.outputs.repository_name}}/.github
+      if: '${{ steps.metadata.outputs.repository_name}} !== ".github"'
+      uses: actions/checkout@v3
+      with:
+        repository: '${{ steps.metadata.outputs.owner_login }}/.github'
+        ref: 'main'
+        path: 'github'
+
+    - name: Checkout outselves (if we're .github)
+      if: '${{ steps.metadata.outputs.repository_name}} == ".github"'
+      uses: actions/checkout@v3
+      with:
+        path: 'github'
 
     - name: Format Repo Metadata
       id: meta
@@ -63,7 +75,7 @@ jobs:
       id: screenshot
       uses: cloudposse-github-actions/screenshot@main
       with:
-        url: "file://${{github.workspace}}/banner/index.html"
+        url: "file://${{github.workspace}}/github/banner/index.html"
         output: "banner/image.png"
         customizations: |
           "#name": "${{ steps.meta.outputs.name }}"
