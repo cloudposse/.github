@@ -1,0 +1,89 @@
+name: GitHub Repo Banner
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - id: metadata
+      uses: ahmadnassri/action-metadata@v2
+
+		- name: Determine Repo Type
+			id: repo
+			run: |
+				if [[ "${{ steps.metadata.outputs.repository_name }}" == "terraform-*-provider" ]]; then
+					echo "Setting repo type to Terraform Provider"
+					echo "type=Terraform Provider" >> $GITHUB_OUTPUT
+          echo "name=${${{ steps.metadata.outputs.repository_name }}#terraform-}" >> $GITHUB_OUTPUT
+				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "terraform-aws*" ]]; then
+					echo "Setting repo type to Terraform Module"
+					echo "type=Terraform Module" >> $GITHUB_OUTPUT
+          echo "name=${${{ steps.metadata.outputs.repository_name }}#terraform-}" >> $GITHUB_OUTPUT
+				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "github-action-*" ]]; then
+					echo "Setting repo type to GitHub Action"
+					echo "type=GitHub Action" >> $GITHUB_OUTPUT
+          echo "name=${${{ steps.metadata.outputs.repository_name }}#github-action-}" >> $GITHUB_OUTPUT
+				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "example-*" ]]; then
+					echo "Setting repo type to Example"
+					echo "type=Example" >> $GITHUB_OUTPUT
+          echo "name=${${{ steps.metadata.outputs.repository_name }}#example-}" >> $GITHUB_OUTPUT
+				elif [[ "${{ steps.metadata.outputs.repository_name }}" == "infra-*" ]]; then
+					echo "Setting repo type to Infrastructure"
+					echo "type=Infrastructure" >> $GITHUB_OUTPUT
+          echo "name=${${{ steps.metadata.outputs.repository_name }}#infra-}" >> $GITHUB_OUTPUT
+				else
+					echo "Repo type is undetermined"
+					echo "type=Project" >> $GITHUB_OUTPUT
+          echo "name=${{ steps.metadata.outputs.repository_name }}" >> $GITHUB_OUTPUT
+				fi
+
+    - name: Generate banner image
+      id: screenshot
+      uses: cloudposse-github-actions/screenshot@main
+      with:
+        url: "file://${{github.workspace}}/banner/index.html"
+        output: "banner/image.png"
+        customizations: |
+          "#name": "${{ steps.repo.outputs.repository_name }}"
+          "#type": "${{ steps.repo.outputs.repository_name }}"
+          "#desc": "${{ steps.metadata.outputs.repository_description }}"
+        viewportWidth: 1280
+        viewportHeight: 320
+        omitBackground: true
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      name: Commit artifact
+      id: auto-commit
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        commit_message: "chore: update repo banner image"
+        commit_user_name: screenshot-action 📷
+        commit_user_email: actions@github.com
+        commit_author: screenshot-action 📷 <actions@github.com>
+        file_pattern: 'banner/*.png'
+
+    - name: Add Image to Step Summary
+      if: steps.auto-commit.outputs.changes_detected == 'true'
+      run: |
+        echo "## Generated Screenshot" >> $GITHUB_STEP_SUMMARY
+        echo "![Generated Screenshot](https://github.com/${{ github.repository }}/blob/${{ steps.auto-commit.outputs.commit_hash }}/${{ steps.screenshot.outputs.file }}?raw=true)" >> $GITHUB_STEP_SUMMARY
+
+    - name: No changes
+      if: steps.auto-commit.outputs.changes_detected == 'false'
+      run: |
+        echo "No changes to screenshot" >> $GITHUB_STEP_SUMMARY

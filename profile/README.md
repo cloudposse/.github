@@ -1,10 +1,7 @@
-
-[![Cloud Posse][logo]](https://cpco.io/homepage)
-[![README Header][readme_header_img]][readme_header_link]
+[![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
 
 ## We're a [DevOps Accelerator for Startups](https://cpco.io/homepage) (and Enterprises)
 We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so you can make informed decisions.
-
 
 * Own your infrastructure.
 * We build it.
