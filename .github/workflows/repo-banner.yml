@@ -19,11 +19,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - id: metadata
+    - name: Fetch repo metadata
+      id: metadata
       uses: ahmadnassri/action-metadata@v2
 
-    - name: Determine Repo Type
-      id: repo
+    - name: Format Repo Metadata
+      id: meta
       run: |
         name="${{ steps.metadata.outputs.repository_name }}"
         type="Project"
@@ -45,7 +46,7 @@ jobs:
           echo "type=Infrastructure" >> $GITHUB_OUTPUT
           echo "name=${name#infra-}" >> $GITHUB_OUTPUT
         else
-          echo "Repo type is undetermined"
+          echo "Repo type is indeterminable"
         fi
 
         if [[ "${desc}" == "null" ]]; then
@@ -66,9 +67,9 @@ jobs:
         url: "file://${{github.workspace}}/banner/index.html"
         output: "banner/image.png"
         customizations: |
-          "#name": "${{ steps.repo.outputs.name }}"
-          "#type": "${{ steps.repo.outputs.type }}"
-          "#desc": "${{ steps.repo.outputs.desc }}"
+          "#name": "${{ steps.meta.outputs.name }}"
+          "#type": "${{ steps.meta.outputs.type }}"
+          "#desc": "${{ steps.meta.outputs.desc }}"
         viewportWidth: 1280
         viewportHeight: 320
         omitBackground: true
