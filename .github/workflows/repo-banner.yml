@@ -24,8 +24,8 @@ jobs:
       id: metadata
       uses: ahmadnassri/action-metadata@v2
 
-    - name: Checkout ${{ steps.metadata.outputs.repository_name}}/.github
-      if: '${{ steps.metadata.outputs.repository_name}} != ".github"'
+    - name: Checkout ${{ steps.metadata.outputs.owner_login}}/.github
+      if: steps.metadata.outputs.repository_name != '.github'
       uses: actions/checkout@v3
       with:
         repository: '${{ steps.metadata.outputs.owner_login }}/.github'
@@ -33,7 +33,7 @@ jobs:
         path: 'github'
 
     - name: Symlink to `github/`
-      if: '${{ steps.metadata.outputs.repository_name}} == ".github"'
+      if: steps.metadata.outputs.repository_name == '.github'
       run: |
         ln -s github ${{github.workspace}}
 
