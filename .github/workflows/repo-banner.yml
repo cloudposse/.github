@@ -69,7 +69,7 @@ jobs:
         customizations: |
           "#name": "${{ steps.repo.outputs.name }}"
           "#type": "${{ steps.repo.outputs.type }}"
-          "#desc": "${{ steps.metadata.outputs.repository_description }}"
+          "#desc": "${{ steps.repo.outputs.desc }}"
         viewportWidth: 1280
         viewportHeight: 320
         omitBackground: true
