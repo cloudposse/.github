@@ -56,8 +56,8 @@ jobs:
         fi
         source ${GITHUB_OUTPUT}
         echo "name=${name}"
-        echo "type="${type}"
-        echo "desc="${desc}"
+        echo "type=${type}"
+        echo "desc=${desc}"
 
     - name: Generate banner image
       id: screenshot
