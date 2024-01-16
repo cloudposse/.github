@@ -17,23 +17,25 @@ jobs:
       contents: write
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Fetch repo metadata
       id: metadata
       uses: ahmadnassri/action-metadata@v2
 
     - name: Checkout ${{ steps.metadata.outputs.repository_name}}/.github
-      if: '${{ steps.metadata.outputs.repository_name}} !== ".github"'
+      if: '${{ steps.metadata.outputs.repository_name}} != ".github"'
       uses: actions/checkout@v3
       with:
         repository: '${{ steps.metadata.outputs.owner_login }}/.github'
         ref: 'main'
         path: 'github'
 
-    - name: Checkout outselves (if we're .github)
+    - name: Symlink to `github/`
       if: '${{ steps.metadata.outputs.repository_name}} == ".github"'
-      uses: actions/checkout@v3
-      with:
-        path: 'github'
+      run: |
+        ln -s github ${{github.workspace}}
 
     - name: Format Repo Metadata
       id: meta
