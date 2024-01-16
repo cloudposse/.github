@@ -56,10 +56,6 @@ jobs:
           echo "desc=${desc/.*}" >> $GITHUB_OUTPUT
         fi
         cat ${GITHUB_OUTPUT}
-        source ${GITHUB_OUTPUT}
-        echo "name=${name}"
-        echo "type=${type}"
-        echo "desc=${desc}"
 
     - name: "Test outputs"
       run: |
