@@ -58,12 +58,14 @@
 
     .logo {
       display: flex;
-      width: 20vw;
+      width: 19vw;
       flex-wrap: wrap;
     }
+
     .logo h2 {
       display: flex;
       flex-basis: 100%;
+      font-size: 0.8em;
     }
     
     img {
@@ -75,16 +77,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #fff;
+      border: 1px solid #ffffff4d;
       border-radius: 12px;
       padding: 0.35em;
       padding-top: 0.1em;
       padding-bottom: 0.1em;
       font-size: 0.87em;
       margin-top: 0.2em;
+      margin-left: 1.7em;
       max-width: 17vw;
       width: 100%;
-      background-color: #0000006e;
+      background-color: #000000a6;
     }
 
     .aws-partner img {
@@ -102,7 +105,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-weight: normal;
-      font-size: 0.7em;
+      font-size: 0.6em;
     }
 
     .project h1 {
@@ -125,6 +128,12 @@
       display: flex;
       flex-wrap: wrap;
       flex-grow: 1;
+      flex-basis: 75%;
+    }
+
+    .project #name {
+      display: flex;
+      flex-basis: 50%;
     }
 
     .branding {
@@ -133,6 +142,7 @@
       align-items: center;
       font-size: 0.7em;
       overflow: hidden;
+      width: 25%;
     }
 
     .branding h2 {
@@ -151,23 +161,29 @@
         <div class="project">
           <h2 id="type">Terraform Component</h1>
           <div class="filler"></div>
-          <div class="aws-partner"><img src="advanced-consulting-partner.svg"/></div>
+          
+          <div class="break"></div>
           <h1 id="name">repo-name</h1>
+          <div class="filler"></div>
+          
+          <div class="break"></div>
           <div id="desc" class="description">
            The short and sweet description of the repo.
           </div>
           <div class="filler"></div>
-          <div class="branding">
-            <div class="by">by</div>
-            <div class="logo">
-              <img src="https://cloudposse.com/wp-content/uploads/2019/01/cloudposse-white.svg"/
-              <div class="subheader">
-                <h2><span class="highlight">DevOps Accelerator</span></h1>
-              </div>
+        </div>
+        <div class="branding">
+          <div class="by">by</div>
+          <div class="logo">
+            <img src="https://cloudposse.com/wp-content/uploads/2019/01/cloudposse-white.svg"/>
+            <div class="subheader">
+              <h2><span class="highlight">DevOps Accelerator</span></h1>
             </div>
           </div>
+          <div class="break"></div>
+          <div class="aws-partner"><img src="advanced-consulting-partner.svg"/></div>
         </div>
       </div>
-   </div>
+    </div>
   </body>
 </html>
