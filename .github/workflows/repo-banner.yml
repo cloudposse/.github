@@ -48,7 +48,7 @@ jobs:
         else
           echo "Repo type is indeterminable"
 				  echo "name=${name}" >> $GITHUB_OUTPUT
-				  echo "type="${type}" >> $GITHUB_OUTPUT
+				  echo "type=${type}" >> $GITHUB_OUTPUT
         fi
 
         if [[ "${desc}" == "null" ]]; then
