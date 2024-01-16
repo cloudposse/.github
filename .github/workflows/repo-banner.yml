@@ -60,6 +60,12 @@ jobs:
         echo "type=${type}"
         echo "desc=${desc}"
 
+    - name: "Test outputs"
+      run: |
+        echo name=${{ steps.meta.outputs.name }}
+        echo type=${{ steps.meta.outputs.desc }}
+        echo desc=${{ steps.meta.outputs.desc }}
+
     - name: Generate banner image
       id: screenshot
       uses: cloudposse-github-actions/screenshot@main
