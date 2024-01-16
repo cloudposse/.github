@@ -54,7 +54,7 @@ jobs:
           # Only keep the first sentence
           echo "desc=${desc/.*}" >> $GITHUB_OUTPUT
         fi
-        source $(GITHUB_OUTPUT)
+        source ${GITHUB_OUTPUT}
         echo "name=${name}"
         echo "type="${type}"
         echo "desc="${desc}"
