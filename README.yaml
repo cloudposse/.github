@@ -27,7 +27,6 @@ badges:
 
 # Short description of this project
 description: |-
-  ## .github
   This repository fulfills several unique functions functions for Cloud Posse.
     1. It can contain special org-level files that provide functionality for our organization on GitHub. These files include:
       - `profile/README.md`
