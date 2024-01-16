@@ -32,10 +32,10 @@ jobs:
         ref: 'main'
         path: 'github'
 
-    - name: Symlink to `github/`
+    - name: Symlink ${{github.workspace}} to `github/`
       if: steps.metadata.outputs.repository_name == '.github'
       run: |
-        ln -s github ${{github.workspace}}
+        ln -s ${{github.workspace}} ${{github.workspace}}/github
 
     - name: Format Repo Metadata
       id: meta
