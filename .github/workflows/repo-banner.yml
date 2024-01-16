@@ -30,23 +30,18 @@ jobs:
         desc="${{ steps.metadata.outputs.repository_description }}"
 
         if [[ "${name}" == "terraform-*-provider" ]]; then
-          echo "Setting repo type to Terraform Provider"
           echo "type=Terraform Provider" >> $GITHUB_OUTPUT
           echo "name=${name#terraform-}" >> $GITHUB_OUTPUT
         elif [[ "${name}" == "terraform-aws*" ]]; then
-          echo "Setting repo type to Terraform Module"
           echo "type=Terraform Module" >> $GITHUB_OUTPUT
           echo "name=${name#terraform-}" >> $GITHUB_OUTPUT
         elif [[ "${name}" == "github-action-*" ]]; then
-          echo "Setting repo type to GitHub Action"
           echo "type=GitHub Action" >> $GITHUB_OUTPUT
           echo "name=${name#github-action-}" >> $GITHUB_OUTPUT
         elif [[ "${name}" == "example-*" ]]; then
-          echo "Setting repo type to Example"
           echo "type=Example" >> $GITHUB_OUTPUT
           echo "name=${name#example-}" >> $GITHUB_OUTPUT
         elif [[ "${name}" == "infra-*" ]]; then
-          echo "Setting repo type to Infrastructure"
           echo "type=Infrastructure" >> $GITHUB_OUTPUT
           echo "name=${name#infra-}" >> $GITHUB_OUTPUT
         else
@@ -59,6 +54,10 @@ jobs:
           # Only keep the first sentence
           echo "desc=${desc/.*}" >> $GITHUB_OUTPUT
         fi
+        source $(GITHUB_OUTPUT)
+        echo "name=${name}"
+        echo "type="${type}"
+        echo "desc="${desc}"
 
     - name: Generate banner image
       id: screenshot
