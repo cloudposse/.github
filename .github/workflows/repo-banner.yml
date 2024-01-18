@@ -45,7 +45,11 @@ jobs:
 
     - name: Format Repo Metadata
       id: meta
-      uses: actions/github-script@v5
+      uses: actions/github-script@v7
+      env:
+        README_NAME: ${{steps.readme.outputs.name}}
+        REPOSITORY_NAME: ${{ steps.metadata.outputs.repository_name }}
+        REPOSITORY_DESCRIPTION: ${{ steps.metadata.outputs.repository_description }}
       with:
         script: |
           const wrapEmoji = (text) => {
@@ -54,9 +58,9 @@ jobs:
             return text.replace(reEmoji, '<span class="emoji" role="img" aria-hidden="true">$&</span>');
           }
 
-          let name = steps.readme.outputs.name || steps.metadata.outputs.repository_name;
+          let name = process.env.README_NAME || process.env.REPOSITORY_NAME
           let type = 'Project';
-          let desc = steps.metadata.outputs.repository_description;
+          let desc = process.env.REPOSITORY_DESCRIPTION;
           let output = '.github/banner.png';
 
           // Logic to determine repository type and modify name and type accordingly
