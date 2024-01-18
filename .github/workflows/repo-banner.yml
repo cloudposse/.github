@@ -45,7 +45,7 @@ jobs:
 
     - name: Format Repo Metadata
       id: meta
-      shell: bash
+      shell: zsh
       env:
         LANG: en_US.UTF-8
       run: |
