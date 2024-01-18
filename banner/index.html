@@ -2,13 +2,13 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Colr+Emoji+Glyf" rel="stylesheet">
     <title>Cloud Posse</title>
     <style>
     body {
       overflow: hidden;
       font: 16px/1.4 'proxima-nova';
-      font-family: 'proxima-nova', sans-serif;
+      font-family: 'proxima-nova', sans-serif,  'Noto Colr Emoji Glyf';
       margin: 0;
       color: hsla(0, 0%, 100%, 0.85); 
       min-width: 100vw;
@@ -19,6 +19,11 @@
 
     .highlight {
       color: #ffffff40;
+    }
+
+    .emoji {
+      position: relative;
+      bottom: 7px;
     }
 
     .break {
@@ -120,9 +125,8 @@
 
     .project .description {
       line-height: 1em;
-      display: flex;
+      display: inline;
       min-width: 1px;
-      flex-grow: 1;
       margin-top: 0.3em;
     }
 

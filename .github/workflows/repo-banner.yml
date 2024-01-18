@@ -37,40 +37,63 @@ jobs:
       run: |
         ln -s ${{github.workspace}} ${{github.workspace}}/github
 
+    - uses: actions-tools/yaml-outputs@v2
+      id: readme
+      with:
+        file-path: 'README.yaml'
+        fail-on-file-not-found: 'false'
+
     - name: Format Repo Metadata
       id: meta
       run: |
-        name="${{ steps.metadata.outputs.repository_name }}"
+
+        # Pull the name from the README
+        name="${{ steps.readme.outputs.name }}"
+        if [ -z "${name}" ]; then
+          # If the name was empty, then default to the repository_name
+          name="${{ steps.metadata.outputs.repository_name }}"
+        fi
+
         type="Project"
         desc="${{ steps.metadata.outputs.repository_description }}"
+        output=.github/banner.png
 
         if [[ "${name}" == "terraform-*-provider" ]]; then
-          echo "type=Terraform Provider" >> $GITHUB_OUTPUT
-          echo "name=${name#terraform-}" >> $GITHUB_OUTPUT
+          type="Terraform Provider" 
+          echo "name=${name#terraform-}"
         elif [[ "${name}" == "terraform-aws*" ]]; then
-          echo "type=Terraform Module" >> $GITHUB_OUTPUT
-          echo "name=${name#terraform-}" >> $GITHUB_OUTPUT
+          echo "type=Terraform Module" 
+          echo "name=${name#terraform-}" 
         elif [[ "${name}" == "github-action-*" ]]; then
-          echo "type=GitHub Action" >> $GITHUB_OUTPUT
-          echo "name=${name#github-action-}" >> $GITHUB_OUTPUT
+          echo "type=GitHub Action"
+          echo "name=${name#github-action-}"
         elif [[ "${name}" == "example-*" ]]; then
-          echo "type=Example" >> $GITHUB_OUTPUT
-          echo "name=${name#example-}" >> $GITHUB_OUTPUT
+          type=Example"
+          name=${name#example-}"
         elif [[ "${name}" == "infra-*" ]]; then
-          echo "type=Infrastructure" >> $GITHUB_OUTPUT
-          echo "name=${name#infra-}" >> $GITHUB_OUTPUT
+          type=Infrastructure"
+          name=${name#infra-}"
+        elif [[ "${name}" == ".github" ]]; then
+          type=Organization
+          output="banner/image.png"
         else
           echo "Repo type is indeterminable"
-          echo "name=${name}" >> $GITHUB_OUTPUT
-          echo "type=${type}" >> $GITHUB_OUTPUT
         fi
 
         if [[ "${desc}" == "null" ]]; then
-          echo "desc=" >> $GITHUB_OUTPUT
+          # Change it to an empty string
+          desc=""
         else
-          # Only keep the first sentence
-          echo "desc=${desc/.*}" >> $GITHUB_OUTPUT
+          # Only keep the first sentence and wrap emojis in a <span/> tag.
+          # Ths span tag is added so we can style the emoji
+          desc="${desc/.*}"
         fi
+
+        echo "name=${name}" >> $GITHUB_OUTPUT
+        echo "type=${type}" >> $GITHUB_OUTPUT
+        echo "output=${output}" >> $GITHUB_OUTPUT
+        echo "desc=${desc}" | LANG=en_US.UTF-8 sed -e "s/\([$(printf $emoji)]\)/<span class=\"emoji\">\1<\/span>/g" >> $GITHUB_OUTPUT
+        
         cat ${GITHUB_OUTPUT}
 
     - name: Generate banner image
@@ -78,7 +101,7 @@ jobs:
       uses: cloudposse-github-actions/screenshot@main
       with:
         url: "file://${{github.workspace}}/github/banner/index.html"
-        output: "banner/image.png"
+        output: "${{ steps.meta.outputs.output }}"
         customizations: |
           "#name": "${{ steps.meta.outputs.name }}"
           "#type": "${{ steps.meta.outputs.type }}"
