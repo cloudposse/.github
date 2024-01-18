@@ -45,66 +45,56 @@ jobs:
 
     - name: Format Repo Metadata
       id: meta
-      shell: zsh
-      env:
-        LANG: en_US.UTF-8
-      run: |
-        export LANG
+      uses: actions/github-script@v5
+      with:
+        script: |
+          const wrapEmoji = (text) => {
+            // https://gist.github.com/srsbiz/2b1b4d624e82bf5c92fceb12aad4cd22
+            const reEmoji = /\p{RI}\p{RI}|\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?(\u{200D}\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?)+|\p{EPres}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?|\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})/gu;
+            return text.replace(reEmoji, '<span class="emoji" role="img" aria-hidden="true">$&</span>');
+          }
 
-        # Function to wrap emojis in a <span> tag
-        function wrapEmoji() {
-          emoji="\U1f300-\U1f5ff\U1f900-\U1f9ff\U1f600-\U1f64f\U1f680-\U1f6ff\U2600-\U26ff\U2700-\U27bf\U1f1e6-\U1f1ff\U1f191-\U1f251\U1f004\U1f0cf\U1f170-\U1f171\U1f17e-\U1f17f\U1f18e\U3030\U2b50\U2b55\U2934-\U2935\U2b05-\U2b07\U2b1b-\U2b1c\U3297\U3299\U303d\U00a9\U00ae\U2122\U23f3\U24c2\U23e9-\U23ef\U25b6\U23f8-\U23fa"
-          sed -e "s/\([$(printf $emoji)]\)/<span class=\"emoji\">\1<\/span>/g" <<<"$*"
-        }
+          let name = steps.readme.outputs.name || steps.metadata.outputs.repository_name;
+          let type = 'Project';
+          let desc = steps.metadata.outputs.repository_description;
+          let output = '.github/banner.png';
 
-        # Pull the name from the README
-        name="${{ steps.readme.outputs.name }}"
-        if [ -z "${name}" ]; then
-          # If the name was empty, then default to the repository_name
-          name="${{ steps.metadata.outputs.repository_name }}"
-        fi
+          // Logic to determine repository type and modify name and type accordingly
+          if (name.startsWith('terraform-')) {
+            type = name.includes('provider') ? 'Terraform Provider' : 'Terraform Module';
+            name = name.replace('terraform-', '');
+          } else if (name.startsWith('github-action-')) {
+            type = 'GitHub Action';
+            name = name.replace('github-action-', '');
+          } else if (name.startsWith('example-')) {
+            type = 'Example';
+            name = name.replace('example-', '');
+          } else if (name.startsWith('infra-')) {
+            type = 'Infrastructure';
+            name = name.replace('infra-', '');
+          } else if (name === '.github') {
+            type = 'Organization';
+            output = 'banner/image.png';
+          }
 
-        type="Project"
-        desc="${{ steps.metadata.outputs.repository_description }}"
-        output=.github/banner.png
+          // Handling description
+          if (desc === 'null') {
+            desc = '';
+          } else {
+            desc = desc.split('.')[0]; // Keeping only the first sentence
+          }
 
-        if [[ "${name}" == "terraform-*-provider" ]]; then
-          type="Terraform Provider" 
-          echo "name=${name#terraform-}"
-        elif [[ "${name}" == "terraform-aws*" ]]; then
-          echo "type=Terraform Module" 
-          echo "name=${name#terraform-}" 
-        elif [[ "${name}" == "github-action-*" ]]; then
-          echo "type=GitHub Action"
-          echo "name=${name#github-action-}"
-        elif [[ "${name}" == "example-*" ]]; then
-          type=Example"
-          name=${name#example-}"
-        elif [[ "${name}" == "infra-*" ]]; then
-          type=Infrastructure"
-          name=${name#infra-}"
-        elif [[ "${name}" == ".github" ]]; then
-          type=Organization
-          output="banner/image.png"
-        else
-          echo "Repo type is indeterminable"
-        fi
+          // Wrapping emojis
+          type = wrapEmoji(type);
+          name = wrapEmoji(name);
+          desc = wrapEmoji(desc);
 
-        if [[ "${desc}" == "null" ]]; then
-          # Change it to an empty string
-          desc=""
-        else
-          # Only keep the first sentence and wrap emojis in a <span/> tag.
-          # Ths span tag is added so we can style the emoji
-          desc="${desc/.*}"
-        fi
+          // Setting outputs
+          core.setOutput('type', type);
+          core.setOutput('name', name);
+          core.setOutput('desc', desc);
+          core.setOutput('output', output);
 
-        echo "type=$(wrapEmoji ${type})" >> $GITHUB_OUTPUT
-        echo "name=$(wrapEmoji ${name})" >> $GITHUB_OUTPUT
-        echo "desc=$(wrapEmoji ${desc})" >> $GITHUB_OUTPUT
-        echo "output=${output}" >> $GITHUB_OUTPUT
-        
-        cat ${GITHUB_OUTPUT}
 
     - name: Generate banner image
       id: screenshot
