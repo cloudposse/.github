@@ -107,9 +107,12 @@ jobs:
         url: "file://${{github.workspace}}/github/banner/index.html"
         output: "${{ steps.meta.outputs.output }}"
         customizations: |
-          "#name": "${{ steps.meta.outputs.name }}"
-          "#type": "${{ steps.meta.outputs.type }}"
-          "#desc": "${{ steps.meta.outputs.desc }}"
+          "#name": >-
+            ${{ steps.meta.outputs.name }}
+          "#type": >-
+            ${{ steps.meta.outputs.type }}
+          "#desc": >-
+            ${{ steps.meta.outputs.desc }}
         viewportWidth: 1280
         viewportHeight: 320
         omitBackground: true
