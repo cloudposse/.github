@@ -41,10 +41,11 @@ jobs:
       id: readme
       with:
         file-path: 'README.yaml'
-        fail-on-file-not-found: 'false'
+        fail-on-file-not-found: false
 
     - name: Format Repo Metadata
       id: meta
+      shell: bash
       env:
         LANG: en_US.UTF-8
       run: |
