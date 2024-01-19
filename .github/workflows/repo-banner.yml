@@ -77,8 +77,7 @@ jobs:
             type = 'Infrastructure';
             name = name.replace('infra-', '');
           } else if (name === '.github') {
-            type = 'Configuration';
-            name = '🛠️ ' + name
+            type = '🛠️ Configuration';
             output = 'banner/image.png';
           }
 
