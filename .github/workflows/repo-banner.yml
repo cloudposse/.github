@@ -17,58 +17,102 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: Fetch repo metadata
       id: metadata
       uses: ahmadnassri/action-metadata@v2
 
+    - name: Checkout ${{ steps.metadata.outputs.owner_login}}/.github
+      if: steps.metadata.outputs.repository_name != '.github'
+      uses: actions/checkout@v3
+      with:
+        repository: '${{ steps.metadata.outputs.owner_login }}/.github'
+        ref: 'fix-banner-workflow'
+        path: 'github'
+
+    - name: Symlink ${{github.workspace}} to `github/`
+      if: steps.metadata.outputs.repository_name == '.github'
+      run: |
+        ln -s ${{github.workspace}} ${{github.workspace}}/github
+
+    - uses: actions-tools/yaml-outputs@49506207f91d468273fd5e73fbd18d6d2d9df9b1
+      id: readme
+      with:
+        file-path: 'README.yaml'
+        fail-on-file-not-found: false
+
     - name: Format Repo Metadata
       id: meta
-      run: |
-        name="${{ steps.metadata.outputs.repository_name }}"
-        type="Project"
-        desc="${{ steps.metadata.outputs.repository_description }}"
+      uses: actions/github-script@v7
+      env:
+        README_NAME: ${{steps.readme.outputs.name}}
+        REPOSITORY_NAME: ${{ steps.metadata.outputs.repository_name }}
+        REPOSITORY_DESCRIPTION: ${{ steps.metadata.outputs.repository_description }}
+      with:
+        script: |
+          const wrapEmoji = (text) => {
+            // https://gist.github.com/srsbiz/2b1b4d624e82bf5c92fceb12aad4cd22
+            const reEmoji = /\p{RI}\p{RI}|\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?(\u{200D}\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?)+|\p{EPres}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?|\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})/gu;
+            return text.replace(reEmoji, '<span class="emoji" role="img" aria-hidden="true">$&</span>');
+          }
 
-        if [[ "${name}" == "terraform-*-provider" ]]; then
-          echo "type=Terraform Provider" >> $GITHUB_OUTPUT
-          echo "name=${name#terraform-}" >> $GITHUB_OUTPUT
-        elif [[ "${name}" == "terraform-aws*" ]]; then
-          echo "type=Terraform Module" >> $GITHUB_OUTPUT
-          echo "name=${name#terraform-}" >> $GITHUB_OUTPUT
-        elif [[ "${name}" == "github-action-*" ]]; then
-          echo "type=GitHub Action" >> $GITHUB_OUTPUT
-          echo "name=${name#github-action-}" >> $GITHUB_OUTPUT
-        elif [[ "${name}" == "example-*" ]]; then
-          echo "type=Example" >> $GITHUB_OUTPUT
-          echo "name=${name#example-}" >> $GITHUB_OUTPUT
-        elif [[ "${name}" == "infra-*" ]]; then
-          echo "type=Infrastructure" >> $GITHUB_OUTPUT
-          echo "name=${name#infra-}" >> $GITHUB_OUTPUT
-        else
-          echo "Repo type is indeterminable"
-          echo "name=${name}" >> $GITHUB_OUTPUT
-          echo "type=${type}" >> $GITHUB_OUTPUT
-        fi
+          let name = process.env.README_NAME || process.env.REPOSITORY_NAME
+          let type = 'Project';
+          let desc = process.env.REPOSITORY_DESCRIPTION;
+          let output = '.github/banner.png';
 
-        if [[ "${desc}" == "null" ]]; then
-          echo "desc=" >> $GITHUB_OUTPUT
-        else
-          # Only keep the first sentence
-          echo "desc=${desc/.*}" >> $GITHUB_OUTPUT
-        fi
-        cat ${GITHUB_OUTPUT}
+          // Logic to determine repository type and modify name and type accordingly
+          if (name.startsWith('terraform-')) {
+            type = name.includes('provider') ? 'Terraform Provider' : 'Terraform Module';
+            name = name.replace('terraform-', '');
+          } else if (name.startsWith('github-action-')) {
+            type = 'GitHub Action';
+            name = name.replace('github-action-', '');
+          } else if (name.startsWith('example-')) {
+            type = 'Example';
+            name = name.replace('example-', '');
+          } else if (name.startsWith('infra-')) {
+            type = 'Infrastructure';
+            name = name.replace('infra-', '');
+          } else if (name === '.github') {
+            type = '🛠️ Configuration';
+            output = 'banner/image.png';
+          }
+
+          // Handling description
+          if (desc === 'null') {
+            desc = '';
+          } else {
+            desc = desc.split('.')[0]; // Keeping only the first sentence
+          }
+
+          // Wrapping emojis
+          type = wrapEmoji(type);
+          name = wrapEmoji(name);
+          desc = wrapEmoji(desc);
+
+          // Setting outputs
+          core.setOutput('type', type);
+          core.setOutput('name', name);
+          core.setOutput('desc', desc);
+          core.setOutput('output', output);
+
 
     - name: Generate banner image
       id: screenshot
       uses: cloudposse-github-actions/screenshot@main
       with:
-        url: "file://${{github.workspace}}/banner/index.html"
-        output: "banner/image.png"
+        url: "file://${{github.workspace}}/github/banner/index.html"
+        output: "${{ steps.meta.outputs.output }}"
         customizations: |
-          "#name": "${{ steps.meta.outputs.name }}"
-          "#type": "${{ steps.meta.outputs.type }}"
-          "#desc": "${{ steps.meta.outputs.desc }}"
+          "#name": >-
+            ${{ steps.meta.outputs.name }}
+          "#type": >-
+            ${{ steps.meta.outputs.type }}
+          "#desc": >-
+            ${{ steps.meta.outputs.desc }}
         viewportWidth: 1280
         viewportHeight: 320
         omitBackground: true
@@ -83,7 +127,7 @@ jobs:
         commit_user_name: screenshot-action 📷
         commit_user_email: actions@github.com
         commit_author: screenshot-action 📷 <actions@github.com>
-        file_pattern: 'banner/*.png'
+        file_pattern: '${{ steps.meta.outputs.output }}'
 
     - name: Add Image to Step Summary
       if: steps.auto-commit.outputs.changes_detected == 'true'
