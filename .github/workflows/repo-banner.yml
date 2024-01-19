@@ -1,6 +1,7 @@
 name: GitHub Repo Banner
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -78,7 +79,6 @@ jobs:
             name = name.replace('infra-', '');
           } else if (name === '.github') {
             type = '🛠️ Configuration';
-            output = 'banner/image.png';
           }
 
           // Handling description
