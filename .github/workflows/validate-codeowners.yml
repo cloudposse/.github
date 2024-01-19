@@ -1,10 +1,10 @@
-name: "validate-codeowners"
+name: "Validate Codeowners"
 on:
   pull_request_target:
   workflow_dispatch:
 
 jobs:
-  validate-codeowners:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: cloudposse/github-action-validate-codeowners@main
