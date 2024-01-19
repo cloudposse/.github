@@ -1,6 +1,7 @@
 
 <!-- markdownlint-disable -->
-# .github<a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a> [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+[![Project Banner](.github/banner.png?raw=true)](https://cpco.io/homepage)
+ [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
 
