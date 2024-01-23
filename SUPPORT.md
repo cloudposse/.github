@@ -52,15 +52,15 @@ For security issues, please do not post them publicly on the forums, issue track
 > We appreciate that not everyone has all the answers every time. That’s exactly why our community is here to help. 
 > Keep in mind, we are all volunteers. Everyone donates their time; no one receives any payment for helping answer your questions.
 
-1.  Research the problem or question. Be prepared to share links of what you’ve already tried and considered. We expect you’ve “Googled it” before we do. If you don’t know where to begin, that’s okay. In that case, ask for help on how to approach the problem.
-2.  State your problem, not just your solution. The [XY Problem](http://xyproblem.info/) is the fallacy of asking for help about your _attempted solution_ rather than ask for help solving your _actual_ _problem_. This leads to enormous amounts of wasted time and energy, both on the part of people asking for help, and on the part of those providing help.   
-3.  Search our Slack for the answer. We see a lot of the same questions asked over and over again. Do a quick search before asking your question.  
-4.  Ask Constructive Questions. When asking your question, mention any research you’ve done, relevant links and GitHub issues, as well as provide any relevant code samples. 
-5.  Use Markdown Formatting. When pasting code samples, make sure you use markdown formatting. Code that is not formatted makes it difficult for others to read and reduce the likelihood of getting an answer. For longer blobs of text, make sure you use snippets.**IMPORTANT**: Make sure you have permission to share any code samples because these will be public.
+1.  **Research the problem or question.** Be prepared to share links of what you’ve already tried and considered. We expect you’ve “Googled it” before we do. If you don’t know where to begin, that’s okay. In that case, ask for help on how to approach the problem.
+2. **State your problem, not just your solution.** The [XY Problem](http://xyproblem.info/) is the fallacy of asking for help about your _attempted solution_ rather than ask for help solving your _actual_ _problem_. This leads to enormous amounts of wasted time and energy, both on the part of people asking for help, and on the part of those providing help.   
+3.  **Search our Slack for the answer.** We see a lot of the same questions asked over and over again. Do a quick search before asking your question.  
+4.  **Ask Constructive Questions.** When asking your question, mention any research you’ve done, relevant links and GitHub issues, as well as provide any relevant code samples. 
+5.  **Use Markdown Formatting.** When pasting code samples, make sure you use markdown formatting. Code that is not formatted makes it difficult for others to read and reduce the likelihood of getting an answer. For longer blobs of text, make sure you use snippets.**IMPORTANT**: Make sure you have permission to share any code samples because these will be public.
 6.  Use the Appropriate Channel. We have dozens of channels that help us organize all the information and questions asked. The #general channel is only for welcoming new users or asking for help on where to ask a question.
-7.  Do Not Cross-Post. Use one channel at a time to avoid spamming our community. Keep in mind, users are in 57 timezones. You may not get an answer right away.
-8.  Keep Conversations in Threads. Our channels get pretty busy. When multiple concurrent conversations are happening, it’s hard to keep it straight. Also, it’s helpful if you add supplementary information in the thread of the question, rather than posting a new message.
-9.  Give Copious Praise. Did you get the answer you were looking for? Did someone help you? Let them know! We operate on praise. There’s never enough.
+7.  **Do Not Cross-Post.** Use one channel at a time to avoid spamming our community. Keep in mind, users are in 57 timezones. You may not get an answer right away.
+8. ** Keep Conversations in Threads.** Our channels get pretty busy. When multiple concurrent conversations are happening, it’s hard to keep it straight. Also, it’s helpful if you add supplementary information in the thread of the question, rather than posting a new message.
+9.  **Give Copious Praise.** Did you get the answer you were looking for? Did someone help you? Let them know! We operate on praise. There’s never enough.
 
 
   [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
