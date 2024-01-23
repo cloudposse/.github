@@ -28,8 +28,8 @@ This section guides you through submitting an enhancement suggestion for Cloud P
 
 Unsure where to begin contributing to Cloud Posse? You can start by looking through issues with the following labels:
 
-| Label | Usage |                                                         
-|-------------------------------------------------------------------|---|
+|: Label                                                            |: Usage |                                                         
+|-------------------------------------------------------------------|--------|
 | ![`help-wanted`](https://img.shields.io/badge/help_wanted-388bfd) | issues which should only require a few lines of code, and a test or two. |
 | ![`beginner`](https://img.shields.io/badge/beginner-388bfd)       | issues which should be a bit more involved than issues. |
 
