@@ -9,6 +9,7 @@ Thank you for being part of our community!
 
 > [!TIP]
 > **Where to Find Support**
+> 
 > If you're looking for support for any Cloud Posse projects, here are a few options to consider.
 
 ### Documentation
@@ -36,6 +37,7 @@ We love contributions! If you're interested in helping out, check out the `CONTR
 ## Professional Support
 
 For professional support, please contact [Cloud Posse](https://cloudposse.com) directly. Please note that while we strive to provide community support wherever possible, professional support will involve costs or service agreements.
+[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
 ## Security Issues
 
@@ -45,7 +47,8 @@ For security issues, please do not post them publicly on the forums, issue track
 ## Guidelines When Asking for Help
 
 > [!TIP]
-> **Tips to follow when asking for help:**
+> **Tips to follow when asking for help**
+> 
 > We appreciate that not everyone has all the answers every time. That’s exactly why our community is here to help. 
 > Keep in mind, we are all volunteers. Everyone donates their time; no one receives any payment for helping answer your questions.
 
@@ -58,3 +61,8 @@ For security issues, please do not post them publicly on the forums, issue track
 7.  Do Not Cross-Post. Use one channel at a time to avoid spamming our community. Keep in mind, users are in 57 timezones. You may not get an answer right away.
 8.  Keep Conversations in Threads. Our channels get pretty busy. When multiple concurrent conversations are happening, it’s hard to keep it straight. Also, it’s helpful if you add supplementary information in the thread of the question, rather than posting a new message.
 9.  Give Copious Praise. Did you get the answer you were looking for? Did someone help you? Let them know! We operate on praise. There’s never enough.
+
+
+  [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
+  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_commercial_support_link
+
