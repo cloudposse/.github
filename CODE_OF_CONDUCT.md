@@ -58,8 +58,6 @@ We only permit companies or individuals to solicit work, post jobs, or engage in
 > [!IMPORTANT]
 > If you’ve received an unwelcome solicitation, please email [abuse@cloudposse.com](mailto:abuse@cloudposse.com) with details including screenshots.
 
-
-
 ## Privacy
 
 All conversations that happen in our public Slack channels are published regularly to our [online archive](https://archive.sweetops.com/) and indexed by web crawlers like Google. For this reason, community members should not have any expectation of privacy in their use.
