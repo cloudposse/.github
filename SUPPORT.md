@@ -11,6 +11,7 @@ Thank you for being part of our community!
 > **Where to Find Support**
 > 
 > If you're looking for support for any Cloud Posse projects, here are a few options to consider.
+> 
 
 ### Documentation
 
@@ -51,6 +52,7 @@ For security issues, please do not post them publicly on the forums, issue track
 > 
 > We appreciate that not everyone has all the answers every time. That’s exactly why our community is here to help. 
 > Keep in mind, we are all volunteers. Everyone donates their time; no one receives any payment for helping answer your questions.
+> 
 
 1.  **Research the problem or question.** Be prepared to share links of what you’ve already tried and considered. We expect you’ve “Googled it” before we do. If you don’t know where to begin, that’s okay. In that case, ask for help on how to approach the problem.
 2. **State your problem, not just your solution.** The [XY Problem](http://xyproblem.info/) is the fallacy of asking for help about your _attempted solution_ rather than ask for help solving your _actual_ _problem_. This leads to enormous amounts of wasted time and energy, both on the part of people asking for help, and on the part of those providing help.   
