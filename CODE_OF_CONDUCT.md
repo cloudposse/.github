@@ -20,7 +20,7 @@ We invite all those who participate in SweetOps to help us create safe and posit
 
 ## Etiquette
 - Do not cross-post questions across multiple channels (pick one)
-- Do not ask questions in #general. Search channel instead or suggest one, if you can’t find one.
+- Do not ask questions in  `#general`. Search channel instead or suggest one, if you can’t find one.
 - Use the professional language you would use at work. Avoid using profanity in any language.
 - Praise publicly (with tons of emojis!)
 - Criticize constructively, but never disparagingly(e.g. there are no “stupid” questions)
@@ -30,9 +30,9 @@ We invite all those who participate in SweetOps to help us create safe and posit
 - Seek to understand, not to embarrass, discredit or humiliate.(e.g. “Hrmm… could you explain that another way? I’m not following.”)
 - When posting for the first time, review the channel history to get a sense of how others interact. Also, check out our “Guidelines When Asking for Help.”
 - Check out the channel’s topic and purpose in order to stay on point
-- Use the #random channel if nothing else fits
+- Use the `#random` channel if nothing else fits
 - Use threads when responding, especially in busy channels
-- Don’t use @channel and @here (we’ve disabled them)
+- Don’t use `@channel` and `@here` (we’ve disabled them)
     
 
 ## Unacceptable Behavior
@@ -55,7 +55,7 @@ This is not an exhaustive list of things we prohibit. In order to preserve the s
 
 ## Solicitation
 
-We only permit companies or individuals to solicit work, post jobs, or engage in self-promotion in the [#jobs](http://archive.sweetops.com/jobs/) [channel](http://archive.sweetops.com/jobs/). It is not acceptable to engage in this behavior in any other channel or to send unsolicited direct messages concerning job opportunities or job marketplaces. Under no circumstances is it acceptable to solicit payment from members for any reason (e.g. recruiting fees). The intent for the [#jobs](http://archive.sweetops.com/jobs/) [channel](http://archive.sweetops.com/jobs/) is for companies looking to make a direct-hire without intermediaries such as recruiters. Additionally, the promotion of any kind of third-party job marketplace is not permitted. Any direct messages to members should be in relation to specific messages posted about job opportunities or candidates seeking work, but absolutely not for promoting other services. Recruiters may only reach out to individual candidates who have posted in the #jobs channel, but are not permitted to directly solicit members or companies in this community.
+We only permit companies or individuals to solicit work, post jobs, or engage in self-promotion in the [#jobs](http://archive.sweetops.com/jobs/) channel [(archive)](http://archive.sweetops.com/jobs/). It is not acceptable to engage in this behavior in any other channel or to send unsolicited direct messages concerning job opportunities or job marketplaces. Under no circumstances is it acceptable to solicit payment from members for any reason (e.g. recruiting fees). The intent for the [#jobs](http://archive.sweetops.com/jobs/) channel [(archive)](http://archive.sweetops.com/jobs/) is for companies looking to make a direct-hire without intermediaries such as recruiters. Additionally, the promotion of any kind of third-party job marketplace is not permitted. Any direct messages to members should be in relation to specific messages posted about job opportunities or candidates seeking work, but absolutely not for promoting other services. Recruiters may only reach out to individual candidates who have posted in the `#jobs` channel, but are not permitted to directly solicit members or companies in this community.
 
 > [!IMPORTANT]
 > If you’ve received an unwelcome solicitation, please email [abuse@cloudposse.com](mailto:abuse@cloudposse.com) with details including screenshots.
@@ -101,8 +101,8 @@ We perform both automated and human moderation. To some degree, we expect our co
 Moderators reserve the right to delete excessive self-promotional or commercial posts. Similarly, any objectionable, inappropriate or off-topic comments may be deleted. Members posting this content will receive a warning and risk being blocked from the team if the unacceptable behavior persists.
 
 Official moderators of our Slack community are:
-- Erik Osterman (@osterman)
-- Andriy Knysh (@aknysh)
+- Erik Osterman ([@osterman](https://github.com/osterman))
+- Andriy Knysh ([@aknysh](https://github.com/aknysh))
     
 
 ## Enforcement & Consequences
