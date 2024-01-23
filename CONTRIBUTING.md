@@ -1,4 +1,4 @@
-# Contributing to Cloud Posse & SweetOps
+# Contributing
 
 First off, thank you for considering contributing to Cloud Posse! It's people like you that make our community great.
 
