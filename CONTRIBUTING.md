@@ -10,7 +10,7 @@ Cloud Posse has adopted a Code of Conduct that we expect project participants to
 
 ### Cloud Posse Projects
 
-Each Cloud Posse project is hosted in its own repository on GitHub. Before contributing, familiarize yourself with the specific project you are interested in. Each repository typically contains a `README.md`` with an overview of the project, and instructions for setting up your development environment and running tests.
+Each Cloud Posse project is hosted in its own repository on GitHub. Before contributing, familiarize yourself with the specific project you are interested in. Each repository typically contains a [`README.md`](README.md) with an overview of the project, and instructions for setting up your development environment and running tests.
 
 ## How Can I Contribute?
 
