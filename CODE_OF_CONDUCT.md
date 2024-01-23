@@ -2,11 +2,13 @@
 
 This code of conduct governs the [SweetOps Slack Community](https://slack.sweetops.com/) and related [Open Source Projects](https://github.com/cloudposse). SweetOps is operated by Cloud Posse, a [DevOps Accelerator](https://devopsaccelerator.com/) based in Houston, TX.
 
-> [IMPORTANT]
-> **TL;DR:** SweetOps was founded as a collaborative DevOps community for engineers of all skill levels. 
-> We want to make sure our community > is as constructive as possible in order to help each other solve cool DevOps problems. 
+> [!IMPORTANT]
+> **TL;DR:** SweetOps is a collaborative DevOps community for engineers of all skill levels. 
+>
+> We want to make sure our community is as constructive as possible in order to help each other solve cool DevOps problems. 
 > Anything that goes against the spirit of this, isn’t cool. If you see something suspicious, derogatory, or 
 > otherwise inappropriate, etc. please send an email to [abuse@cloudposse.com] (mailto:abuse@cloudposse.com) with details.
+>
 
 ## Introduction
 
