@@ -1,7 +1,7 @@
 
 <!-- markdownlint-disable -->
 [![Project Banner](.github/banner.png?raw=true)](https://cpco.io/homepage)
- [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+ [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com) [![Last Update](https://img.shields.io/github/last-commit/cloudposse/.github/main)](https://github.com/cloudposse/.github/commits/main/)
 <!-- markdownlint-restore -->
 
 
@@ -30,19 +30,13 @@ This repository fulfills several unique functions functions for the Cloud Posse 
 
 1. It can contain special org-level files that provide functionality for our organization on GitHub. These files include:
     - [`profile/README.md`](profile/README.md)
-2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. In the event that a new repo is initialized without these files, the repo will behave on github.com as those the default copies of these files were present in the repo. These files include:
+2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. 
+   In the event that a new repo is initialized without these files, the repo will behave on github.com as those the default copies of these files were present in the repo. 
+   These files include:
     - [`.github/CODEOWNERS`](.github/CODEOWNERS)
     - [`FUNDING.yml`](FUNDING.yml)
     - [`.github/ISSUE_TEMPLATE/*`](.github/ISSUE_TEMPLATE/)
-    - `.github/PULL_REQUEST_TEMPLATE.md`
-3. In addition to these GitHub-mediated functions, we are also conscripting the `cloudposse/.github` repo to act as the source for all GitHub Actions workflows and other bootstrapping files that are copied out automatically to our repositories (and which we encourage others to copy to their own repositories) using our [Auto-format GitHub Action](https://github.com/cloudposse/github-action-auto-format). (Note that there is some overlap between the files that GitHub recognizes as repo-level default files and the files that we actively copy to our repos using the `Auto-format` action. This doesn't affect the functionality of either process, but it's worth noting for future reference.) Files that are distributed in this way include:
-    - `.github/auto-release.yml`
-    - `.github/CODEOWNERS`
-    - `.github/ISSUE_TEMPLATE/*`
-    - `Makefile`
-    - `.github/PULL_REQUEST_TEMPLATE.md`
-    - `renovate.json`
-    - `.github/workflows/*`
+    - [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
 
 
 ---
