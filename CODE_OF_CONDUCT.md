@@ -23,7 +23,7 @@ We invite all those who participate in SweetOps to help us create safe and posit
 - Do not ask questions in  `#general`. Search channel instead or suggest one, if you can’t find one.
 - Use the professional language you would use at work. Avoid using profanity in any language.
 - Praise publicly (with tons of emojis!)
-- Criticize constructively, but never disparagingly(e.g. there are no “stupid” questions)
+- Criticize constructively, but never disparagingly (e.g. there are no “stupid” questions)
 - Practice empathy (e.g. “Ahk, that shouldn’t happen”)
 - Correct delicately (e.g. “Have you considered…”)
 - Avoid sarcasm, or feigning surprise (e.g. Don’t say “I’m surprised you didn’t know that”)
