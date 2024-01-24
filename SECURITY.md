@@ -20,7 +20,11 @@ To help us better understand the nature and scope of the issue, please include a
 > [!NOTE]
 > **Bug Bounties**
 > 
-> As an open-source company, Cloud Posse **does not** provide bug bounties for vulnerability disclosures. 
+> Cloud Posse **does not** provide bug bounties for vulnerability disclosures.
+>
+> As an open-source company, we release our projects for free under a permissive license, encouraging community contributions.
+> We value all contributions equally and therefore don’t compensate specific ones, including those by security researchers.
+> This approach ensures fairness across our open-source community.
 > 
 
 After you submit a report, we will endeavor to:
