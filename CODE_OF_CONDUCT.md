@@ -39,7 +39,6 @@ We invite all those who participate in SweetOps to help us create safe and posit
 
 The following are behaviors we consider forms of harassment that are unacceptable within our community:
 - Comments that may be considered sexist, racist, homophobic, transphobic or otherwise discriminatory or offensive in nature. (Everything you say in public is on the record)
-    
 - Usernames that contain unwelcome, suggestive, derogatory or inappropriate terms.
 - Disrespect towards others is not tolerated.
 - Unprofessional jokes, innuendo, dismissive attitudes. 
