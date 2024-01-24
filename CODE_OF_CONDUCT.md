@@ -27,7 +27,7 @@ We invite all those who participate in SweetOps to help us create safe and posit
 - Practice empathy (e.g. “Ahk, that shouldn’t happen”)
 - Correct delicately (e.g. “Have you considered…”)
 - Avoid sarcasm, or feigning surprise (e.g. Don’t say “I’m surprised you didn’t know that”)
-- Seek to understand, not to embarrass, discredit or humiliate.(e.g. “Hrmm… could you explain that another way? I’m not following.”)
+- Seek to understand, not to embarrass, discredit or humiliate (e.g. “Hrmm… could you explain that another way? I’m not following.”)
 - When posting for the first time, review the channel history to get a sense of how others interact. Also, check out our “Guidelines When Asking for Help.”
 - Check out the channel’s topic and purpose in order to stay on point
 - Use the `#random` channel if nothing else fits
