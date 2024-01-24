@@ -74,7 +74,8 @@ Additionally, Slack (the Company) has its own [Privacy Policy](https://slack.co
 
 ## Logs and Records
 
-**Please be mindful that anything you say in our community is a matter of public record**.
+> [!IMPORTANT]
+> **Please be mindful that anything you say in our community is a matter of public record**.
 
 We publish all conversations in public channels to our [public archive](https://archive.sweetops.com/). We cannot prevent people from taking screenshots or otherwise logging conversations in this slack team.
 
