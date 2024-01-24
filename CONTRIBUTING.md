@@ -48,6 +48,7 @@ Please follow these steps to have your contribution considered by the maintainer
 2. Follow the [styleguides](#styleguides)
 3. After you submit your pull request, verify that all status checks are passing
 4. If you need to request a review on your PR, please do so in the #pr-reviews Slack channel
+
 While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
 
 ## Styleguides
