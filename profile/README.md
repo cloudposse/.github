@@ -1,7 +1,7 @@
 [![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
 <p align="right">
-  <a href="https://cloudposse.com/office-hours/" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge" alt="Office Hours"></a>
   <a href="https://slack.cloudposse.com" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
+  <a href="https://cloudposse.com/office-hours/" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge" alt="Office Hours"></a>
   <a href="https://cloudposse.com/quiz/" title="Request Quote"><img src="https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge" alt="Request Quote"></a>
 </p>
 
