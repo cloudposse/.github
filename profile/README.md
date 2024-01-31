@@ -1,7 +1,10 @@
 [![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
-[![Office Hours](https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge)](https://cloudposse.com/office-hours/)
-[![Slack Community](https://slack.cloudposse.com/for-the-badge.svg)](https://slack.cloudposse.com)
-[![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
+<p align="right">
+  <a href="https://cloudposse.com/office-hours/" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge" alt="Office Hours"></a>
+  <a href="https://slack.cloudposse.com" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
+  <a href="https://cloudposse.com/quiz/" title="Request Quote"><img src="https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge" alt="Request Quote"></a>
+</p>
+
 
 > [!IMPORTANT]
 > ### We're a DevOps Accelerator for Startups (and Enterprises)
@@ -14,10 +17,9 @@
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 
-
 Work directly with our team of DevOps experts via email, slack, and zoom.
 
-We deliver 10x the value for a fraction of the cost of a full-time engineer. Our track record is not even funny. If you want things done right and you need it done FAST, then we're your best bet.
+We deliver 10x the value for a fraction of the cost of a full-time engineer. If you want things done right the first time and you need it done FAST, then we're your best bet.
 
 ## What We Do
 * [We're a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
