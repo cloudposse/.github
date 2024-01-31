@@ -121,9 +121,9 @@ Each module has Terratest tests in the `test/src` directory. Tests are written i
 
 Using aws-vault or Leapp or some other method, populate the following AWS credential environment variables for a suitable account:
 
-- AWS_ACCESS_KEY_ID
-- AWS_SECRET_ACCESS_KEY
-- AWS_SESSION_TOKEN
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_SESSION_TOKEN`
 
 ```shell
 cd test/src
