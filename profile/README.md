@@ -1,4 +1,7 @@
 [![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
+[![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
+[![Office Hours](https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge)](https://cloudposse.com/office-hours/)
+[![Slack Community](https://slack.cloudposse.com/for-the-badge.svg)](https://slack.cloudposse.com)
 
 ## We're a [DevOps Accelerator for Startups](https://cpco.io/homepage) (and Enterprises)
 We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so you can make informed decisions.
@@ -31,7 +34,7 @@ We deliver 10x the value for a fraction of the cost of a full-time engineer. Our
 
 # Resources
 * [Weekly Office Hours](https://cloudposse.com/office-hours/)
-* [DevOps Slack Community](https://cloudposse.com/slack/) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+* [DevOps Slack Community](https://cloudposse.com/slack/)
 * [Industry Newsletter](https://cloudposse.com/newsletter/)
 * [YouTube Channel](https://www.youtube.com/playlist?list=PLhRztDM6Uvne8MUuwXrv2truMl6gVZ0D8)
 
