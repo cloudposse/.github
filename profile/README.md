@@ -3,12 +3,15 @@
 [![Office Hours](https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge)](https://cloudposse.com/office-hours/)
 [![Slack Community](https://slack.cloudposse.com/for-the-badge.svg)](https://slack.cloudposse.com)
 
-## We're a [DevOps Accelerator for Startups](https://cpco.io/homepage) (and Enterprises)
-We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so you can make informed decisions.
+## We're a DevOps Accelerator for Startups (and Enterprises)
+We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so your team can make informed decisions.
 
 * Own your infrastructure.
 * We build it.
 * You drive it.
+
+[![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
+
 
 Work directly with our team of DevOps experts via email, slack, and zoom.
 
