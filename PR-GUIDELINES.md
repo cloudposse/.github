@@ -13,7 +13,7 @@ This document is intended to be a quick reference for contributors (reviewers an
 
 ### Documentation
 
-1. Fill out the PR template
+1. Complete the [pull request template](.github/PULL_REQUEST_TEMPLATE.md)
 2. Update the readme
    ```shell
    make init
