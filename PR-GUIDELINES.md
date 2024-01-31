@@ -50,7 +50,7 @@ Examples:
 
 Terraform does not easily allow conditional creation of resources based on input values.
 
-To avoid errors like `The "count" value depends on resource attributes that cannot be determined until apply, so Terraform cannot predict how many instances will be created. To work around this, use the -target argument to first apply only the resources that the count depends on.` Cloud Posse has [standardised](https://github.com/cloudposse/terraform-aws-security-group/wiki/Naming-Conventions,-Deprecating-Inputs,-Optional-Inputs#optional-inputs) on using lists where inputs may be empty, and they determine the existence of anothe resource.
+To avoid errors like `The "count" value depends on resource attributes that cannot be determined until apply time, so Terraform cannot predict how many instances will be created. To work around this, use the -target argument to first apply only the resources that the count depends on.` Cloud Posse has [standardised](https://github.com/cloudposse/terraform-aws-security-group/wiki/Naming-Conventions,-Deprecating-Inputs,-Optional-Inputs#optional-inputs) on using lists where inputs may be empty, and they determine the existence of another resource.
 
 This is because we are then able to use the length of the list as the conditional subject, rather than the value itself.
 
