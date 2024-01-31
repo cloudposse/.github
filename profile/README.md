@@ -3,25 +3,27 @@
 [![Slack Community](https://slack.cloudposse.com/for-the-badge.svg)](https://slack.cloudposse.com)
 [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 
-## We're a DevOps Accelerator for Startups (and Enterprises)
-We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so your team can make informed decisions.
-
-* Own your infrastructure.
-* We build it.
-* You drive it.
-
-[![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
+> [!IMPORTANT]
+> ### We're a DevOps Accelerator for Startups (and Enterprises)
+> 
+> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/services/) for AWS to get up and running quickly.
+> 
+> * We build it with you.
+> * You own everything.
+> * Your team wins.
+>
+> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 
 
 Work directly with our team of DevOps experts via email, slack, and zoom.
 
 We deliver 10x the value for a fraction of the cost of a full-time engineer. Our track record is not even funny. If you want things done right and you need it done FAST, then we're your best bet.
 
-# What We Do
+## What We Do
 * [We're a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
 * [The Big Picture](https://cloudposse.com/big-picture/)
 
-# Our Approach
+## Our Approach
 * [Case Studies](https://cloudposse.com/case-studies/)
 * [Foundational Infrastructure](https://cloudposse.com/reference-architecture/foundational-infrastructure/)
 * [Foundational Platform](https://cloudposse.com/reference-architecture/foundational-platform/)
@@ -29,27 +31,26 @@ We deliver 10x the value for a fraction of the cost of a full-time engineer. Our
 * [Foundational SRE](https://cloudposse.com/reference-architecture/foundational-sre/)
 * [Foundational Security & Compliance](https://cloudposse.com/reference-architecture/foundational-security-and-compliance/)
 
-# How it Works
+## How it Works
 * [Reference Architecture](https://cloudposse.com/reference-architecture/)
 * [Our Toolchain](https://cloudposse.com/toolchain/)
 * [Getting Started](https://cloudposse.com/get-started/)
 * [FAQs](https://cloudposse.com/faq/)
 
-# Resources
+## Resources
 * [Weekly Office Hours](https://cloudposse.com/office-hours/)
 * [DevOps Slack Community](https://cloudposse.com/slack/)
 * [Industry Newsletter](https://cloudposse.com/newsletter/)
 * [YouTube Channel](https://www.youtube.com/playlist?list=PLhRztDM6Uvne8MUuwXrv2truMl6gVZ0D8)
 
-[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
----
-
-We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
-
-[![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
-
-Everything is 100% Open Source and licensed under the [APACHE2](LICENSE).
+> [!TIP]
+>
+> ### Check out our [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained!
+>
+> [![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
+>
+> Everything is 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
