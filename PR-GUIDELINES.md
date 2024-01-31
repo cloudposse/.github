@@ -85,13 +85,13 @@ As a reference, the following is a mapping between labels and semver:
 3. `Major`: Breaking changes (or first stable release), e.g. **2**.0.0
 4. `No-release`: Do not release a new version
 
-Typically when a module is pre-release, e.g. 0.x.x, each new feature will be a minor release. Once the module hits 1.x, features that fit the definition of patch, will be labelled as such.
+Typically when a module is pre-release, e.g. 0.x.x, each new feature will be a minor release. Once the module hits 1.x, simpler features, which fit the definition of patch, will be labelled as such.
 
 ### Stale Issues
 
-It is proposed that stale issues are labelled `stale` after 30 days, and closed after 60 days if the `stale` label remains.
+It is proposed that stale issues/PRs are labelled `stale` after 30 days, and closed after 60 days if the `stale` label is present.
 
-A Slack notification will be sent when a PR is labelled `stale`.
+A Slack notification will be sent when an issue/PR is labelled `stale`.
 
 To handle exceptions, additional labels have been proposed to control treatment of stale issues. The `stale` label will not be applied if any of the following labels are applied to a PR.
 
