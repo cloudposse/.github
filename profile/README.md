@@ -46,7 +46,7 @@ You will have a plan in place to handle deploying every new service your company
 <br/>
 
 > [!NOTE]
-> ## How it Works
+> ### How it Works
 > Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability. Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
 > 
 > * [Reference Architecture](https://cloudposse.com/reference-architecture/)
@@ -58,7 +58,9 @@ You will have a plan in place to handle deploying every new service your company
 
 > [!TIP]
 >
-> ### Check out our [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained!
+> ### Check out Terraform Modules
+> 
+> We have [*hundreds of FREE terraform modules*][terraform_modules] that are Open Source and well-maintained!
 >
 > [![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
 >
