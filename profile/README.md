@@ -1,7 +1,7 @@
 [![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
-[![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 [![Office Hours](https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge)](https://cloudposse.com/office-hours/)
 [![Slack Community](https://slack.cloudposse.com/for-the-badge.svg)](https://slack.cloudposse.com)
+[![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 
 ## We're a DevOps Accelerator for Startups (and Enterprises)
 We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so your team can make informed decisions.
