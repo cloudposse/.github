@@ -11,7 +11,7 @@
 # {{(ds "config").name}}<a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}
 {{- end -}}
 {{- end }}
-{{- if $deprecated }}[![deprecated](https://img.shields.io/badge/lifecycle-deprecated-critical)](#deprecated){{ end }}
+{{- if $deprecated }}[![deprecated](https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge)](#deprecated){{ end }}
   {{- if has (ds "config") "badges" -}}
     {{- range $badge := (ds "config").badges -}}
     {{- printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}
@@ -242,7 +242,7 @@ We deliver 10x the value for a fraction of the cost of a full-time engineer. Our
 {{- if eq (ds "config").license "APACHE2" }}
 ## License
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
 See [LICENSE](LICENSE) for full details.
 
@@ -268,7 +268,7 @@ under the License.
 {{- if eq (ds "config").license "CC-BY-NC-SA-4.0" }}
 ## License
 
-[![License](https://img.shields.io/badge/License-CC%20BY%20NC%20SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License](https://img.shields.io/badge/License-CC%20BY%20NC%20SA%204.0-blue.svg?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" src="https://docs.cloudposse.com/images/cc-by-nc-sa.png" width="150" /></a>
 
@@ -290,7 +290,7 @@ Distribution of the work or derivative of the work in any standard (paper) book 
 {{- if eq (ds "config").license "MIT" }}
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 ```text
 The MIT License (MIT)
@@ -320,7 +320,7 @@ Source: <https://opensource.org/licenses/MIT>
 {{- if eq (ds "config").license "ISC" }}
 ## License
 
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge)](https://opensource.org/licenses/ISC)
 
 ```text
 ISC License (ISC)
@@ -336,7 +336,7 @@ Source: <https://opensource.org/licenses/ISC>
 {{- if eq (ds "config").license "GPL3" }}
 ## License
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 ```text
 GNU GENERAL PUBLIC LICENSE
