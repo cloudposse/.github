@@ -200,3 +200,9 @@ Currently PR approval for Terraform modules is subject to the following checks. 
 4. Labels validated
 
 The full workflow can be seen [here](https://github.com/cloudposse/github-actions-workflows-terraform-module/blob/main/.github/workflows/feature-branch.yml).
+
+In addition, maintainers will manually run Terratest tests against the PR branch to ensure the 
+changes can be applied successfully, using the fixtures from `examples/complete/`.
+
+This is done via ChatOps by adding a comment with content `/terratest`. ChatOps commands are only 
+available to maintainers.
