@@ -56,7 +56,7 @@ This is because we are then able to use the length of the list as the conditiona
 
 If you hit this case, define the variable using a list of the type you need, with the default `[]`. Add a validation condition to prohibit more than 1 element in the list.
 
-Examples:
+#### Examples:
 
 - [terraform-aws-security-group / variables.tf](https://github.com/cloudposse/terraform-aws-security-group/blob/main/variables.tf)
   ```hcl
