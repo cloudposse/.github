@@ -23,9 +23,11 @@
 > [!NOTE]
 > ### What We Do
 > 
-> Your team can operate like a pro today. Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
+> Your team can operate like a pro today.
+>
+> Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
 > 
-> * [We're a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
+> * [What is a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
 > * [The Big Picture](https://cloudposse.com/big-picture/)
 
 <br/>
@@ -34,7 +36,8 @@
 > ### Our Approach
 >
 > After you work with Cloud Posse, your team will know what they're doing.
-You will have a plan in place to handle deploying every new service your company builds. You will have peace of mind knowing that everything is defined with infrastructure as code and confident in your ability to deliver. Your team will have learned to fish and become autonomous. And guess what? We are here to pull you out if you ever get stuck in the mud.
+> 
+> You will have a plan in place to handle deploying every new service your company builds. You will have peace of mind knowing that everything is defined with infrastructure as code and confident in your ability to deliver. Your team will have learned to fish and become autonomous. And guess what? We are here to pull you out if you ever get stuck in the mud.
 >
 > * [Case Studies](https://cloudposse.com/case-studies/)
 > * [Foundational Infrastructure](https://cloudposse.com/reference-architecture/foundational-infrastructure/)
@@ -47,7 +50,9 @@ You will have a plan in place to handle deploying every new service your company
 
 > [!NOTE]
 > ### How it Works
-> Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability. Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
+> Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.
+> 
+> Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
 > 
 > * [Reference Architecture](https://cloudposse.com/reference-architecture/)
 > * [Our Toolchain](https://cloudposse.com/toolchain/)
