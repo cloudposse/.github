@@ -21,7 +21,9 @@ This document is intended to be a quick reference for contributors (reviewers an
    make readme
    ```
 
-You may also need to install gomplate: https://docs.gomplate.ca/installing/ 3. When updating variables, update the variable description if it could be made clearer, and especially if a new map/object attribute is added
+You may also need to install gomplate: https://docs.gomplate.ca/installing/ 
+
+3. When updating variables, update the variable description if it could be made clearer, and especially if a new map/object attribute is added
 
 ### Updating the examples
 
