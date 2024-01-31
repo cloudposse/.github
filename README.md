@@ -1,7 +1,7 @@
 
 <!-- markdownlint-disable -->
 [![Project Banner](.github/banner.png?raw=true)](https://cpco.io/homepage)
- [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com) [![Last Update](https://img.shields.io/github/last-commit/cloudposse/.github/main)](https://github.com/cloudposse/.github/commits/main/)
+ [![Slack Community](https://slack.cloudposse.com/for-the-badge.svg)](https://slack.cloudposse.com) [![Last Update](https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge)](https://github.com/cloudposse/.github/commits/main/)
 <!-- markdownlint-restore -->
 
 
@@ -31,7 +31,7 @@ This repository fulfills several unique functions functions for the Cloud Posse 
 1. It can contain special org-level files that provide functionality for our organization on GitHub. These files include:
     - [`profile/README.md`](profile/README.md)
 2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. 
-   In the event that a new repo is initialized without these files, the repo will behave on github.com as those the default copies of these files were present in the repo. 
+   In the event that a new repo is initialized without these files, the repo will behave on github.com as if the default copies of these files were present in the repo. 
    These files include:
     - [`.github/CODEOWNERS`](.github/CODEOWNERS)
     - [`FUNDING.yml`](FUNDING.yml)

@@ -1,50 +1,75 @@
 [![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
+<p align="right">
+  <a href="https://slack.cloudposse.com" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
+  <a href="https://cloudposse.com/office-hours/" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge" alt="Office Hours"></a>
+  <a href="https://cloudposse.com/quiz/" title="Request Quote"><img src="https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge" alt="Request Quote"></a>
+</p>
 
-## We're a [DevOps Accelerator for Startups](https://cpco.io/homepage) (and Enterprises)
-We'll help you rapidly migrate to AWS using our proven strategy while advising you along the way so you can make informed decisions.
 
-* Own your infrastructure.
-* We build it.
-* You drive it.
+> [!IMPORTANT]
+> ### We're a DevOps Accelerator for Startups (and Enterprises)
+> 
+> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/services/) for AWS to get up and running quickly.
+> 
+> * We build it with you.
+> * You own everything.
+> * Your team wins.
+>
+> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 
-Work directly with our team of DevOps experts via email, slack, and zoom.
+<br/>
 
-We deliver 10x the value for a fraction of the cost of a full-time engineer. Our track record is not even funny. If you want things done right and you need it done FAST, then we're your best bet.
 
-# What We Do
-* [We're a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
-* [The Big Picture](https://cloudposse.com/big-picture/)
+> [!NOTE]
+> ### What We Do
+> 
+> Your team can operate like a pro today.
+>
+> Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
+> 
+> * [What is a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
+> * [The Big Picture](https://cloudposse.com/big-picture/)
 
-# Our Approach
-* [Case Studies](https://cloudposse.com/case-studies/)
-* [Foundational Infrastructure](https://cloudposse.com/reference-architecture/foundational-infrastructure/)
-* [Foundational Platform](https://cloudposse.com/reference-architecture/foundational-platform/)
-* [Foundational Release Engineering](https://cloudposse.com/reference-architecture/foundational-release-engineering/)
-* [Foundational SRE](https://cloudposse.com/reference-architecture/foundational-sre/)
-* [Foundational Security & Compliance](https://cloudposse.com/reference-architecture/foundational-security-and-compliance/)
+<br/>
 
-# How it Works
-* [Reference Architecture](https://cloudposse.com/reference-architecture/)
-* [Our Toolchain](https://cloudposse.com/toolchain/)
-* [Getting Started](https://cloudposse.com/get-started/)
-* [FAQs](https://cloudposse.com/faq/)
+>  [!NOTE]
+> ### Our Approach
+>
+> After you work with Cloud Posse, your team will know what they're doing.
+> 
+> You will have a plan in place to handle deploying every new service your company builds. You will have peace of mind knowing that everything is defined with infrastructure as code and confident in your ability to deliver. Your team will have learned to fish and become autonomous. And guess what? We are here to pull you out if you ever get stuck in the mud.
+>
+> * [Case Studies](https://cloudposse.com/case-studies/)
+> * [Foundational Infrastructure](https://cloudposse.com/reference-architecture/foundational-infrastructure/)
+> * [Foundational Platform](https://cloudposse.com/reference-architecture/foundational-platform/)
+> * [Foundational Release Engineering](https://cloudposse.com/reference-architecture/foundational-release-engineering/)
+> * [Foundational SRE](https://cloudposse.com/reference-architecture/foundational-sre/)
+> * [Foundational Security & Compliance](https://cloudposse.com/reference-architecture/foundational-security-and-compliance/)
 
-# Resources
-* [Weekly Office Hours](https://cloudposse.com/office-hours/)
-* [DevOps Slack Community](https://cloudposse.com/slack/) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
-* [Industry Newsletter](https://cloudposse.com/newsletter/)
-* [YouTube Channel](https://www.youtube.com/playlist?list=PLhRztDM6Uvne8MUuwXrv2truMl6gVZ0D8)
+<br/>
 
-[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
+> [!NOTE]
+> ### How it Works
+> Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.
+> 
+> Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
+> 
+> * [Reference Architecture](https://cloudposse.com/reference-architecture/)
+> * [Our Toolchain](https://cloudposse.com/toolchain/)
+> * [Getting Started](https://cloudposse.com/get-started/)
+> * [FAQs](https://cloudposse.com/faq/)
 
----
+<br/>
 
-We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
-
-[![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
-
-Everything is 100% Open Source and licensed under the [APACHE2](LICENSE).
-
+> [!TIP]
+>
+> ### Check out Terraform Modules
+> 
+> We have [*hundreds of FREE terraform modules*][terraform_modules] that are Open Source and well-maintained!
+>
+> [![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
+>
+> Everything is 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 [![README Footer][readme_footer_img]][readme_footer_link]
