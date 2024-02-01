@@ -7,7 +7,7 @@
 
 
 > [!IMPORTANT]
-> ### We're a DevOps Accelerator for Startups (and Enterprises)
+> ### We're a DevOps Accelerator for Funded Startups and Enterprises
 > 
 > Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/services/) for AWS to get up and running quickly.
 > 
@@ -16,23 +16,10 @@
 > * Your team wins.
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
-
-<br/>
-
-
-> [!NOTE]
-> ### What We Do
-> 
-> Your team can operate like a pro today.
 >
-> Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
+> <details>
+>   <summary>Learn More</summary>
 > 
-> * [What is a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
-> * [The Big Picture](https://cloudposse.com/big-picture/)
-
-<br/>
-
->  [!NOTE]
 > ### Our Approach
 >
 > After you work with Cloud Posse, your team will know what they're doing.
@@ -45,10 +32,7 @@
 > * [Foundational Release Engineering](https://cloudposse.com/reference-architecture/foundational-release-engineering/)
 > * [Foundational SRE](https://cloudposse.com/reference-architecture/foundational-sre/)
 > * [Foundational Security & Compliance](https://cloudposse.com/reference-architecture/foundational-security-and-compliance/)
-
-<br/>
-
-> [!NOTE]
+>
 > ### How it Works
 > Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.
 > 
@@ -58,8 +42,18 @@
 > * [Our Toolchain](https://cloudposse.com/toolchain/)
 > * [Getting Started](https://cloudposse.com/get-started/)
 > * [FAQs](https://cloudposse.com/faq/)
+>
+> ### What We Do
+> 
+> Your team can operate like a pro today.
+>
+> Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
+> 
+> * [What is a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
+> * [The Big Picture](https://cloudposse.com/big-picture/)
+> </details>
 
-<br/>
+
 
 > [!TIP]
 >
