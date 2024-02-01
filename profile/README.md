@@ -17,15 +17,19 @@
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 >
+> Feeling unsure about taking the leap? At Cloud Posse, we believe in transparency and collaboration, so everything we create is free and open source.
+> Begin your journey with us by exploring [Atmos](https://atmos.tools), connect with like-minded professionals in our [Slack community](https://slack.cloudposse.com), and gain insights at our weekly [office hours](https://cloudposse.com/office-hours). It’s the perfect first step to becoming more acquainted with our ecosystem and how we can drive your organization's success.
+> 
 > <details>
->   <summary>💡 Learn More</summary>
+>   <summary><strong>💡 Learn More about Cloud Posse</strong></summary>
 > 
 > ### Our Approach
 >
-> After you work with Cloud Posse, your team will know what they're doing.
-> 
+> *After you work with Cloud Posse, your team will know what they're doing.*
+>
 > You will have a plan in place to handle deploying every new service your company builds. You will have peace of mind knowing that everything is defined with infrastructure as code and confident in your ability to deliver. Your team will have learned to fish and become autonomous. And guess what? We are here to pull you out if you ever get stuck in the mud.
 >
+> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 > * [Case Studies](https://cloudposse.com/case-studies/)
 > * [Foundational Infrastructure](https://cloudposse.com/reference-architecture/foundational-infrastructure/)
 > * [Foundational Platform](https://cloudposse.com/reference-architecture/foundational-platform/)
@@ -33,10 +37,8 @@
 > * [Foundational SRE](https://cloudposse.com/reference-architecture/foundational-sre/)
 > * [Foundational Security & Compliance](https://cloudposse.com/reference-architecture/foundational-security-and-compliance/)
 >
-> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
->
 > ### How it Works
-> Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.
+> *Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.*
 > 
 > Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
 > 
@@ -49,7 +51,7 @@
 >
 > ### What We Do
 > 
-> Your team can operate like a pro today.
+> *Your team can operate like a pro today.*
 >
 > Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
 >
