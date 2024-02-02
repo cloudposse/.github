@@ -11,9 +11,9 @@
 > 
 > Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/services/) for AWS to get up and running quickly.
 > 
-> * We build it with you.
-> * You own everything.
-> * Your team wins.
+> ✅ We build it with you.<br/>
+> ✅ You own everything.<br/>
+> ✅ Your team wins.<br/>
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 >
