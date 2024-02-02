@@ -17,8 +17,7 @@
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 >
-> Feeling unsure about taking the leap? At Cloud Posse, we believe in transparency and collaboration, so everything we create is free and open source.
-> Begin your journey with us by exploring [Atmos](https://atmos.tools), connect with like-minded professionals in our [Slack community](https://slack.cloudposse.com), and gain insights at our weekly [office hours](https://cloudposse.com/office-hours). It’s the perfect first step to becoming more acquainted with our ecosystem and how we can drive your organization's success.
+> Just browsing? Kickstart your journey with [Atmos](https://atmos.tools), dive into discussions on [Slack](https://slack.cloudposse.com), and get insights at our weekly [office hours](https://cloudposse.com/office-hours). Discover how Cloud Posse's open-source solutions can elevate your organization.
 > 
 > <details>
 >   <summary><strong>💡 Learn More about Cloud Posse</strong></summary>
