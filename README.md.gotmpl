@@ -80,7 +80,14 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 > [!NOTE]
 > This project {{ if $deprecated }}was{{ else }}is{{ end }} part of Cloud Posse's comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
 {{- if (file.Exists "main.tf") }}
-> <a href="https://cpco.io/terraform-modules"><img src="https://docs.cloudposse.com/images/terraform-open-source-modules.svg" align="right" /></a>
+> <a href="https://cpco.io/terraform-modules">
+>   <picture>
+>     <source media="(prefers-color-scheme: dark)" srcset="https://docs.cloudposse.com/images/terraform-open-source-modules-light.svg">
+>     <source media="(prefers-color-scheme: light)" srcset="https://docs.cloudposse.com/images/terraform-open-source-modules-dark.svg">
+>     <img alt="Terraform Open Source Modules" src="https://docs.cloudposse.com/images/terraform-open-source-modules.svg" align="right">
+>   </picture>
+> </a>
+>
 {{- end}}
 >
 {{- if eq (ds "config").license "APACHE2" }}
