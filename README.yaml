@@ -21,12 +21,12 @@ github_repo: cloudposse/.github
 
 # Badges to display
 badges:
-  - name: "Slack Community"
-    image: "https://slack.cloudposse.com/for-the-badge.svg"
-    url: "https://slack.cloudposse.com"
   - name: "Last Update"
     image: https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge
     url: https://github.com/cloudposse/.github/commits/main/
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/for-the-badge.svg"
+    url: "https://slack.cloudposse.com"    
 
 # Short description of this project
 description: |-
