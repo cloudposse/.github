@@ -15,7 +15,7 @@
 {{- if $deprecated }}[![deprecated](https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge)](#deprecated){{ end }}
 {{- if has (ds "config") "badges" -}}
   {{- range $badge := (ds "config").badges -}}
-    {{- printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}
+    {{- printf " <a href=\"%s\"><img src=\"%s\" alt=\"%s\"/></a>"   $badge.url $badge.image $badge.name }}
   {{- end }}
   {{- if (file.Exists ".github/banner.png") -}}</p>{{- end -}}
 {{- end }}
@@ -75,7 +75,16 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 ## Screenshots
 
 {{ range $screenshot := (ds "config").screenshots }}
-{{ printf "![%s](%s)\n*%s*" $screenshot.name $screenshot.url $screenshot.description }}{{ end }}
+{{- if or (reFindAllString "\\.mp4$" $screenshot.url) (reFindAllString "\\.mp4\\?.*" $screenshot.url) -}}
+<video controls>
+  <source src="{{ $screenshot.url }}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+{{- else -}}
+![{{ $screenshot.name }}]({{ $screenshot.url }})
+{{- end -}}
+*{{ $screenshot.description }}*
+{{ end }}
 {{- end }}
 
 ---
