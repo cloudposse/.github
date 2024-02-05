@@ -1,3 +1,4 @@
+{{- import "strings" -}}
 {{- defineDatasource "config" .Env.README_YAML -}}
 {{- defineDatasource "includes" (env.Getenv "README_INCLUDES") -}}
 {{- $deprecated := has (ds "config") "deprecated" }}
@@ -75,7 +76,7 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 ## Screenshots
 
 {{ range $screenshot := (ds "config").screenshots }}
-{{- if or (reFindAllString "\\.mp4$" $screenshot.url) (reFindAllString "\\.mp4\\?.*" $screenshot.url) -}}
+{{- if or (strings.ReFindAllString "\\.mp4$" $screenshot.url) (strings.ReFindAllString "\\.mp4\\?.*" $screenshot.url) -}}
 <video controls>
   <source src="{{ $screenshot.url }}" type="video/mp4">
   Your browser does not support the video tag.
