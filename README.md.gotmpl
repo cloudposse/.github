@@ -6,7 +6,7 @@
 # (deprecated) {{(ds "config").name}}{{ if gt (len (ds "config").name) 23 }}{{ print "\n\n" }}{{ end }}
 {{- else }}
   {{- if (file.Exists ".github/banner.png") -}}
-    [![Project Banner](.github/banner.png?raw=true)](https://cpco.io/homepage)
+    <a href="https://cpco.io/homepage"><img src=".github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     {{- if has (ds "config") "badges" -}}<p align="right">{{- end -}}
   {{- else -}}
     # {{(ds "config").name}}<a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}
