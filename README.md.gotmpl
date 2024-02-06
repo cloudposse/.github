@@ -11,11 +11,11 @@
   {{- else -}}
     # {{(ds "config").name}} <a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>
   {{- end }}
-{{ end }}
+{{- end }}
 {{- if $deprecated }}[![deprecated](https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge)](#deprecated){{ end }}
-{{ if has (ds "config") "badges" -}}
+{{- if has (ds "config") "badges" -}}
   {{- range $badge := (ds "config").badges -}}
-    {{- printf " <a href=\"%s\"><img src=\"%s\" alt=\"%s\"/></a>"   $badge.url $badge.image $badge.name }}
+    {{- printf "<a href=\"%s\"><img src=\"%s\" alt=\"%s\"/></a>" $badge.url $badge.image $badge.name }}
   {{- end }}
   {{- if (file.Exists ".github/banner.png") -}}</p>{{- end -}}
 {{- end }}
