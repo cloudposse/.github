@@ -129,7 +129,7 @@ We build it with you. You own everything. Your team wins. Plus, we stick around 
 Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
 
 <details>
-  <summary>📚 **What's included?**</summary>
+  <summary>📚 <strong>What's included?</strong></summary>
 
 - **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
 - **Deployment Strategy.** You'll have a battle-tested deployment strategy using GitHub Actions that's automated and repeatable.
@@ -150,10 +150,8 @@ Ensure that your team succeeds by using our proven process and turnkey blueprint
 
 <details>
 <summary>Preamble to the Apache License, Version 2.0</summary>
-
-Complete license is available in the [`LICENSE`](LICENSE) file.
-
-```text
+<br/>
+<br/>```text
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
