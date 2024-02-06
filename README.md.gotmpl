@@ -75,10 +75,7 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 
 {{ range $screenshot := (ds "config").screenshots }}
 {{- if or ( $screenshot.url | regexp.Match "\\.mp4$") ($screenshot.url | regexp.Match "\\.mp4\\?.*") -}}
-<video controls>
-  <source src="{{ $screenshot.url }}" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<video src="{{ $screenshot.url }}" ></video>
 {{- else -}}
 ![{{ $screenshot.name }}]({{ $screenshot.url }})
 {{- end -}}
