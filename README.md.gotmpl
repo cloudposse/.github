@@ -10,8 +10,8 @@
     {{- if has (ds "config") "badges" -}}<p align="right">{{- end -}}
   {{- else -}}
     # {{(ds "config").name}} <a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>{{ print "\n" }}
-  {{- end -}}
-{{- end -}}
+  {{- end }}
+{{- end }}
 {{- if $deprecated }}[![deprecated](https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge)](#deprecated){{ end }}
 {{- if has (ds "config") "badges" -}}
   {{- range $badge := (ds "config").badges -}}
