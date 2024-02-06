@@ -1,5 +1,8 @@
 
-<!-- markdownlint-disable --><a href="https://cpco.io/homepage"><img src=".github/banner.png?raw=true" alt="Project Banner"/></a><br/><p align="right"> <a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a> <a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<!-- markdownlint-disable -->
+<a href="https://cpco.io/homepage"><img src=".github/banner.png?raw=true" alt="Project Banner"/></a><br/><p align="right">
+  
+<a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
 <!-- markdownlint-restore -->
 
 
@@ -40,9 +43,11 @@ This repository fulfills several unique functions functions for the Cloud Posse 
 ---
 > [!NOTE]
 > This project is part of Cloud Posse's comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+> <details><summary>Learn More</summary>
 >
 > It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 >
+> </details>
 
 [![README Header][readme_header_img]][readme_header_link]
 
@@ -138,7 +143,9 @@ Ensure that your team succeeds by using our proven process and turnkey blueprint
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
 <details>
-<summary>See [LICENSE](LICENSE) for full details.</summary>
+<summary>Summary of License</summary>
+
+Complete license is available in the [`LICENSE`](LICENSE) file.
 
 ```text
 Licensed to the Apache Software Foundation (ASF) under one
