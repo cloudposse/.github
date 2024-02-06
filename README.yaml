@@ -41,7 +41,7 @@ description: |-
   2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. 
      In the event that a new repo is initialized without these files, the repo will behave on github.com as if the default copies of these files were present in the repo. 
      These files include:
-      - **[`.github/CODEOWNERS`](.github/CODEOWNERS** - governs required approvals for pull requests
+      - **[`.github/CODEOWNERS`](.github/CODEOWNERS)** - governs required approvals for pull requests
       - **[`FUNDING.yml`](FUNDING.yml)** - how to support the project financially
       - **[`.github/ISSUE_TEMPLATE/*`](.github/ISSUE_TEMPLATE/)** - issue templates for the project
       - **[`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)** - pull request template for the project
