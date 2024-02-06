@@ -91,6 +91,7 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 ---
 > [!NOTE]
 > This project {{ if $deprecated }}was{{ else }}is{{ end }} part of Cloud Posse's comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+> <details><summary>Learn More</summary>
 {{- if (file.Exists "main.tf") }}
 > <a href="https://cpco.io/terraform-modules">
 >   <picture>
@@ -127,7 +128,7 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 {{ if not $deprecated }}
 [![README Header][readme_header_img]][readme_header_link]
 {{- end }}
-
+> </details>
 {{- end }}
 
 {{ if has (ds "config") "introduction" }}
