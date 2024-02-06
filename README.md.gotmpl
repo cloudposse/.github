@@ -274,10 +274,9 @@ Ensure that your team succeeds by using our proven process and turnkey blueprint
 <summary>Preamble to the Apache License, Version 2.0</summary>
 <br/>
 <br/>
-{{- if (file.Exists "LICENSE") -}}
+{{ if (file.Exists "LICENSE") -}}
 Complete license is available in the [`LICENSE`](LICENSE) file.
-{{- end -}}
-
+{{- end }}
 ```text
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
@@ -403,7 +402,7 @@ All other trademarks referenced herein are the property of their respective owne
 {{ else }}
 ---
 Copyright © 2017-{{ time.Now.Year }} [Cloud Posse, LLC](https://cpco.io/copyright)
-{{ end}}
+{{ end }}
 
 {{- $utm_link := printf "%%s?utm_source=%s&utm_medium=%s&utm_campaign=%s&utm_content=%s" "github" "readme" (ds "config").github_repo "%s" -}}
 
