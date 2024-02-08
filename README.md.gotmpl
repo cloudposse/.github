@@ -1,6 +1,15 @@
 {{- defineDatasource "config" .Env.README_YAML -}}
 {{- defineDatasource "includes" (env.Getenv "README_INCLUDES") -}}
 {{- $deprecated := has (ds "config") "deprecated" }}
+{{- $utm_link := printf "%%s?utm_source=%s&utm_medium=%s&utm_campaign=%s&utm_content=%s" "github" "readme" (ds "config").github_repo "%s" -}}
+{{- $homepage := printf $utm_link "https://cpco.io/homepage" ""}}
+{{- $logo := "https://cloudposse.com/logo-300x69.svg" -}}
+{{- $terraform_modules := printf $utm_link "https://cpco.io/terraform-modules" "terraform_modules" -}}
+{{- $slack := printf $utm_link "https://cpco.io/slack" "slack" -}}
+{{- $commercial_support := printf $utm_link "https://cpco.io/commercial-support" "commercial_support" -}}
+{{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
+{{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
+
 <!-- markdownlint-disable -->
 {{ if $deprecated -}}
 # (deprecated) {{(ds "config").name}}
@@ -9,10 +18,10 @@
     <a href="https://cpco.io/homepage"><img src=".github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     {{ if has (ds "config") "badges" }}<p align="right">{{- end -}}
   {{- else -}}
-    # {{(ds "config").name}} <a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>
+    # {{(ds "config").name}} <a href="{{ $homepage }}"><img align="right" src="{{ $logo }}" width="150" /></a>
   {{- end }}
 {{ end }}
-{{- if $deprecated -}}[![deprecated](https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge)](#deprecated){{- end -}}
+{{- if $deprecated -}}<img src="https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge" alt="Deprecated"/>{{- end -}}
 {{- if has (ds "config") "badges" -}}
   {{- range $badge := (ds "config").badges -}}
     {{- printf "<a href=\"%s\"><img src=\"%s\" alt=\"%s\"/></a>" $badge.url $badge.image $badge.name -}}
@@ -42,7 +51,8 @@
 
 -->
 {{ if has (ds "config") "logo" }}
-![{{(ds "config").name}}]({{ (ds "config").logo }})
+
+<img src="{{ (ds "config").logo }}" alt="{{(ds "config").name}}" />
 {{- end -}}
 
 {{- if $deprecated }}
@@ -56,7 +66,7 @@
 {{- end }}
 {{- if (file.Exists "main.tf") }}
 
-We literally have [*hundreds of other terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
+We literally have <a href="{{ $terraform_modules }}">*hundreds of other terraform modules*</a> that are Open Source and well-maintained. Check them out!
 {{- end }}
 
 {{ if has (ds "config") "description" }}
@@ -77,7 +87,7 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 {{- if or ( $screenshot.url | regexp.Match "\\.mp4$") ($screenshot.url | regexp.Match "\\.mp4\\?.*") -}}
 <video src="{{ $screenshot.url }}" ></video>
 {{- else -}}
-![{{ $screenshot.name }}]({{ $screenshot.url }})
+<img src={{ $screenshot.url }}" alt="{{ $screenshot.name }}" />
 {{- end -}}
 *{{ $screenshot.description }}*
 {{ end }}
@@ -85,10 +95,10 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 
 ---
 > [!NOTE]
-> This project {{ if $deprecated }}was{{ else }}is{{ end }} part of Cloud Posse's comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+> This project {{ if $deprecated }}was{{ else }}is{{ end }} part of Cloud Posse's comprehensive ["SweetOps"]({{ $homepage }}) approach towards DevOps.
 > <details><summary>Learn More</summary>
 {{- if (file.Exists "main.tf") }}
-> <a href="https://cpco.io/terraform-modules">
+> <a href="{{ $terraform_modules }}">
 >   <picture>
 >     <source media="(prefers-color-scheme: dark)" srcset="https://docs.cloudposse.com/images/terraform-open-source-modules-light.svg">
 >     <source media="(prefers-color-scheme: light)" srcset="https://docs.cloudposse.com/images/terraform-open-source-modules-dark.svg">
@@ -118,11 +128,11 @@ We literally have [*hundreds of other terraform modules*][terraform_modules] tha
 >
 {{- if not $deprecated }}
 {{- if (file.Exists "main.tf") }}
-> We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
+> We literally have [*hundreds of terraform modules*][{{ $terraform_modules }}] that are Open Source and well-maintained. Check them out!
 {{- end }}
 > </details>
 {{ if not $deprecated }}
-[![README Header][readme_header_img]][readme_header_link]
+<a href="{{ printf $utm_link "https://cloudposse.com/readme/header/link" "readme_header_link" }}"><img src="https://cloudposse.com/readme/header/img"/></a>
 {{- end }}
 {{- end }}
 
@@ -202,7 +212,7 @@ Please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "con
 ### 💻 Developing
 
 If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you! 
-Hit us up in [Slack][slack], in the `#cloudposse` channel.
+Hit us up in [Slack][{{ $slack }}], in the `#cloudposse` channel.
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  1. Review our [Code of Conduct]({{ printf "https://github.com/%s/?tab=coc-ov-file#code-of-conduct" (ds "config").github_repo}}) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
@@ -216,30 +226,30 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ### 🌎 Slack Community
 
-Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+Join our [Open Source Community][{{ $slack }}] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
 
 ### 📰 Newsletter
 
-Sign up for [our newsletter][newsletter] and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
+Sign up for [our newsletter][{{ $newsletter }}] and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
 Dropped straight into your Inbox every week — and usually a 5-minute read.
 
 ### 📆 Office Hours <img src="https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png" align="right" />
 
-[Join us every Wednesday via Zoom][office_hours] for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
+[Join us every Wednesday via Zoom][{{ $office_hours }}] for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
 It's **FREE** for everyone!
 
 {{- end }}
 
 ## About
 
-This project is maintained by [Cloud Posse, LLC][website].
+This project is maintained by <a href="https://cloudposse.com">Cloud Posse, LLC</a>.
 <a href="https://cpco.io/homepage"><img src="https://cloudposse.com/logo-300x69.svg" align="right" /></a>
 
-We are a [**DevOps Accelerator**][commercial_support] for funded startups and enterprises.
+We are a [**DevOps Accelerator**][{{ $commercial_support }}] for funded startups and enterprises.
 Use our ready-to-go terraform architecture blueprints for AWS to get up and running quickly.
 We build it with you. You own everything. Your team wins. Plus, we stick around until you succeed.
 
-[![Learn More](https://img.shields.io/badge/learn%20more-success.svg?style=for-the-badge)][commercial_support]
+<a href="{{ $commercial_support }}"><img alt="Learn More" src="https://img.shields.io/badge/learn%20more-success.svg?style=for-the-badge"/></a>
 
 *Your team can operate like a pro today.*
 
@@ -260,12 +270,14 @@ Ensure that your team succeeds by using our proven process and turnkey blueprint
 - **Bug Fixes.** We'll rapidly work with you to fix any bugs in our projects.
 </details>
 
-[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
+<a href="{{ printf $utm_link "https://cloudposse.com/readme/commercial-support/link" "readme_commercial_support_link" }}"><img src="https://cloudposse.com/readme/commercial-support/img"/></a>
+
+{{- if (file.Exists "main.tf") }}
 
 {{- if eq (ds "config").license "APACHE2" }}
 ## License
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License"></a>
 
 <details>
 <summary>Preamble to the Apache License, Version 2.0</summary>
@@ -297,9 +309,7 @@ under the License.
 {{- if eq (ds "config").license "CC-BY-NC-SA-4.0" }}
 ## License
 
-[![License](https://img.shields.io/badge/License-CC%20BY%20NC%20SA%204.0-blue.svg?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" src="https://docs.cloudposse.com/images/cc-by-nc-sa.png" width="150" /></a>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY%20NC%20SA%204.0-blue.svg?style=for-the-badge" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"></a>
 
 This material may only be distributed subject to the terms and conditions set forth in the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License or later with the restrictions noted below (the latest version of the license is presently available at <https://creativecommons.org/licenses/by-nc-sa/4.0/>).
 
@@ -319,7 +329,7 @@ Distribution of the work or derivative of the work in any standard (paper) book 
 {{- if eq (ds "config").license "MIT" }}
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"></a>
 
 ```text
 The MIT License (MIT)
@@ -349,7 +359,7 @@ Source: <https://opensource.org/licenses/MIT>
 {{- if eq (ds "config").license "ISC" }}
 ## License
 
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge)](https://opensource.org/licenses/ISC)
+<a href="https://opensource.org/licenses/ISC"><img src="https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge" alt="License: ISC"></a>
 
 ```text
 ISC License (ISC)
@@ -365,7 +375,7 @@ Source: <https://opensource.org/licenses/ISC>
 {{- if eq (ds "config").license "GPL3" }}
 ## License
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
+<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge" alt="License: GPL v3"></a>
 
 ```text
 GNU GENERAL PUBLIC LICENSE
@@ -401,30 +411,9 @@ All other trademarks referenced herein are the property of their respective owne
 Copyright © 2017-{{ time.Now.Year }} [Cloud Posse, LLC](https://cpco.io/copyright)
 {{ end }}
 
-{{- $utm_link := printf "%%s?utm_source=%s&utm_medium=%s&utm_campaign=%s&utm_content=%s" "github" "readme" (ds "config").github_repo "%s" -}}
+<a href="{{ printf $utm_link "https://cloudposse.com/readme/footer/link" "readme_footer_link" }}"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
 
-[![README Footer][readme_footer_img]][readme_footer_link]
-[![Beacon][beacon]][website]
-<!-- markdownlint-disable -->
-  [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: {{ printf $utm_link "https://cpco.io/docs" "docs" }}
-  [website]: {{ printf $utm_link "https://cpco.io/homepage" "website" }}
-  [github]: {{ printf $utm_link "https://cpco.io/github" "github" }}
-  [jobs]: {{ printf $utm_link "https://cpco.io/jobs" "jobs" }}
-  [hire]: {{ printf $utm_link "https://cpco.io/hire" "hire" }}
-  [slack]: {{ printf $utm_link "https://cpco.io/slack" "slack" }}
-  [twitter]: {{ printf $utm_link "https://cpco.io/twitter" "twitter" }}
-  [office_hours]: {{ printf $utm_link "https://cloudposse.com/office-hours" "office_hours" }}
-  [newsletter]: {{ printf $utm_link "https://cpco.io/newsletter" "newsletter" }}
-  [email]: {{ printf $utm_link "https://cpco.io/email" "email" }}
-  [commercial_support]: {{ printf $utm_link "https://cpco.io/commercial-support" "commercial_support" }}
-  [we_love_open_source]: {{ printf $utm_link "https://cpco.io/we-love-open-source" "we_love_open_source" }}
-  [terraform_modules]: {{ printf $utm_link "https://cpco.io/terraform-modules" "terraform_modules" }}
-  [readme_header_img]: {{ printf "https://cloudposse.com/readme/header/img" }}
-  [readme_header_link]: {{ printf $utm_link "https://cloudposse.com/readme/header/link" "readme_header_link" }}
-  [readme_footer_img]: {{ printf "https://cloudposse.com/readme/footer/img" }}
-  [readme_footer_link]: {{ printf $utm_link "https://cloudposse.com/readme/footer/link" "readme_footer_link" }}
-  [readme_commercial_support_img]: {{ printf "https://cloudposse.com/readme/commercial-support/img" }}
-  [readme_commercial_support_link]: {{ printf $utm_link "https://cloudposse.com/readme/commercial-support/link" "readme_commercial_support_link" }}
-  [beacon]: {{ printf "https://ga-beacon.cloudposse.com/UA-76589703-4/%s?pixel&cs=github&cm=readme&an=%s" (ds "config").github_repo (filepath.Base ((ds "config").github_repo)) }}
-<!-- markdownlint-restore -->
+{{- if not $deprecated }}
+{{- if (file.Exists "main.tf") }}
+
+<img alt="Beacon" width="0" src="{{ printf "https://ga-beacon.cloudposse.com/UA-76589703-4/%s?pixel&cs=github&cm=readme&an=%s" (ds "config").github_repo (filepath.Base ((ds "config").github_repo)) }}"/>
