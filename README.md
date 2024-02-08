@@ -86,7 +86,7 @@ Please use the [issue tracker](https://github.com/cloudposse/.github/issues) to 
 ### 💻 Developing
 
 If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you! 
-Hit us up in [Slack][https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack], in the `#cloudposse` channel.
+Hit us up in [Slack](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack), in the `#cloudposse` channel.
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  1. Review our [Code of Conduct](https://github.com/cloudposse/.github/?tab=coc-ov-file#code-of-conduct) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
@@ -100,16 +100,16 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ### 🌎 Slack Community
 
-Join our [Open Source Community][https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+Join our [Open Source Community](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack) on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
 
 ### 📰 Newsletter
 
-Sign up for [our newsletter][https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=newsletter] and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
+Sign up for [our newsletter](https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=newsletter) and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
 Dropped straight into your Inbox every week — and usually a 5-minute read.
 
 ### 📆 Office Hours <img src="https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png" align="right" />
 
-[Join us every Wednesday via Zoom][https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours] for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
+[Join us every Wednesday via Zoom](https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours) for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
 It's **FREE** for everyone!
 
 ## About
@@ -117,7 +117,7 @@ It's **FREE** for everyone!
 This project is maintained by <a href="https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=">Cloud Posse, LLC</a>.
 <a href="https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content="><img src="https://cloudposse.com/logo-300x69.svg" align="right" /></a>
 
-We are a [**DevOps Accelerator**][https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support] for funded startups and enterprises.
+We are a [**DevOps Accelerator**](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support) for funded startups and enterprises.
 Use our ready-to-go terraform architecture blueprints for AWS to get up and running quickly.
 We build it with you. You own everything. Your team wins. Plus, we stick around until you succeed.
 
