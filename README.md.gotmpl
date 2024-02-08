@@ -2,7 +2,7 @@
 {{- defineDatasource "includes" (env.Getenv "README_INCLUDES") -}}
 {{- $deprecated := has (ds "config") "deprecated" }}
 {{- $utm_link := printf "%%s?utm_source=%s&utm_medium=%s&utm_campaign=%s&utm_content=%s" "github" "readme" (ds "config").github_repo "%s" -}}
-{{- $homepage := printf $utm_link "https://cpco.io/homepage" ""}}
+{{- $homepage := printf $utm_link "https://cpco.io/homepage" "" -}}
 {{- $logo := "https://cloudposse.com/logo-300x69.svg" -}}
 {{- $terraform_modules := printf $utm_link "https://cpco.io/terraform-modules" "terraform_modules" -}}
 {{- $slack := printf $utm_link "https://cpco.io/slack" "slack" -}}
@@ -87,7 +87,7 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{- if or ( $screenshot.url | regexp.Match "\\.mp4$") ($screenshot.url | regexp.Match "\\.mp4\\?.*") -}}
 <video src="{{ $screenshot.url }}" ></video>
 {{- else -}}
-<img src={{ $screenshot.url }}" alt="{{ $screenshot.name }}" />
+<img src="{{ $screenshot.url }}" alt="{{ $screenshot.name }}" />
 {{- end -}}
 *{{ $screenshot.description }}*
 {{ end }}
@@ -242,8 +242,8 @@ It's **FREE** for everyone!
 
 ## About
 
-This project is maintained by <a href="https://cloudposse.com">Cloud Posse, LLC</a>.
-<a href="https://cpco.io/homepage"><img src="https://cloudposse.com/logo-300x69.svg" align="right" /></a>
+This project is maintained by <a href="{{ $homepage }}">Cloud Posse, LLC</a>.
+<a href="{{ $homepage }}"><img src="https://cloudposse.com/logo-300x69.svg" align="right" /></a>
 
 We are a [**DevOps Accelerator**][{{ $commercial_support }}] for funded startups and enterprises.
 Use our ready-to-go terraform architecture blueprints for AWS to get up and running quickly.
@@ -271,8 +271,6 @@ Ensure that your team succeeds by using our proven process and turnkey blueprint
 </details>
 
 <a href="{{ printf $utm_link "https://cloudposse.com/readme/commercial-support/link" "readme_commercial_support_link" }}"><img src="https://cloudposse.com/readme/commercial-support/img"/></a>
-
-{{- if (file.Exists "main.tf") }}
 
 {{- if eq (ds "config").license "APACHE2" }}
 ## License
@@ -412,8 +410,5 @@ Copyright © 2017-{{ time.Now.Year }} [Cloud Posse, LLC](https://cpco.io/copyrig
 {{ end }}
 
 <a href="{{ printf $utm_link "https://cloudposse.com/readme/footer/link" "readme_footer_link" }}"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
-
-{{- if not $deprecated }}
-{{- if (file.Exists "main.tf") }}
 
 <img alt="Beacon" width="0" src="{{ printf "https://ga-beacon.cloudposse.com/UA-76589703-4/%s?pixel&cs=github&cm=readme&an=%s" (ds "config").github_repo (filepath.Base ((ds "config").github_repo)) }}"/>
