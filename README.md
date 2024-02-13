@@ -152,6 +152,8 @@ Ensure that your team succeeds by using our proven process and turnkey blueprint
 <br/>
 <br/>
 
+Complete license is available in the [`LICENSE`](LICENSE) file.
+
 ```text
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
