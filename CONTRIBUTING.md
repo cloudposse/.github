@@ -108,7 +108,6 @@ make github/init
 make readme
 ```
 
-You may also need to install gomplate: https://docs.gomplate.ca/installing/
 
 ### Updating the Module Examples
 
