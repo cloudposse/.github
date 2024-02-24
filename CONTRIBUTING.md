@@ -28,10 +28,10 @@ This section guides you through submitting an enhancement suggestion for Cloud P
 
 Unsure where to begin contributing to Cloud Posse? You can start by looking through issues with the following labels:
 
-| Label                                                             | Usage                                                                    |
-| :---------------------------------------------------------------- | :----------------------------------------------------------------------- |
-| ![`help-wanted`](https://img.shields.io/badge/help_wanted-388bfd) | issues which should only require a few lines of code, and a test or two. |
-| ![`beginner`](https://img.shields.io/badge/beginner-388bfd)       | issues which should be a bit more involved than issues.                  |
+| Label                                                                                 | Usage                                                                    |
+| :------------------------------------------------------------------------------------ | :----------------------------------------------------------------------- |
+| ![`help-wanted`](https://img.shields.io/badge/help_wanted-388bfd?style=for-the-badge) | issues which should only require a few lines of code, and a test or two. |
+| ![`beginner`](https://img.shields.io/badge/beginner-388bfd?style=for-the-badge)       | issues which should be a bit more involved than issues.                  |
 
 ### Pull Requests
 
@@ -54,9 +54,11 @@ While the prerequisites above must be satisfied prior to having your pull reques
 
 #### Versioning
 
-The release automation relies on labels to increment the semantic versioning tag.
+The release automation relies on labels to increment the semantic versioning tag. Releases are applied manually by maintainers.
+If no label is applied, "minor" is assumed.
 
-As a reference, the following is a mapping between labels and semver:
+As a reference, the following is a mapping between labels and [semver](https://semver.org/):
+
 
 1. `Patch`: A minor, backward compatible change. Increments patch version, e.g. 1.0.**1**
 2. `Minor`: New features that do not break anything, e.g. 1.**1**.1
@@ -64,6 +66,8 @@ As a reference, the following is a mapping between labels and semver:
 4. `No-release`: Do not release a new version
 
 Typically when a module is pre-release, e.g. 0.x.x, each new feature will be a minor release. Once the module hits 1.x, simpler features, which fit the definition of patch, will be labelled as such.
+
+Only Cloud Posse engineers should move a module from v0 to v1, and usually we prefer that it not be a breaking change. In fact, it's not uncommon for v1 to be just a new label for the current release, prompted by the desire to release a v2 that has a breaking change.
 
 #### Stale Issues/PRs
 
@@ -104,7 +108,6 @@ To update the README and Terraform registry documentation, run the following com
 
 ```shell
 make init
-make github/init
 make readme
 ```
 
@@ -114,7 +117,9 @@ You may also need to install gomplate: https://docs.gomplate.ca/installing/
 
 Each module has at least one example, located at `examples/complete/`. These are used as a guide for module consumers as well as for the Terratest inputs.
 
-Where possible, update the example with representative values to include your changes in the test coverage.
+1. If changes were made to the main `versions.tf` file, update the `versions.tf` files in the example directories with the same new version.
+2. Where possible, update the example with representative values to include your changes in the test coverage.
+   1. This will likely require the Terratest tests (written in Go) to be updated as well. These are located in `test/src/`.
 
 ### Deprecating a Variable
 
@@ -123,9 +128,8 @@ Sometimes variables have been defined with less than optimal types, or their usa
 To avoid introducing breaking changes, here is a suggested approach for deprecating a variable:
 
 1. Add a file `variables-deprecated.tf` if it doesn't already exist
-2. Move the deprecated variable into this file
-3. Add your replacement variable
-4. Configure the deprecated variable as a fallback of the replacement one, i.e. populate the value of the deprecated variable if the replacement variable is not supplied.
+3. Add your replacement variable to `variables.tf`
+4. Configure the deprecated variable as a fallback for the replacement one, i.e. use the value of the deprecated variable if it not the default value and the replacement variable is the default value. Otherwise, the replacement variable takes precedence.
 
 #### Examples:
 
@@ -139,7 +143,8 @@ To avoid errors like `The "count" value depends on resource attributes that cann
 
 This is because we are then able to use the length of the list as the conditional subject, rather than the value itself.
 
-If you hit this case, define the variable using a list of the type you need, with the default `[]`. Add a validation condition to prohibit more than 1 element in the list.
+If you hit this case, define the variable using a list of the type you need, with the default `[]` and `nullable = false`.
+Add a validation condition to prohibit more than 1 element in the list.
 
 #### Examples:
 
@@ -154,9 +159,10 @@ If you hit this case, define the variable using a list of the type you need, wit
             If not provided (the default), this module will create a security group.
             EOT
             default     = []
+            nullable    = false
             validation {
-            condition     = length(var.target_security_group_id) < 2
-            error_message = "Only 1 security group can be targeted."
+              condition     = length(var.target_security_group_id) < 2
+              error_message = "Only 1 security group can be targeted."
             }
         }
     ```
@@ -172,6 +178,27 @@ Using [Leapp](https://docs.cloudposse.com/howto/geodesic/authenticate-with-leapp
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN`
+
+##### Running Tests Natively
+
+This requires `go` to be installed.
+
+```shell
+cd test/src
+make test
+```
+
+⚠️ Tests may crash, leaving resources behind. We recommend using a dedicated AWS account for testing,
+and regularly running a tool such as [aws-nuke](https://github.com/rebuy-de/aws-nuke) or 
+[cloud-nuke](https://github.com/gruntwork-io/cloud-nuke) to clean up after tests.
+
+##### Running Tests in Docker
+
+If running on an architecture other than amd64, specify the architecture in the docker pull command, e.g.
+
+```shell
+docker pull --platform linux/amd64 cloudposse/test-harness:latest 
+```
 
 ```shell
 cd test/src
@@ -201,8 +228,8 @@ Currently PR approval for Terraform modules is subject to the following checks. 
 
 The full workflow can be seen [here](https://github.com/cloudposse/github-actions-workflows-terraform-module/blob/main/.github/workflows/feature-branch.yml).
 
-In addition, maintainers will manually run Terratest tests against the PR branch to ensure the 
+In addition, maintainers will manually run Terratest tests against the PR branch to ensure the
 changes can be applied successfully, using the fixtures from `examples/complete/`.
 
-This is done via ChatOps by adding a comment with content `/terratest`. ChatOps commands are only 
+This is done via ChatOps by adding a comment with content `/terratest`. ChatOps commands are only
 available to maintainers.
