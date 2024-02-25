@@ -187,7 +187,7 @@ cd test/src
 make test
 ```
 
-⚠️ Tests may crash, leaving resources behind. We recommend using a dedicated AWS account for testing,
+:warning: Warning: Tests may crash, leaving resources behind. We recommend using a dedicated AWS account for testing,
 and regularly running a tool such as [aws-nuke](https://github.com/rebuy-de/aws-nuke) or 
 [cloud-nuke](https://github.com/gruntwork-io/cloud-nuke) to clean up after tests.
 
