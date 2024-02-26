@@ -31,7 +31,7 @@ Unsure where to begin contributing to Cloud Posse? You can start by looking thro
 | Label                                                                                 | Usage                                                                    |
 | :------------------------------------------------------------------------------------ | :----------------------------------------------------------------------- |
 | ![`help-wanted`](https://img.shields.io/badge/help_wanted-388bfd?style=for-the-badge) | issues which should only require a few lines of code, and a test or two. |
-| ![`beginner`](https://img.shields.io/badge/beginner-388bfd?style=for-the-badge)       | issues which should be relatively easy to address.                  |
+| ![`beginner`](https://img.shields.io/badge/beginner-388bfd?style=for-the-badge)       | issues which should be relatively easy to address.                       |
 
 ### Pull Requests
 
@@ -59,7 +59,6 @@ If no label is applied, "minor" is assumed.
 
 As a reference, the following is a mapping between labels and [semver](https://semver.org/):
 
-
 1. `Patch`: A minor, backward compatible change. Increments patch version, e.g. 1.0.**1**
 2. `Minor`: New features that do not break anything, e.g. 1.**1**.1
 3. `Major`: Breaking changes (or first stable release), e.g. **2**.0.0
@@ -68,19 +67,6 @@ As a reference, the following is a mapping between labels and [semver](https://s
 Typically when a module is pre-release, e.g. 0.x.x, each new feature will be a minor release. Once the module hits 1.x, simpler features, which fit the definition of patch, will be labelled as such.
 
 Only Cloud Posse engineers should move a module from v0 to v1, and usually we prefer that it not be a breaking change. In fact, it's not uncommon for v1 to be just a new label for the current release, prompted by the desire to release a v2 that has a breaking change.
-
-#### Stale Issues/PRs
-
-It is proposed that stale issues/PRs are labelled `stale` after 30 days, and closed after 60 days if the `stale` label is present.
-
-A Slack notification will be sent when an issue/PR is labelled `stale`.
-
-To handle exceptions, additional labels have been proposed to control treatment of stale issues. The `stale` label will not be applied if any of the following labels are applied to a PR.
-
-The currently proposed labels are:
-
-- `High Priority`: an update which will improve feature coverage and/or quality, and will benefit the module's consumers
-- `Expedite`: an update which should be attended to ASAP - perhaps due to a defect that could cause data loss or a security flaw
 
 ## Styleguides
 
