@@ -54,7 +54,7 @@ While the prerequisites above must be satisfied prior to having your pull reques
 
 #### Versioning
 
-The release automation relies on labels to increment the semantic versioning tag. Releases are applied manually by maintainers.
+The release automation relies on labels to increment the semantic versioning tag. Labels are applied manually by maintainers.
 If no label is applied, "minor" is assumed.
 
 As a reference, the following is a mapping between labels and [semver](https://semver.org/):
