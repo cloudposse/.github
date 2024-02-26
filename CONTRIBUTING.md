@@ -127,6 +127,7 @@ Sometimes variables have been defined with less than optimal types, or their usa
 To avoid introducing breaking changes, here is a suggested approach for deprecating a variable:
 
 1. Add a file `variables-deprecated.tf` if it doesn't already exist
+2. Move the deprecated variable into this file
 3. Add your replacement variable to `variables.tf`
 4. Configure the deprecated variable as a fallback for the replacement one, i.e. use the value of the deprecated variable if it not the default value and the replacement variable is the default value. Otherwise, the replacement variable takes precedence.
 
