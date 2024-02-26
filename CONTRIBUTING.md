@@ -157,6 +157,10 @@ Add a validation condition to prohibit more than 1 element in the list.
 
 Each module has Terratest tests in the `test/src` directory. Tests are written in Go.
 
+These tests are run by maintainers, via the CI platform, as part of the PR merge checks.
+
+Tests can also be run locally using the methods below.
+
 #### Local Testing
 
 Using [Leapp](https://docs.cloudposse.com/howto/geodesic/authenticate-with-leapp/), [aws-vault](https://docs.cloudposse.com/howto/geodesic/authenticate-with-aws-vault/) or or some other method, populate the following AWS credential environment variables for a suitable account:
