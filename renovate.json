@@ -13,8 +13,7 @@
       ],
       "matchStringsStrategy": "combination",
       "datasourceTemplate": "helm",
-      "versioningTemplate": "cargo",
-      "rangeStrategy": "bump"
+      "versioningTemplate": "cargo"
     },
     {
       "description": "Updating annotated Helm chart defaults values in tfvars files",
