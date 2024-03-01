@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Fetch repo metadata
       id: metadata
@@ -27,7 +27,7 @@ jobs:
 
     - name: Checkout ${{ steps.metadata.outputs.owner_login}}/.github
       if: steps.metadata.outputs.repository_name != '.github'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: '${{ steps.metadata.outputs.owner_login }}/.github'
         ref: 'main'
@@ -117,7 +117,7 @@ jobs:
         viewportHeight: 320
         omitBackground: true
 
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - uses: stefanzweifel/git-auto-commit-action@v5
       name: Commit artifact
       id: auto-commit
       env:
