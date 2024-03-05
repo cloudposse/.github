@@ -15,6 +15,15 @@ shared:
     - "-author=dependabot[bot]"
     - "-author=renovate[bot]"
 
+  external_contributor: &external_contributor
+    - and:
+      - "-author=@engineering"
+      - "-author=@contributors"
+      - "-author=@admins"
+      - "-author=@bots"
+      - "-author=@approvers"
+      - "-author=@security"
+
   # Default branches
   default_branch: &default_branch
     - "base=main"
@@ -202,7 +211,7 @@ pull_request_rules:
       comment:
         message: |
           > [!IMPORTANT]
-          > ## Title is necessary and should not be empty.
+          > #### Title is necessary and should not be empty.
           >
           > Kindly provide a meaningful title for this Pull Request.
 
@@ -215,7 +224,7 @@ pull_request_rules:
       comment:
         message: |
           > [!IMPORTANT]
-          > ## Description is necessary and should not be empty.
+          > #### Description is necessary and should not be empty.
           >
           > Kindly provide details with **what** was changed, **why** it was changed.
 
@@ -339,18 +348,18 @@ pull_request_rules:
     conditions:
       - and: *is_open
       - and: *not_a_bot
+      - and: *external_contributor
     actions:
       comment:
         message: |
           Thanks @{{author}} for creating this pull request! 
-          A maintainer will review your changes shortly.
-          Please don't be discouraged if it takes a while.
 
-          While you wait, make sure to review our
-          [contributor guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
+          A maintainer will review your changes shortly. Please don't be discouraged if it takes a while.
+
+          While you wait, make sure to review our [contributor guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
 
           > [!TIP]
-          > ## Need help or want to ask for a PR review to be expedited?
+          > #### Need help or want to ask for a PR review to be expedited?
           > Join us on [Slack](https://slack.cloudposse.com) in the `#pr-reviews` channel.
 
   - name: add triage label for new pull requests
@@ -407,10 +416,10 @@ pull_request_rules:
       comment:
         message: |
           > [!IMPORTANT]
-          > This pull request modifies files that require Cloud Posse's review.
-          > Please be patient, and a core maintainer will review your changes.
-          > To expedite this process, reach out to us on [Slack](https://slack.cloudposse.com)
-          > in the `#pr-reviews` channel.
+          > #### Cloud Posse Engineering Team Review Required
+          > This pull request modifies files that require Cloud Posse's review. Please be patient, and a core maintainer will review your changes.
+          >
+          > To expedite this process, reach out to us on [Slack](https://slack.cloudposse.com) in the `#pr-reviews` channel.
 
   - name: rebase pull request when it's more than 10 commits behind main
     conditions:
@@ -429,28 +438,28 @@ pull_request_rules:
         remove:
           - rebase
 
-  - name: mergeable
-    conditions:
-      - and: *is_open
-      - or: *default_branch
-    actions:
-      post_check:
-        success_conditions:
-          - and:
-            - and: *not_wip
-            - and: *pr_metadata
-            - and: *readme_updated
-            - and: *is_approved
-            - and: *checks_passing
-            - and: *require_terraform_checks_passing
-            - and: *require_codeowners_checks_passing
-        title: |
-          {% if check_status == "success" %}
-          This PR is ready to be merged
-          {% else %}
-          This PR is not ready to be merged
-          {% endif %}
-        summary: |
-          {% if check_status == "failure" %}
-          Your pull request needs to be updated before it can be merged.
-          {% endif %}
+  #- name: mergeable
+  #  conditions:
+  #    - and: *is_open
+  #    - or: *default_branch
+  #  actions:
+  #    post_check:
+  #      success_conditions:
+  #        - and:
+  #          - and: *not_wip
+  #          - and: *pr_metadata
+  #          - and: *readme_updated
+  #          - and: *is_approved
+  #          - and: *checks_passing
+  #          - and: *require_terraform_checks_passing
+  #          - and: *require_codeowners_checks_passing
+  #      title: |
+  #        {% if check_status == "success" %}
+  #        This PR is ready to be merged
+  #        {% else %}
+  #        This PR is not ready to be merged
+  #        {% endif %}
+  #      summary: |
+  #        {% if check_status == "failure" %}
+  #        Your pull request needs to be updated before it can be merged.
+  #        {% endif %}
