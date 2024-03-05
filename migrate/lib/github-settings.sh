@@ -16,6 +16,7 @@ function install_github_settings() {
         info "Creating $settings"
         echo "_extends: .github" > $settings
     fi
+
     # finally, let's sort the file so _extends is at the top.
     yq -ei 'sort_keys(.)' $settings
 
