@@ -176,9 +176,10 @@ teams:
   - name: admins
     permission: admin
   - name: bots
-    permission: push
+    permission: admin
   - name: engineering
-    permission: push
+    permission: triage
   - name: contributors
-    permission: push
-
+    permission: triage
+  - name: security
+    permission: pull
