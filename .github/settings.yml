@@ -153,13 +153,17 @@ labels:
     color: '#B60205'
     description: 'This PR has conflicts'
 
-  - name: "no-changes"
-    color: "#cccccc"
-    description: "No changes were made in this PR"
+  - name: no-changes
+    color: '#cccccc'
+    description: 'No changes were made in this PR'
 
-  - name: "stale"
-    color: "#e69138"
-    description: "This PR has gone stale"
+  - name: stale
+    color: '#e69138'
+    description: 'This PR has gone stale'
+
+  - name: migration
+    color: '#2f81f7'
+    description: 'This PR involves a migration'
 
 # Note: `permission` is only valid on organization-owned repositories.
 # The permission to grant the collaborator. Can be one of:
