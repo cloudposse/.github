@@ -165,6 +165,10 @@ labels:
     color: '#2f81f7'
     description: 'This PR involves a migration'
 
+  - name: terraform/0.13
+    color: '#ffd9c4'
+    description: 'Module requires Terraform 0.13 or later'
+
 # Note: `permission` is only valid on organization-owned repositories.
 # The permission to grant the collaborator. Can be one of:
 # * `pull` - can pull, but not push to or administer this repository.
