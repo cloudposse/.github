@@ -438,28 +438,28 @@ pull_request_rules:
         remove:
           - rebase
 
-  - name: mergeable
-    conditions:
-      - and: *is_open
-      - or: *default_branch
-    actions:
-      post_check:
-        success_conditions:
-          - and:
-            - and: *not_wip
-            - and: *pr_metadata
-            - and: *readme_updated
-            - and: *is_approved
-            - and: *checks_passing
-            - and: *require_terraform_checks_passing
-            - and: *require_codeowners_checks_passing
-        title: |
-          {% if check_status == "success" %}
-          This PR is ready to be merged
-          {% else %}
-          This PR is not ready to be merged
-          {% endif %}
-        summary: |
-          {% if check_status == "failure" %}
-          Your pull request needs to be updated before it can be merged.
-          {% endif %}
+  #- name: mergeable
+  #  conditions:
+  #    - and: *is_open
+  #    - or: *default_branch
+  #  actions:
+  #    post_check:
+  #      success_conditions:
+  #        - and:
+  #          - and: *not_wip
+  #          - and: *pr_metadata
+  #          - and: *readme_updated
+  #          - and: *is_approved
+  #          - and: *checks_passing
+  #          - and: *require_terraform_checks_passing
+  #          - and: *require_codeowners_checks_passing
+  #      title: |
+  #        {% if check_status == "success" %}
+  #        This PR is ready to be merged
+  #        {% else %}
+  #        This PR is not ready to be merged
+  #        {% endif %}
+  #      summary: |
+  #        {% if check_status == "failure" %}
+  #        Your pull request needs to be updated before it can be merged.
+  #        {% endif %}
