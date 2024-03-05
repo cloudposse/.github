@@ -1,0 +1,7 @@
+cloudposse/terraform-example-module
+cloudposse/terraform-aws-eks-cluster
+cloudposse/terraform-aws-vpc
+cloudposse/terraform-aws-efs
+cloudposse/terraform-aws-backup
+cloudposse/terraform-aws-firewall-manager
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
