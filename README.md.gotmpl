@@ -124,9 +124,9 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{ if (file.Exists "main.tf") }}
 
 > [!IMPORTANT]
-> In Cloud Posse's examples, we avoid pinning modules to specific versions to prevent discrepancies between the documentation 
+> In Cloud Posse's examples, we avoid pinning modules to specific versions to prevent discrepancies between the documentation
 > and the latest released versions. However, for your own projects, we strongly advise pinning each module to the exact version
-> you're using. This practice ensures the stability of your infrastructure. Additionally, we recommend implementing a systematic 
+> you're using. This practice ensures the stability of your infrastructure. Additionally, we recommend implementing a systematic
 > approach for updating versions to avoid unexpected changes.
 
 {{ end }}
@@ -142,20 +142,20 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{- if (file.Exists "main.tf") }}
 > [!TIP]
 > #### Looking for Terraform Reference Architectures for AWS?
-> 
+>
 > Use our ready-to-go terraform architecture blueprints for AWS to get up and running quickly.
 > We build it with you. You own everything. Your team wins. Plus, we stick around until you succeed.
 >
 > <details><summary>📚 <strong>Learn More</strong></summary>
 >
 > We are the leading [**DevOps Accelerator**]({{ $commercial_support }}) for funded startups and enterprises.
-> 
+>
 > <a href="{{ $commercial_support }}"><img alt="Learn More" src="https://img.shields.io/badge/learn%20more-success.svg?style=for-the-badge"/></a>
-> 
+>
 > *Your team can operate like a pro today.*
-> 
+>
 > Ensure that your team succeeds by using Cloud Posse's proven process and turnkey blueprints. Plus, we stick around until you succeed.
-> 
+>
 > - **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
 > - **Deployment Strategy.** You'll have a battle-tested deployment strategy using GitHub Actions that's automated and repeatable.
 > - **Site Reliability Engineering.** You'll have total visibility into your apps and microservices using Datadog.
@@ -217,7 +217,7 @@ Please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "con
 
 ### 💻 Developing
 
-If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you! 
+If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you!
 Hit us up in [Slack]({{ $slack }}), in the `#cloudposse` channel.
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
