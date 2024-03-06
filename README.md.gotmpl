@@ -251,14 +251,6 @@ It's **FREE** for everyone!
 
 {{- end }}
 
-## About
-
-This project is maintained by <a href="{{ $homepage }}">Cloud Posse, LLC</a>.
-<a href="{{ $homepage }}"><img src="https://cloudposse.com/logo-300x69.svg" align="right" /></a>
-
-
-<a href="{{ printf $utm_link "https://cloudposse.com/readme/commercial-support/link" "readme_commercial_support_link" }}"><img src="https://cloudposse.com/readme/commercial-support/img"/></a>
-
 {{- if eq (ds "config").license "APACHE2" }}
 ## License
 
@@ -387,7 +379,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 All other trademarks referenced herein are the property of their respective owners.
 
-{{- if has (ds "config") "copyrights" }}
+{{ if has (ds "config") "copyrights" }}
 ## Copyrights
 
 {{ range $copyright := (ds "config").copyrights -}}
