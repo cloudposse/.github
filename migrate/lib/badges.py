@@ -59,7 +59,7 @@ def migrate_badges(readme_yaml="README.yaml"):
             # Remove unwanted badges
             data['badges'] = [badge for badge in data['badges'] if not any(removal_str in badge['name'].strip() for removal_str in badges_to_remove)]
         else:
-             data['badges'] = []
+            data['badges'] = []
 
         # Add new badges
         new_badges = [
@@ -75,14 +75,15 @@ def migrate_badges(readme_yaml="README.yaml"):
         if os.path.isfile(".github/workflows/lambda.yml"):
             new_badges.append({"name": "Tests", "image": f"https://img.shields.io/github/actions/workflow/status/{github_repo}/lambda.yml?style=for-the-badge", "url": f"https://github.com/{github_repo}/actions/workflows/lambda.yml"})
 
-        add_newlines_before_comments(data)
-        
         data['badges'].extend(new_badges)
+
+        # Ruamel accidentally deletes this comment sometimes when updating the badges
+        data.yaml_set_comment_before_after_key('related', before='\nList any related terraform modules that this module may be used with or that this module depends on.')
 
         # Set 'contributors' section to an empty array, as we handle this now with an image
         data['contributors'] = []
 
-        
+        add_newlines_before_comments(data)
         
     # Write back the updated YAML with multiple documents
     with open(readme_yaml, 'w') as file:
