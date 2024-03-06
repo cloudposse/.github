@@ -3,7 +3,7 @@
 # IMPORTANT: This script should be invoked by `git-xargs`
 #
 
-export LABELS="auto-update,migration,no-release"
+export LABELS="auto-update,migration,no-release,do not merge"
 export YAMLFIX_CONFIG_PATH="${MIGRATE_PATH}/yamlfix.yml"
 # Check if MIGRATE_PATH is not set
 if [ -z "${MIGRATE_PATH}" ]; then
@@ -38,6 +38,14 @@ if [[ -z "$XARGS_DRY_RUN" || -z "$XARGS_REPO_NAME" || -z "$XARGS_REPO_OWNER" ]];
     exit 1
 fi
 
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Identify the default branch
+default_branch=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)
+
+# Ensure our branch is reset to match the remote default branch, so that we can apply the migration cleanly
+git reset --hard origin/${default_branch}
+
 # Use migration's `.gitignore`, since not all repos have one
 git config --local core.excludesFile ${MIGRATE_PATH}/.gitignore
 
@@ -69,21 +77,24 @@ info "Starting migration $migration"
 source ${MIGRATE_PATH}/migrations/$migration/script.sh
 set +e
 
-# Commit the changes
-git commit -a --message "chore: ${TITLE}"
-git push origin HEAD
-
 # due to a bug in `git-xargs`, we need to clean up manually before exiting
 # https://github.com/gruntwork-io/git-xargs/issues/53
 git clean -fxd
+
+# Commit the changes
+git commit -a --message "chore: ${TITLE}"
+
+if [ "${current_branch}" != "${default_branch}" ]; then
+    git push origin HEAD --force
+fi
 
 if [  "${XARGS_DRY_RUN}" == "false" ]; then
     # First, we have to ensure labels already exist. They will not be created on-demand.
     create_labels
 
     # Create or update the pull request
-    gh pr create --title="${TITLE}" --body-file=${migration_readme} --label=${LABELS} || \
-        gh pr edit --title="${TITLE}" --body-file=${migration_readme} --add-label=${LABELS}
+    gh pr create --title="${TITLE}" --body-file=${migration_readme} --label="${LABELS}" || \
+        gh pr edit --title="${TITLE}" --body-file=${migration_readme} --add-label="${LABELS}"
     info "PR: $(gh pr view --json url --jq .url)"
     # Automatically merge this PR after checks pass, using admin privileges to bypass branch protections.
     # Then delete the branch.

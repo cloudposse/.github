@@ -70,7 +70,7 @@ function create_labels() {
 
     for label in "${required_labels[@]}"; do
         if ! echo "$existing_labels" | grep -q "$label"; then
-            gh label create $label -c '#b60205'
+            gh label create "$label" -c '#b60205'
             info "Created label [$label]"
         fi
     done
