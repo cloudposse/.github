@@ -117,28 +117,6 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{ (ds "config").introduction }}
 {{ end }}
 
-{{ if has (ds "config") "usage" }}
-## Usage
-
-{{ (ds "config").usage -}}
-{{ if (file.Exists "main.tf") }}
-
-> [!IMPORTANT]
-> In Cloud Posse's examples, we avoid pinning modules to specific versions to prevent discrepancies between the documentation
-> and the latest released versions. However, for your own projects, we strongly advise pinning each module to the exact version
-> you're using. This practice ensures the stability of your infrastructure. Additionally, we recommend implementing a systematic
-> approach for updating versions to avoid unexpected changes.
-
-{{ end }}
-{{ end }}
-
-{{ if not $deprecated -}}
-{{ if has (ds "config") "quickstart" -}}
-## Quick Start
-
-{{ (ds "config").quickstart -}}
-{{ end }}
-
 {{- if (file.Exists "main.tf") }}
 > [!TIP]
 > #### Looking for Terraform Reference Architectures for AWS?
@@ -149,7 +127,9 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 > <a href="{{ $commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
 > <details><summary>📚 <strong>Learn More</strong></summary>
 >
-> We are the leading [**DevOps Accelerator**]({{ $commercial_support }}) for funded startups and enterprises.
+> <br/>
+> 
+> Cloud Posse is the leading [**DevOps Accelerator**]({{ $commercial_support }}) for funded startups and enterprises.
 >
 > *Your team can operate like a pro today.*
 >
@@ -173,6 +153,28 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 > <a href="{{ $commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
 > </details>
 {{- end}}
+
+{{ if has (ds "config") "usage" }}
+## Usage
+
+{{ (ds "config").usage -}}
+{{ if (file.Exists "main.tf") }}
+
+> [!IMPORTANT]
+> In Cloud Posse's examples, we avoid pinning modules to specific versions to prevent discrepancies between the documentation
+> and the latest released versions. However, for your own projects, we strongly advise pinning each module to the exact version
+> you're using. This practice ensures the stability of your infrastructure. Additionally, we recommend implementing a systematic
+> approach for updating versions to avoid unexpected changes.
+
+{{ end }}
+{{ end }}
+
+{{ if not $deprecated -}}
+{{ if has (ds "config") "quickstart" -}}
+## Quick Start
+
+{{ (ds "config").quickstart -}}
+{{ end }}
 
 {{ if has (ds "config") "examples" }}
 ## Examples
