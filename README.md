@@ -54,13 +54,12 @@ This repository fulfills several unique functions functions for the Cloud Posse 
 
 
 
-
-
 ## Examples
 
 To add all repository bootstrapping files to a new repo:
   1. Copy the `.github/workflows/auto-format.yml` file from this repository to the `.github/workflows` folder of the destination repository.
   2. Execute the `Auto-format` GitHub Action in the destination repository.
+
 
 
 
