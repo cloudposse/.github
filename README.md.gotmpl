@@ -9,6 +9,61 @@
 {{- $commercial_support := printf $utm_link "https://cpco.io/commercial-support" "commercial_support" -}}
 {{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
+{{- define "tip_use_atmos" }}
+{{- if (file.Exists "main.tf") }}
+> [!TIP]
+> #### 👽 Use Atmos with Terraform
+> Cloud Posse uses [`atmos`](https://atmos.tools) to easily orchestrate multiple environments using Terraform. <br/>
+> Works with [Github Actions](https://atmos.tools/integrations/github-actions/), [Atlantis](https://atmos.tools/integrations/atlantis), or [Spacelift](https://atmos.tools/integrations/spacelift).
+>
+> <details>
+> <summary><strong>Watch demo of using Atmos with Terraform</strong></summary>
+> <img src="https://github.com/cloudposse/atmos/blob/master/docs/demo.gif?raw=true"/><br/>
+> <i>Example of running <a href="https://atmos.tools"><code>atmos</code></a> to manage infrastructure from our <a href="https://atmos.tools/quick-start/">Quick Start</a> tutorial.</i>
+> </detalis>
+{{- end }}
+{{- end }}
+{{- define "tip_use_reference_architecture" -}}
+{{- if (file.Exists "main.tf") }}
+> [!TIP]
+> #### Looking for Terraform Reference Architectures for AWS?
+>
+> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/reference-architecture/) for AWS to get up and running quickly.
+>
+> ✅ We build it with you.<br/>
+> ✅ You own everything.<br/>
+> ✅ Your team wins.<br/>
+>
+> <a href="{{ $.commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> <details><summary>📚 <strong>Learn More</strong></summary>
+>
+> <br/>
+>
+> Cloud Posse is the leading [**DevOps Accelerator**]({{ $.commercial_support }}) for funded startups and enterprises.
+>
+> *Your team can operate like a pro today.*
+>
+> Ensure that your team succeeds by using Cloud Posse's proven process and turnkey blueprints. Plus, we stick around until you succeed.
+> #### Day-0:  Your Foundation for Success
+> - **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
+> - **Deployment Strategy.** Adopt a proven deployment strategy with GitHub Actions, enabling automated, repeatable, and reliable software releases.
+> - **Site Reliability Engineering.** Gain total visibility into your applications and services with Datadog, ensuring high availability and performance.
+> - **Security Baseline.** Establish a secure environment from the start, with built-in governance, accountability, and comprehensive audit logs, safeguarding your operations.
+> - **GitOps.** Empower your team to manage infrastructure changes confidently and efficiently through Pull Requests, leveraging the full power of GitHub Actions.
+>
+> #### Day-2: Your Operational Mastery
+> - **Training.** Equip your team with the knowledge and skills to confidently manage the infrastructure, ensuring long-term success and self-sufficiency.
+> - **Support.** Benefit from a seamless communication over Slack with our experts, ensuring you have the support you need, whenever you need it.
+> - **Troubleshooting.** Access expert assistance to quickly resolve any operational challenges, minimizing downtime and maintaining business continuity.
+> - **Code Reviews.** Enhance your team’s code quality with our expert feedback, fostering continuous improvement and collaboration.
+> - **Bug Fixes.** Rely on our team to troubleshoot and resolve any issues, ensuring your systems run smoothly.
+> - **Migration Assistance.** Accelerate your migration process with our dedicated support, minimizing disruption and speeding up time-to-value.
+> - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
+>
+> <a href="{{ $.commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> </details>
+{{- end }}
+{{- end }}
 
 <!-- markdownlint-disable -->
 {{ if $deprecated -}}
@@ -93,22 +148,7 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{ end }}
 {{- end }}
 
-{{- if (file.Exists "main.tf") }}
-> [!TIP]
-> #### 👽 Use Atmos with Terraform
-> Cloud Posse uses [`atmos`](https://atmos.tools) to easily orchestrate multiple environments using Terraform. <br/>
-> Works with [Github Actions](https://atmos.tools/integrations/github-actions/), [Atlantis](https://atmos.tools/integrations/atlantis), or [Spacelift](https://atmos.tools/integrations/spacelift).
->
-> <details>
-> <summary><strong>Watch demo of using Atmos with Terraform</strong></summary>
-> <img src="https://github.com/cloudposse/atmos/blob/master/docs/demo.gif?raw=true"/><br/>
-> <i>Example of running <a href="https://atmos.tools"><code>atmos</code></a> to manage infrastructure from our <a href="https://atmos.tools/quick-start/">Quick Start</a> tutorial.</i>
-> </detalis>
-{{ else }}
-{{ if not $deprecated }}
-<a href="{{ printf $utm_link "https://cloudposse.com/readme/header/link" "readme_header_link" }}"><img src="https://cloudposse.com/readme/header/img"/></a>
-{{- end }}
-{{- end}}
+{{ template "tip_use_atmos" . }}
 
 {{ if has (ds "config") "introduction" }}
 ## Introduction
@@ -116,47 +156,10 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{ (ds "config").introduction }}
 {{ end }}
 
-{{- if (file.Exists "main.tf") }}
-> [!TIP]
-> #### Looking for Terraform Reference Architectures for AWS?
->
-> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/reference-architecture/) for AWS to get up and running quickly.
->
-> ✅ We build it with you.<br/>
-> ✅ You own everything.<br/>
-> ✅ Your team wins.<br/>
->
-> <a href="{{ $commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
-> <details><summary>📚 <strong>Learn More</strong></summary>
->
-> <br/>
-> 
-> Cloud Posse is the leading [**DevOps Accelerator**]({{ $commercial_support }}) for funded startups and enterprises.
->
-> *Your team can operate like a pro today.*
->
-> Ensure that your team succeeds by using Cloud Posse's proven process and turnkey blueprints. Plus, we stick around until you succeed.
-> #### Day-0:  Your Foundation for Success
-> - **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
-> - **Deployment Strategy.** Adopt a proven deployment strategy with GitHub Actions, enabling automated, repeatable, and reliable software releases.
-> - **Site Reliability Engineering.** Gain total visibility into your applications and services with Datadog, ensuring high availability and performance.
-> - **Security Baseline.** Establish a secure environment from the start, with built-in governance, accountability, and comprehensive audit logs, safeguarding your operations.
-> - **GitOps.** Empower your team to manage infrastructure changes confidently and efficiently through Pull Requests, leveraging the full power of GitHub Actions.
->
-> #### Day-2: Your Operational Mastery
-> - **Training.** Equip your team with the knowledge and skills to confidently manage the infrastructure, ensuring long-term success and self-sufficiency.
-> - **Support.** Benefit from a seamless communication over Slack with our experts, ensuring you have the support you need, whenever you need it.
-> - **Troubleshooting.** Access expert assistance to quickly resolve any operational challenges, minimizing downtime and maintaining business continuity.
-> - **Code Reviews.** Enhance your team’s code quality with our expert feedback, fostering continuous improvement and collaboration.
-> - **Bug Fixes.** Rely on our team to troubleshoot and resolve any issues, ensuring your systems run smoothly.
-> - **Migration Assistance.** Accelerate your migration process with our dedicated support, minimizing disruption and speeding up time-to-value.
-> - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
->
-> <a href="{{ $commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
-> </details>
-{{- end}}
+
 
 {{ if has (ds "config") "usage" }}
+{{ if has (ds "config") "introduction" }}{{ template "tip_use_reference_architecture" . }}{{- end }}
 ## Usage
 
 {{ (ds "config").usage -}}
@@ -179,6 +182,7 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{ end }}
 
 {{ if has (ds "config") "examples" }}
+{{ if not (has (ds "config") "usage") }}{{ template "tip_use_reference_architecture" . }}{{- end }}
 ## Examples
 
 {{(ds "config").examples }}
