@@ -96,6 +96,7 @@ if [  "${XARGS_DRY_RUN}" == "false" ]; then
     gh pr create --title="${TITLE}" --body-file=${migration_readme} --label="${LABELS}" || \
         gh pr edit --title="${TITLE}" --body-file=${migration_readme} --add-label="${LABELS}"
     info "PR: $(gh pr view --json url --jq .url)"
+    gh pr view --json url --jq .url >> ${MIGRATE_PATH}/pr.log
     # Automatically merge this PR after checks pass, using admin privileges to bypass branch protections.
     # Then delete the branch.
     if [ "${AUTO_MERGE}" == "true" ]; then
