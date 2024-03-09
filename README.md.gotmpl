@@ -17,7 +17,6 @@
 {{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
 {{- end -}}
 {{- $firstNonEmptySection := (tmpl.Exec "nonEmptySections" $sections) | strings.TrimSpace | regexp.Replace " .*" "" -}}
-
 {{- define "tip_use_atmos" }}
 {{- if .is_terraform }}
 > [!TIP]
@@ -223,6 +222,7 @@ For additional context, refer to some of these links.
 {{ end}}
 {{ if not $deprecated -}}
 {{- if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
+
 ## ✨ Contributing
 
 This project is under active development, and we encourage contributions from our community.
