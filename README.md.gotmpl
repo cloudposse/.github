@@ -10,6 +10,11 @@
 {{- $commercial_support := printf $utm_link "https://cpco.io/commercial-support" "commercial_support" -}}
 {{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
+{{- $sections := slice "introduction" "description" "usage" "quickstart" "examples" -}}
+{{- define "nonEmptySections" -}}
+{{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 512) -}}{{ . }} {{ end -}}{{ end -}}
+{{- end -}}
+{{- $firstNonEmptySection := (tmpl.Exec "nonEmptySections" $sections) | strings.TrimSpace | regexp.Replace " .*" "" -}}
 
 {{- define "tip_use_atmos" }}
 {{- if .is_terraform }}
@@ -64,7 +69,7 @@
 >
 > <a href="{{ .commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
 > </details>
-{{- end }}
+{{- end -}}
 {{- end }}
 
 <!-- markdownlint-disable -->
@@ -148,18 +153,19 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 *{{ $screenshot.description }}*
 {{ end }}
 {{- end }}
+{{ if eq "description" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
 
 {{ if has (ds "config") "introduction" }}
 ## Introduction
 
 {{ (ds "config").introduction }}
 {{ end }}
+{{ if eq "introduction" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
 
 
 
 
 {{ if has (ds "config") "usage" }}
-{{ if has (ds "config") "introduction" }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
 ## Usage
 
 {{ (ds "config").usage -}}
@@ -173,6 +179,8 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 
 {{ end }}
 {{ end }}
+{{- if eq "usage" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
+
 {{ template "tip_use_atmos" dict "is_terraform" $is_terraform }}
 {{ if not $deprecated -}}
 {{ if has (ds "config") "quickstart" -}}
@@ -180,13 +188,15 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 
 {{ (ds "config").quickstart -}}
 {{ end }}
+{{- if eq "quickstart" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
 
-{{ if has (ds "config") "examples" }}
+{{- if has (ds "config") "examples" }}
 ## Examples
 
-{{(ds "config").examples }}
-{{ if not (has (ds "config") "usage") }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
+{{ (ds "config").examples }}
 {{ end }}
+{{- if eq "examples" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support }}{{- end }}
+
 
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
