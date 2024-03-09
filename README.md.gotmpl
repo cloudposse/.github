@@ -1,6 +1,7 @@
 {{- defineDatasource "config" .Env.README_YAML -}}
 {{- defineDatasource "includes" (env.Getenv "README_INCLUDES") -}}
 {{- $deprecated := has (ds "config") "deprecated" }}
+{{- $is_terraform := (strings.Contains "terraform-" ((ds "config").github_repo))  -}}
 {{- $utm_link := printf "%%s?utm_source=%s&utm_medium=%s&utm_campaign=%s&utm_content=%s" "github" "readme" (ds "config").github_repo "%s" -}}
 {{- $homepage := printf $utm_link "https://cpco.io/homepage" "" -}}
 {{- $logo := "https://cloudposse.com/logo-300x69.svg" -}}
@@ -9,8 +10,15 @@
 {{- $commercial_support := printf $utm_link "https://cpco.io/commercial-support" "commercial_support" -}}
 {{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
+{{- $cta := printf "<a href=\"%s\"><img alt=\"Request Quote\" src=\"https://img.shields.io/badge/request%%20quote-success.svg?style=for-the-badge\"/></a>" $commercial_support -}}
+{{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
+{{- $sections := slice "introduction" "quickstart" "examples" -}}
+{{- define "nonEmptySections" -}}
+{{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
+{{- end -}}
+{{- $firstNonEmptySection := (tmpl.Exec "nonEmptySections" $sections) | strings.TrimSpace | regexp.Replace " .*" "" -}}
 {{- define "tip_use_atmos" }}
-{{- if (file.Exists "main.tf") }}
+{{- if .is_terraform }}
 > [!TIP]
 > #### 👽 Use Atmos with Terraform
 > Cloud Posse uses [`atmos`](https://atmos.tools) to easily orchestrate multiple environments using Terraform. <br/>
@@ -24,22 +32,22 @@
 {{- end }}
 {{- end }}
 {{- define "tip_use_reference_architecture" -}}
-{{- if (file.Exists "main.tf") }}
+{{- if .is_terraform }}
 > [!TIP]
-> #### Looking for Terraform Reference Architectures for AWS?
+> #### Use Terraform Reference Architectures for AWS
 >
-> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/reference-architecture/) for AWS to get up and running quickly.
+> Use Cloud Posse's ready-to-go [terraform architecture blueprints](https://cloudposse.com/reference-architecture/) for AWS to get up and running quickly.
 >
 > ✅ We build it with you.<br/>
 > ✅ You own everything.<br/>
 > ✅ Your team wins.<br/>
 >
-> <a href="{{ $.commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> {{ .cta }}
 > <details><summary>📚 <strong>Learn More</strong></summary>
 >
 > <br/>
 >
-> Cloud Posse is the leading [**DevOps Accelerator**]({{ $.commercial_support }}) for funded startups and enterprises.
+> Cloud Posse is the leading [**DevOps Accelerator**]({{ .commercial_support }}) for funded startups and enterprises.
 >
 > *Your team can operate like a pro today.*
 >
@@ -51,6 +59,8 @@
 > - **Security Baseline.** Establish a secure environment from the start, with built-in governance, accountability, and comprehensive audit logs, safeguarding your operations.
 > - **GitOps.** Empower your team to manage infrastructure changes confidently and efficiently through Pull Requests, leveraging the full power of GitHub Actions.
 >
+> {{ .cta }}
+>
 > #### Day-2: Your Operational Mastery
 > - **Training.** Equip your team with the knowledge and skills to confidently manage the infrastructure, ensuring long-term success and self-sufficiency.
 > - **Support.** Benefit from a seamless communication over Slack with our experts, ensuring you have the support you need, whenever you need it.
@@ -60,9 +70,9 @@
 > - **Migration Assistance.** Accelerate your migration process with our dedicated support, minimizing disruption and speeding up time-to-value.
 > - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
 >
-> <a href="{{ $.commercial_support }}"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> {{ .cta }}
 > </details>
-{{- end }}
+{{- end -}}
 {{- end }}
 
 <!-- markdownlint-disable -->
@@ -119,7 +129,7 @@
 > [!IMPORTANT]
 >  This module is no longer actively maintained
 {{- end }}
-{{- if (file.Exists "main.tf") }}
+{{- if $is_terraform }}
 
 We literally have <a href="{{ $terraform_modules }}">*hundreds of other terraform modules*</a> that are Open Source and well-maintained. Check them out!
 {{- end }}
@@ -132,7 +142,6 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{- else }}
 {{- if has (ds "config") "description" }}
 {{ (ds "config").description }}
-
 {{- end }}
 {{- end }}
 {{ if has (ds "config") "screenshots" }}
@@ -147,23 +156,20 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 *{{ $screenshot.description }}*
 {{ end }}
 {{- end }}
-
-{{ template "tip_use_atmos" . }}
+{{ template "tip_use_atmos" $context }}
 
 {{ if has (ds "config") "introduction" }}
 ## Introduction
 
 {{ (ds "config").introduction }}
 {{ end }}
-
-
+{{ if eq "introduction" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 
 {{ if has (ds "config") "usage" }}
-{{ if has (ds "config") "introduction" }}{{ template "tip_use_reference_architecture" . }}{{- end }}
 ## Usage
 
 {{ (ds "config").usage -}}
-{{ if (file.Exists "main.tf") }}
+{{- if $is_terraform }}
 
 > [!IMPORTANT]
 > In Cloud Posse's examples, we avoid pinning modules to specific versions to prevent discrepancies between the documentation
@@ -173,6 +179,7 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 
 {{ end }}
 {{ end }}
+{{- if eq "usage" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 
 {{ if not $deprecated -}}
 {{ if has (ds "config") "quickstart" -}}
@@ -180,13 +187,15 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 
 {{ (ds "config").quickstart -}}
 {{ end }}
+{{- if eq "quickstart" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 
-{{ if has (ds "config") "examples" }}
-{{ if not (has (ds "config") "usage") }}{{ template "tip_use_reference_architecture" . }}{{- end }}
+{{- if has (ds "config") "examples" }}
 ## Examples
 
-{{(ds "config").examples }}
+{{ (ds "config").examples }}
 {{ end }}
+{{- if eq "examples" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
+
 
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
@@ -212,9 +221,14 @@ For additional context, refer to some of these links.
 
 {{ end}}
 {{ if not $deprecated -}}
+{{- if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
+
 ## ✨ Contributing
-{{ if has (datasource "config") "contributors" }}
+
 This project is under active development, and we encourage contributions from our community.
+
+{{ if has (datasource "config") "contributors" }}
+
 Many thanks to our outstanding contributors:
 
 <a href="https://github.com/{{ printf "%s" (ds "config").github_repo}}/graphs/contributors">
@@ -222,14 +236,7 @@ Many thanks to our outstanding contributors:
 </a>
 {{- end }}
 
-### 🐛 Bug Reports & Feature Requests
-
-Please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "config").github_repo}}) to report any bugs or file feature requests.
-
-### 💻 Developing
-
-If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you!
-Hit us up in [Slack]({{ $slack }}), in the `#cloudposse` channel.
+For 🐛 bug reports & feature requests, please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "config").github_repo}}).
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  1. Review our [Code of Conduct]({{ printf "https://github.com/%s/?tab=coc-ov-file#code-of-conduct" (ds "config").github_repo}}) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
