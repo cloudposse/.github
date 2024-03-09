@@ -222,6 +222,7 @@ For additional context, refer to some of these links.
 
 {{ end}}
 {{ if not $deprecated -}}
+{{- if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 ## ✨ Contributing
 
 This project is under active development, and we encourage contributions from our community.
