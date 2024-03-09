@@ -84,6 +84,15 @@ git clean -fxd
 # Commit the changes
 git commit -a --message "chore: ${TITLE}"
 
+# Get the differences between the current branch and the default branch
+diff=$(gh pr diff ${default_branch}...HEAD)
+
+# Check if there are any changes
+if [ -z "$diff" ]; then
+  info "No changes relative to main; not creating a PR."
+  exit 0
+fi
+
 if [ "${current_branch}" != "${default_branch}" ]; then
     git push origin HEAD --force
 fi
@@ -101,6 +110,9 @@ if [  "${XARGS_DRY_RUN}" == "false" ]; then
     # Then delete the branch.
     if [ "${AUTO_MERGE}" == "true" ]; then
         info "Auto-merging PR"
-        gh pr merge --auto --squash --delete-branch
+        gh pr merge --admin --squash --delete-branch
     fi
 fi
+
+# Clean up again, so that `git-xargs` doesn't commit the cache files from `gh` cli in the `tmp/` folder
+git clean -fxd

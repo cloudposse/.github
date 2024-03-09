@@ -2,6 +2,7 @@ export SHELL := /bin/bash
 export TMPDIR := ./tmp
 export MIGRATE_PATH := $(PWD)
 export MIGRATION_PATH := $(MIGRATE_PATH)/migrations/$(MIGRATION)
+#export GIT_XARGS_OPTS := --keep-cloned-repositories
 
 deps:
 	brew install gh yq
@@ -16,10 +17,10 @@ run:
 	echo $$GITHUB_OAUTH_TOKEN; \
 	mkdir -p $$TMPDIR; \
 	git-xargs \
+		$(GIT_XARGS_OPTS) \
 		--loglevel DEBUG \
 		--skip-archived-repos \
 		--repos $(MIGRATION_PATH)/repos.txt \
-		--keep-cloned-repositories \
 		--branch-name migration/$(MIGRATION) \
 		--commit-message 'chore: run migration/$(MIGRATION)' \
 		--skip-pull-requests \
