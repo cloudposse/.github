@@ -223,8 +223,11 @@ For additional context, refer to some of these links.
 {{ end}}
 {{ if not $deprecated -}}
 ## ✨ Contributing
-{{ if has (datasource "config") "contributors" }}
+
 This project is under active development, and we encourage contributions from our community.
+
+{{ if has (datasource "config") "contributors" }}
+
 Many thanks to our outstanding contributors:
 
 <a href="https://github.com/{{ printf "%s" (ds "config").github_repo}}/graphs/contributors">
@@ -232,15 +235,7 @@ Many thanks to our outstanding contributors:
 </a>
 {{- end }}
 
-### 🐛 Bug Reports & Feature Requests
-
-Please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "config").github_repo}}) to report any bugs or file feature requests.
-
-{{ if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
-### 💻 Developing
-
-If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you!
-Hit us up in [Slack]({{ $slack }}), in the `#cloudposse` channel.
+For 🐛 bug reports & feature requests, please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "config").github_repo}}).
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  1. Review our [Code of Conduct]({{ printf "https://github.com/%s/?tab=coc-ov-file#code-of-conduct" (ds "config").github_repo}}) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
