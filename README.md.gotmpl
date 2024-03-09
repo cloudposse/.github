@@ -12,7 +12,7 @@
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
 {{- $cta := printf "<a href=\"%s\"><img alt=\"Request Quote\" src=\"https://img.shields.io/badge/request%%20quote-success.svg?style=for-the-badge\"/></a>" $commercial_support -}}
 {{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
-{{- $sections := slice "introduction" "usage" "quickstart" "examples" -}}
+{{- $sections := slice "introduction" "usage" "quickstart" -}}
 {{- define "nonEmptySections" -}}
 {{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
 {{- end -}}
