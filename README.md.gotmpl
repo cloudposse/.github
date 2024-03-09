@@ -236,6 +236,7 @@ Many thanks to our outstanding contributors:
 
 Please use the [issue tracker]({{ printf "https://github.com/%s/issues" (ds "config").github_repo}}) to report any bugs or file feature requests.
 
+{{ if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 ### 💻 Developing
 
 If you are interested in being a contributor and want to get involved in developing this project or help out with Cloud Posse's other projects, we would love to hear from you!
