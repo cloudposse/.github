@@ -14,7 +14,7 @@
 {{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
 {{- $sections := slice "introduction" "usage" "quickstart" "examples" -}}
 {{- define "nonEmptySections" -}}
-{{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 512) -}}{{ . }} {{ end -}}{{ end -}}
+{{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
 {{- end -}}
 {{- $firstNonEmptySection := (tmpl.Exec "nonEmptySections" $sections) | strings.TrimSpace | regexp.Replace " .*" "" -}}
 
