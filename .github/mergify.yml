@@ -351,6 +351,7 @@ pull_request_rules:
       - and: *not_wip
       - and: *not_a_bot
       - and: *external_contributor
+      - or: *default_branch
     actions:
       comment:
         message: |
