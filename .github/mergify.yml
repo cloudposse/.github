@@ -346,9 +346,13 @@ pull_request_rules:
       - and: *is_open
       - and: *is_default_branch
       - commits[*].date_committer < 30 days ago
+      - updated-at < 7 days ago
       - -label~=(stale)
     actions:
-      close:
+      label:
+        toggle:
+          - stale
+      comment:
         message: |
           Heads up! This pull request looks stale. It will be closed soon, if there are no new commits. ⏳
 
