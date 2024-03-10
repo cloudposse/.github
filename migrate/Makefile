@@ -2,6 +2,7 @@ export SHELL := /bin/bash
 export TMPDIR := ./tmp
 export MIGRATE_PATH := $(PWD)
 export MIGRATION_PATH := $(MIGRATE_PATH)/migrations/$(MIGRATION)
+export BATCH ?= repos.txt
 #export GIT_XARGS_OPTS := --keep-cloned-repositories
 
 deps:
@@ -20,7 +21,7 @@ run:
 		$(GIT_XARGS_OPTS) \
 		--loglevel DEBUG \
 		--skip-archived-repos \
-		--repos $(MIGRATION_PATH)/repos.txt \
+		--repos $(MIGRATION_PATH)/$(BATCH) \
 		--branch-name migration/$(MIGRATION) \
 		--commit-message 'chore: run migration/$(MIGRATION)' \
 		--skip-pull-requests \

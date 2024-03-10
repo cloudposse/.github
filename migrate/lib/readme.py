@@ -28,7 +28,7 @@ def add_newlines_before_comments(data):
         prev_item = key_node
 
 
-def migrate_badges(readme_yaml="README.yaml"):
+def migrate_readme(readme_yaml="README.yaml"):
     yaml = YAML()
     yaml.preserve_quotes = True
     yaml.indent(mapping=2, sequence=4, offset=2)
@@ -46,15 +46,19 @@ def migrate_badges(readme_yaml="README.yaml"):
         return
 
     for data in documents:
-        # Extract GITHUB_REPO value
+        
         github_repo = data.get('github_repo', None)
-        if not github_repo:
-            print(f"github_repo is not set in the {readme_yaml} file.")
-            pass
+        if not github_repo or github_repo == "None":
+            if 'GITHUB_REPO' in os.environ:
+                data['github_repo'] = os.environ['GITHUB_REPO']
+                github_repo = data['github_repo']
+            else:        
+                print(f"github_repo is not set in the {readme_yaml} file.")
+                pass
 
         if 'badges' in data and isinstance(data['badges'], list):
             # Names of badges to be removed (substrings)
-            badges_to_remove = ['Codefresh', 'Build Status', 'Latest Release', 'Commit', 'GitHub Action Build Status', 'Discourse', 'Forum', 'Slack']
+            badges_to_remove = ['Codefresh', 'Build Status', 'Latest Release', 'Last Updated', 'Commit', 'GitHub Action Build Status', 'Discourse', 'Forum', 'Slack']
 
             # Remove unwanted badges
             data['badges'] = [badge for badge in data['badges'] if not any(removal_str in badge['name'].strip() for removal_str in badges_to_remove)]
@@ -90,4 +94,4 @@ def migrate_badges(readme_yaml="README.yaml"):
         yaml.dump_all(documents, file)
 
 if __name__ == "__main__":
-    migrate_badges(sys.argv[1])
+    migrate_readme(sys.argv[1])

@@ -3,13 +3,46 @@ function title() {
 }
 
 function error() {
-    printf "“❌ \e[31mError: %s\e[0m\n" "$*"
+    printf "“❌ \e[31mError: %s\e[0m\n" "$*" >&2
     exit 1
 }
 
 function info() {
-    printf "✅︎ %s\n" "$*"
+    printf "✅︎ %s\n" "$*" >&2
 }
+
+function gh() {
+  while true; do
+    # Check the GitHub API rate limit
+    rate_limit=$(command gh api rate_limit | jq '.resources.core.remaining')
+    
+    # Print the current rate limit
+    info "GitHub API rate limit: $rate_limit remaining"
+    
+    # If the rate limit is sufficient, break the loop
+    if (( rate_limit > 10 )); then
+      break
+    fi
+    
+    # Sleep for 60 seconds before checking the rate limit again
+    info "Rate limit too low, sleeping for 60 seconds..."
+    sleep 60
+  done
+  
+  # Call the gh command with the provided arguments
+  command gh "$@"
+  exit_code=$?
+  # Generate a random number between 500 and 3000 (representing milliseconds)
+  random_milliseconds=$(( RANDOM % 2500 + 500 ))
+
+  # Convert milliseconds to seconds
+  random_seconds=$(echo "scale=3; $random_milliseconds / 1000" | bc)
+  
+  # Sleep for the random amount of time
+  sleep $random_seconds
+  return $exit_code
+}
+
 
 function install() {
     local source=${1}
@@ -66,7 +99,7 @@ function create_labels() {
 
     IFS=',' read -ra required_labels <<< "$LABELS"
 
-    local existing_labels=$(gh label list)
+    local existing_labels=$(gh label list --json name  --jq '.[].name')
 
     for label in "${required_labels[@]}"; do
         if ! echo "$existing_labels" | grep -q "$label"; then

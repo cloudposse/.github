@@ -16,7 +16,7 @@ function install_mergify() {
             rm -f $config
             ;;
     esac
-
+    
     if [ -f $config ]; then
         info "Mergify config already installed"
         # Ensure it's always extending from the .github repo

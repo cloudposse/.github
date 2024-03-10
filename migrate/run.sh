@@ -21,6 +21,7 @@ migration=$1
 migration_path=${MIGRATE_PATH}/migrations/$migration
 migration_script=${migration_path}/script.sh
 migration_readme=${migration_path}/README.md
+curdir=$(pwd)
 
 if [ -z "${migration}" ]; then
     echo "Error: No migration specified"
@@ -51,7 +52,7 @@ git config --local core.excludesFile ${MIGRATE_PATH}/.gitignore
 
 # Clone the `build-harness` to a centralized location so we don't have to do it for every migration
 if [ ! -d "${MIGRATE_PATH}/tmp/build-harness" ]; then
-    git clone https://github.com/cloudposse/build-harness.git "${MIGRATE_PATH}/tmp/build-harness"
+    git clone https://github.com/cloudposse/build-harness.git "$(dirname ${curdir})/build-harness"
 fi
 
 # Load all the helper functions
@@ -63,7 +64,6 @@ done
 
 # Export the repo type
 repo_type
-
 
 if [ -d "${MIGRATE_PATH}/templates/${REPO_TYPE}" ]; then
     info "Using ${REPO_TYPE} repository type for (${XARGS_REPO_NAME})"
@@ -85,11 +85,16 @@ git clean -fxd
 git commit -a --message "chore: ${TITLE}"
 
 # Get the differences between the current branch and the default branch
-diff=$(gh pr diff ${default_branch}...HEAD)
+diff=$(git diff origin/${default_branch}...HEAD)
 
 # Check if there are any changes
 if [ -z "$diff" ]; then
   info "No changes relative to main; not creating a PR."
+  # Check if the remote branch exists
+  if git ls-remote --heads origin "${current_branch}" | grep -q "${current_branch}"; then
+    info "Remote branch exists. Deleting..."
+    git push origin --delete "${current_branch}"
+  fi
   exit 0
 fi
 

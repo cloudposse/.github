@@ -33,6 +33,17 @@ Including a `default` folder, which is used when no files are found for a given 
 
 1. Use `yq` for manipulating YAML. It will preserve comments, but not whitespace. It will also replace unicode characters with their escape sequence. Use `yamlfix` to restore the unicode character.
 2. Use `yamlfix` to format YAML and normalize whitespace.
+3. To generate a list of repos filtered by some prefix (e.g. "terraform-"), run:
+
+   ```shell
+   gh api orgs/cloudposse/repos --paginate | jq -r '.[] | select(.name | startswith("terraform-")) | .full_name'
+   ```
+
+4. To split a list of repos up into batches, run:
+   
+   ```shell
+   split -d -l 16 terraform-repos.txt repos-
+   ```
 
 ## Notable Limitations
 
@@ -41,3 +52,4 @@ Including a `default` folder, which is used when no files are found for a given 
 - `git-xargs` will not update PR title/description, so it's advisable to just use `gh` CLI instead
 - `git-xargs` cannot auto-merge, so use `gh-cli` in script to commit, push, open PR, then merge
 - Using `gh-cli` to bypass the `git-xargs` deficiencies, means rate limiting isn't respected by `git-xargs`
+- `git-xargs` creates random directories and doesn't seem to re-use them making it cumbersome to debug
