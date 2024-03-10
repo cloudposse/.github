@@ -3,17 +3,19 @@
 shared:
   # Automated pull requests from bot users
   automated_prs: &automated_prs
-    - "author=cloudpossebot"
-    - "author=github-actions[bot]"
-    - "author=dependabot[bot]"
-    - "author=renovate[bot]"
+    - or:
+      - "author=cloudpossebot"
+      - "author=github-actions[bot]"
+      - "author=dependabot[bot]"
+      - "author=renovate[bot]"
 
   # Not a bot user
   not_a_bot: &not_a_bot
-    - "-author=cloudpossebot"
-    - "-author=github-actions[bot]"
-    - "-author=dependabot[bot]"
-    - "-author=renovate[bot]"
+    - and:
+      - "-author=cloudpossebot"
+      - "-author=github-actions[bot]"
+      - "-author=dependabot[bot]"
+      - "-author=renovate[bot]"
 
   external_contributor: &external_contributor
     - and:
@@ -23,39 +25,52 @@ shared:
       - "-author=@bots"
       - "-author=@approvers"
       - "-author=@security"
+      - and: *not_a_bot
 
   # Default branches
   default_branch: &default_branch
-    - "base=main"
-    - "base=master"
+    - and:
+      - "base=main"
+      - "base=master"
 
   # Release branches
   release_branch: &release_branch
-    - "base~=^release/v\\d{1,2}$"
+    - and:
+      - "base~=^release/v\\d{1,2}$"
 
   # Not a work in progress
   not_wip: &not_wip
-    - "-title~=^(wip|WIP)"
-    - "-label~=(WIP|wip|do-not-merge|do not merge|triage|duplicate|invalid|stale|wontfix|triage|feedback)"
-    - '-draft'
+    - and:
+      - "-title~=^(wip|WIP)"
+      - "-label~=(WIP|wip|do-not-merge|do not merge|triage|duplicate|invalid|stale|wontfix|triage|feedback)"
+      - '-draft'
+
+  # Not in conflict
+  not_conflict: &not_conflict
+    - and:
+      - "-conflict"
+      - "-label~=(conflict)"
 
   # Properly titled and described
   pr_metadata: &pr_metadata
-    - "title~=(^[0-9A-Za-z]+)"
-    - body~=[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}
-    - -body~=(Describe high-level what changed)
+    - and:
+      - "title~=(^[0-9A-Za-z]+)"
+      - body~=[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}
+      - -body~=(Describe high-level what changed)
 
   # Has reviews and no changes requested
   is_approved: &is_approved
-    - '#approved-reviews-by>=1'
-    - '#changes-requested-reviews-by>=1'
-    - "#review-threads-unresolved=0"
-    - "#commented-reviews-by=0"
+    - and:
+      - '#approved-reviews-by>=1'
+      - '#changes-requested-reviews-by>=1'
+      - "#review-threads-unresolved=0"
+      - "#commented-reviews-by=0"
 
   # Checks are passing
   checks_passing: &checks_passing
-    - "#check-pending=0"
-    - "#status-failure=0"
+    - and:
+      - "#check-pending=0"
+      - "#status-failure=0"
 
   # Only for terraform files
   require_terraform_checks_passing: &require_terraform_checks_passing
@@ -73,7 +88,8 @@ shared:
         - "check-success=validate-codeowners"
 
   is_terraform: &is_terraform
-    - "files~=\\.tf$"
+    - and:
+      - "files~=\\.tf$"
 
   # It's not closed or merged
   is_open: &is_open
@@ -82,7 +98,8 @@ shared:
       - -closed
 
   is_recent_commit: &is_recent_commit
-    - commits[*].date_committer > 1 minutes ago
+    - and:
+      - commits[*].date_committer > 1 minutes ago
 
   # README.md is updated together with README.yaml
   readme_updated: &readme_updated
@@ -104,7 +121,7 @@ shared:
 pull_request_rules:
   - name: "label automated pull requests"
     conditions:
-      - or: *automated_prs
+      - and: *automated_prs
       - and: *is_open
     actions:
       label:
@@ -114,7 +131,7 @@ pull_request_rules:
   - name: "label automated pull requests that update readme"
     conditions:
       - and: *is_open
-      - or: *automated_prs
+      - and: *automated_prs
       - "files=README.md"
     actions:
       label:
@@ -124,7 +141,7 @@ pull_request_rules:
   - name: "run terratest on automated pull requests that update terraform files"
     conditions:
       - and: *is_open
-      - or: *automated_prs
+      - and: *automated_prs
       - and: *is_terraform
     actions:
       comment:
@@ -133,10 +150,10 @@ pull_request_rules:
   - name: "merge automated PRs that only update the markdown files, images or videos"
     conditions:
       - and: *is_open
+      - and: *default_branch
+      - and: *automated_prs
       - "#check-pending=0"
       - "head~=auto-update/.*"
-      - or: *default_branch
-      - or: *automated_prs
       - "files~=\\.(md|gif|png|jpg|mp4)$"
     actions:
       label:
@@ -185,6 +202,7 @@ pull_request_rules:
 
   - name: "ask to rebuild readme"
     conditions:
+      - and: *default_branch
       - and: *is_open
       - files=README.yaml
       - -files=README.md
@@ -206,6 +224,7 @@ pull_request_rules:
 
   - name: "ask for title"
     conditions:
+      - and: *default_branch
       - and: *is_open
       - -title~=^[0-9A-Za-z]+
     actions:
@@ -218,6 +237,7 @@ pull_request_rules:
 
   - name: "ask for description"
     conditions:
+      - and: *default_branch
       - and: *is_open
       - -body~=[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}
       - body~=(Describe high-level what changed)
@@ -232,7 +252,7 @@ pull_request_rules:
   - name: "remove outdated reviews"
     conditions:
       - and: *is_open
-      - or: *default_branch
+      - and: *default_branch
     actions:
       dismiss_reviews:
         changes_requested: true
@@ -259,7 +279,7 @@ pull_request_rules:
   - name: close automated PRs with persistent merge conflicts quickly
     conditions:
       - and: *is_open
-      - or: *automated_prs
+      - and: *automated_prs
       - "conflict"
       - commits[*].date_committer < 1 days ago
     actions:
@@ -278,20 +298,33 @@ pull_request_rules:
           This PR has been closed due to inactivity and merge conflicts.
           Please resolve the conflicts and reopen if necessary.
 
-  #- name: close stale pull request after 90 days
-  #  conditions:
-  #    - and: *is_open
-  #    - or: *default_branch
-  #    - commits[*].date_committer < 90 days ago
-  #  actions:
-  #    close:
-  #      message: |
-  #        This pull request looks stale. Feel free to reopen it if you think it's a mistake.
+  - name: close stale pull request after 90 days
+    conditions:
+      - and: *is_open
+      - and: *default_branch
+      - commits[*].date_committer < 90 days ago
+      - updated-at < 3 days ago
+      - label~=(stale)
+    actions:
+      close:
+        message: |
+          We're going close this pull request as it is now stale. Feel free to reopen it if you think it's a mistake.
+
+  - name: close stale pull request after 90 days
+    conditions:
+      - and: *is_open
+      - and: *default_branch
+      - commits[*].date_committer < 30 days ago
+      - -label~=(stale)
+    actions:
+      close:
+        message: |
+          This pull request looks stale. It will be closed soon if there are no new commits.
 
   #- name: close pull request waiting on feedback for 1 month
   #  conditions:
   #    - and: *is_open
-  #    - or: *default_branch
+  #    - and: *default_branch
   #    - or:
   #      - "label~=(feedback)"
   #      - '#commented-reviews-by > 0'
@@ -306,7 +339,7 @@ pull_request_rules:
   #- name: close pull request marked as invalid, duplicate or won't fix
   #  conditions:
   #    - and: *is_open
-  #    - or: *default_branch
+  #    - and: *default_branch
   #    - "label~=(duplicate|invalid|wontfix)"
   #  actions:
   #    close:
@@ -317,7 +350,7 @@ pull_request_rules:
   #- name: close pull request that is a work in progress and in active for 1 month
   #  conditions:
   #    - and: *is_open
-  #    - or: *default_branch
+  #    - and: *default_branch
   #    - "label~=(WIP|wip|do-not-merge|do not merge)"
   #    - updated-at < 30 days ago
   #  actions:
@@ -350,8 +383,10 @@ pull_request_rules:
       - and: *is_open
       - and: *not_wip
       - and: *not_a_bot
+      - and: *not_conflict
       - and: *external_contributor
-      - or: *default_branch
+      - and: *default_branch
+      - updated-at < 5 minutes ago
     actions:
       comment:
         message: |
@@ -382,7 +417,7 @@ pull_request_rules:
   - name: Add needs-test label on new commits
     conditions:
       - and: *is_open
-      - or: *default_branch
+      - and: *default_branch
       - and: *is_terraform
       - and: *is_recent_commit
       - -label=~needs-test
@@ -393,7 +428,7 @@ pull_request_rules:
   - name: Remove needs-test label when required tests pass
     conditions:
       - and: *is_open
-      - or: *default_branch
+      - and: *default_branch
       - and: *require_terraform_checks_passing
     actions:
       label:
@@ -427,7 +462,7 @@ pull_request_rules:
   - name: rebase pull request when it's more than 10 commits behind main
     conditions:
       - and: *is_open
-      - or: *default_branch
+      - and: *default_branch
       - "#commits-behind>=10"
     actions:
       rebase:
@@ -444,7 +479,7 @@ pull_request_rules:
   #- name: mergeable
   #  conditions:
   #    - and: *is_open
-  #    - or: *default_branch
+  #    - and: *default_branch
   #  actions:
   #    post_check:
   #      success_conditions:
