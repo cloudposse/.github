@@ -77,8 +77,9 @@ shared:
 
   # It's not closed or merged
   is_open: &is_open
-    - -merged
-    - -closed
+    - and:
+      - -merged
+      - -closed
 
   is_recent_commit: &is_recent_commit
     - commits[*].date_committer > 1 minutes ago
@@ -347,6 +348,7 @@ pull_request_rules:
   - name: welcome new contributors
     conditions:
       - and: *is_open
+      - and: *not_stale
       - and: *not_a_bot
       - and: *external_contributor
     actions:
