@@ -348,7 +348,7 @@ pull_request_rules:
   - name: welcome new contributors
     conditions:
       - and: *is_open
-      - and: *not_stale
+      - and: *not_wip
       - and: *not_a_bot
       - and: *external_contributor
     actions:
