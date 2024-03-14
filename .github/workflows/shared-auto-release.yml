@@ -19,12 +19,17 @@ on:
         required: false
         default: auto-release.yml
         type: string
-
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+        
 permissions: {}
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: auto-release
     steps:
       - uses: actions/create-github-app-token@v1
