@@ -43,13 +43,13 @@ shared:
   not_wip: &not_wip
     - and:
       - "-title~=^(wip|WIP)"
-      - "-label~=(WIP|wip|do-not-merge|do not merge|triage|stale|feedback)"
+      - "-label~=(WIP|wip|do-not-merge|do not merge|triage|stale|feedback|help needed)"
       - '-draft'
 
   # Label indicates some action is needed
   needs_attention: &needs_attention
     - and:
-      - "label~=(triage|stale|triage|feedback)"
+      - "label~=(triage|stale|feedback|help needed)"
 
   # Do not merge this PR
   do_not_merge: &do_not_merge
@@ -83,7 +83,7 @@ shared:
   is_approved: &is_approved
     - and:
       - '#approved-reviews-by>=1'
-      - '#changes-requested-reviews-by>=1'
+      - '#changes-requested-reviews-by=0'
       - "#review-threads-unresolved=0"
       - "#commented-reviews-by=0"
 
@@ -297,16 +297,6 @@ pull_request_rules:
         remove:
           - triage
 
-  - name: label inactive PRs as stale
-    conditions:
-      - and: *is_open
-      - commits[*].date_committer < 30 days ago
-      - updated-at < 3 days ago
-      - "-label~=(triage)"
-    actions:
-      label:
-        toggle: ["stale"]
-
   - name: close automated PRs with persistent merge conflicts quickly
     conditions:
       - and: *is_open
@@ -323,6 +313,7 @@ pull_request_rules:
       - and: *is_open
       - "conflict"
       - commits[*].date_committer < 30 days ago
+      - updated-at < 7 days ago
     actions:
       close:
         message: |
@@ -347,7 +338,7 @@ pull_request_rules:
       - and: *is_default_branch
       - commits[*].date_committer < 30 days ago
       - updated-at < 7 days ago
-      - -label~=(stale)
+      - -label~=(stale|triage)
     actions:
       label:
         toggle:
@@ -360,6 +351,7 @@ pull_request_rules:
     conditions:
       - and: *is_open
       - and: *is_default_branch
+      - "label~=(stale)"
       - or:
         - "label~=(feedback)"
         - '#commented-reviews-by > 0'
