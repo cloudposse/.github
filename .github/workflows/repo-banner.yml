@@ -1,0 +1,141 @@
+name: GitHub Repo Banner
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Fetch repo metadata
+      id: metadata
+      uses: ahmadnassri/action-metadata@v2
+
+    - name: Checkout ${{ steps.metadata.outputs.owner_login}}/.github
+      if: steps.metadata.outputs.repository_name != '.github'
+      uses: actions/checkout@v4
+      with:
+        repository: '${{ steps.metadata.outputs.owner_login }}/.github'
+        ref: 'main'
+        path: 'github'
+
+    - name: Symlink ${{github.workspace}} to `github/`
+      if: steps.metadata.outputs.repository_name == '.github'
+      run: |
+        ln -s ${{github.workspace}} ${{github.workspace}}/github
+
+    - uses: actions-tools/yaml-outputs@49506207f91d468273fd5e73fbd18d6d2d9df9b1
+      id: readme
+      with:
+        file-path: 'README.yaml'
+        fail-on-file-not-found: false
+
+    - name: Format Repo Metadata
+      id: meta
+      uses: actions/github-script@v7
+      env:
+        README_NAME: ${{steps.readme.outputs.name}}
+        REPOSITORY_NAME: ${{ steps.metadata.outputs.repository_name }}
+        REPOSITORY_DESCRIPTION: ${{ steps.metadata.outputs.repository_description }}
+      with:
+        script: |
+          const wrapEmoji = (text) => {
+            // https://gist.github.com/srsbiz/2b1b4d624e82bf5c92fceb12aad4cd22
+            const reEmoji = /\p{RI}\p{RI}|\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?(\u{200D}\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?)+|\p{EPres}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})?|\p{Emoji}(\p{EMod}+|\u{FE0F}\u{20E3}?|[\u{E0020}-\u{E007E}]+\u{E007F})/gu;
+            return text.replace(reEmoji, '<span class="emoji" role="img" aria-hidden="true">$&</span>');
+          }
+
+          let name = process.env.README_NAME || process.env.REPOSITORY_NAME
+          let type = 'Project';
+          let desc = process.env.REPOSITORY_DESCRIPTION;
+          let output = '.github/banner.png';
+
+          // Logic to determine repository type and modify name and type accordingly
+          if (name.startsWith('terraform-')) {
+            type = name.includes('provider') ? 'Terraform Provider' : 'Terraform Module';
+            name = name.replace('terraform-', '');
+          } else if (name.startsWith('github-action-')) {
+            type = 'GitHub Action';
+            name = name.replace('github-action-', '');
+          } else if (name.startsWith('example-')) {
+            type = 'Example';
+            name = name.replace('example-', '');
+          } else if (name.startsWith('infra-')) {
+            type = 'Infrastructure';
+            name = name.replace('infra-', '');
+          } else if (name === '.github') {
+            type = '🛠️ Configuration';
+          }
+
+          // Handling description
+          if (desc === 'null') {
+            desc = '';
+          } else {
+            desc = desc.split('.')[0]; // Keeping only the first sentence
+          }
+
+          // Wrapping emojis
+          type = wrapEmoji(type);
+          name = wrapEmoji(name);
+          desc = wrapEmoji(desc);
+
+          // Setting outputs
+          core.setOutput('type', type);
+          core.setOutput('name', name);
+          core.setOutput('desc', desc);
+          core.setOutput('output', output);
+
+
+    - name: Generate banner image
+      id: screenshot
+      uses: cloudposse-github-actions/screenshot@main
+      with:
+        url: "file://${{github.workspace}}/github/banner/index.html"
+        output: "${{ steps.meta.outputs.output }}"
+        customizations: |
+          "#name": >-
+            ${{ steps.meta.outputs.name }}
+          "#type": >-
+            ${{ steps.meta.outputs.type }}
+          "#desc": >-
+            ${{ steps.meta.outputs.desc }}
+        viewportWidth: 1280
+        viewportHeight: 320
+        omitBackground: true
+
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      name: Commit artifact
+      id: auto-commit
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        commit_message: "chore: update repo banner image"
+        commit_user_name: screenshot-action 📷
+        commit_user_email: actions@github.com
+        commit_author: screenshot-action 📷 <actions@github.com>
+        file_pattern: '${{ steps.meta.outputs.output }}'
+
+    - name: Add Image to Step Summary
+      if: steps.auto-commit.outputs.changes_detected == 'true'
+      run: |
+        echo "## Generated Screenshot" >> $GITHUB_STEP_SUMMARY
+        echo "![Generated Screenshot](https://github.com/${{ github.repository }}/blob/${{ steps.auto-commit.outputs.commit_hash }}/${{ steps.screenshot.outputs.file }}?raw=true)" >> $GITHUB_STEP_SUMMARY
+
+    - name: No changes
+      if: steps.auto-commit.outputs.changes_detected == 'false'
+      run: |
+        echo "No changes to screenshot" >> $GITHUB_STEP_SUMMARY

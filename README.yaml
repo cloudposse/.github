@@ -21,29 +21,30 @@ github_repo: cloudposse/.github
 
 # Badges to display
 badges:
+  - name: "Last Update"
+    image: https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge
+    url: https://github.com/cloudposse/.github/commits/main/
   - name: "Slack Community"
-    image: "https://slack.cloudposse.com/badge.svg"
-    url: "https://slack.cloudposse.com"
+    image: "https://slack.cloudposse.com/for-the-badge.svg"
+    url: "https://slack.cloudposse.com"    
 
 # Short description of this project
 description: |-
-  ## .github
-  This repository fulfills several unique functions functions for Cloud Posse.
-    1. It can contain special org-level files that provide functionality for our organization on GitHub. These files include:
-      - `profile/README.md`
-    2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. In the event that a new repo is initialized without these files, the repo will behave on github.com as those the default copies of these files were present in the repo. These files include:
-      - `.github/CODEOWNERS`
-      - `FUNDING.yml`
-      - `.github/ISSUE_TEMPLATE/*`
-      - `.github/PULL_REQUEST_TEMPLATE.md`
-    3. In addition to these GitHub-mediated functions, we are also conscripting the `cloudposse/.github` repo to act as the source for all GitHub Actions workflows and other bootstrapping files that are copied out automatically to our repositories (and which we encourage others to copy to their own repositories) using our [Auto-format GitHub Action](https://github.com/cloudposse/github-action-auto-format). (Note that there is some overlap between the files that GitHub recognizes as repo-level default files and the files that we actively copy to our repos using the `Auto-format` action. This doesn't affect the functionality of either process, but it's worth noting for future reference.) Files that are distributed in this way include:
-      - `.github/auto-release.yml`
-      - `.github/CODEOWNERS`
-      - `.github/ISSUE_TEMPLATE/*`
-      - `Makefile`
-      - `.github/PULL_REQUEST_TEMPLATE.md`
-      - `renovate.json`
-      - `.github/workflows/*`
+  This repository fulfills several unique functions functions for the Cloud Posse GitHub Organization.
+
+  1. It can contain special org-level files that provide functionality for our organization on GitHub. These files include:
+      - **[`profile/README.md`](profile/README.md)** - the profile README for the Cloud Posse GitHub organization
+      - **[`CONTRIBUTING.md`](CONTRIBUTING.md)** - how to get started contributing to our projects
+      - **[`SECURITY.md`](SECURITY.md)** - our security policy and how to report vulnerabilities
+      - **[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)** - our code of conduct covering our community and projects
+      - **[`SUPPORT.md`](SUPPORT.md)** - where to get support for our projects
+  2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. 
+     In the event that a new repo is initialized without these files, the repo will behave on github.com as if the default copies of these files were present in the repo. 
+     These files include:
+      - **[`.github/CODEOWNERS`](.github/CODEOWNERS)** - governs required approvals for pull requests
+      - **[`FUNDING.yml`](FUNDING.yml)** - how to support the project financially
+      - **[`.github/ISSUE_TEMPLATE/*`](.github/ISSUE_TEMPLATE/)** - issue templates for the project
+      - **[`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)** - pull request template for the project
 
 # Example usage
 examples: |-
@@ -52,8 +53,4 @@ examples: |-
     2. Execute the `Auto-format` GitHub Action in the destination repository.
 
 # Contributors to this project
-contributors:
-  - name: "Marcin Brański"
-    github: "3h4x"
-  - name: "Dylan Bannon"
-    github: "dylanbannon"
+contributors: []

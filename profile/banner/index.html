@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <title>Cloud Posse</title>
+    <style>
+    body {
+      overflow: hidden;
+      min-width: 100vw;
+      min-height: 100vh;
+      color: #fff;
+      font-family: 'proxima-nova', sans-serif;
+      font-size: 12px;
+      background: transparent !important;
+    }
+
+    .filler{
+      flex-grow:1; 
+      text-align:center;
+    }
+
+    .highlight {
+      color: #ff9900;
+    }
+
+    .container {
+      background-color: #000;
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.0), 
+          rgba(0, 0, 0, 0.1)
+        ), url(background.svg);
+      background-repeat: no-repeat;
+      background-position: bottom right -2em;
+      background-size: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+    }
+
+    .banner {
+      max-width: 90vw;
+      max-height: 90vh;
+      height: auto;
+      width: 100%;
+      overflow: hidden;
+      font-size: 2.5em;
+    }
+
+    .header {
+      margin-bottom: 0;
+      display: flex;
+    }
+
+    .logo {
+      display: inline-block;
+      float: left;
+    }
+
+    .logo img { 
+      width: 15em;
+    }
+
+    .aws-partner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #fff;
+      border-radius: 12px;
+      padding: 0.3em;
+      font-size: 1.2em;
+      margin-top: 0.2em;
+      max-width: 17vw;
+      width: 100%;
+    }
+
+    .aws-partner img {
+      max-width: 100%;
+      margin-right: 0.2em;
+    }
+
+
+    .subheader {
+      clear: both;
+    }
+
+    .subheader h2 {
+      font-size: 1.4em;
+      color: #cccccc6e;
+      margin: 0;
+    }
+
+    .project {
+      display: flex;
+      height: 100%;
+      margin-top: 1em;
+      flex-grow: 1;
+    }
+
+    .project h1 {
+      font-size: 1.6em;
+      color: #fff;
+      display: flex;
+      align-items: start;
+      margin: 0;
+    }
+
+    .project .description {
+      color: #d9d9d9;
+      font-size: 1.2em;
+      display: initial;
+    }
+   
+    #name {
+      width: 46%;
+      display: none;
+    }
+
+    .project .description strong {
+      color: #fff;
+    }
+
+    .project sub {
+      font-size: 0.9em;
+      margin-top: 1em;
+      display: block;
+      color: #cccccc8c;
+      bottom: 0;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner">
+        <div class="header">
+          <div class="logo"><img src="https://cloudposse.com/wp-content/uploads/2019/01/cloudposse-white.svg"/></div>
+          <div class="filler"></div>
+          <div class="aws-partner"><img src="advanced-consulting-partner.svg"/></div>
+        </div>
+        <div class="subheader">
+          <h2>DevOps Accelerator</h2>
+        </div>
+        <div class="project">
+          <h1 id="name">Terraform Components</h1>
+          <div id="desc" class="description">
+            Open-Source Terraform &amp; GitHub Actions for <strong>Production-Grade Infrastructure</strong>
+            <br/>
+            <sub>Hire us for your next project.</sub>
+          </div>
+        </div>
+     </div>
+   </div>
+  </body>
+</html>

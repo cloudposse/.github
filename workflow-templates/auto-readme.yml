@@ -20,7 +20,7 @@ jobs:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Find default branch name
         id: defaultBranch
@@ -29,7 +29,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         run: |
           default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
-          printf "::set-output name=defaultBranch::%s\n" "${default_branch}"
+          echo "defaultBranch=${default_branch}\n" >> $GITHUB_OUTPUT
           printf "defaultBranchRef.name=%s\n" "${default_branch}"
 
       - name: Update readme
@@ -50,7 +50,7 @@ jobs:
       - name: Create Pull Request
         # This action will not create or change a pull request if there are no changes to make.
         # If a PR of the auto-update/readme branch is open, this action will just update it, not create a new PR.
-        uses: cloudposse/actions/github/create-pull-request@0.30.0
+        uses: cloudposse/actions/github/create-pull-request@0.33.0
         with:
           token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
           commit-message: Update README.md and docs
