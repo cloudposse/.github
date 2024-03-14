@@ -23,7 +23,7 @@ on:
 permissions: {}
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     environment: auto-release
     steps:
