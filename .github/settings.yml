@@ -186,8 +186,8 @@ teams:
   - name: bots
     permission: admin
   - name: engineering
-    permission: triage
+    permission: write
   - name: contributors
-    permission: triage
+    permission: write
   - name: security
     permission: pull
