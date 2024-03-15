@@ -1,0 +1,42 @@
+name: "auto-release"
+on:
+  workflow_call:
+    inputs:
+      prerelease:
+        description: "Boolean indicating whether this release should be a prerelease"
+        required: false
+        default: false
+        type: string
+      publish:
+        description: "Whether to publish a new release immediately"
+        required: false
+        default: false
+        type: string
+      config-name:
+        description: |
+          If your workflow requires multiple release-drafter configs it is helpful to override the config-name.
+          The config should still be located inside `.github` as that's where we are looking for config files.
+        required: false
+        default: configs/draft-release.yml
+        type: string
+
+permissions: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: auto-release
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+
+      # Drafts your next Release notes as Pull Requests are merged into "main"
+      - uses: cloudposse/github-action-auto-release@v1
+        with:
+          publish: ${{ inputs.publish }}
+          prerelease: ${{ inputs.prerelease }}
+          token: ${{ steps.github-app.outputs.token }}
+          config-name: ${{ inputs.config-name }}
