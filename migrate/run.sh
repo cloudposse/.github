@@ -3,7 +3,7 @@
 # IMPORTANT: This script should be invoked by `git-xargs`
 #
 
-export LABELS="auto-update,migration,no-release,do not merge"
+export LABELS="auto-update,migration,no-release"
 export YAMLFIX_CONFIG_PATH="${MIGRATE_PATH}/yamlfix.yml"
 # Check if MIGRATE_PATH is not set
 if [ -z "${MIGRATE_PATH}" ]; then
