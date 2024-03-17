@@ -49,6 +49,12 @@ repository:
   #is_template: false
 
 environments:
+  - name: auto-release
+    deployment_branch_policy:
+      custom_branches:
+        - main
+        - master
+        - production
   - name: release
     deployment_branch_policy:
       custom_branches:
