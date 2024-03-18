@@ -30,7 +30,7 @@ permissions: {}
 jobs:
   release:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
-    environment: auto-release
+    environment: release
     steps:
       - uses: actions/create-github-app-token@v1
         id: github-app
