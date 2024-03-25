@@ -437,6 +437,8 @@ pull_request_rules:
       - and: *is_open
       - and: *not_a_bot
       - '#label=0'
+      # When the PR is approved, the triage label is removed. Do not add it back
+      - '#approved-reviews-by=0'
       - or:
         - created-at > 5 minutes ago
         - commits[*].date_committer > 5 minutes ago
