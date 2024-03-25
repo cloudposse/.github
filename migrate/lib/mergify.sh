@@ -4,6 +4,19 @@ function install_mergify() {
     local config=".github/mergify.yml"
 
     mkdir -p $(dirname $config)
+
+    case "${REPO_TYPE}" in
+        "terraform-provider")
+            rm -f $config
+            ;;
+        "terraform-module")
+            rm -f $config
+            ;;
+        "github-action")
+            rm -f $config
+            ;;
+    esac
+    
     if [ -f $config ]; then
         info "Mergify config already installed"
         # Ensure it's always extending from the .github repo

@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ssm-tls-self-signed-cert
+cloudposse/terraform-aws-datadog-lambda-forwarder
+cloudposse/terraform-aws-ec2-client-vpn
+cloudposse/terraform-aws-api-gateway
+cloudposse/terraform-aws-mwaa
+cloudposse/terraform-aws-lambda-function
+cloudposse/terraform-aws-service-quotas
+cloudposse/terraform-aws-budgets
+cloudposse/terraform-aws-ecr-public
+cloudposse/terraform-aws-amplify-app
+#cloudposse/terraform-provider-atmos
+cloudposse/terraform-aws-glue
+cloudposse/terraform-aws-github-action-token-rotator
+cloudposse/terraform-aws-athena
+cloudposse/terraform-aws-lakeformation
+cloudposse/terraform-aws-kinesis-stream

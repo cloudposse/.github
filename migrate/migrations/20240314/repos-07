@@ -1,0 +1,16 @@
+cloudposse/terraform-opsgenie-incident-management
+cloudposse/terraform-aws-msk-apache-kafka-cluster
+cloudposse/terraform-aws-utils
+cloudposse/terraform-kubernetes-tfc-cloud-agent
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
+cloudposse/terraform-aws-security-hub
+cloudposse/terraform-aws-service-control-policies
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-yaml-config
+cloudposse/terraform-aws-config-storage
+cloudposse/terraform-aws-config
+cloudposse/terraform-aws-inspector
+cloudposse/terraform-aws-eks-spotinst-ocean-nodepool
+cloudposse/terraform-yaml-stack-config
+cloudposse/terraform-provider-utils
+cloudposse/terraform-aws-security-group

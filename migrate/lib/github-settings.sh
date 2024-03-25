@@ -16,13 +16,25 @@ function install_github_settings() {
         info "Creating $settings"
         echo "_extends: .github" > $settings
     fi
+    # Fetch the current name and description of the repo and update the settings file
+    local repo_description=$(gh repo view --json description --jq '.description')
+    local repo_homepage=$(gh repo view --json homepageUrl --jq '.homepageUrl')
+    local repo_topics=$(gh api repos/{owner}/{repo}/topics --jq '.names | join(", ")')
+
+    yq -ei ".repository.name = \"$XARGS_REPO_NAME\"" $settings
+    yq -ei ".repository.description = \"$repo_description\"" $settings
+    if [ -z "$repo_homepage" ]; then
+        yq -ei ".repository.homepage = \"https://cloudposse.com/accelerate\"" $settings
+    else
+        yq -ei ".repository.homepage = \"$repo_homepage\"" $settings
+    fi
+    
+    yq -ei ".repository.topics = \"$repo_topics\"" $settings
 
     # finally, let's sort the file so _extends is at the top.
     yq -ei 'sort_keys(.)' $settings
-
-    # Format the YAML for humans
-    yamlfix -c ${MIGRATE_PATH}/yamlfix.yml $settings
-
+    sed -i '' '/# Upstream changes/d' $settings
+    yq -ei '(._extends | key) head_comment="Upstream changes from _extends are only recognized when modifications are made to this file in the default branch."' $settings
+    
     git add $settings
-
 }

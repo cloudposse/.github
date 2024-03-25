@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-vpc
+cloudposse/terraform-aws-elastic-beanstalk-application
+cloudposse/terraform-aws-elastic-beanstalk-environment
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-aws-rds-cluster
+cloudposse/terraform-aws-cicd
+cloudposse/terraform-aws-route53-cluster-zone
+cloudposse/terraform-aws-efs
+cloudposse/terraform-aws-route53-cluster-hostname
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-route53-alias
+cloudposse/terraform-null-label
+cloudposse/terraform-aws-iam-assumed-roles
+cloudposse/terraform-null-ansible
+cloudposse/terraform-aws-ec2-ami-snapshot
+cloudposse/terraform-aws-ec2-ami-backup

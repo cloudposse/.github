@@ -1,0 +1,16 @@
+cloudposse/terraform-null-smtp-mail
+cloudposse/terraform-aws-iam-account-settings
+cloudposse/terraform-github-repository-webhooks
+cloudposse/terraform-aws-lambda-elasticsearch-cleanup
+cloudposse/terraform-external-module-artifact
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair
+cloudposse/terraform-aws-rds-replica
+cloudposse/terraform-aws-rds-cluster-instance-group
+cloudposse/terraform-aws-vpc-peering-multi-account
+cloudposse/terraform-aws-s3-bucket
+cloudposse/terraform-aws-mq-broker
+cloudposse/terraform-aws-vpn-connection
+cloudposse/terraform-aws-iam-chamber-s3-role
+cloudposse/terraform-aws-iam-role
+cloudposse/terraform-aws-documentdb-cluster
+cloudposse/terraform-aws-cloudformation-stack-set

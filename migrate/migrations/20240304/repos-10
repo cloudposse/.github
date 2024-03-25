@@ -1,0 +1,8 @@
+cloudposse/terraform-aws-dms
+cloudposse/terraform-aws-ecs-cluster
+cloudposse/terraform-aws-network-firewall
+cloudposse/terraform-aws-route53-resolver-dns-firewall
+cloudposse/terraform-module-test
+cloudposse/terraform-aws-step-functions
+cloudposse/terraform-aws-kv-store
+cloudposse/terraform-aws-refarch-utils

@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-emr-cluster
+cloudposse/terraform-aws-vpc-flow-logs-s3-bucket
+cloudposse/terraform-aws-backup
+cloudposse/terraform-aws-cloudformation-stack
+cloudposse/terraform-aws-ssm-parameter-chamber-reader
+cloudposse/terraform-aws-eks-fargate-profile
+cloudposse/terraform-aws-eks-node-group
+cloudposse/terraform-aws-spotinst-mrscaler
+cloudposse/terraform-aws-nlb
+cloudposse/terraform-aws-eks-iam-role
+cloudposse/terraform-aws-ses
+cloudposse/terraform-example-module
+cloudposse/terraform-aws-sns-topic
+cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+cloudposse/terraform-aws-transit-gateway
+cloudposse/terraform-aws-cloudwatch-events

@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-aws-efs-backup
+cloudposse/terraform-aws-elasticache-redis
+cloudposse/terraform-aws-cloudtrail
+cloudposse/terraform-aws-codebuild
+cloudposse/terraform-aws-dynamic-subnets
+cloudposse/terraform-aws-ec2-admin-server
+cloudposse/terraform-aws-ecr
+cloudposse/terraform-aws-rds
+cloudposse/terraform-aws-key-pair
+cloudposse/terraform-datadog-platform
+cloudposse/terraform-aws-cloudfront-s3-cdn
+cloudposse/terraform-aws-s3-log-storage
+cloudposse/terraform-aws-s3-website
+cloudposse/terraform-aws-cloudfront-cdn
+cloudposse/terraform-aws-acm-request-certificate
