@@ -1,4 +1,4 @@
-name: "shared auto release"
+name: "Shared auto release"
 on:
   workflow_call:
     inputs:
