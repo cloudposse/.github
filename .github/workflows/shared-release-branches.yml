@@ -1,0 +1,41 @@
+name: "Shared release branches"
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+
+permissions: {}
+
+jobs:
+  major-release-tagger:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    environment: release
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+
+      - uses: cloudposse/github-action-major-release-tagger@v1
+        with:
+          token: ${{ steps.github-app.outputs.token }}
+
+  release-branch-manager:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    environment: release
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+
+      - uses: cloudposse/github-action-release-branch-manager@v1
+        with:
+          token: ${{ steps.github-app.outputs.token }}
