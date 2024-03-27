@@ -22,7 +22,7 @@ jobs:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
-      - uses: cloudposse/github-action-major-release-tagger@v1
+      - uses: cloudposse/github-action-major-release-tagger@input-github-token
         with:
           token: ${{ steps.github-app.outputs.token }}
 
