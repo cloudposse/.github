@@ -12,13 +12,6 @@ on:
         required: false
         default: false
         type: string
-      config-name:
-        description: |
-          If your workflow requires multiple release-drafter configs it is helpful to override the config-name.
-          The config should still be located inside `.github` as that's where we are looking for config files.
-        required: false
-        default: auto-release.yml
-        type: string
       runs-on:
         description: "Overrides job runs-on setting (json-encoded list)"
         type: string
@@ -38,10 +31,24 @@ jobs:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
+      - name: Context
+        id: context
+        uses: cloudposse/github-action-yaml-config-query@v0.1.3
+        with:
+          query: .${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+          config: |-
+            true: 
+              config: auto-release.yml
+              latest: true
+            false:
+              config: auto-release-hotfix.yml
+              latest: false
+
       # Drafts your next Release notes as Pull Requests are merged into "main"
       - uses: cloudposse/github-action-auto-release@latest-only-for-default-branch
         with:
+          token: ${{ steps.github-app.outputs.token }}
           publish: ${{ inputs.publish }}
           prerelease: ${{ inputs.prerelease }}
-          token: ${{ steps.github-app.outputs.token }}
-          config-name: ${{ inputs.config-name }}
+          latest: ${{ steps.context.outputs.latest }}
+          config-name: ${{ steps.context.outputs.config }}
