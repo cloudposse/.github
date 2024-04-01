@@ -39,7 +39,7 @@ jobs:
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
       # Drafts your next Release notes as Pull Requests are merged into "main"
-      - uses: cloudposse/github-action-auto-release@v1
+      - uses: cloudposse/github-action-auto-release@v2
         with:
           publish: ${{ inputs.publish }}
           prerelease: ${{ inputs.prerelease }}
