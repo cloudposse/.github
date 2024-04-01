@@ -22,7 +22,7 @@ jobs:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
-      - uses: cloudposse/github-action-major-release-tagger@input-github-token
+      - uses: cloudposse/github-action-major-release-tagger@v2
         with:
           token: ${{ steps.github-app.outputs.token }}
 
@@ -36,6 +36,6 @@ jobs:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
-      - uses: cloudposse/github-action-release-branch-manager@fix-github-token
+      - uses: cloudposse/github-action-release-branch-manager@v2
         with:
           token: ${{ steps.github-app.outputs.token }}
