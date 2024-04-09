@@ -54,8 +54,8 @@ environments:
       custom_branches:
         - main
         - release/**
-      custom_tags:
-        - *.*.*
+        # - name: "*.*.*"
+        #   type: tag
   - name: security
     deployment_branch_policy:
       custom_branches:
