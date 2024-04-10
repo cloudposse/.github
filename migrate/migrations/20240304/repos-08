@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-sso
+cloudposse/terraform-aws-firewall-manager
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-rds-db-proxy
+cloudposse/terraform-cloudflare-zone
+cloudposse/terraform-cloudflare-waf-rulesets
+cloudposse/terraform-aws-waf
+cloudposse/terraform-aws-redshift-cluster
+cloudposse/terraform-aws-health-events
+cloudposse/terraform-aws-macie
+cloudposse/terraform-aws-global-accelerator
+cloudposse/terraform-aws-ssm-patch-manager
+cloudposse/terraform-provider-awsutils
+cloudposse/terraform-aws-helm-release
+cloudposse/terraform-aws-iam-policy
+cloudposse/terraform-aws-transfer-sftp

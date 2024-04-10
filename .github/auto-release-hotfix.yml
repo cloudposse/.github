@@ -4,8 +4,7 @@ tag-template: '$RESOLVED_VERSION'
 version-template: '$MAJOR.$MINOR.$PATCH'
 version-resolver:
   major:
-    labels:
-    - 'major'
+    labels: []
   minor:
     labels:
     - 'minor'

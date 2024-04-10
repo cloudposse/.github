@@ -1,3 +1,4 @@
+github_repo: 'XXXXXXX'
 badges:
 - name: "Latest Release"
   image: "https://img.shields.io/github/release/cloudposse/terraform-aws-msk-apache-kafka-cluster.svg"
@@ -14,6 +15,10 @@ badges:
 - name: "Slack Community"
   image: https://slack.cloudposse.com/badge.svg
   url: https://slack.cloudposse.com
+
+- name: "Unique Badge"
+  image: https://foobar.com/badge.svg
+  url: https://foobar.com
 
 - name: "Codefresh Build Status"
   image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-web-app?type=cf-1"
