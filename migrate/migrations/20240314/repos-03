@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-iam-s3-user
+cloudposse/terraform-terraform-label
+cloudposse/terraform-aws-ssm-parameter-store
+cloudposse/terraform-aws-ecs-events
+cloudposse/terraform-aws-ec2-instance-group
+cloudposse/terraform-aws-rds-cloudwatch-sns-alarms
+cloudposse/terraform-aws-efs-cloudwatch-sns-alarms
+cloudposse/terraform-aws-elasticache-cloudwatch-sns-alarms
+cloudposse/terraform-aws-ecs-container-definition
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-lb-s3-bucket
+cloudposse/terraform-aws-ecs-codepipeline
+cloudposse/terraform-aws-alb
+cloudposse/terraform-aws-alb-ingress
+cloudposse/terraform-aws-sqs-cloudwatch-sns-alarms
+cloudposse/terraform-aws-lambda-cloudwatch-sns-alarms
