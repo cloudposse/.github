@@ -65,10 +65,10 @@ jobs:
           df -h
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@v5
         with:
-          version: ${{ inputs.version }}
-          args: release --clean --parallelism 2 --timeout 180m --debug --verbose
+          version: latest
+          args: release --config ./. --clean --parallelism 2 --timeout 180m --debug --verbose
         env:
           # GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
