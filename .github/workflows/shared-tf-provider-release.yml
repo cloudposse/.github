@@ -35,6 +35,7 @@ jobs:
       - name: Unshallow
         run: |-
           git fetch --prune --unshallow
+          git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ inputs.version }}
 
       - name: Set up Go
         uses: actions/setup-go@v3
