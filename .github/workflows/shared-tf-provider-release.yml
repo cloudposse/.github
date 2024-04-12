@@ -10,8 +10,7 @@ on:
         default: '["ubuntu-latest"]'
       version:
         description: "Release version tag"
-        required: false
-        default: ${{ github.event.release.tag_name }}
+        required: true
         type: string
 permissions: {}
 
