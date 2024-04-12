@@ -34,7 +34,9 @@ jobs:
 
       - name: Unshallow
         run: |-
-          git fetch --prune --unshallow
+          git fetch --prune --unshallow          
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"          
           git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ inputs.version }}
 
       - name: Set up Go
