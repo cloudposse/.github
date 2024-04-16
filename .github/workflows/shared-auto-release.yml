@@ -17,7 +17,7 @@ on:
           A boolean indicating whether the releaser mode is disabled.
         type: boolean
         required: false
-        default: 'false'
+        default: false
       runs-on:
         description: "Overrides job runs-on setting (json-encoded list)"
         type: string
