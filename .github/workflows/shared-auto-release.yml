@@ -12,6 +12,11 @@ on:
         required: false
         default: false
         type: string
+      disable-releaser:
+        description: |
+          A boolean indicating whether the releaser mode is disabled.
+        required: false
+        default: 'false'
       runs-on:
         description: "Overrides job runs-on setting (json-encoded list)"
         type: string
@@ -98,5 +103,6 @@ jobs:
           token: ${{ steps.github-app.outputs.token }}
           publish: ${{ inputs.publish }}
           prerelease: ${{ inputs.prerelease }}
+          disable-releaser: ${{ inputs.disable-releaser }}
           latest: ${{ steps.context.outputs.latest }}
           config-name: ${{ steps.context.outputs.config }}
