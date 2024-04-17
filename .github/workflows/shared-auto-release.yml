@@ -19,7 +19,7 @@ on:
         default: '["ubuntu-latest"]'
     outputs:
       id:
-        description: The ID of therelease that was created or updated.
+        description: The ID of the release that was created or updated.
         value: ${{ jobs.release.outputs.id }}
       name:
         description: The name of the release
@@ -92,7 +92,7 @@ jobs:
               latest: false
 
       # Drafts your next Release notes as Pull Requests are merged into "main"
-      - uses: cloudposse/github-action-auto-release@added-outputs
+      - uses: cloudposse/github-action-auto-release@v2
         id: drafter
         with:
           token: ${{ steps.github-app.outputs.token }}
