@@ -23,6 +23,7 @@ jobs:
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
       - uses: cloudposse/github-action-major-release-tagger@v2
+        with:
           token: ${{ steps.github-app.outputs.token }}
 
   release-branch-manager:
