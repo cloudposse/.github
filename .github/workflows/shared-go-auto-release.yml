@@ -27,37 +27,37 @@ on:
     outputs:
       id:
         description: The ID of the release that was created or updated.
-        value: ${{ jobs.release.outputs.id }}
+        value: ${{ jobs.publish.outputs.id }}
       name:
         description: The name of the release
-        value: ${{ jobs.release.outputs.name }}
+        value: ${{ jobs.publish.outputs.name }}
       tag_name:
         description: The name of the tag associated with the release.
-        value: ${{ jobs.release.outputs.tag_name }}
+        value: ${{ jobs.publish.outputs.tag_name }}
       body:
         description: The body of the drafted release.
-        value: ${{ jobs.release.outputs.body }}
+        value: ${{ jobs.publish.outputs.body }}
       html_url:
         description: The URL users can navigate to in order to view the release
-        value: ${{ jobs.release.outputs.html_url }}
+        value: ${{ jobs.publish.outputs.html_url }}
       upload_url:
         description: The URL for uploading assets to the release, which could be used by GitHub Actions for additional uses, for example the @actions/upload-release-asset GitHub Action.
-        value: ${{ jobs.release.outputs.upload_url }}
+        value: ${{ jobs.publish.outputs.upload_url }}
       major_version:
         description: The next major version number. For example, if the last tag or release was v1.2.3, the value would be v2.0.0.
-        value: ${{ jobs.release.outputs.major_version }}
+        value: ${{ jobs.publish.outputs.major_version }}
       minor_version:
         description: The next minor version number. For example, if the last tag or release was v1.2.3, the value would be v1.3.0.
-        value: ${{ jobs.release.outputs.minor_version }}
+        value: ${{ jobs.publish.outputs.minor_version }}
       patch_version:
         description: The next patch version number. For example, if the last tag or release was v1.2.3, the value would be v1.2.4.
-        value: ${{ jobs.release.outputs.patch_version }}
+        value: ${{ jobs.publish.outputs.patch_version }}
       resolved_version:
         description: The next resolved version number, based on GitHub labels.
-        value: ${{ jobs.release.outputs.resolved_version }}
+        value: ${{ jobs.publish.outputs.resolved_version }}
       exists:
         description: Tag exists so skip new release issue
-        value: ${{ jobs.release.outputs.exists }}
+        value: ${{ jobs.publish.outputs.exists }}
 
 permissions: {}
 
@@ -156,7 +156,7 @@ jobs:
           printf "\n\nAll disk space:\n"
           df -h
 
-  release:
+  publish:
     needs: [ goreleaser ]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@get-rid-pat
     with:
