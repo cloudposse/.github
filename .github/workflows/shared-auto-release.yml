@@ -19,7 +19,7 @@ on:
         default: '["ubuntu-latest"]'
     outputs:
       id:
-        description: The ID of therelease that was created or updated.
+        description: The ID of the release that was created or updated.
         value: ${{ jobs.release.outputs.id }}
       name:
         description: The name of the release
