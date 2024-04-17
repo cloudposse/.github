@@ -17,6 +17,11 @@ on:
         type: string
         required: false
         default: '["ubuntu-latest"]'
+      summary-enabled:
+        description: Enable github action summary.
+        required: false
+        default: true
+        type: boolean
 
     outputs:
       id:
@@ -100,4 +105,5 @@ jobs:
           publish: ${{ inputs.publish }}
           prerelease: ${{ inputs.prerelease }}
           latest: ${{ steps.context.outputs.latest }}
+          summary-enabled: ${{ inputs.summary-enabled }}
           config-name: ${{ steps.context.outputs.config }}
