@@ -1,4 +1,4 @@
-name: "Shared TF provider release branches"
+name: "Shared go releaser"
 
 on:
   workflow_call:
@@ -8,15 +8,31 @@ on:
         type: string
         required: false
         default: '["ubuntu-latest"]'
-      version:
-        description: "Release version tag"
-        required: true
+      prerelease:
+        description: "Boolean indicating whether this release should be a prerelease"
+        required: false
+        default: false
         type: string
+      publish:
+        description: "Whether to publish a new release immediately"
+        required: false
+        default: false
+        type: string
+
 permissions: {}
 
 jobs:
+  draft_release:
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@get-rid-pat
+    with:
+      publish: false
+      summary-enabled: false
+      prerelease: ${{ inputs.prerelease }}
+    secrets: inherit
+
   goreleaser:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
+    needs: [ draft_release ]
     environment: release
     steps:
       - uses: actions/create-github-app-token@v1
@@ -30,19 +46,19 @@ jobs:
           sudo apt-get update && sudo apt-get install -y git gnupg2
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Unshallow
         run: |-
           git fetch --prune --unshallow          
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"          
-          git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ inputs.version }}
+          git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ needs.draft_release.outputs.tag_name }}
 
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: "1.22"
+          go-version-file: go.mod
 
       - name: Import GPG key
         id: import_gpg
@@ -66,11 +82,20 @@ jobs:
           printf "\n\nAll disk space:\n"
           df -h
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/.github
+          path: .configs
+          sparse-checkout: |
+            .github/goreleaser.yml
+          sparse-checkout-cone-mode: false
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
           version: latest
-          args: release --clean --parallelism 2 --timeout 180m --debug --verbose
+          args: release --config ./.configs/.github/goreleaser.yml --clean --parallelism 2 --timeout 180m
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
@@ -90,3 +115,12 @@ jobs:
           fi
           printf "\n\nAll disk space:\n"
           df -h
+
+
+  publish_release:
+    needs: [ goreleaser ]
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@get-rid-pat
+    with:
+      publish: ${{ inputs.publish }}
+      prerelease: ${{ inputs.prerelease }}
+    secrets: inherit
