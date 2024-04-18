@@ -97,12 +97,11 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"          
           git tag -a -m "Release ${{ needs.draft.outputs.tag_name }}" ${{ needs.draft.outputs.tag_name }}
-          echo ".config" >> ./.gitignore
 
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version-file: go.mod
+          go-version-file: source/go.mod
 
       - name: Import GPG key
         id: import_gpg
