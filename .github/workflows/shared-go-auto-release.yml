@@ -99,13 +99,13 @@ jobs:
           git tag -a -m "Release ${{ needs.draft.outputs.tag_name }}" ${{ needs.draft.outputs.tag_name }}
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version-file: source/go.mod
 
       - name: Import GPG key
         id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@v5
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
