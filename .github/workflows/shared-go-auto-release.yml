@@ -137,12 +137,24 @@ jobs:
           sparse-checkout-cone-mode: false
           ref: get-rid-pat
 
+      - name: Go releaser config
+        working-directory: source
+        id: go-releaser-config
+        run: |-
+          if [ -f .goreleaser.yml ]; then
+            echo 'Go releaser config exists.'
+            echo "path=./.goreleaser.yml" >> $GITHUB_OUTPUT
+          else
+            echo 'Go releaser config does not exist. Use org wide config'
+            echo "path=../.configs/.github/goreleaser.yml" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
           workdir: source
           version: latest
-          args: release --config ../.configs/.github/goreleaser.yml --clean --parallelism 2 --timeout 180m
+          args: release --config ${{ steps.go-releaser-config.outputs.path }} --clean --parallelism 2 --timeout 180m
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
