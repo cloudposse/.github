@@ -103,6 +103,7 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version-file: source/go.mod
+          cache-dependency-path: source/go.sum
 
       - name: Import GPG key
         id: import_gpg
