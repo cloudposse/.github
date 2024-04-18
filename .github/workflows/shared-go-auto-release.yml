@@ -139,8 +139,8 @@ jobs:
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
-        working-directory: source
         with:
+          workdir: source
           version: latest
           args: release --config ../.configs/.github/goreleaser.yml --clean --parallelism 2 --timeout 180m
         env:
