@@ -17,6 +17,12 @@ on:
         type: string
         required: false
         default: '["ubuntu-latest"]'
+      summary-enabled:
+        description: Enable github action summary.
+        required: false
+        default: true
+        type: boolean
+
     outputs:
       id:
         description: The ID of the release that was created or updated.
@@ -50,7 +56,7 @@ on:
         value: ${{ jobs.release.outputs.resolved_version }}
       exists:
         description: Tag exists so skip new release issue
-        value: ${{ jobs.check-duplicate.outputs.exists }}
+        value: ${{ jobs.release.outputs.exists }}
 
 permissions: {}
 
@@ -99,4 +105,5 @@ jobs:
           publish: ${{ inputs.publish }}
           prerelease: ${{ inputs.prerelease }}
           latest: ${{ steps.context.outputs.latest }}
+          summary-enabled: ${{ inputs.summary-enabled }}
           config-name: ${{ steps.context.outputs.config }}
