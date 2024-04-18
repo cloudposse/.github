@@ -56,7 +56,7 @@ on:
         value: ${{ jobs.release.outputs.resolved_version }}
       exists:
         description: Tag exists so skip new release issue
-        value: ${{ jobs.check-duplicate.outputs.exists }}
+        value: ${{ jobs.release.outputs.exists }}
 
 permissions: {}
 
