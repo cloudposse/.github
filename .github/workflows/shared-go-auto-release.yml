@@ -87,8 +87,11 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: source
 
       - name: Unshallow
+        working-directory: source
         run: |-
           git fetch --prune --unshallow          
           git config --global user.email "you@example.com"
@@ -110,6 +113,7 @@ jobs:
 
       - name: Check disk space before
         shell: bash
+        working-directory: source
         run: |-
           printf "\nPWD is %s\ndf -h %s\n\n" "$(pwd -P)" "$(pwd -P)"
           df -h $(pwd -P)
@@ -135,9 +139,10 @@ jobs:
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
+        working-directory: source
         with:
           version: latest
-          args: release --config ./.configs/.github/goreleaser.yml --clean --parallelism 2 --timeout 180m
+          args: release --config ../.configs/.github/goreleaser.yml --clean --parallelism 2 --timeout 180m
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
@@ -145,6 +150,7 @@ jobs:
       - name: Check disk space after
         if: success() || failure()
         shell: bash
+        working-directory: source
         run: |-
           printf "\nPWD is %s\ndf -h %s\n\n" "$(pwd -P)" "$(pwd -P)"
           df -h $(pwd -P)
