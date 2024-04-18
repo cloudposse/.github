@@ -71,6 +71,7 @@ jobs:
     secrets: inherit
 
   goreleaser:
+    if: ${{ needs.draft.outputs.exists == 'false' }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     needs: [ draft ]
     environment: release
@@ -164,7 +165,8 @@ jobs:
           df -h
 
   publish:
-    needs: [ goreleaser ]
+    if: ${{ needs.draft.outputs.exists == 'false' }}
+    needs: [ goreleaser, draft ]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@get-rid-pat
     with:
       publish: ${{ inputs.publish }}
