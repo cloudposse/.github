@@ -7,7 +7,7 @@ on:
         description: "Overrides job runs-on setting (json-encoded list)"
         type: string
         required: false
-        default: '["ubuntu-latest"]'
+        default: 'self-hosted-large'
       prerelease:
         description: "Boolean indicating whether this release should be a prerelease"
         required: false
