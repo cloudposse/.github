@@ -90,6 +90,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: source
+          token: ${{ steps.github-app.outputs.token }}
 
       - name: Unshallow
         working-directory: source
@@ -137,6 +138,7 @@ jobs:
             .github/goreleaser.yml
           sparse-checkout-cone-mode: false
           ref: main
+          token: ${{ steps.github-app.outputs.token }}
 
       - name: Go releaser config
         working-directory: source
