@@ -101,7 +101,7 @@ jobs:
           git tag -a -m "Release ${{ needs.draft.outputs.tag_name }}" ${{ needs.draft.outputs.tag_name }}
 
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version-file: source/go.mod
           cache-dependency-path: source/go.sum
