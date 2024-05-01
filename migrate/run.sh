@@ -117,6 +117,9 @@ if [  "${XARGS_DRY_RUN}" == "false" ]; then
         info "Auto-merging PR"
         gh pr merge --admin --squash --delete-branch
     fi
+else
+		info "https://github.com/${XARGS_REPO_OWNER}/${XARGS_REPO_NAME}/compare/${current_branch}?expand=1"
+		info "Dry run complete. No PR created."
 fi
 
 # Clean up again, so that `git-xargs` doesn't commit the cache files from `gh` cli in the `tmp/` folder
