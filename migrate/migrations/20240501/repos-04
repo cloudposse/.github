@@ -1,0 +1,16 @@
+cloudposse/terraform-null-label
+cloudposse/terraform-aws-cloudfront-cdn
+cloudposse/terraform-aws-iam-role
+cloudposse/terraform-aws-elastic-beanstalk-environment
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-aws-efs-cloudwatch-sns-alarms
+cloudposse/terraform-aws-mwaa
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-aws-elasticsearch
+cloudposse/terraform-aws-security-hub
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-ses-lambda-forwarder
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-aws-named-subnets
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair
