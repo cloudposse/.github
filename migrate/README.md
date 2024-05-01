@@ -4,7 +4,7 @@ Create a migration script in [`migrations/<date>/script.sh`](migrations/) and us
 
 ```shell
 # Export this environment variable to actually create and merge PRs
-XARGS_DRY_RUN=false 
+export XARGS_DRY_RUN=false 
 
 # Pass the migration and the list of repos in the migration to process.
 ./git-xargs.sh 20240304 repos.txt
@@ -37,6 +37,7 @@ Including a `default` folder, which is used when no files are found for a given 
 
 1. Use `yq` for manipulating YAML. It will preserve comments but not whitespace. It will also replace Unicode characters with their escape sequence. Use `yamlfix` to restore the Unicode character.
 2. Use `yamlfix` to format YAML and normalize whitespace.
+3. Create a list of repos using the `gh repo list` command
 
 <details><summary>Past Limitations Using `git-xargs` CLI</summary>
 

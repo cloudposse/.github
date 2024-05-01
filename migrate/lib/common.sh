@@ -49,8 +49,13 @@ function install() {
     local destination=${2:-$source}
     local source_file=$(template_file $source)
     if [ -f "${source_file}" ]; then
-        info "Installing $destination from $source_file"
+        info "Installing file $destination from $source_file"
         cp -a $source_file $destination
+        git add $destination
+		elif [ -d "${source_file}" ]; then
+        info "Installing directory $destination from $source_file"
+				mkdir -p $destination
+        cp -a $source_file/ $destination/
         git add $destination
     else
         error "Template not found: $source"
@@ -65,6 +70,10 @@ function template_file() {
     if [ -f ${MIGRATE_PATH}/templates/${REPO_TYPE}/$1 ]; then
         echo ${MIGRATE_PATH}/templates/${REPO_TYPE}/$1
     elif [ -f ${MIGRATE_PATH}/templates/default/$1 ]; then
+        echo ${MIGRATE_PATH}/templates/default/$1
+    elif [ -d ${MIGRATE_PATH}/templates/${REPO_TYPE}/$1 ]; then
+        echo ${MIGRATE_PATH}/templates/${REPO_TYPE}/$1
+    elif [ -d ${MIGRATE_PATH}/templates/default/$1 ]; then
         echo ${MIGRATE_PATH}/templates/default/$1
     else
         error "Template not found: $1"

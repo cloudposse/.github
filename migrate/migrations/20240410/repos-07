@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-lb-s3-bucket
+cloudposse/terraform-aws-alb
+cloudposse/terraform-aws-iam-s3-user
+cloudposse/terraform-aws-ecs-container-definition
+cloudposse/terraform-aws-efs-cloudwatch-sns-alarms
+cloudposse/terraform-aws-ec2-instance-group
+cloudposse/terraform-aws-rds-cloudwatch-sns-alarms
+cloudposse/terraform-aws-ssm-parameter-store
+cloudposse/terraform-terraform-label
+cloudposse/terraform-aws-cloudtrail-s3-bucket
+cloudposse/terraform-tls-ssh-key-pair
+cloudposse/terraform-aws-kms-key
+cloudposse/terraform-aws-dynamodb-autoscaler
+cloudposse/terraform-aws-organization-access-group
+cloudposse/terraform-aws-organization-access-role
+cloudposse/terraform-aws-cloudwatch-flow-logs

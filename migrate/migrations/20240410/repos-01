@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-mwaa
+cloudposse/terraform-aws-waf
+cloudposse/terraform-aws-redshift-cluster
+cloudposse/terraform-aws-vpc-peering-multi-account
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-tfstate-backend
+cloudposse/terraform-aws-iam-system-user
+cloudposse/terraform-aws-budgets
+cloudposse/terraform-aws-lakeformation
+cloudposse/terraform-aws-kinesis-stream
+cloudposse/terraform-aws-ecs-cluster
+cloudposse/terraform-aws-kv-store
+cloudposse/terraform-artifactory-kv-store
+cloudposse/terraform-aws-refarch-utils
+cloudposse/terraform-aws-network-firewall
+cloudposse/terraform-aws-firewall-manager

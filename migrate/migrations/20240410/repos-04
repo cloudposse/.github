@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-utils
+cloudposse/terraform-aws-eks-spotinst-ocean-nodepool
+cloudposse/terraform-aws-service-control-policies
+cloudposse/terraform-kubernetes-tfc-cloud-agent
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-aws-inspector
+cloudposse/terraform-aws-msk-apache-kafka-cluster
+cloudposse/terraform-yaml-config
+cloudposse/terraform-opsgenie-incident-management
+cloudposse/terraform-aws-cloudwatch-events
+cloudposse/terraform-aws-nlb
+cloudposse/terraform-aws-transit-gateway
+cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+cloudposse/terraform-aws-vpc-flow-logs-s3-bucket
+cloudposse/terraform-aws-ses
+cloudposse/terraform-aws-backup

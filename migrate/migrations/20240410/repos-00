@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-iam-user
+cloudposse/terraform-example-module
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair
+cloudposse/terraform-aws-eks-cluster
+cloudposse/terraform-aws-mq-broker
+cloudposse/terraform-aws-ecs-web-app
+cloudposse/terraform-aws-eks-iam-role
+cloudposse/terraform-aws-iam-role
+cloudposse/terraform-aws-sns-topic
+cloudposse/terraform-aws-datadog-lambda-forwarder
+cloudposse/terraform-aws-ecs-codepipeline
+cloudposse/terraform-aws-ssm-patch-manager
+cloudposse/terraform-aws-components
+cloudposse/terraform-aws-eks-fargate-profile
+cloudposse/terraform-aws-eks-node-group
+cloudposse/terraform-aws-dms

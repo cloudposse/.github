@@ -1,0 +1,16 @@
+cloudposse/terraform-yaml-stack-config
+cloudposse/terraform-aws-security-group
+cloudposse/terraform-aws-amplify-app
+cloudposse/terraform-module-test
+cloudposse/terraform-aws-route53-resolver-dns-firewall
+cloudposse/terraform-aws-step-functions
+cloudposse/terraform-aws-github-action-token-rotator
+cloudposse/terraform-aws-glue
+cloudposse/terraform-aws-athena
+cloudposse/terraform-aws-lambda-function
+cloudposse/terraform-aws-ecr-public
+cloudposse/terraform-aws-ec2-client-vpn
+cloudposse/terraform-aws-ssm-tls-self-signed-cert
+cloudposse/terraform-aws-service-quotas
+cloudposse/terraform-aws-rds-db-proxy
+cloudposse/terraform-aws-api-gateway
