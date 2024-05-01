@@ -62,6 +62,13 @@ function install() {
     fi
 }
 
+function remove() {
+    local source=${1}
+    local source_file=$(template_file $source)
+		rm -rf $source_file
+		git add -A
+}
+
 function auto_merge() {
     export AUTO_MERGE=${1:-true}
 }
