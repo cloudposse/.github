@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-named-subnets
+cloudposse/terraform-aws-dynamodb
+cloudposse/terraform-aws-cloudwatch-logs
+cloudposse/terraform-aws-multi-az-subnets
+cloudposse/terraform-aws-vpc-peering
+cloudposse/terraform-aws-datadog-integration
+cloudposse/terraform-null-label
+cloudposse/terraform-aws-efs
+cloudposse/terraform-aws-iam-assumed-roles
+cloudposse/terraform-aws-elasticache-redis
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-elastic-beanstalk-environment
+cloudposse/terraform-aws-elastic-beanstalk-application
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-aws-ec2-ami-snapshot

@@ -1,0 +1,16 @@
+cloudposse/terraform-cloudflare-waf-rulesets
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-transfer-sftp
+cloudposse/terraform-aws-iam-policy
+cloudposse/terraform-aws-helm-release
+cloudposse/terraform-aws-health-events
+cloudposse/terraform-aws-global-accelerator
+cloudposse/terraform-aws-macie
+cloudposse/terraform-cloudflare-zone
+cloudposse/terraform-aws-config-storage
+cloudposse/terraform-aws-sso
+cloudposse/terraform-aws-rds-replica
+cloudposse/terraform-aws-emr-cluster
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
+cloudposse/terraform-aws-security-hub
+cloudposse/terraform-aws-config

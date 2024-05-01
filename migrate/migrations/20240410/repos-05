@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-spotinst-mrscaler
+cloudposse/terraform-aws-ssm-parameter-chamber-reader
+cloudposse/terraform-aws-cloudformation-stack
+cloudposse/terraform-aws-cloudformation-stack-set
+cloudposse/terraform-aws-s3-bucket
+cloudposse/terraform-aws-iam-chamber-s3-role
+cloudposse/terraform-aws-documentdb-cluster
+cloudposse/terraform-aws-vpn-connection
+cloudposse/terraform-external-module-artifact
+cloudposse/terraform-aws-lambda-elasticsearch-cleanup
+cloudposse/terraform-aws-rds-cluster-instance-group
+cloudposse/terraform-github-repository-webhooks
+cloudposse/terraform-aws-iam-account-settings
+cloudposse/terraform-null-smtp-mail
+cloudposse/terraform-aws-eks-workers
+cloudposse/terraform-aws-elasticsearch

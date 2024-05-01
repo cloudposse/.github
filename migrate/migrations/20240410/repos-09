@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ec2-admin-server
+cloudposse/terraform-aws-dynamic-subnets
+cloudposse/terraform-aws-codebuild
+cloudposse/terraform-null-ansible
+cloudposse/terraform-aws-vpc
+cloudposse/terraform-aws-s3-website
+cloudposse/terraform-aws-s3-log-storage
+cloudposse/terraform-aws-route53-cluster-zone
+cloudposse/terraform-aws-route53-cluster-hostname
+cloudposse/terraform-aws-route53-alias
+cloudposse/terraform-aws-rds-cluster
+cloudposse/terraform-aws-rds
+cloudposse/terraform-aws-key-pair
+cloudposse/terraform-aws-efs-backup
+cloudposse/terraform-aws-ecr
+cloudposse/terraform-aws-cloudtrail
