@@ -63,10 +63,8 @@ function install() {
 }
 
 function remove() {
-    local source=${1}
-    local source_file=$(template_file $source)
-		rm -rf $source_file
-		git add -A
+    local file=${1}
+		git rm $file
 }
 
 function auto_merge() {
