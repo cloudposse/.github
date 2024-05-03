@@ -32,7 +32,7 @@ builds:
   binary: '{{ .ProjectName }}_v{{ .Version }}'
 
 archives:
-- format: zip
+- format: {{ .Env.ARCHIVES_FORMAT }}
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
 
 checksum:
