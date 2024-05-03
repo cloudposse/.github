@@ -164,7 +164,7 @@ jobs:
           version: latest
           args: release --config ${{ steps.go-releaser-config.outputs.path }} --clean --parallelism 2 --timeout 180m
         env:
-          ARCHIVES_FORMAT: {{ inputs.format }}
+          ARCHIVES_FORMAT: ${{ inputs.format }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
 
