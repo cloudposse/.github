@@ -1,7 +1,6 @@
 cloudposse/github-action-kubernetes-environment
 cloudposse/github-action-yaml-config-query
 cloudposse/github-action-run-ecspresso
-cloudposse/github-action-terraform-plan-storage
 cloudposse/github-action-jq
 cloudposse/github-action-auto-format
 cloudposse/github-action-sync-docker-repos
