@@ -1,6 +1,4 @@
 cloudposse/github-action-test-action
-cloudposse/github-action-string-transformer
-cloudposse/github-action-typescript-template
 cloudposse/github-action-atmos-get-setting
 cloudposse/github-action-pre-commit
 cloudposse/github-action-config-levels
