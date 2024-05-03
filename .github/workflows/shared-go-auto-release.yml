@@ -24,7 +24,7 @@ on:
         default: true
         type: boolean
       format:
-        description: Artifcats format. Valid: `tar.gz`, `tgz`, `tar.xz,` `txz`, `tar.zst`, `tar`, `gz`, `zip`, `binary`.
+        description: "Artifcats format. Valid: 'tar.gz', 'tgz', 'tar.xz', 'txz', 'tar.zst', 'tar', 'gz', 'zip', 'binary'."
         required: false
         default: "zip"
         type: string
