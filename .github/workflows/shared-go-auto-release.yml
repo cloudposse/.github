@@ -23,6 +23,11 @@ on:
         required: false
         default: true
         type: boolean
+      format:
+        description: "Artifcats format. Valid: 'tar.gz', 'tgz', 'tar.xz', 'txz', 'tar.zst', 'tar', 'gz', 'zip', 'binary'."
+        required: false
+        default: "zip"
+        type: string
 
     outputs:
       id:
@@ -159,6 +164,7 @@ jobs:
           version: latest
           args: release --config ${{ steps.go-releaser-config.outputs.path }} --clean --parallelism 2 --timeout 180m
         env:
+          ARCHIVES_FORMAT: ${{ inputs.format }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
 
