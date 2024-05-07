@@ -1,4 +1,4 @@
-title "Update GitHub workflows"
+title "Update GitHub Workflows to Fix ReviewDog TFLint Action"
 
 install .github/workflows
 
