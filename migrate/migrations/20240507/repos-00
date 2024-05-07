@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-eks-cluster
+cloudposse/terraform-aws-elasticache-cloudwatch-sns-alarms
+cloudposse/terraform-aws-amplify-app
+cloudposse/terraform-aws-spotinst-mrscaler
+cloudposse/terraform-example-module
+cloudposse/terraform-aws-elasticache-redis
+cloudposse/terraform-module-test
+cloudposse/terraform-aws-eks-node-group
+cloudposse/terraform-aws-lb-s3-bucket
+cloudposse/terraform-aws-components
+cloudposse/terraform-aws-service-control-policies
+cloudposse/terraform-aws-acm-request-certificate
+cloudposse/terraform-aws-ecs-codepipeline
+cloudposse/terraform-aws-cloudtrail
+cloudposse/terraform-aws-eks-workers
+cloudposse/terraform-aws-ecs-web-app
