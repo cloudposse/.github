@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-budgets
+cloudposse/terraform-aws-backup
+cloudposse/terraform-aws-iam-policy
+cloudposse/terraform-aws-rds-cluster
+cloudposse/terraform-aws-s3-bucket
+cloudposse/terraform-aws-eks-iam-role
+cloudposse/terraform-aws-eks-fargate-profile
+cloudposse/terraform-aws-ec2-client-vpn
+cloudposse/terraform-aws-alb-ingress
+cloudposse/terraform-aws-cloudtrail-s3-bucket
+cloudposse/terraform-aws-helm-release
+cloudposse/terraform-aws-datadog-lambda-forwarder
+cloudposse/terraform-aws-waf
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-vpc-flow-logs-s3-bucket
+cloudposse/terraform-aws-dynamic-subnets
