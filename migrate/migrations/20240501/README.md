@@ -1,5 +1,6 @@
 ## what
-- Update workflows (`.github/workflows`)
+- Update workflows (`.github/workflows/settings.yaml`)
 
 ## why
-- Fix review dog
+- Support new readme generation workflow. 
+- Generate banners
