@@ -53,5 +53,14 @@ jobs:
               repo: context.repo.repo,            
               release_id,
             });
+            
+            currentTag = currentRelease.data.tag_name;
+            currentBranch = currentRelease.data.target_commitish;
+            
+            currentRef = await github.rest.git.getRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,            
+              ref: `tags/${currentTag}`,
+            });
 
-            console.log(currentRelease.data);
+            console.log(currentRef.data);
