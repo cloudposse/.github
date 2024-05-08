@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-kinesis-stream
+cloudposse/terraform-aws-iam-system-user
+cloudposse/terraform-aws-github-action-token-rotator
+cloudposse/terraform-aws-dms
+cloudposse/terraform-aws-route53-cluster-hostname
+cloudposse/terraform-aws-network-firewall
+cloudposse/terraform-aws-iam-s3-user
+cloudposse/terraform-aws-route53-resolver-dns-firewall
+cloudposse/terraform-aws-redshift-cluster
+cloudposse/terraform-aws-emr-cluster
+cloudposse/terraform-aws-transfer-sftp
+cloudposse/terraform-aws-lambda-function
+cloudposse/terraform-aws-glue
+cloudposse/terraform-aws-lakeformation
+cloudposse/terraform-aws-alb
+cloudposse/terraform-aws-rds-db-proxy
