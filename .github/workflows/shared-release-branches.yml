@@ -48,7 +48,7 @@ jobs:
           script: |
             release_id = context.payload.release.id;
             
-            currentRelease = await github.rest.getRelease({
+            currentRelease = await github.rest.repos.getRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,            
               release_id,
