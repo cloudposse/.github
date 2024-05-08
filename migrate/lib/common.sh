@@ -64,7 +64,7 @@ function install() {
 
 function remove() {
     local file=${1}
-		git rm --ignore-unmatch $file
+		git rm --force --ignore-unmatch $file
 }
 
 function auto_merge() {
