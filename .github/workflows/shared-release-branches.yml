@@ -9,8 +9,6 @@ on:
         required: false
         default: '["ubuntu-latest"]'
 
-permissions: {}
-
 jobs:
   major-release-tagger:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
@@ -39,3 +37,13 @@ jobs:
       - uses: cloudposse/github-action-release-branch-manager@v2
         with:
           token: ${{ steps.github-app.outputs.token }}
+
+  release-commenter:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          retries: 3
+          script: |
+            console.log(context)
