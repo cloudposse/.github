@@ -46,4 +46,12 @@ jobs:
           result-encoding: string
           retries: 3
           script: |
-            console.log(context)
+            release_id = context.payload.release.id;
+            
+            currentRelease = await github.rest.getRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,            
+              release_id,
+            });
+
+            console.log(currentRelease.data);
