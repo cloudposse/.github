@@ -1,6 +1,6 @@
 title "Use GitHub Action Workflows from \`cloudposse/.github\` Repo"
 
-delete_branch_protection
+delete_branch_protection || true
 install_github_settings
 install .github/workflows
 remove .github/workflows/feature-branch.yaml
