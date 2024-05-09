@@ -90,70 +90,42 @@ jobs:
             
             commits = commitsResponse.data;
             
+            pull_requests = [];
+            
             for (commit of commits.commits) {
               responseCommit = await github.rest.git.getCommit({
                 owner: context.repo.owner,
                 repo: context.repo.repo,            
                 commit_sha: commit.sha,
               });
-            }
                         
-            const query = `
-            {
-              resource(url: "${context.payload.repository.html_url}/commit/${commit.sha}") {
-                ... on Commit {
-                  messageHeadlineHTML
-                  messageBodyHTML
-                  associatedPullRequests(first: 10) {
-                    pageInfo {
-                      hasNextPage
-                    }
-                    edges {
-                      node {
-                        bodyHTML
-                        number
-                        labels(first: 10) {
-                          pageInfo {
-                            hasNextPage
-                          }
-                          nodes {
-                            name
-                          }
+              const query = `
+                {
+                  resource(url: "${context.payload.repository.html_url}/commit/${commit.sha}") {
+                    ... on Commit {
+                      messageHeadlineHTML
+                      messageBodyHTML
+                      associatedPullRequests(first: 10) {
+                        pageInfo {
+                          hasNextPage
                         }
-                        timelineItems(itemTypes: [CONNECTED_EVENT, DISCONNECTED_EVENT], first: 100) {
-                          pageInfo {
-                            hasNextPage
-                          }
-                          nodes {
-                            ... on ConnectedEvent {
-                              __typename
-                              isCrossRepository
-                              subject {
-                                ... on Issue {
-                                  number
-                                }
-                              }
-                            }
-                            ... on DisconnectedEvent {
-                              __typename
-                              isCrossRepository
-                              subject {
-                                ... on Issue {
-                                  number
-                                }
-                              }
-                            }
+                        edges {
+                          node {
+                            number
                           }
                         }
                       }
                     }
                   }
                 }
+              `;
+              
+              response = await github.graphql(query);
+            
+              for (edge of response.resource.associatedPullRequests.edges) {
+                pull_requests.push(edge.node.number);
               }
-            }
-            `;
+            }            
             
-            response = await github.graphql(query);            
-            
-            console.log(response.resource.associatedPullRequests.edges[0].node.number);
+            console.log(pull_requests);
             
