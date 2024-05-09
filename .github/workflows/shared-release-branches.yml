@@ -70,7 +70,7 @@ jobs:
                 previousRelease = release;
                 break;
               } else if (release.tag_name == currentTag) {
-                currentReeaseFound = true;
+                currentReleaseFound = true;
               }
             }
             
