@@ -91,7 +91,7 @@ jobs:
             commits = commitsResponse.data;
             
             for (commit of commits.commits) {
-              responseCommit = await github..rest.git.getCommit({
+              responseCommit = await github.rest.git.getCommit({
                 owner: context.repo.owner,
                 repo: context.repo.repo,            
                 commit_sha: commit.sha,
