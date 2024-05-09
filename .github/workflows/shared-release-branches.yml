@@ -155,5 +155,5 @@ jobs:
             
             response = await github.graphql(query);            
             
-            console.log(response);
+            console.log(response.associatedPullRequests.edges);
             
