@@ -48,14 +48,16 @@ jobs:
           script: |
             release_id = context.payload.release.id;
             
-            currentRelease = await github.rest.repos.getRelease({
+            currentReleaseResponse = await github.rest.repos.getRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,            
               release_id,
             });
             
-            currentTag = currentRelease.data.tag_name;
-            currentBranch = currentRelease.data.target_commitish;
+            currentRelease = currentReleaseResponse.data;
+            
+            currentTag = currentRelease.tag_name;
+            currentBranch = currentRelease.target_commitish;
             
             releases = await github.rest.repos.listReleases({
               owner: context.repo.owner,
