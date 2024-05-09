@@ -61,5 +61,18 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,            
             });
-
-            console.log(releases);
+            
+            previousRelease = null;
+            
+            currentReleaseFound = false;            
+            for (release of releases.data) {
+              if (currentReleaseFound) {
+                previousRelease = release;
+                break;
+              } else if (release.tag_name == currentTag) {
+                currentReeaseFound = true;
+              }
+            }
+            
+            console.log(currentRelease);
+            console.log(previousRelease);
