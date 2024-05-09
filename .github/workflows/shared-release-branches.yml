@@ -96,8 +96,6 @@ jobs:
                 repo: context.repo.repo,            
                 commit_sha: commit.sha,
               });
-            
-              console.log(responseCommit);
             }
                         
             const query = `
@@ -157,5 +155,5 @@ jobs:
             
             response = await github.graphql(query);            
             
-            console.log(response.associatedPullRequests);
+            console.log(response);
             
