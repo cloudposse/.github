@@ -76,5 +76,18 @@ jobs:
               }
             }
             
-            console.log(currentRelease);
-            console.log(previousRelease);
+            if (previousRelease == null) {
+              console.log(`No previous release found for ${currentTag}`);
+              return;
+            }
+            
+            commitsResponse = await github.rest.repos.compareCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,            
+              base: previousRelease.tag_name,
+              head: currentRelease.tag_name,
+            });
+            
+            commits = commitsResponse.data;
+                        
+            console.log(commits);
