@@ -45,7 +45,11 @@ jobs:
         with:
           result-encoding: string
           retries: 3
-          script: |
+          script: |            
+            function onlyUnique(value, index, array) {
+              return array.indexOf(value) === index;
+            }
+            
             release_id = context.payload.release.id;
             
             currentReleaseResponse = await github.rest.repos.getRelease({
@@ -127,5 +131,7 @@ jobs:
               }
             }            
             
-            console.log(pull_requests);
+            var unique = pull_requests.filter(onlyUnique);
+            
+            console.log(unique);
             
