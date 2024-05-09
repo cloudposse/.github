@@ -155,5 +155,5 @@ jobs:
             
             response = await github.graphql(query);            
             
-            console.log(response.resource.associatedPullRequests.edges);
+            console.log(response.resource.associatedPullRequests.edges[0].node.number);
             
