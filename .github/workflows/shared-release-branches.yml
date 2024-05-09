@@ -155,5 +155,37 @@ jobs:
             }
             `;
             
-            console.log(query);
+            const response: {
+              resource: null | {
+                messageHeadlineHTML: string;
+                messageBodyHTML: string;
+                associatedPullRequests: {
+                  pageInfo: { hasNextPage: boolean };
+                  edges: ReadonlyArray<{
+                    node: {
+                      bodyHTML: string;
+                      number: number;
+                      labels: {
+                        pageInfo: { hasNextPage: boolean };
+                        nodes: ReadonlyArray<{
+                          name: string;
+                        }>;
+                      };
+                      timelineItems: {
+                        pageInfo: { hasNextPage: boolean };
+                        nodes: ReadonlyArray<{
+                          __typename: "ConnectedEvent" | "DisconnectedEvent";
+                          isCrossRepository: boolean;
+                          subject: {
+                            number: number;
+                          };
+                        }>;
+                      };
+                    };
+                  }>;
+                };
+              };
+            } = await github.graphql(query);            
+            
+            console.log(response);
             
