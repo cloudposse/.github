@@ -100,4 +100,60 @@ jobs:
               console.log(responseCommit);
             }
                         
+            const query = `
+            {
+              resource(url: "${context.payload.repository.html_url}/commit/${commit.sha}") {
+                ... on Commit {
+                  messageHeadlineHTML
+                  messageBodyHTML
+                  associatedPullRequests(first: 10) {
+                    pageInfo {
+                      hasNextPage
+                    }
+                    edges {
+                      node {
+                        bodyHTML
+                        number
+                        labels(first: 10) {
+                          pageInfo {
+                            hasNextPage
+                          }
+                          nodes {
+                            name
+                          }
+                        }
+                        timelineItems(itemTypes: [CONNECTED_EVENT, DISCONNECTED_EVENT], first: 100) {
+                          pageInfo {
+                            hasNextPage
+                          }
+                          nodes {
+                            ... on ConnectedEvent {
+                              __typename
+                              isCrossRepository
+                              subject {
+                                ... on Issue {
+                                  number
+                                }
+                              }
+                            }
+                            ... on DisconnectedEvent {
+                              __typename
+                              isCrossRepository
+                              subject {
+                                ... on Issue {
+                                  number
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            `;
+            
+            console.log(query);
             
