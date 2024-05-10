@@ -69,6 +69,10 @@ jobs:
               let existingComment = null
             
               const messageId = "<!-- release-pr-comment:${release_id} -->"
+              const message = `
+                ${messageId}
+                This PR is included in the release https://github.com/cloudposse/github-action-test-action/releases/tag/17.3.0
+              `
             
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
 
@@ -84,13 +88,19 @@ jobs:
 
               if (found) {
                 console.log(`Comment found`);
-                console.log(found);
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: found.id,
+                  message,
+                })
               } else {
+                console.log(`Comment not found`);            
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: pr_id,
-                  "Test 42",
+                  message,
                 })
               }                      
             }
@@ -104,6 +114,8 @@ jobs:
             });
             
             currentRelease = currentReleaseResponse.data;
+            
+            console.log(currentRelease);
             
             currentTag = currentRelease.tag_name;
             currentBranch = currentRelease.target_commitish;
