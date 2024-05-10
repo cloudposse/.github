@@ -50,7 +50,7 @@ jobs:
               return array.indexOf(value) === index;
             }
             
-            function async createOrUpdateCommentForPR(pr_id) {
+            async function createOrUpdateCommentForPR(pr_id) {
               const parameters = {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
