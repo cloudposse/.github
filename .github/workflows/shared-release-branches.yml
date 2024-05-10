@@ -50,6 +50,39 @@ jobs:
               return array.indexOf(value) === index;
             }
             
+            function createOrUpdateCommentForPR(pr_id) {
+              const parameters = {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr_id,
+                per_page: 100,
+              }
+
+              let existingComment = null
+            
+              const messageId = 'add-pr-comment'
+            
+              for await (const comments of github.paginate.iterator(
+                github.rest.issues.listComments,
+                parameters,
+              )) {
+                found = comments.data.find(({ body }) => {
+                  return (body?.search(messageId) ?? -1) > -1
+                })
+              
+                if (found) {
+                  break
+                }
+              }
+            
+              if (found) {
+                console.log(`Comment found`);
+                console.log(found);
+              } else {
+                console.log(`Comment not found`);
+              }                      
+            }
+            
             release_id = context.payload.release.id;
             
             currentReleaseResponse = await github.rest.repos.getRelease({
@@ -131,7 +164,7 @@ jobs:
               }
             }            
             
-            var unique = pull_requests.filter(onlyUnique);
-            
-            console.log(unique);
+            for (id of pull_requests.filter(onlyUnique)) {
+              createOrUpdateCommentForPR(id);
+            }
             
