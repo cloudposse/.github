@@ -45,7 +45,7 @@ jobs:
     steps:
       - uses: mshick/add-pr-comment@v2
         with:
-          issue: 129
+          pullRequestNumber: 129
           message: |
             **Howdie!**
 
