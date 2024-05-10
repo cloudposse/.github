@@ -62,10 +62,13 @@ jobs:
             
               const messageId = 'add-pr-comment'
             
-              for await (const comments of github.paginate.iterator(
+            
+              const allComments = await github.paginate.iterator(
                 github.rest.issues.listComments,
                 parameters,
-              )) {
+              )
+            
+              for (comments of allComments) {
                 found = comments.data.find(({ body }) => {
                   return (body?.search(messageId) != -1) > -1
                 })
