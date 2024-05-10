@@ -58,7 +58,7 @@ jobs:
               return array.indexOf(value) === index;
             }
             
-            async function createOrUpdateCommentForPR(pr_id, release_url) {
+            async function createOrUpdateCommentForPR(pr_id, release) {
               const parameters = {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -68,10 +68,10 @@ jobs:
 
               let existingComment = null
             
-              const messageId = "<!-- release-pr-comment:${release_id} -->"
+              const messageId = "<!-- release-pr-comment:${release.id} -->"
               const message = `
                 ${messageId}
-                This PR is included in the release ${release_url}
+                This PR is included in the release ${release.html_url} 
               `
             
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
@@ -181,6 +181,6 @@ jobs:
             }            
             
             for (id of pull_requests.filter(onlyUnique)) {
-              await createOrUpdateCommentForPR(id, currentRelease.html_url);
+              await createOrUpdateCommentForPR(id, currentRelease);
             }
             
