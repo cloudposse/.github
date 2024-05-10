@@ -58,7 +58,7 @@ jobs:
               return array.indexOf(value) === index;
             }
             
-            async function createOrUpdateCommentForPR(pr_id, release_id) {
+            async function createOrUpdateCommentForPR(pr_id, release_url) {
               const parameters = {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -71,7 +71,7 @@ jobs:
               const messageId = "<!-- release-pr-comment:${release_id} -->"
               const message = `
                 ${messageId}
-                This PR is included in the release https://github.com/cloudposse/github-action-test-action/releases/tag/17.3.0
+                This PR is included in the release ${release_url}
               `
             
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
@@ -114,8 +114,6 @@ jobs:
             });
             
             currentRelease = currentReleaseResponse.data;
-            
-            console.log(currentRelease);
             
             currentTag = currentRelease.tag_name;
             currentBranch = currentRelease.target_commitish;
@@ -183,6 +181,6 @@ jobs:
             }            
             
             for (id of pull_requests.filter(onlyUnique)) {
-              await createOrUpdateCommentForPR(id, release_id);
+              await createOrUpdateCommentForPR(id, currentRelease.html_url);
             }
             
