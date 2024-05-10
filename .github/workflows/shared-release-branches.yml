@@ -92,7 +92,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   comment_id: found.id,
-                  message,
+                  body: message
                 })
               } else {
                 console.log(`Comment not found`);            
@@ -100,7 +100,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: pr_id,
-                  message,
+                  body: message
                 })
               }                      
             }
