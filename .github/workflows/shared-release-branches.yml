@@ -66,7 +66,6 @@ jobs:
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
 
               for await (comments of allComments) {
-                console.log(comments);
                 found = comments.data.find(({ body }) => {
                   return (body?.search(messageId) != -1) > -1
                 })
@@ -76,8 +75,6 @@ jobs:
                 }
               }
 
-              return null;
-            
               if (found) {
                 console.log(`Comment found`);
                 console.log(found);
