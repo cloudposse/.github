@@ -58,7 +58,7 @@ jobs:
               return array.indexOf(value) === index;
             }
             
-            async function createOrUpdateCommentForPR(pr_id) {
+            async function createOrUpdateCommentForPR(pr_id, release_id) {
               const parameters = {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -68,7 +68,7 @@ jobs:
 
               let existingComment = null
             
-              const messageId = 'add-pr-comment'
+              const messageId = "<!-- release-pr-comment:${release_id} -->"
             
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
 
@@ -171,6 +171,6 @@ jobs:
             }            
             
             for (id of pull_requests.filter(onlyUnique)) {
-              await createOrUpdateCommentForPR(id);
+              await createOrUpdateCommentForPR(id, release_id);
             }
             
