@@ -68,10 +68,10 @@ jobs:
 
               let existingComment = null
             
-              const messageId = "<!-- release-pr-comment:${release.id} -->"
+              const messageId = `<!-- release-pr-comment:${release.id} -->`
               const message = `
                 ${messageId}
-                This PR is included in the release ${release.html_url} 
+                This PR is included in the release ${release.html_url}
               `
             
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
