@@ -62,6 +62,11 @@ function install() {
     fi
 }
 
+function remove() {
+    local file=${1}
+		git rm --force --ignore-unmatch $file
+}
+
 function auto_merge() {
     export AUTO_MERGE=${1:-true}
 }
