@@ -61,6 +61,7 @@ environments:
       custom_branches:
         - main
         - release/**
+  - name: lint
 
 # Labels: define labels for Issues and Pull Requests
 labels:
