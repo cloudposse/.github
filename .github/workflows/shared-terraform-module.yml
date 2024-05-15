@@ -28,7 +28,7 @@ jobs:
       runs-on: ${{ inputs.runs-on }}
 
   ci-readme:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@main
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@shared-workflows
     if: ${{ github.event_name == 'push' }}
     with:
       runs-on: ${{ inputs.runs-on }}
