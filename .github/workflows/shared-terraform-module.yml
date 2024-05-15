@@ -22,8 +22,9 @@ jobs:
     with:
       # Workaround for https://github.com/community/community/discussions/9099
       # We should switch to nofilter once it's fixed
-      filter-mode: diff_context // nofilter
-      suggestions: ${{ github.event_name == 'pull_request' }}
+      # nofilter
+      filter-mode: diff_context
+      suggestions: "${{ github.event_name == 'pull_request' }}"
       runs-on: ${{ inputs.runs-on }}
 
   ci-readme:
