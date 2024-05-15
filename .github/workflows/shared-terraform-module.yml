@@ -30,7 +30,7 @@ jobs:
 
   ci-readme:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@shared-workflows
-    name: "CI (Readme)"
+    name: "Readme"
     if: ${{ github.event_name == 'push' }}
     with:
       runs-on: ${{ inputs.runs-on }}
@@ -38,7 +38,7 @@ jobs:
 
   ci-codeowners:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-codeowners.yml@shared-workflows
-    name: "CI (CodeOwners)"
+    name: "CodeOwners"
     with:
       is_fork: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
       runs-on: ${{ inputs.runs-on }}
@@ -47,7 +47,7 @@ jobs:
 
   ci-labels:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
-    name: "CI (Labels)"
+    name: "Labels"
     steps:
       - uses: cloudposse/github-action-release-label-validator@v1
 
