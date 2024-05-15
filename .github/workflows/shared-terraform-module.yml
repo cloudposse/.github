@@ -19,7 +19,7 @@ concurrency:
 jobs:
   ci-terraform:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@shared-workflows
-    name: "CI (Terraform)"
+    name: "CI"
     with:
       # Workaround for https://github.com/community/community/discussions/9099
       # We should switch to nofilter once it's fixed
@@ -54,7 +54,7 @@ jobs:
   ci:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     if: ${{ always() }}
-    name: "CI"
+    name: "CI / Status Check"
     steps:
       - run: |
           echo '${{ toJSON(needs) }}'  # easier debug
