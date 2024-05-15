@@ -1,5 +1,4 @@
 name: "Shared github action workflow"
-  ```
 
 on:
   workflow_call:
