@@ -38,7 +38,7 @@ jobs:
 
   ci-codeowners:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-codeowners.yml@shared-workflows
-    name: "Codeowners"
+    name: "CI"
     with:
       is_fork: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
       runs-on: ${{ inputs.runs-on }}
@@ -47,7 +47,7 @@ jobs:
 
   ci-labels:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
-    name: "Labels Validate"
+    name: "CI / Labels Validate"
     steps:
       - uses: cloudposse/github-action-release-label-validator@v1
 
