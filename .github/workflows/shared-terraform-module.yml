@@ -19,6 +19,7 @@ concurrency:
 jobs:
   ci-terraform:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@main
+    name: "CI (Terraform)"
     with:
       # Workaround for https://github.com/community/community/discussions/9099
       # We should switch to nofilter once it's fixed
@@ -28,6 +29,7 @@ jobs:
 
   ci-readme:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@main
+    name: "CI (Readme)"
     if: ${{ github.event_name == 'push' }}
     with:
       runs-on: ${{ inputs.runs-on }}
@@ -35,6 +37,7 @@ jobs:
 
   ci-codeowners:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-codeowners.yml@main
+    name: "CI (CodeOwners)"
     with:
       is_fork: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
       runs-on: ${{ inputs.runs-on }}
@@ -43,12 +46,14 @@ jobs:
 
   ci-labels:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
+    name: "CI (Labels)"
     steps:
       - uses: cloudposse/github-action-release-label-validator@v1
 
   ci:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     if: ${{ always() }}
+    name: "CI"
     steps:
       - run: |
           echo '${{ toJSON(needs) }}'  # easier debug
@@ -56,6 +61,7 @@ jobs:
     needs: [ ci-terraform, ci-readme, ci-codeowners, ci-labels ]
 
   auto-release:
+    name: "Release"
     needs: [ci]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@main
     if: ${{ github.event_name == 'push' }}
