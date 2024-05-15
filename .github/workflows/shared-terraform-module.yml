@@ -54,7 +54,6 @@ jobs:
   ci:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     if: ${{ always() }}
-    name: "CI / Status Check"
     steps:
       - run: |
           echo '${{ toJSON(needs) }}'  # easier debug
