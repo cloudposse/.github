@@ -44,11 +44,9 @@ concurrency:
 
 jobs:
   ci-readme:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@main
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@shared-workflows
     if: ${{ github.event_name == 'push' }}
     with:
-      filter-mode: nofilter
-      suggestions: false
       runs-on: ${{ inputs.runs-on }}
     secrets: inherit
 
