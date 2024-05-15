@@ -10,7 +10,7 @@ on:
     secrets:
       REPO_ACCESS_TOKEN:
         description: "GitHub API token"
-        required: false
+        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
