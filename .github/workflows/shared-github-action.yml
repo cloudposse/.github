@@ -45,6 +45,7 @@ concurrency:
 jobs:
   ci-readme:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@shared-workflows
+    name: "Readme"
     if: ${{ github.event_name == 'push' }}
     with:
       runs-on: ${{ inputs.runs-on }}
@@ -52,6 +53,7 @@ jobs:
 
   ci-gha:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@main
+    name: "CI"
     with:
       organization: ${{ inputs.organization }}
       repository: ${{ inputs.repository }}
@@ -69,6 +71,7 @@ jobs:
 
   release:
     needs: [ ci ]
+    name: "Release"
     if: ${{ github.event_name == 'push' }}
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@main
     with:
