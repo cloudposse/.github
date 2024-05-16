@@ -1,0 +1,32 @@
+name: "Shared terraform scheduled"
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+    secrets:
+      REPO_ACCESS_TOKEN:
+        description: "GitHub API token"
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  context:
+    uses: cloudposse/github-actions-workflows/.github/workflows/scheduled-context.yml@main
+    with:
+      runs-on: ${{ inputs.runs-on }}
+    secrets:
+      github_access_token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+  readme:
+    uses: cloudposse/github-actions-workflows/.github/workflows/scheduled-readme.yml@main
+    with:
+      runs-on: ${{ inputs.runs-on }}
+    secrets: inherit
