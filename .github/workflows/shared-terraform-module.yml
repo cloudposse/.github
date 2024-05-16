@@ -23,8 +23,7 @@ jobs:
     with:
       # Workaround for https://github.com/community/community/discussions/9099
       # We should switch to nofilter once it's fixed
-      # nofilter
-      filter-mode: diff_context
+      filter-mode: ${{ github.event_name == 'pull_request' && 'diff_context' || 'nofilter' }}
       suggestions: "${{ github.event_name == 'pull_request' }}"
       runs-on: ${{ inputs.runs-on }}
 
