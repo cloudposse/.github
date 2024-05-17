@@ -1,8 +1,0 @@
-cloudposse/terraform-aws-service-quotas
-cloudposse/terraform-aws-ecr-public
-cloudposse/terraform-aws-athena
-cloudposse/terraform-aws-step-functions
-cloudposse/terraform-aws-vpc-peering-multi-account
-cloudposse/terraform-aws-iam-user
-cloudposse/terraform-aws-ssm-patch-manager
-cloudposse/terraform-broken-repo
