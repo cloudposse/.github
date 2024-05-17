@@ -21,6 +21,6 @@ permissions:
   actions: write
 
 jobs:
-  terraform-module:
+  github-action:
     uses: cloudposse/.github/.github/workflows/shared-github-action.yml@main
     secrets: inherit
