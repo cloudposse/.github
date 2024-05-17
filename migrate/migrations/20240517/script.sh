@@ -1,4 +1,4 @@
-title "Update GitHub Workflows to Fix ReviewDog TFLint Action"
+title "Update GitHub Workflows to use shared workflows from `.github` repo"
 
 install .github/workflows
 remove .github/workflows/feature-branch.yml
