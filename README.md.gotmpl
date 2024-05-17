@@ -3,6 +3,7 @@
 {{- $deprecated := has (ds "config") "deprecated" }}
 {{- $is_terraform := (strings.Contains "terraform-" ((ds "config").github_repo))  -}}
 {{- $utm_link := printf "%%s?utm_source=%s&utm_medium=%s&utm_campaign=%s&utm_content=%s" "github" "readme" (ds "config").github_repo "%s" -}}
+{{- $banner := printf "%%s/.github/banner.png?raw=true" (ds "config").github_repo "%s" -}}
 {{- $homepage := printf $utm_link "https://cpco.io/homepage" "" -}}
 {{- $logo := "https://cloudposse.com/logo-300x69.svg" -}}
 {{- $terraform_modules := printf $utm_link "https://cpco.io/terraform-modules" "terraform_modules" -}}
@@ -38,9 +39,9 @@
 >
 > Use Cloud Posse's ready-to-go [terraform architecture blueprints](https://cloudposse.com/reference-architecture/) for AWS to get up and running quickly.
 >
-> ✅ We build it with you.<br/>
-> ✅ You own everything.<br/>
-> ✅ Your team wins.<br/>
+> ✅ We build it together with your team.<br/>
+> ✅ Your team owns everything.<br/>
+> ✅ 100% Open Source and backed by fanatical support.<br/>
 >
 > {{ .cta }}
 > <details><summary>📚 <strong>Learn More</strong></summary>
@@ -80,7 +81,7 @@
 # (deprecated) {{(ds "config").name}}
 {{- else }}
   {{- if (file.Exists ".github/banner.png") -}}
-    <a href="https://cpco.io/homepage"><img src=".github/banner.png?raw=true" alt="Project Banner"/></a><br/>
+    <a href="https://cpco.io/homepage"><img src="{{ $banner }}" alt="Project Banner"/></a><br/>
     {{ if has (ds "config") "badges" }}<p align="right">{{- end -}}
   {{- else -}}
     # {{(ds "config").name}} <a href="{{ $homepage }}"><img align="right" src="{{ $logo }}" width="150" /></a>
