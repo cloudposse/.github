@@ -16,7 +16,7 @@ on:
       ref:
         description: "The fully-formed ref of the branch or tag that triggered the workflow run"
         required: false
-        default: ${{ github.ref }}
+        default: ${{ github.sha }}
         type: string
       tests-prefix:
         description: "Workflows file name prefix to run as tests"
