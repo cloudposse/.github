@@ -13,11 +13,6 @@ on:
         required: false
         default: ${{ github.event.repository.name }}
         type: string
-      ref:
-        description: "The fully-formed ref of the branch or tag that triggered the workflow run"
-        required: false
-        default: ${{ github.ref }}
-        type: string
       tests-prefix:
         description: "Workflows file name prefix to run as tests"
         required: false
@@ -57,7 +52,7 @@ jobs:
     with:
       organization: ${{ inputs.organization }}
       repository: ${{ inputs.repository }}
-      ref: ${{ inputs.ref }}
+      ref: ${{ github.event_name == 'push' && github.ref || github.event.pull_request.head.ref }}
       tests-prefix: ${{ inputs.tests-prefix }}
 
   ci:

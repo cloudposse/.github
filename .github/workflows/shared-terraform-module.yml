@@ -62,7 +62,7 @@ jobs:
   auto-release:
     name: "Release"
     needs: [ci]
-    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@shared-workflows
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@main
     if: ${{ github.event_name == 'push' }}
     with:
       runs-on: ${{ inputs.runs-on }}
