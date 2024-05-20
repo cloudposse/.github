@@ -66,9 +66,8 @@ jobs:
               const messageId = `<!-- release-pr-comment:${release.id} -->`
               const message = `
               ${messageId}
-              This PR is included in the release [release.name](${release.html_url})
+              This functionality was released in [release.name](${release.html_url}).
               `
-            
               const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters)
 
               for await (comments of allComments) {
