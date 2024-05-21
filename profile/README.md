@@ -5,20 +5,21 @@
   <a href="https://cloudposse.com/quiz/" title="Request Quote"><img src="https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge" alt="Request Quote"></a>
 </p>
 
-
 > [!IMPORTANT]
 > ### We're a DevOps Accelerator for Funded Startups and Enterprises
-> 
-> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/services/) for AWS to get up and running quickly.
-> 
-> ✅ We build it with you.<br/>
-> ✅ You own everything.<br/>
-> ✅ Your team wins.<br/>
+>
+> Skip the consultants and the DIY headaches.
+>
+> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/) for AWS to get up and running quickly.
+>
+> ✅ Production-ready AWS infrastructure in weeks, not months<br/>
+> ✅ Backed by our fanatical support<br/>
+> ✅ So good, we offer a money-back guarantee<br/>
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 >
-> Just browsing? Kickstart your journey with [Atmos](https://atmos.tools), dive into discussions on [Slack](https://slack.cloudposse.com), and get insights at our weekly [office hours](https://cloudposse.com/office-hours). Discover how Cloud Posse's open-source solutions can elevate your organization.
-> 
+> Just browsing? Kickstart your journey with [Atmos](https://atmos.tools), dive into discussions on [Slack](https://slack.cloudposse.com), and gain insights on our weekly [office hours](https://cloudposse.com/office-hours). Discover how Cloud Posse's open-source solutions can elevate your organization.
+>
 > <details>
 >   <summary><strong>💡 Learn More about Cloud Posse</strong></summary>
 > 
