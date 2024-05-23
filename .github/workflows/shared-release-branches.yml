@@ -68,7 +68,7 @@ jobs:
               const messageId = `<!-- release-pr-comment:${release.id} -->`;
               const message = `
                 ${messageId}
-                These changes were included as part of the [${release.name}](${release.html_url}) release.
+                These changes were released in [${release.name}](${release.html_url}).
               `;
               
               // Iterating through all comments related to the PR
