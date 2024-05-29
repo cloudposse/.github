@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   ci-terraform:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@shared-workflows
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@main
     name: "CI"
     with:
       # Workaround for https://github.com/community/community/discussions/9099
@@ -28,7 +28,7 @@ jobs:
       runs-on: ${{ inputs.runs-on }}
 
   ci-readme:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@shared-workflows
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@main
     name: "Readme"
     if: ${{ github.event_name == 'push' }}
     with:
@@ -36,7 +36,7 @@ jobs:
     secrets: inherit
 
   ci-codeowners:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-codeowners.yml@shared-workflows
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-codeowners.yml@main
     name: "CI"
     with:
       is_fork: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
