@@ -72,8 +72,8 @@ jobs:
               // Constructing the message to be posted or updated as a comment
               const messageId = `<!-- release-pr-comment:${release.id} -->`;
               const message = `
-                ${messageId}
-                These changes were released in [${release.name}](${release.html_url}).
+              ${messageId}
+              These changes were released in [${release.name}](${release.html_url}).
               `;
               
               // Iterating through all comments related to the PR
