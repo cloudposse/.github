@@ -1,4 +1,4 @@
-title "Update release workflow"
+title "Update release workflow to allow pull-requests: write"
 
 install .github/workflows/release.yml
 

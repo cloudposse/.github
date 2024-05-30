@@ -1,5 +1,5 @@
 ## what
-- Update workflow (`.github/workflows/release.yaml`) to have permissions commenting PR
+- Update workflow (`.github/workflows/release.yaml`) to have permission to comment on PR
 
 ## why
-- Add comments to PRs when it's changes are released
+- Add comment to PR when it is released
