@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-rds
+cloudposse/terraform-aws-ec2-autoscale-group
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-waf
+cloudposse/terraform-module-test
+cloudposse/terraform-aws-vpn-connection
+cloudposse/terraform-aws-elastic-beanstalk-environment
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair
+cloudposse/terraform-aws-dynamic-subnets
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
+cloudposse/terraform-aws-alb-ingress
+cloudposse/terraform-aws-ecs-web-app
+cloudposse/terraform-aws-eks-fargate-profile
+cloudposse/terraform-aws-eks-node-group
+cloudposse/terraform-aws-iam-policy
+cloudposse/terraform-aws-eks-cluster
