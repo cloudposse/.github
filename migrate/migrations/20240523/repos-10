@@ -1,5 +1,3 @@
-cloudposse/terraform-aws-service-control-policies
-cloudposse/terraform-aws-lb-s3-bucket
-cloudposse/terraform-aws-elasticache-redis
-cloudposse/terraform-aws-spotinst-mrscaler
-cloudposse/terraform-aws-amplify-app
+cloudposse/terraform-aws-cloudtrail-cloudwatch-alarms
+cloudposse/terraform-aws-alb-target-group-cloudwatch-sns-alarms
+cloudposse/terraform-aws-ecs-cloudwatch-autoscaling
