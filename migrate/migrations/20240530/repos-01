@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-aws-named-subnets
+cloudposse/terraform-aws-documentdb-cluster
+cloudposse/terraform-aws-cloudfront-s3-cdn
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-aws-api-gateway
+cloudposse/terraform-null-smtp-mail
+cloudposse/terraform-aws-ssm-patch-manager
+cloudposse/terraform-aws-iam-user
+cloudposse/terraform-aws-vpc-peering-multi-account
+cloudposse/terraform-aws-step-functions
+cloudposse/terraform-aws-athena
+cloudposse/terraform-aws-ecr-public
+cloudposse/terraform-aws-service-quotas
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-macie
