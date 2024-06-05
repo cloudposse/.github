@@ -163,7 +163,7 @@ jobs:
             sed -i 's/{{ .Env.ARCHIVES_FORMAT }}/zip/g' $GORELEASER_CONFIG
           fi
 
-          echo "path=./${$GORELEASER_CONFIG}" >> $GITHUB_OUTPUT
+          echo "path=./${GORELEASER_CONFIG}" >> $GITHUB_OUTPUT
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
