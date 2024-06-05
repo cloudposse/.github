@@ -26,10 +26,7 @@ builds:
     - '386'
     - arm
     - arm64
-  ignore:
-    - goos: darwin
-      goarch: '386'
-  binary: '{{ .ProjectName }}_v{{ .Version }}'
+  binary: '{{ .ProjectName }}'
 
 archives:
 - format: {{ .Env.ARCHIVES_FORMAT }}
