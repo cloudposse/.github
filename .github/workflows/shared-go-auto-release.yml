@@ -151,11 +151,20 @@ jobs:
         run: |-
           if [ -f .goreleaser.yml ]; then
             echo 'Go releaser config exists.'
-            echo "path=./.goreleaser.yml" >> $GITHUB_OUTPUT
+            GORELEASER_CONFIG="./.goreleaser.yml"
           else
             echo 'Go releaser config does not exist. Use org wide config'
-            echo "path=../.configs/.github/goreleaser.yml" >> $GITHUB_OUTPUT
+            GORELEASER_CONFIG="../.configs/.github/goreleaser.yml"
           fi
+
+
+          if [[ "${{ inputs.format }}" == "binary" ]]; then
+            sed -i 's/{{ .Env.ARCHIVES_FORMAT }}/binary/g' $GORELEASER_CONFIG
+          elif [[ "${{ inputs.format }}" == "zip" ]]; then
+            sed -i 's/{{ .Env.ARCHIVES_FORMAT }}/zip/g' $GORELEASER_CONFIG
+          fi
+
+          echo "path=./${$GORELEASER_CONFIG}" >> $GITHUB_OUTPUT
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
