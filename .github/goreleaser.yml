@@ -29,7 +29,7 @@ builds:
   binary: '{{ .ProjectName }}'
 
 archives:
-- format: {{ .Env.ARCHIVES_FORMAT }}
+- format: "{{ .Env.ARCHIVES_FORMAT }}"
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
 
 checksum:
