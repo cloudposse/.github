@@ -157,7 +157,6 @@ jobs:
             GORELEASER_CONFIG="../.configs/.github/goreleaser.yml"
           fi
 
-
           if [[ "${{ inputs.format }}" == "binary" ]]; then
             sed -i 's/{{ .Env.ARCHIVES_FORMAT }}/binary/g' $GORELEASER_CONFIG
           elif [[ "${{ inputs.format }}" == "zip" ]]; then
@@ -173,7 +172,6 @@ jobs:
           version: latest
           args: release --config ${{ steps.go-releaser-config.outputs.path }} --clean --parallelism 2 --timeout 180m
         env:
-          ARCHIVES_FORMAT: ${{ inputs.format }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
 
