@@ -28,6 +28,8 @@ jobs:
         with:
           token: ${{ secrets.github_access_token }}
           repository: cloudposse/actions
+          ref: opentofu
+          dispatch-type: workflow
           commands: terratest
           permission: triage
           issue-type: pull-request
