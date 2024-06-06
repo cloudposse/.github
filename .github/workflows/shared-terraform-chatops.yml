@@ -24,13 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-#      - uses: cloudposse/actions/github/slash-command-dispatch@0.33.0
-      - uses: peter-evans/slash-command-dispatch@main
+      - uses: cloudposse/actions/github/slash-command-dispatch@0.33.0
         with:
           token: ${{ secrets.github_access_token }}
           repository: cloudposse/actions
-          ref: opentofu
-          dispatch-type: workflow
           commands: terratest
           permission: triage
           issue-type: pull-request
