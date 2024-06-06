@@ -24,7 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: cloudposse/actions/github/slash-command-dispatch@0.33.0
+#      - uses: cloudposse/actions/github/slash-command-dispatch@0.33.0
+      - uses: peter-evans/slash-command-dispatch@main
         with:
           token: ${{ secrets.github_access_token }}
           repository: cloudposse/actions
