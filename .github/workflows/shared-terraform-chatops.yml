@@ -18,9 +18,17 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  ci-terraform-chatops:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform-chatops.yml@main
-    with:
-      runs-on: ${{ inputs.runs-on }}
-    secrets:
-      github_access_token: ${{ secrets.github_access_token }}
+  terratest:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: cloudposse/actions/github/slash-command-dispatch@0.33.0
+        with:
+          token: ${{ secrets.github_access_token }}
+          repository: cloudposse/actions
+          commands: terratest
+          permission: triage
+          issue-type: pull-request
+          reactions: false
