@@ -57,7 +57,7 @@ jobs:
             }
             
             // Function to create or update a comment for a pull request (PR) associated with a release
-            async function createOrUpdateCommentForPR(pr_id, release) {
+            async function createCommentForPR(pr_id, release) {
               // Parameters for fetching comments related to the PR
               const parameters = {
                 owner: context.repo.owner,
@@ -66,9 +66,6 @@ jobs:
                 per_page: 100,
               }
               
-              // Initialize existingComment variable
-              let existingComment = null;
-              
               // Constructing the message to be posted or updated as a comment
               const messageId = `<!-- release-pr-comment:${release.id} -->`;
               const message = `
@@ -76,37 +73,13 @@ jobs:
               These changes were released in [${release.name}](${release.html_url}).
               `;
               
-              // Iterating through all comments related to the PR
-              const allComments = github.paginate.iterator(github.rest.issues.listComments, parameters);
-              for await (comments of allComments) {
-                // Check if the message id is present in any of the comments
-                found = comments.data.find(({ body }) => {
-                  return (body?.search(messageId) != -1) > -1;
-                });
-                
-                if (found) {
-                  break; // Exit the loop if the comment is found
-                }
-              }
-              
-              // If the comment is found, update it; otherwise, create a new comment
-              if (found) {
-                console.log(`Comment found`);
-                await github.rest.issues.updateComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  comment_id: found.id,
-                  body: message
-                });
-              } else {
-                console.log(`Comment not found`);            
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: pr_id,
-                  body: message
-                });
-              }                      
+              // Сreate a new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr_id,
+                body: message
+              });
             }
             
             // Retrieving the ID of the current release
@@ -198,6 +171,6 @@ jobs:
             
             // Iterating through unique pull request numbers and creating or updating comments for them
             for (id of pull_requests.filter(onlyUnique)) {
-              await createOrUpdateCommentForPR(id, currentRelease);
+              await createCommentForPR(id, currentRelease);
             }
 
