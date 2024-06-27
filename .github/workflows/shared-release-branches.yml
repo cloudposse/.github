@@ -74,7 +74,6 @@ jobs:
               `;
               
               // Сreate a new comment
-              console.log(`Comment not found`);            
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
