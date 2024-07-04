@@ -54,8 +54,10 @@ environments:
       custom_branches:
         - main
         - release/**
-        # - name: "*.*.*"
-        #   type: tag
+        - name: "*.*.*"
+          type: tag
+        - name: "v*"
+          type: tag     
   - name: security
     deployment_branch_policy:
       custom_branches:
