@@ -45,5 +45,6 @@ function refresh_github_settings() {
 
     mkdir -p $(dirname $settings)
     touch $settings
-    git commit --allow-empty -m "chore: refresh .github/settings.yml" $settings
+		## Trigger settings update
+    echo "" >> .github/settings.yml
 }
