@@ -1,0 +1,16 @@
+cloudposse/github-action-atmos-affected-stacks
+cloudposse/github-action-atmos-terraform-apply
+cloudposse/github-action-atmos-get-setting
+cloudposse/github-action-release-branch-manager
+cloudposse/github-action-major-release-tagger
+cloudposse/github-action-setup-atmos
+cloudposse/github-action-deploy-argocd
+cloudposse/github-action-atmos-terraform-drift-detection
+cloudposse/github-action-preview-environment-controller
+cloudposse/github-action-atmos-affected-trigger-spacelift
+cloudposse/github-action-atmos-component-updater
+cloudposse/github-action-matrix-outputs-write
+cloudposse/github-action-atmos-terraform-plan
+cloudposse/github-action-deploy-helmfile
+cloudposse/github-action-aws-region-reduction-map
+cloudposse/github-action-secret-outputs
