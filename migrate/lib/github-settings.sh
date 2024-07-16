@@ -36,8 +36,14 @@ function install_github_settings() {
     sed -i '' '/# Upstream changes/d' $settings
     yq -ei '(._extends | key) head_comment="Upstream changes from _extends are only recognized when modifications are made to this file in the default branch."' $settings
 
-		## Trigger settings update
-    echo "" >> .github/settings.yml
-
     git add $settings
+}
+
+function refresh_github_settings() {
+    info "Touch GitHub settings"
+    local settings=".github/settings.yml"
+
+    mkdir -p $(dirname $settings)
+    touch $settings
+    git commit --allow-empty -m "chore: refresh .github/settings.yml" $settings
 }
