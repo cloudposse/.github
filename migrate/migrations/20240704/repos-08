@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-github-action-token-rotator
+cloudposse/terraform-aws-iam-system-user
+cloudposse/terraform-aws-kinesis-stream
+cloudposse/terraform-artifactory-kv-store
+cloudposse/terraform-aws-vpc
+cloudposse/terraform-aws-kv-store
+cloudposse/terraform-aws-nlb
+cloudposse/terraform-aws-refarch-utils
+cloudposse/terraform-aws-batch
+cloudposse/terraform-aws-utils
+cloudposse/terraform-aws-ecs-cluster
+cloudposse/terraform-aws-security-group
+cloudposse/terraform-aws-cicd
+cloudposse/terraform-aws-msk-apache-kafka-cluster
+cloudposse/terraform-aws-tfstate-backend
+cloudposse/terraform-yaml-stack-config

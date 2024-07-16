@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-config
+cloudposse/terraform-aws-health-events
+cloudposse/terraform-aws-global-accelerator
+cloudposse/terraform-cloudflare-waf-rulesets
+cloudposse/terraform-aws-ssm-tls-self-signed-cert
+cloudposse/terraform-aws-config-storage
+cloudposse/terraform-cloudflare-zone
+cloudposse/terraform-aws-s3-website
+cloudposse/terraform-github-repository-webhooks
+cloudposse/terraform-external-module-artifact
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-ses-lambda-forwarder
+cloudposse/terraform-aws-elasticsearch
+cloudposse/terraform-aws-security-hub
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-aws-mwaa

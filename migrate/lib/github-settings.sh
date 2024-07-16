@@ -11,7 +11,7 @@ function install_github_settings() {
 
         # Remove the erroneous extends key, if present
         yq -ei 'del(.extends)' $settings
-    else 
+    else
         info "GitHub settings not found, initializing to .github"
         info "Creating $settings"
         echo "_extends: .github" > $settings
@@ -35,6 +35,16 @@ function install_github_settings() {
     yq -ei 'sort_keys(.)' $settings
     sed -i '' '/# Upstream changes/d' $settings
     yq -ei '(._extends | key) head_comment="Upstream changes from _extends are only recognized when modifications are made to this file in the default branch."' $settings
-    
+
     git add $settings
+}
+
+function refresh_github_settings() {
+    info "Touch GitHub settings"
+    local settings=".github/settings.yml"
+
+    mkdir -p $(dirname $settings)
+    touch $settings
+		## Trigger settings update
+    echo "" >> .github/settings.yml
 }
