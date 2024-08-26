@@ -34,7 +34,7 @@ jobs:
           token: ${{ secrets.github_access_token }}
           reactions: '+1'
       - run: |-
-          echo "${{ github }}"
+          echo "${{ toJSON(github) }}"
 
 #  pending:
 #    runs-on: ubuntu-latest
