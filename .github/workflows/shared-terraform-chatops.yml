@@ -23,9 +23,30 @@ defaults:
     shell: bash -e -o pipefail {0}
 
 jobs:
+  pr:
+    name: PR Info
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cloudposse-github-actions/get-pr@v1
+        id: pr
+    outputs:
+      base: ${{ fromJSON(steps.pr.outputs.pr).base.sha }}
+      head: ${{ fromJSON(steps.pr.outputs.pr).head.sha }}
+      found: ${{ steps.pr.outputs.found }}
+      json: ${{ steps.pr.outputs.json }}
+      number: ${{ steps.pr.outputs.number }}
+      title: ${{ steps.pr.outputs.title }}
+      body: ${{ steps.pr.outputs.body }}
+      url: ${{ steps.pr.outputs.url }}
+      created_at: ${{ steps.pr.outputs.created_at }}
+      merged_at: ${{ steps.pr.outputs.merged_at }}
+      closed_at: ${{ steps.pr.outputs.closed_at }}
+      labels: ${{ steps.pr.outputs.labels }}
+
   ack:
     runs-on: ubuntu-latest
     if: github.event.comment.id != ''
+    needs: [pr]
     steps:
       - name: "Add reaction"
         uses: peter-evans/create-or-update-comment@v4
@@ -34,7 +55,7 @@ jobs:
           token: ${{ secrets.github_access_token }}
           reactions: '+1'
       - run: |-
-          echo "${{ toJSON(github) }}"
+          echo "${{ needs.pr.outputs.number }}"
 
 #  pending:
 #    runs-on: ubuntu-latest
