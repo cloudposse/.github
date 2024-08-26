@@ -29,6 +29,8 @@ jobs:
     steps:
       - uses: cloudposse-github-actions/get-pr@v1
         id: pr
+        with:
+          sha: ${{ github.sha }}
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.pr).base.sha }}
       head: ${{ fromJSON(steps.pr.outputs.pr).head.sha }}
