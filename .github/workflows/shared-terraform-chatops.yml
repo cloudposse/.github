@@ -33,6 +33,8 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           token: ${{ secrets.github_access_token }}
           reactions: '+1'
+      - run: |-
+          echo "${{ github }}"
 
 #  pending:
 #    runs-on: ubuntu-latest
