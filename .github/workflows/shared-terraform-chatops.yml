@@ -30,6 +30,7 @@ jobs:
       - uses: cloudposse-github-actions/get-pr@v1
         id: pr
         with:
+          filterOutClosed: true
           sha: ${{ github.sha }}
 
       - run: |-
