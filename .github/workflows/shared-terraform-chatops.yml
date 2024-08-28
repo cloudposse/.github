@@ -58,9 +58,6 @@ jobs:
           token: ${{ secrets.github_access_token }}
           reactions: '+1'
 
-      - run: |-
-          echo "${{ needs.pr.outputs.number }}"
-
 #  pending:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -82,7 +79,7 @@ jobs:
   terratest:
     runs-on: ubuntu-latest
     container: cloudposse/test-harness:latest
-#    needs: [pending]
+    needs: [pr]
     env:
       MAKE_INCLUDES: Makefile
     continue-on-error: true
@@ -150,8 +147,8 @@ jobs:
           fi
         env:
           # Pull request target branch
-          BASE_REF: ${{ github.event.client_payload.pull_request.base.ref }}
-          LABELS: ${{ join(github.event.client_payload.pull_request.labels.*.name, '\n') }}
+          BASE_REF: ${{ needs.pr.outputs.base }}
+          LABELS: ${{ needs.pr.outputs.labels }}
 
       - name: "Determine required opentofu version"
         if: ${{ matrix.platform == 'opentofu' }}
@@ -166,8 +163,8 @@ jobs:
           fi
         env:
           # Pull request target branch
-          BASE_REF: ${{ github.event.client_payload.pull_request.base.ref }}
-          LABELS: ${{ join(github.event.client_payload.pull_request.labels.*.name, '\n') }}
+          BASE_REF: ${{ needs.pr.outputs.base }}
+          LABELS: ${{ needs.pr.outputs.labels }}
 
       - name: "Initialize terratest Go project"
         run: |
@@ -178,25 +175,25 @@ jobs:
         env:
           USES_GITHUB:   >-
             ${{ contains(github.event.repository.name, '-github-')
-            || contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-github-provider') }}
+            || contains(needs.pr.outputs.labels, 'terraform-github-provider') }}
           USES_OPSGENIE: >-
             ${{ contains(github.event.repository.name, 'terraform-opsgenie-')
-            || contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-opsgenie-provider') }}
+            || contains(needs.pr.outputs.labels, 'terraform-opsgenie-provider') }}
           USES_AWS: >-
             ${{ contains(github.event.repository.name, 'terraform-aws-')
-            || contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-aws-provider') }}
+            || contains(needs.pr.outputs.labels, 'terraform-aws-provider') }}
           USES_SPOTINST: >-
             ${{ contains(github.event.repository.name, '-spotinst-')
-            || contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-spotinst-provider') }}
+            || contains(needs.pr.outputs.labels, 'terraform-spotinst-provider') }}
           USES_DATADOG: >-
             ${{ contains(github.event.repository.name, '-datadog-')
-            ||  contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-datadog-provider') }}
+            ||  contains(needs.pr.outputs.labels, 'terraform-datadog-provider') }}
           USES_TFE: >-
             ${{ contains(github.event.repository.name, '-tfe-')
-            ||  contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-tfe-provider') }}
+            ||  contains(needs.pr.outputs.labels, 'terraform-tfe-provider') }}
           USES_CLOUDFLARE: >-
             ${{ contains(github.event.repository.name, '-cloudflare-')
-            ||  contains(github.event.client_payload.pull_request.labels.*.name, 'terraform-cloudflare-provider') }}
+            ||  contains(needs.pr.outputs.labels, 'terraform-cloudflare-provider') }}
 
           AWS_ACCESS_KEY_ID:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
