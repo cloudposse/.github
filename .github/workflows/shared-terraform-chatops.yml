@@ -27,14 +27,13 @@ jobs:
     name: PR Info
     runs-on: ubuntu-latest
     steps:
-      - uses: cloudposse-github-actions/get-pr@v1
+      - uses: cloudposse-github-actions/get-pr@by-number
         id: pr
         with:
-          filterOutClosed: true
-          sha: ${{ github.sha }}
+          id: 10
 
       - run: |-
-          echo "${{ steps.pr.outputs.pr }}"
+          echo "${{ toJSON(github) }}"
 
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.pr).base.sha }}
