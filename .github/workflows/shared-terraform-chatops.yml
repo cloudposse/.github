@@ -58,28 +58,27 @@ jobs:
           token: ${{ secrets.github_access_token }}
           reactions: '+1'
 
-#  pending:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: "Update GitHub Status for pending"
-#        uses: docker://cloudposse/github-status-updater
-#        with:
-#          args: >-
-#            -action update_state
-#            -ref "${{ github.event.client_payload.pull_request.head.sha }}"
-#            -repo "${{ github.event.repository.name }}"
-#            -state pending
-#            -context "test/terratest"
-#            -description "Tests started by @${{ github.event.client_payload.github.actor }}"
-#            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-#            -owner "${{ github.event.repository.owner.login }}"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.github_access_token }}
+  pending:
+    runs-on: ubuntu-latest
+    needs: [pr]
+    steps:
+      - name: "Update GitHub Status for pending"
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.pr.outputs.head }}"
+            -repo "${{ github.event.repository.name }}"
+            -state pending
+            -context "test/terratest"
+            -description "Tests started by @${{ github.actor }}"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -owner "${{ github.event.repository.owner.login }}"
 
   run:
     runs-on: ubuntu-latest
     container: cloudposse/test-harness:latest
-    needs: [pr]
+    needs: [pr, pending]
     env:
       MAKE_INCLUDES: Makefile
     continue-on-error: true
@@ -92,20 +91,18 @@ jobs:
       - name: "Checkout code for ChatOps"
         uses: actions/checkout@v4
 
-#      - name: "Update GitHub Status for pending"
-#        uses: docker://cloudposse/github-status-updater
-#        with:
-#          args: >-
-#            -action update_state
-#            -ref "${{ github.event.client_payload.pull_request.head.sha }}"
-#            -repo "${{ github.event.repository.name }}"
-#            -state pending
-#            -context "test/terratest/${{ matrix.platform }}"
-#            -description "Tests started by @${{ github.event.client_payload.github.actor }}"
-#            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-#            -owner "${{ github.event.repository.owner.login }}"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.github_access_token }}
+      - name: "Update GitHub Status for pending"
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.pr.outputs.head }}"
+            -repo "${{ github.event.repository.name }}"
+            -state pending
+            -context "test/terratest/${{ matrix.platform }}"
+            -description "Tests started by @${{ github.actor }}"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -owner "${{ github.event.repository.owner.login }}"
 
       - name: "Determine required terraform version"
         if: ${{ matrix.platform == 'terraform' }}
@@ -246,52 +243,46 @@ jobs:
           terraform --version
           make -C test/src
 
-#      - name: "Update GitHub Status for failure"
-#        if: ${{ failure() }}
-#        uses: docker://cloudposse/github-status-updater
-#        with:
-#          args: >-
-#            -action update_state
-#            -ref "${{ github.event.client_payload.pull_request.head.sha }}"
-#            -repo "${{ github.event.repository.name }}"
-#            -state failure
-#            -context "test/terratest/${{ matrix.platform }}"
-#            -description "Tests failed"
-#            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-#            -owner "${{ github.event.repository.owner.login }}"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.github_access_token }}
+      - name: "Update GitHub Status for failure"
+        if: ${{ failure() }}
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.pr.outputs.head }}"
+            -repo "${{ github.event.repository.name }}"
+            -state failure
+            -context "test/terratest/${{ matrix.platform }}"
+            -description "Tests failed"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -owner "${{ github.event.repository.owner.login }}"
 
-#      - name: "Update GitHub Status for this success"
-#        uses: docker://cloudposse/github-status-updater
-#        with:
-#          args: >-
-#            -action update_state
-#            -ref "${{ github.event.client_payload.pull_request.head.sha }}"
-#            -repo "${{ github.event.repository.name }}"
-#            -state success
-#            -context "test/terratest/${{ matrix.platform }}"
-#            -description "Tests passed"
-#            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-#            -owner "${{ github.event.repository.owner.login }}"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.github_access_token }}
+      - name: "Update GitHub Status for this success"
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.pr.outputs.head }}"
+            -repo "${{ github.event.repository.name }}"
+            -state success
+            -context "test/terratest/${{ matrix.platform }}"
+            -description "Tests passed"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -owner "${{ github.event.repository.owner.login }}"
 
-#      - name: "Update GitHub Status for cancelled"
-#        if: ${{ cancelled() }}
-#        uses: docker://cloudposse/github-status-updater
-#        with:
-#          args: >-
-#            -action update_state
-#            -ref "${{ github.event.client_payload.pull_request.head.sha }}"
-#            -repo "${{ github.event.repository.name }}"
-#            -state error
-#            -context "test/terratest/${{ matrix.platform }}"
-#            -description "Tests cancelled"
-#            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-#            -owner "${{ github.event.repository.owner.login }}"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.github_access_token }}
+      - name: "Update GitHub Status for cancelled"
+        if: ${{ cancelled() }}
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.pr.outputs.head }}"
+            -repo "${{ github.event.repository.name }}"
+            -state error
+            -context "test/terratest/${{ matrix.platform }}"
+            -description "Tests cancelled"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -owner "${{ github.event.repository.owner.login }}"
 
 #  finalize:
 #    runs-on: ubuntu-latest
