@@ -33,7 +33,7 @@ jobs:
           id: ${{ github.event.issue.number }}
 
       - run: |-
-          echo "${{ steps.pr.outputs.pr }}"
+          echo "${{ steps.pr.outputs.json }}"
 
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.pr).base.sha }}
