@@ -74,6 +74,8 @@ jobs:
             -description "Tests started by @${{ github.actor }}"
             -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             -owner "${{ github.event.repository.owner.login }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
   run:
     runs-on: ubuntu-latest
@@ -103,6 +105,8 @@ jobs:
             -description "Tests started by @${{ github.actor }}"
             -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             -owner "${{ github.event.repository.owner.login }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: "Determine required terraform version"
         if: ${{ matrix.platform == 'terraform' }}
@@ -256,6 +260,8 @@ jobs:
             -description "Tests failed"
             -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             -owner "${{ github.event.repository.owner.login }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: "Update GitHub Status for this success"
         uses: docker://cloudposse/github-status-updater
@@ -269,6 +275,8 @@ jobs:
             -description "Tests passed"
             -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             -owner "${{ github.event.repository.owner.login }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: "Update GitHub Status for cancelled"
         if: ${{ cancelled() }}
@@ -283,7 +291,8 @@ jobs:
             -description "Tests cancelled"
             -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             -owner "${{ github.event.repository.owner.login }}"
-
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 #  finalize:
 #    runs-on: ubuntu-latest
 #    needs: [terratest]
