@@ -76,7 +76,7 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.github_access_token }}
 
-  terratest:
+  run:
     runs-on: ubuntu-latest
     container: cloudposse/test-harness:latest
     needs: [pr]
@@ -329,11 +329,11 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.github_access_token }}
 
-  finalize:
+  terratest:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     if: ${{ always() }}
     steps:
       - run: |
           echo '${{ toJSON(needs) }}'  # easier debug
           ! ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
-    needs: [terratest]
+    needs: [run]
