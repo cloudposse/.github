@@ -29,11 +29,8 @@ jobs:
     steps:
       - uses: cloudposse-github-actions/get-pr@by-number
         id: pr
-#        with:
-#          id: ${{ github.event.issue.number }}
-
-      - run: |-
-          echo "${{ steps.pr.outputs.json }}"
+        with:
+          id: ${{ github.event.issue.number }}
 
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
@@ -60,6 +57,7 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           token: ${{ secrets.github_access_token }}
           reactions: '+1'
+
       - run: |-
           echo "${{ needs.pr.outputs.number }}"
 
