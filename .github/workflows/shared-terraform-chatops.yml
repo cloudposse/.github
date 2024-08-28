@@ -30,10 +30,10 @@ jobs:
       - uses: cloudposse-github-actions/get-pr@by-number
         id: pr
         with:
-          id: 10
+          id: ${{ github.event.issue.number }}
 
       - run: |-
-          echo "${{ toJSON(github) }}"
+          echo "${{ steps.pr.outputs.pr }}"
 
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.pr).base.sha }}
