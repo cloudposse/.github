@@ -29,15 +29,15 @@ jobs:
     steps:
       - uses: cloudposse-github-actions/get-pr@by-number
         id: pr
-        with:
-          id: ${{ github.event.issue.number }}
+#        with:
+#          id: ${{ github.event.issue.number }}
 
       - run: |-
           echo "${{ steps.pr.outputs.json }}"
 
     outputs:
-      base: ${{ fromJSON(steps.pr.outputs.pr).base.sha }}
-      head: ${{ fromJSON(steps.pr.outputs.pr).head.sha }}
+      base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
+      head: ${{ fromJSON(steps.pr.outputs.json).head.sha }}
       found: ${{ steps.pr.outputs.found }}
       json: ${{ steps.pr.outputs.json }}
       number: ${{ steps.pr.outputs.number }}
