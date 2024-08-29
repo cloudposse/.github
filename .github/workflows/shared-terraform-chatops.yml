@@ -34,6 +34,8 @@ jobs:
 
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
+      base_repo_owner: ${{ fromJSON(steps.pr.outputs.json).base.repo.owner.login }}
+      base_repo_name: ${{ fromJSON(steps.pr.outputs.json).base.repo.name }}
       head_sha: ${{ fromJSON(steps.pr.outputs.json).head.sha }}
       head_repo_owner: ${{ fromJSON(steps.pr.outputs.json).head.repo.owner.login }}
       head_repo_name: ${{ fromJSON(steps.pr.outputs.json).head.repo.name }}
@@ -56,7 +58,7 @@ jobs:
       - name: "Add reaction"
         uses: peter-evans/create-or-update-comment@v4
         with:
-          repository: ${{ needs.pr.outputs.head_repo_owner }}/${{ needs.pr.outputs.head_repo_name }}
+          repository: ${{ needs.pr.outputs.base_repo_owner }}/${{ needs.pr.outputs.base_repo_name }}
           comment-id: ${{ github.event.comment.id }}
           token: ${{ github.token }}
           reactions: '+1'
@@ -71,8 +73,8 @@ jobs:
           args: >-
             -action update_state
             -ref "${{ needs.pr.outputs.head_sha }}"
-            -owner "${{ needs.pr.outputs.head_repo_owner }}"
-            -repo "${{ needs.pr.outputs.head_repo_name }}"
+            -owner "${{ needs.pr.outputs.base_repo_owner }}"
+            -repo "${{ needs.pr.outputs.base_repo_name }}"
             -state pending
             -context "test/terratest"
             -description "Tests started by @${{ github.actor }}"
