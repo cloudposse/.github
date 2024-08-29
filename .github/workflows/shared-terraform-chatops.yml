@@ -329,8 +329,8 @@ jobs:
           args: >-
             -action update_state
             -ref "${{ needs.pr.outputs.head_sha }}"
-            -owner "${{ needs.pr.outputs.head_repo_owner }}"
-            -repo "${{ needs.pr.outputs.head_repo_name }}"
+            -owner "${{ needs.pr.outputs.base_repo_owner }}"
+            -repo "${{ needs.pr.outputs.base_repo_name }}"
             -state ${{ steps.status.outputs.result }}
             -context "test/terratest"
             -description "Tests started by @${{ github.actor }}"
