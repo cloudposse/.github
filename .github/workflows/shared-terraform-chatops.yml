@@ -32,9 +32,12 @@ jobs:
         with:
           id: ${{ github.event.issue.number }}
 
+      - run: |-
+          echo "${{ steps.pr.outputs.json }}"
+
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
-      head: ${{ fromJSON(steps.pr.outputs.json).head.sha }}
+      head_sha: ${{ fromJSON(steps.pr.outputs.json).head.sha }}
       found: ${{ steps.pr.outputs.found }}
       json: ${{ steps.pr.outputs.json }}
       number: ${{ steps.pr.outputs.number }}
@@ -67,7 +70,7 @@ jobs:
         with:
           args: >-
             -action update_state
-            -ref "${{ needs.pr.outputs.head }}"
+            -ref "${{ needs.pr.outputs.head_sha }}"
             -repo "${{ github.event.repository.name }}"
             -state pending
             -context "test/terratest"
@@ -92,13 +95,16 @@ jobs:
     steps:
       - name: "Checkout code for ChatOps"
         uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
+          ref: ${{ needs.pr.outputs.head_sha }}
 
       - name: "Update GitHub Status for pending"
         uses: docker://cloudposse/github-status-updater
         with:
           args: >-
             -action update_state
-            -ref "${{ needs.pr.outputs.head }}"
+            -ref "${{ needs.pr.outputs.head_sha }}"
             -repo "${{ github.event.repository.name }}"
             -state pending
             -context "test/terratest/${{ matrix.platform }}"
@@ -253,7 +259,7 @@ jobs:
         with:
           args: >-
             -action update_state
-            -ref "${{ needs.pr.outputs.head }}"
+            -ref "${{ needs.pr.outputs.head_sha }}"
             -repo "${{ github.event.repository.name }}"
             -state failure
             -context "test/terratest/${{ matrix.platform }}"
@@ -268,7 +274,7 @@ jobs:
         with:
           args: >-
             -action update_state
-            -ref "${{ needs.pr.outputs.head }}"
+            -ref "${{ needs.pr.outputs.head_sha }}"
             -repo "${{ github.event.repository.name }}"
             -state success
             -context "test/terratest/${{ matrix.platform }}"
@@ -284,7 +290,7 @@ jobs:
         with:
           args: >-
             -action update_state
-            -ref "${{ needs.pr.outputs.head }}"
+            -ref "${{ needs.pr.outputs.head_sha }}"
             -repo "${{ github.event.repository.name }}"
             -state error
             -context "test/terratest/${{ matrix.platform }}"
@@ -320,7 +326,7 @@ jobs:
         with:
           args: >-
             -action update_state
-            -ref "${{ needs.pr.outputs.head }}"
+            -ref "${{ needs.pr.outputs.head_sha }}"
             -repo "${{ github.event.repository.name }}"
             -state ${{ steps.status.outputs.result }}
             -context "test/terratest"
