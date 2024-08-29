@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ssm-iam-role
+cloudposse/terraform-aws-rds-replica
+cloudposse/terraform-aws-alb-ingress
+cloudposse/terraform-aws-mwaa
+cloudposse/terraform-aws-iam-s3-user
+cloudposse/terraform-aws-rds
+cloudposse/terraform-aws-efs-backup
+cloudposse/terraform-aws-alb-target-group-cloudwatch-sns-alarms
+cloudposse/terraform-aws-ecs-container-definition
+cloudposse/terraform-aws-emr-cluster
+cloudposse/terraform-aws-managed-grafana
+cloudposse/terraform-aws-route53-alias
+cloudposse/terraform-cloudflare-waf-rulesets
+cloudposse/terraform-aws-key-pair
+cloudposse/terraform-aws-route53-resolver-dns-firewall
+cloudposse/terraform-aws-sns-topic

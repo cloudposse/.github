@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-alb
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
+cloudposse/terraform-yaml-stack-config
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-aws-config
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-ecr
+cloudposse/terraform-aws-backup
+cloudposse/terraform-aws-s3-log-storage
+cloudposse/terraform-aws-datadog-lambda-forwarder
+cloudposse/terraform-aws-utils
+cloudposse/terraform-aws-firewall-manager
+cloudposse/terraform-aws-ssm-patch-manager
+cloudposse/terraform-aws-s3-bucket
+cloudposse/terraform-aws-dms
+cloudposse/terraform-aws-eks-workers

@@ -1,0 +1,16 @@
+cloudposse/terraform-null-label
+cloudposse/terraform-terraform-label
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair
+cloudposse/terraform-aws-network-firewall
+cloudposse/terraform-aws-ec2-client-vpn
+cloudposse/terraform-aws-codebuild
+cloudposse/terraform-aws-iam-chamber-s3-role
+cloudposse/terraform-aws-managed-prometheus
+cloudposse/terraform-aws-rds-cloudwatch-sns-alarms
+cloudposse/terraform-tls-ssh-key-pair
+cloudposse/terraform-aws-lambda-elasticsearch-cleanup
+cloudposse/terraform-aws-transit-gateway
+cloudposse/terraform-aws-ses-lambda-forwarder
+cloudposse/terraform-aws-global-accelerator
+cloudposse/terraform-aws-ses
+cloudposse/terraform-aws-macie

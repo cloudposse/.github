@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-vpc-peering-multi-account
+cloudposse/terraform-aws-elasticache-redis
+cloudposse/terraform-aws-elasticsearch
+cloudposse/terraform-aws-nlb
+cloudposse/terraform-aws-ecs-codepipeline
+cloudposse/terraform-aws-lb-s3-bucket
+cloudposse/terraform-aws-ec2-instance-group
+cloudposse/terraform-aws-organization-access-group
+cloudposse/terraform-aws-route53-cluster-zone
+cloudposse/terraform-github-repository-webhooks
+cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+cloudposse/terraform-aws-rds-db-proxy
+cloudposse/terraform-aws-iam-role
+cloudposse/terraform-aws-iam-assumed-roles
+cloudposse/terraform-aws-budgets

@@ -1,0 +1,4 @@
+cloudposse/terraform-aws-lambda-cloudwatch-sns-alarms
+cloudposse/terraform-aws-ecs-spot-fleet
+cloudposse/terraform-aws-step-functions
+cloudposse/terraform-aws-service-control-policies

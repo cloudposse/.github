@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ecs-cluster
+cloudposse/terraform-aws-vpc-flow-logs-s3-bucket
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-aws-cloudwatch-events
+cloudposse/terraform-aws-dynamodb
+cloudposse/terraform-aws-dynamodb-autoscaler
+cloudposse/terraform-aws-cloudtrail
+cloudposse/terraform-aws-transfer-sftp
+cloudposse/terraform-aws-eks-spotinst-ocean-nodepool
+cloudposse/terraform-aws-tfstate-backend
+cloudposse/terraform-null-ansible
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-opsgenie-incident-management
+cloudposse/terraform-aws-amplify-app
+cloudposse/terraform-kubernetes-tfc-cloud-agent
+cloudposse/terraform-aws-cloudfront-cdn

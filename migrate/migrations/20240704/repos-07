@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-lakeformation
+cloudposse/terraform-aws-msk-apache-kafka-cluster
+cloudposse/terraform-aws-refarch-utils
+cloudposse/terraform-aws-ssm-parameter-store-policy-documents
+cloudposse/terraform-aws-glue
+cloudposse/terraform-aws-vpc-peering
+cloudposse/terraform-aws-named-subnets
+cloudposse/terraform-aws-route53-cluster-hostname
+cloudposse/terraform-aws-api-gateway
+cloudposse/terraform-aws-inspector
+cloudposse/terraform-aws-ec2-ami-snapshot
+cloudposse/terraform-aws-ecr-public
+cloudposse/terraform-aws-cloudformation-stack-set
+cloudposse/terraform-aws-vpn-connection
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-iam-policy
