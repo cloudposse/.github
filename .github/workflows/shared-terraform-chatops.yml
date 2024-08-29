@@ -107,8 +107,8 @@ jobs:
           args: >-
             -action update_state
             -ref "${{ needs.pr.outputs.head_sha }}"
-            -owner "${{ needs.pr.outputs.head_repo_owner }}"
-            -repo "${{ needs.pr.outputs.head_repo_name }}"
+            -owner "${{ needs.pr.outputs.base_repo_owner }}"
+            -repo "${{ needs.pr.outputs.base_repo_name }}"
             -state pending
             -context "test/terratest/${{ matrix.platform }}"
             -description "Tests started by @${{ github.actor }}"
@@ -262,8 +262,8 @@ jobs:
           args: >-
             -action update_state
             -ref "${{ needs.pr.outputs.head_sha }}"
-            -owner "${{ needs.pr.outputs.head_repo_owner }}"
-            -repo "${{ needs.pr.outputs.head_repo_name }}"
+            -owner "${{ needs.pr.outputs.base_repo_owner }}"
+            -repo "${{ needs.pr.outputs.base_repo_name }}"
             -state failure
             -context "test/terratest/${{ matrix.platform }}"
             -description "Tests failed"
@@ -277,8 +277,8 @@ jobs:
           args: >-
             -action update_state
             -ref "${{ needs.pr.outputs.head_sha }}"
-            -owner "${{ needs.pr.outputs.head_repo_owner }}"
-            -repo "${{ needs.pr.outputs.head_repo_name }}"
+            -owner "${{ needs.pr.outputs.base_repo_owner }}"
+            -repo "${{ needs.pr.outputs.base_repo_name }}"
             -state success
             -context "test/terratest/${{ matrix.platform }}"
             -description "Tests passed"
@@ -293,8 +293,8 @@ jobs:
           args: >-
             -action update_state
             -ref "${{ needs.pr.outputs.head_sha }}"
-            -owner "${{ needs.pr.outputs.head_repo_owner }}"
-            -repo "${{ needs.pr.outputs.head_repo_name }}"
+            -owner "${{ needs.pr.outputs.base_repo_owner }}"
+            -repo "${{ needs.pr.outputs.base_repo_name }}"
             -state error
             -context "test/terratest/${{ matrix.platform }}"
             -description "Tests cancelled"
