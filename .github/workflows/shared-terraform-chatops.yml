@@ -32,9 +32,6 @@ jobs:
         with:
           id: ${{ github.event.issue.number }}
 
-      - run: |-
-          echo "${{ steps.pr.outputs.json }}"
-
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
       head_sha: ${{ fromJSON(steps.pr.outputs.json).head.sha }}
