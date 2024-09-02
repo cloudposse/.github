@@ -15,9 +15,6 @@ on:
       AWS_ROLE_TO_ASSUME:
         description: "AWS Role to assume"
         required: true
-      github_access_token:
-        description: "GitHub API token"
-        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -244,7 +241,6 @@ jobs:
             ${{ contains(needs.pr.outputs.base_repo_name, '-cloudflare-')
             ||  contains(needs.pr.outputs.labels, 'terraform-cloudflare-provider') }}
 
-          GITHUB_TOKEN:          ${{ secrets.github_access_token }}
           OPSGENIE_API_KEY:      ${{ secrets.OPSGENIE_API_KEY }}
           DD_API_KEY:            ${{ secrets.DD_API_KEY }}
           DD_APP_KEY:            ${{ secrets.DD_APP_KEY }}
