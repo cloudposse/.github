@@ -180,32 +180,64 @@ jobs:
           make -C test/src clean init
           rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl
 
+      - name: Config
+        shell: bash
+        id: config
+        env:
+          USES_GITHUB:   >-
+            ${{ contains(needs.pr.outputs.base_repo_name, '-github-')
+            || contains(needs.pr.outputs.labels, 'terraform-github-provider') }}
+          USES_OPSGENIE: >-
+            ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-opsgenie-')
+            || contains(needs.pr.outputs.labels, 'terraform-opsgenie-provider') }}
+          USES_AWS: >-
+            ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-aws-')
+            || contains(needs.pr.outputs.labels, 'terraform-aws-provider') }}
+          USES_SPOTINST: >-
+            ${{ contains(needs.pr.outputs.base_repo_name, '-spotinst-')
+            || contains(needs.pr.outputs.labels, 'terraform-spotinst-provider') }}
+          USES_DATADOG: >-
+            ${{ contains(needs.pr.outputs.base_repo_name, '-datadog-')
+            ||  contains(needs.pr.outputs.labels, 'terraform-datadog-provider') }}
+          USES_TFE: >-
+            ${{ contains(needs.pr.outputs.base_repo_name, '-tfe-')
+            ||  contains(needs.pr.outputs.labels, 'terraform-tfe-provider') }}
+          USES_CLOUDFLARE: >-
+            ${{ contains(needs.pr.outputs.base_repo_name, '-cloudflare-')
+            ||  contains(needs.pr.outputs.labels, 'terraform-cloudflare-provider') }}
+        run: |-
+          echo "uses_github=${USES_GITHUB}" >> $GITHUB_OUTPUT
+          echo "uses_opsgenie=${USES_OPSGENIE}" >> $GITHUB_OUTPUT
+          echo "uses_aws=${USES_AWS}" >> $GITHUB_OUTPUT
+          echo "uses_spotinst=${USES_SPOTINST}" >> $GITHUB_OUTPUT
+          echo "uses_datadog=${USES_DATADOG}" >> $GITHUB_OUTPUT
+          echo "uses_tfe=${USES_TFE}" >> $GITHUB_OUTPUT
+          echo "uses_cloudflare=${USES_CLOUDFLARE}" >> $GITHUB_OUTPUT
+
       - name: "Inject secrets"
         env:
           USES_GITHUB:   >-
-            ${{ contains(github.event.repository.name, '-github-')
+            ${{ contains(needs.pr.outputs.base_repo_name, '-github-')
             || contains(needs.pr.outputs.labels, 'terraform-github-provider') }}
           USES_OPSGENIE: >-
-            ${{ contains(github.event.repository.name, 'terraform-opsgenie-')
+            ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-opsgenie-')
             || contains(needs.pr.outputs.labels, 'terraform-opsgenie-provider') }}
           USES_AWS: >-
-            ${{ contains(github.event.repository.name, 'terraform-aws-')
+            ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-aws-')
             || contains(needs.pr.outputs.labels, 'terraform-aws-provider') }}
           USES_SPOTINST: >-
-            ${{ contains(github.event.repository.name, '-spotinst-')
+            ${{ contains(needs.pr.outputs.base_repo_name, '-spotinst-')
             || contains(needs.pr.outputs.labels, 'terraform-spotinst-provider') }}
           USES_DATADOG: >-
-            ${{ contains(github.event.repository.name, '-datadog-')
+            ${{ contains(needs.pr.outputs.base_repo_name, '-datadog-')
             ||  contains(needs.pr.outputs.labels, 'terraform-datadog-provider') }}
           USES_TFE: >-
-            ${{ contains(github.event.repository.name, '-tfe-')
+            ${{ contains(needs.pr.outputs.base_repo_name, '-tfe-')
             ||  contains(needs.pr.outputs.labels, 'terraform-tfe-provider') }}
           USES_CLOUDFLARE: >-
-            ${{ contains(github.event.repository.name, '-cloudflare-')
+            ${{ contains(needs.pr.outputs.base_repo_name, '-cloudflare-')
             ||  contains(needs.pr.outputs.labels, 'terraform-cloudflare-provider') }}
 
-          AWS_ACCESS_KEY_ID:     ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN:          ${{ secrets.github_access_token }}
           OPSGENIE_API_KEY:      ${{ secrets.OPSGENIE_API_KEY }}
           DD_API_KEY:            ${{ secrets.DD_API_KEY }}
@@ -217,11 +249,6 @@ jobs:
           CLOUDFLARE_API_KEY:    ${{ secrets.CLOUDFLARE_API_KEY }}
         shell: bash
         run: |
-          if [[ "$USES_AWS" == "true" || "$USES_DATADOG" == "true" || "$USES_SPOTINST" == "true" ]]; then
-            printf "%s=%s\n"  AWS_ACCESS_KEY_ID      "$AWS_ACCESS_KEY_ID"      >> "$GITHUB_ENV"
-            printf "%s=%s\n"  AWS_SECRET_ACCESS_KEY  "$AWS_SECRET_ACCESS_KEY"  >> "$GITHUB_ENV"
-            echo exported AWS
-          fi
           if [[ "$USES_DATADOG" == "true" ]]; then
             printf "%s=%s\n"  DD_API_KEY "$DD_API_KEY" >> "$GITHUB_ENV"
             printf "%s=%s\n"  DD_APP_KEY "$DD_APP_KEY" >> "$GITHUB_ENV"
@@ -249,6 +276,27 @@ jobs:
             printf "%s=%s\n"  CLOUDFLARE_API_KEY "$CLOUDFLARE_API_KEY" >> "$GITHUB_ENV"
             echo exported CloudFlare
           fi
+
+#      - name: Load Secrets from 1Password
+#        id: secrets
+#        uses: 1password/load-secrets-action@v2
+#        with:
+#          # Export loaded secrets as environment variables
+#          export-env: false
+#        env:
+#          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.TERRATEST_OP_SERVICE_ACCOUNT_TOKEN }}
+#          SECRET: op://${{ matrix.vault }}/${{ matrix.item.path}}
+
+      - name: Configure AWS Credentials
+        if: ${{ steps.config.outputs.uses_aws == 'true' || 
+                steps.config.outputs.uses_datadog == 'true' || 
+                steps.config.outputs.uses_spotinst == 'true' }}
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          role-session-name: "terratest"
+          mask-aws-account-id: "no"
 
       - name: "Test `examples/complete` with terratest"
         run: |-
