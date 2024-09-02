@@ -9,6 +9,12 @@ on:
         required: false
         default: '["ubuntu-latest"]'
     secrets:
+      AWS_REGION:
+        description: "AWS region"
+        required: false
+      AWS_ROLE_TO_ASSUME:
+        description: "AWS Role to assume"
+        required: false
       github_access_token:
         description: "GitHub API token"
         required: true
