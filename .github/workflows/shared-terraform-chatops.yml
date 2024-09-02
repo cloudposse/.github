@@ -11,10 +11,10 @@ on:
     secrets:
       AWS_REGION:
         description: "AWS region"
-        required: false
+        required: true
       AWS_ROLE_TO_ASSUME:
         description: "AWS Role to assume"
-        required: false
+        required: true
       github_access_token:
         description: "GitHub API token"
         required: true
