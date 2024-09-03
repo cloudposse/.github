@@ -91,7 +91,7 @@ jobs:
     needs: [pr, pending]
     env:
       MAKE_INCLUDES: Makefile
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       max-parallel: 10
       fail-fast: false # Don't fail fast to avoid locking TF State
@@ -361,13 +361,13 @@ jobs:
       - shell: bash
         id: status
         run: |
-          if [[ ${{ needs.terratest.result }} == 'success' ]]; then
+          if [[ '${{ needs.terratest.result }}' == 'success' ]]; then
               echo "result=success" >> $GITHUB_OUTPUT
-          elif [[ ${{ needs.terratest.result }} == 'cancelled' ]]; then
+          elif [[ '${{ needs.terratest.result }}' == 'cancelled' ]]; then
             echo "result=failure" >> $GITHUB_OUTPUT
-          elif [[ ${{ needs.terratest.result }} == 'failure' ]]; then
+          elif [[ '${{ needs.terratest.result }}' == 'failure' ]]; then
             echo "result=failure" >> $GITHUB_OUTPUT
-          elif [[ ${{ needs.terratest.result }} == 'skipped' ]]; then
+          elif [[ '${{ needs.terratest.result }}' == 'skipped' ]]; then
             echo "result=failure" >> $GITHUB_OUTPUT
           else
               echo "Some tests failed"
