@@ -305,10 +305,6 @@ jobs:
         run: |-
           terraform --version
           make -C test/src
-        env:
-          AWS_ACCESS_KEY_ID: ${{ steps.aws.outputs.aws-access-key-id }}
-          AWS_SECRET_ACCESS_KEY: ${{ steps.aws.outputs.aws-secret-access-key }}
-          AWS_SESSION_TOKEN: ${{ steps.aws.outputs.aws-session-token }}
 
       - name: "Update GitHub Status for failure"
         if: ${{ failure() }}
