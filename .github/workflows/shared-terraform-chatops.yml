@@ -28,6 +28,7 @@ defaults:
 jobs:
   pr:
     name: PR Info
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/terratest') }}
     runs-on: ubuntu-latest
     steps:
       - uses: cloudposse-github-actions/get-pr@by-number
@@ -225,9 +226,6 @@ jobs:
           USES_OPSGENIE: >-
             ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-opsgenie-')
             || contains(needs.pr.outputs.labels, 'terraform-opsgenie-provider') }}
-          USES_AWS: >-
-            ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-aws-')
-            || contains(needs.pr.outputs.labels, 'terraform-aws-provider') }}
           USES_SPOTINST: >-
             ${{ contains(needs.pr.outputs.base_repo_name, '-spotinst-')
             || contains(needs.pr.outputs.labels, 'terraform-spotinst-provider') }}
