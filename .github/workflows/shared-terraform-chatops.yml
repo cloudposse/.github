@@ -86,6 +86,8 @@ jobs:
     needs: [pr, pending]
     env:
       MAKE_INCLUDES: Makefile
+      AWS_REGION: us-east-2
+      AWS_ROLE_TO_ASSUME: arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest
     continue-on-error: false
     strategy:
       max-parallel: 10
@@ -266,8 +268,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         id: aws
         with:
-          aws-region: ${{ secrets.AWS_REGION }}
-          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
           role-session-name: "terratest"
           mask-aws-account-id: "no"
 
