@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-eks-spotinst-ocean-nodepool
+cloudposse/terraform-aws-transfer-sftp
+cloudposse/terraform-aws-cloudtrail
+cloudposse/terraform-aws-dynamodb-autoscaler
+cloudposse/terraform-aws-dynamodb
+cloudposse/terraform-aws-cloudwatch-events
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-aws-vpc-flow-logs-s3-bucket
+cloudposse/terraform-aws-ecs-cluster
+cloudposse/terraform-aws-codebuild
+cloudposse/terraform-aws-iam-chamber-s3-role
+cloudposse/terraform-aws-managed-prometheus
+cloudposse/terraform-aws-rds-cloudwatch-sns-alarms
+cloudposse/terraform-tls-ssh-key-pair
+cloudposse/terraform-aws-lambda-elasticsearch-cleanup
+cloudposse/terraform-aws-transit-gateway
