@@ -112,7 +112,7 @@ jobs:
 
   terratest:
     runs-on: ubuntu-latest
-    environment: terratest
+    environment: test
     container: cloudposse/test-harness:latest
     needs: [pr, pending]
     env:
