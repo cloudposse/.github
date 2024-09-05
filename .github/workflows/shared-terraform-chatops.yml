@@ -15,6 +15,30 @@ on:
       AWS_ROLE_TO_ASSUME:
         description: "AWS Role to assume"
         required: false
+      OPSGENIE_API_KEY:
+        description: "Opsgenie API Key"
+        required: false
+      DD_API_KEY:
+        description: "Digital Ocean API Key"
+        required: false
+      DD_APP_KEY:
+        description: "Digital Ocean App Key"
+        required: false
+      SPOTINST_TOKEN:
+        description: "Spotinst token"
+        required: false
+      SPOTINST_ACCOUNT:
+        description: "Spotinst account"
+        required: false
+      TFE_TOKEN:
+        description: "Terraform enterprise token"
+        required: false
+      CLOUDFLARE_EMAIL:
+        description: "Cloudflare email"
+        required: false
+      CLOUDFLARE_API_KEY:
+        description: "Cloudflare API key"
+        required: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -88,6 +112,7 @@ jobs:
 
   terratest:
     runs-on: ubuntu-latest
+    environment: terratest
     container: cloudposse/test-harness:latest
     needs: [pr, pending]
     env:
@@ -220,33 +245,21 @@ jobs:
 
       - name: "Inject secrets"
         env:
-          USES_GITHUB:   >-
-            ${{ contains(needs.pr.outputs.base_repo_name, '-github-')
-            || contains(needs.pr.outputs.labels, 'terraform-github-provider') }}
-          USES_OPSGENIE: >-
-            ${{ contains(needs.pr.outputs.base_repo_name, 'terraform-opsgenie-')
-            || contains(needs.pr.outputs.labels, 'terraform-opsgenie-provider') }}
-          USES_SPOTINST: >-
-            ${{ contains(needs.pr.outputs.base_repo_name, '-spotinst-')
-            || contains(needs.pr.outputs.labels, 'terraform-spotinst-provider') }}
-          USES_DATADOG: >-
-            ${{ contains(needs.pr.outputs.base_repo_name, '-datadog-')
-            ||  contains(needs.pr.outputs.labels, 'terraform-datadog-provider') }}
-          USES_TFE: >-
-            ${{ contains(needs.pr.outputs.base_repo_name, '-tfe-')
-            ||  contains(needs.pr.outputs.labels, 'terraform-tfe-provider') }}
-          USES_CLOUDFLARE: >-
-            ${{ contains(needs.pr.outputs.base_repo_name, '-cloudflare-')
-            ||  contains(needs.pr.outputs.labels, 'terraform-cloudflare-provider') }}
-
-          OPSGENIE_API_KEY:      ${{ secrets.OPSGENIE_API_KEY }}
-          DD_API_KEY:            ${{ secrets.DD_API_KEY }}
-          DD_APP_KEY:            ${{ secrets.DD_APP_KEY }}
-          SPOTINST_TOKEN:        ${{ secrets.SPOTINST_TOKEN }}
-          SPOTINST_ACCOUNT:      ${{ secrets.SPOTINST_ACCOUNT }}
-          TFE_TOKEN:             ${{ secrets.TFE_TOKEN }}
-          CLOUDFLARE_EMAIL:      ${{ secrets.CLOUDFLARE_EMAIL }}
-          CLOUDFLARE_API_KEY:    ${{ secrets.CLOUDFLARE_API_KEY }}
+          USES_GITHUB: ${{ steps.config.outputs.uses_github }}
+          USES_OPSGENIE: ${{ steps.config.outputs.uses_opsgenie }}
+          USES_SPOTINST: ${{ steps.config.outputs.uses_spotinst }}
+          USES_DATADOG: ${{ steps.config.outputs.uses_datadog }}
+          USES_TFE: ${{ steps.config.outputs.uses_tfe }}
+          USES_CLOUDFLARE: ${{ steps.config.outputs.uses_cloudflare }}
+          OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
+          DD_API_KEY: ${{ secrets.DD_API_KEY }}
+          DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
+          SPOTINST_TOKEN: ${{ secrets.SPOTINST_TOKEN }}
+          SPOTINST_ACCOUNT: ${{ secrets.SPOTINST_ACCOUNT }}
+          TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           if [[ "$USES_DATADOG" == "true" ]]; then
@@ -276,16 +289,6 @@ jobs:
             printf "%s=%s\n"  CLOUDFLARE_API_KEY "$CLOUDFLARE_API_KEY" >> "$GITHUB_ENV"
             echo exported CloudFlare
           fi
-
-#      - name: Load Secrets from 1Password
-#        id: secrets
-#        uses: 1password/load-secrets-action@v2
-#        with:
-#          # Export loaded secrets as environment variables
-#          export-env: false
-#        env:
-#          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.TERRATEST_OP_SERVICE_ACCOUNT_TOKEN }}
-#          SECRET: op://${{ matrix.vault }}/${{ matrix.item.path}}
 
       - name: Configure AWS Credentials
         if: ${{ steps.config.outputs.uses_aws == 'true' || 
