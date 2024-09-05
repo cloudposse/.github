@@ -8,37 +8,37 @@ on:
         type: string
         required: false
         default: '["ubuntu-latest"]'
-    secrets:
-      AWS_REGION:
-        description: "AWS region"
-        required: false
-      AWS_ROLE_TO_ASSUME:
-        description: "AWS Role to assume"
-        required: false
-      OPSGENIE_API_KEY:
-        description: "Opsgenie API Key"
-        required: false
-      DD_API_KEY:
-        description: "Digital Ocean API Key"
-        required: false
-      DD_APP_KEY:
-        description: "Digital Ocean App Key"
-        required: false
-      SPOTINST_TOKEN:
-        description: "Spotinst token"
-        required: false
-      SPOTINST_ACCOUNT:
-        description: "Spotinst account"
-        required: false
-      TFE_TOKEN:
-        description: "Terraform enterprise token"
-        required: false
-      CLOUDFLARE_EMAIL:
-        description: "Cloudflare email"
-        required: false
-      CLOUDFLARE_API_KEY:
-        description: "Cloudflare API key"
-        required: false
+#    secrets:
+#      AWS_REGION:
+#        description: "AWS region"
+#        required: false
+#      AWS_ROLE_TO_ASSUME:
+#        description: "AWS Role to assume"
+#        required: false
+#      OPSGENIE_API_KEY:
+#        description: "Opsgenie API Key"
+#        required: false
+#      DD_API_KEY:
+#        description: "Digital Ocean API Key"
+#        required: false
+#      DD_APP_KEY:
+#        description: "Digital Ocean App Key"
+#        required: false
+#      SPOTINST_TOKEN:
+#        description: "Spotinst token"
+#        required: false
+#      SPOTINST_ACCOUNT:
+#        description: "Spotinst account"
+#        required: false
+#      TFE_TOKEN:
+#        description: "Terraform enterprise token"
+#        required: false
+#      CLOUDFLARE_EMAIL:
+#        description: "Cloudflare email"
+#        required: false
+#      CLOUDFLARE_API_KEY:
+#        description: "Cloudflare API key"
+#        required: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
