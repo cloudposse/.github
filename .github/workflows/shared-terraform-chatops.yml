@@ -24,6 +24,8 @@ jobs:
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/terratest') }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
+      - run: |-
+          echo "${{ fromJSON(github.event.issue.pull_request) }}"
       - uses: cloudposse-github-actions/get-pr@v2
         id: pr
         with:
