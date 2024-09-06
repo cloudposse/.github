@@ -24,7 +24,7 @@ jobs:
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/terratest') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: cloudposse-github-actions/get-pr@by-number
+      - uses: cloudposse-github-actions/get-pr@v2
         id: pr
         with:
           id: ${{ github.event.issue.number }}
