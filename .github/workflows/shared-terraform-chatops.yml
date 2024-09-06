@@ -21,7 +21,14 @@ defaults:
 jobs:
   pr:
     name: PR Info
-    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/terratest') }}
+    # https://docs.github.com/en/graphql/reference/enums#commentauthorassociation
+    if: ${{ github.event.issue.pull_request && 
+            contains(github.event.comment.body, '/terratest') &&
+            github.event.issue.state == 'open' &&
+            ( github.event.comment.author_association == 'OWNER' ||
+              github.event.comment.author_association == 'COLLABORATOR' ||
+              github.event.comment.author_association == 'MEMBER' )
+        }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
       - uses: cloudposse-github-actions/get-pr@v2
@@ -328,7 +335,7 @@ jobs:
   finalize:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     needs: [terratest, pr]
-    if: ${{ always() && github.event.issue.pull_request && contains(github.event.comment.body, '/terratest') }}
+    if: ${{ always() && needs.pr.result != 'skipped' }}
     steps:
       - shell: bash
         id: status
