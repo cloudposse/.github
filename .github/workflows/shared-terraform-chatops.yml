@@ -19,6 +19,11 @@ defaults:
     shell: bash -e -o pipefail {0}
 
 jobs:
+  debug:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}    
+    steps:
+      - run: echo "${{ toJSON(github.event.comment) }}"
+
   pr:
     name: PR Info
     # https://docs.github.com/en/graphql/reference/enums#commentauthorassociation
