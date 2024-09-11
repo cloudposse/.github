@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Controller
         id: controller
-        uses: cloudposse/github-action-yaml-config-query@use-typescript
+        uses: cloudposse/github-action-yaml-config-query@v1
         with:
           query: .${{ inputs.permission }}
           config: |-
