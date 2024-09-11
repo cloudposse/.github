@@ -1,0 +1,39 @@
+name: "Shared Access Controller"
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+      user:
+        description: "User name"
+        type: string
+        required: true
+      permission:
+        description: "Permission to check. One of 'run_terratest'"
+        type: string
+        required: true
+    outputs:
+      granted:
+        description: If user granted access.
+        value: ${{ jobs.release.outputs.granted }}
+
+jobs:
+  access:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    outputs:
+      granted: ${{ contains(fromJSON(steps.controller.outputs.users), inputs.user) }}
+    steps:
+      - name: Controller
+        id: controller
+        uses: cloudposse/github-action-yaml-config-query@use-typescript
+        with:
+          query: .${{ inputs.permission }}
+          config: |-
+            run_terratest:
+              users:
+                - goruha
+                - dumas
