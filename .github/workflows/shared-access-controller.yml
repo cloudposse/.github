@@ -35,7 +35,6 @@ jobs:
           config: |-
             run_terratest:
               users:
-                - goruha
                 - dumas
       - run: |-
           echo "User '${{ inputs.user }}' has permission '${{ inputs.permission }}' = ${{ steps.controller.outputs.users }}"
