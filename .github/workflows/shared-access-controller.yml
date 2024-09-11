@@ -16,6 +16,11 @@ on:
         description: "Permission to check. One of 'run_terratest'"
         type: string
         required: true
+      debug:
+        description: "Debug"
+        type: boolean
+        required: false
+        default: false
     outputs:
       granted:
         description: If user granted access.
@@ -35,8 +40,12 @@ jobs:
           config: |-
             run_terratest:
               users:
+                - goruha
                 - dumas
-      - run: |-
-          echo "User '${{ inputs.user }}' has permission '${{ inputs.permission }}' = ${{ steps.controller.outputs.users }}"
+
+      - name: debug
+        if: ${{ inputs.debug }}
+        run: |-
+          echo "Users has '${{ inputs.permission }} permission' = ${{ steps.controller.outputs.users }}"
           echo "User '${{ inputs.user }}' has permission '${{ inputs.permission }}' = ${{ contains(fromJSON(steps.controller.outputs.users), inputs.user) }}"
           
