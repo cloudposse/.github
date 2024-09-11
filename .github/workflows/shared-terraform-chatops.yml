@@ -23,7 +23,7 @@ jobs:
     if: ${{ github.event.issue.pull_request &&
             contains(github.event.comment.body, '/terratest') &&
             github.event.issue.state == 'open' }}
-    uses: cloudposse/.github/.github/workflows/shared-access-controller.yml@terratest-user-permissions
+    uses: cloudposse/.github/.github/workflows/shared-access-controller.yml@main
     with:
       runs-on: ${{ inputs.runs-on }}
       permission: run_terratest
