@@ -40,8 +40,25 @@ jobs:
           config: |-
             run_terratest:
               users:
+                - osterman
                 - goruha
-                - dumas
+                - dudymas
+                - mcalhoun
+                - Nuru
+                - aknysh
+                - korenyoni
+                - milldr
+                - Benbentwo
+                - GabisCampana
+                - hans-d
+                - johncblandii
+                - kevcube
+                - Gowiem
+                - jamengual
+                - joe-niland
+                - nitrocode
+                - gberenice
+                - RoseSecurity
 
       - name: debug
         if: ${{ inputs.debug }}
