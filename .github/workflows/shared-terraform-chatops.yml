@@ -19,21 +19,20 @@ defaults:
     shell: bash -e -o pipefail {0}
 
 jobs:
-  debug:
-    runs-on: ${{ fromJSON(inputs.runs-on) }}    
-    steps:
-      - run: echo "${{ toJSON(github.event.comment) }}"
+  access:
+    if: ${{ github.event.issue.pull_request &&
+            contains(github.event.comment.body, '/terratest') &&
+            github.event.issue.state == 'open' }}
+    uses: cloudposse/.github/.github/workflows/shared-access-controller.yml@main
+    with:
+      runs-on: ${{ inputs.runs-on }}
+      permission: run_terratest
+      user: ${{ github.event.comment.user.login }}
 
   pr:
     name: PR Info
-    # https://docs.github.com/en/graphql/reference/enums#commentauthorassociation
-    if: ${{ github.event.issue.pull_request && 
-            contains(github.event.comment.body, '/terratest') &&
-            github.event.issue.state == 'open' &&
-            ( github.event.comment.author_association == 'OWNER' ||
-              github.event.comment.author_association == 'COLLABORATOR' ||
-              github.event.comment.author_association == 'MEMBER' )
-        }}
+    needs: [access]
+    if: ${{ needs.access.outputs.granted == 'true' }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
       - uses: cloudposse-github-actions/get-pr@v2

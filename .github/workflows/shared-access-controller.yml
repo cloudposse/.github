@@ -1,0 +1,68 @@
+name: "Shared Access Controller"
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+      user:
+        description: "User name"
+        type: string
+        required: true
+      permission:
+        description: "Permission to check. One of 'run_terratest'"
+        type: string
+        required: true
+      debug:
+        description: "Debug"
+        type: boolean
+        required: false
+        default: false
+    outputs:
+      granted:
+        description: If user granted access.
+        value: ${{ jobs.check.outputs.granted }}
+
+jobs:
+  check:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    outputs:
+      granted: ${{ contains(fromJSON(steps.controller.outputs.users), inputs.user) }}
+    steps:
+      - name: Controller
+        id: controller
+        uses: cloudposse/github-action-yaml-config-query@v1
+        with:
+          query: .${{ inputs.permission }}
+          config: |-
+            run_terratest:
+              users:
+                - osterman
+                - goruha
+                - dudymas
+                - mcalhoun
+                - Nuru
+                - aknysh
+                - korenyoni
+                - milldr
+                - Benbentwo
+                - GabisCampana
+                - hans-d
+                - johncblandii
+                - kevcube
+                - Gowiem
+                - jamengual
+                - joe-niland
+                - nitrocode
+                - gberenice
+                - RoseSecurity
+
+      - name: debug
+        if: ${{ inputs.debug }}
+        run: |-
+          echo "Users has '${{ inputs.permission }} permission' = ${{ steps.controller.outputs.users }}"
+          echo "User '${{ inputs.user }}' has permission '${{ inputs.permission }}' = ${{ contains(fromJSON(steps.controller.outputs.users), inputs.user) }}"
+          
