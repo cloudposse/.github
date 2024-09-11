@@ -19,10 +19,10 @@ on:
     outputs:
       granted:
         description: If user granted access.
-        value: ${{ jobs.release.outputs.granted }}
+        value: ${{ jobs.check.outputs.granted }}
 
 jobs:
-  access:
+  check:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     outputs:
       granted: ${{ contains(fromJSON(steps.controller.outputs.users), inputs.user) }}
@@ -37,3 +37,7 @@ jobs:
               users:
                 - goruha
                 - dumas
+      - run: |-
+          echo "User '${{ inputs.user }}' has permission '${{ inputs.permission }}' = ${{ steps.controller.outputs.users }}"
+          echo "User '${{ inputs.user }}' has permission '${{ inputs.permission }}' = ${{ contains(fromJSON(steps.controller.outputs.users), inputs.user) }}"
+          
