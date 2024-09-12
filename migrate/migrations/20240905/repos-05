@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-vpc-peering-multi-account
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-eks-workers
+cloudposse/terraform-aws-ssm-patch-manager
+cloudposse/terraform-aws-s3-bucket
+cloudposse/terraform-aws-firewall-manager
+cloudposse/terraform-aws-utils
+cloudposse/terraform-aws-datadog-lambda-forwarder
+cloudposse/terraform-aws-ecr
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-config
+cloudposse/terraform-aws-alb
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-yaml-stack-config
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
+cloudposse/terraform-aws-cloudfront-s3-cdn

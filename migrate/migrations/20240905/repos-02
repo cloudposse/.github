@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-cloudwatch-flow-logs
+cloudposse/terraform-aws-rds-cluster-instance-group
+cloudposse/terraform-aws-efs-cloudwatch-sns-alarms
+cloudposse/terraform-aws-kinesis-stream
+cloudposse/terraform-aws-acm-request-certificate
+cloudposse/terraform-aws-multi-az-subnets
+cloudposse/terraform-aws-vpc
+cloudposse/terraform-aws-iam-account-settings
+cloudposse/terraform-aws-athena
+cloudposse/terraform-aws-cloudtrail-s3-bucket
+cloudposse/terraform-aws-ssm-parameter-store
+cloudposse/terraform-aws-s3-website
+cloudposse/terraform-aws-security-hub
+cloudposse/terraform-aws-ec2-client-vpn
+cloudposse/terraform-aws-network-firewall
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair

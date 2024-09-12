@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-documentdb-cluster
+cloudposse/terraform-aws-rds-cluster
+cloudposse/terraform-cloudflare-zone
+cloudposse/terraform-aws-eks-node-group
+cloudposse/terraform-aws-eks-fargate-profile
+cloudposse/terraform-aws-eks-cluster
+cloudposse/terraform-aws-mq-broker
+cloudposse/terraform-aws-ec2-autoscale-group
+cloudposse/terraform-example-module
+cloudposse/terraform-yaml-config
+cloudposse/terraform-aws-cloudfront-cdn
+cloudposse/terraform-aws-amplify-app
+cloudposse/terraform-opsgenie-incident-management
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-null-ansible
+cloudposse/terraform-aws-tfstate-backend
