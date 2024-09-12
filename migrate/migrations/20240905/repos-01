@@ -1,0 +1,16 @@
+cloudposse/terraform-datadog-platform
+cloudposse/terraform-aws-efs
+cloudposse/terraform-external-module-artifact
+cloudposse/terraform-aws-kv-store
+cloudposse/terraform-aws-waf
+cloudposse/terraform-aws-security-group
+cloudposse/terraform-aws-organization-access-role
+cloudposse/terraform-aws-ssm-parameter-chamber-reader
+cloudposse/terraform-aws-cicd
+cloudposse/terraform-aws-elastic-beanstalk-environment
+cloudposse/terraform-aws-datadog-integration
+cloudposse/terraform-aws-helm-release
+cloudposse/terraform-aws-iam-system-user
+cloudposse/terraform-aws-eks-iam-role
+cloudposse/terraform-aws-config-storage
+cloudposse/terraform-aws-sso

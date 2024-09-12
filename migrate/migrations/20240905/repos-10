@@ -1,0 +1,4 @@
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-iam-policy
+cloudposse/terraform-artifactory-kv-store
+cloudposse/terraform-aws-batch
