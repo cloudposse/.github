@@ -40,6 +40,17 @@ jobs:
         with:
           id: ${{ github.event.issue.number }}
 
+      - uses: actions/github-script@v7
+        id: properties
+        with:
+          result-encoding: string
+          script: |
+            const properites = await github.rest.repos.getCustomPropertiesValues({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+            console.log(properites)
+
     outputs:
       base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
       base_repo_owner: ${{ fromJSON(steps.pr.outputs.json).base.repo.owner.login }}
