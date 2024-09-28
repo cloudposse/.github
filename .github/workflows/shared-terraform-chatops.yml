@@ -9,7 +9,7 @@ on:
         required: false
         default: '["ubuntu-latest"]'
 
-concurrency:
+terratest_skip_concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
@@ -74,8 +74,8 @@ jobs:
       merged_at: ${{ steps.pr.outputs.merged_at }}
       closed_at: ${{ steps.pr.outputs.closed_at }}
       labels: ${{ steps.pr.outputs.labels }}
-      iam_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest' }}
-      concurrency: ${{ steps.properties.outputs.test-skip-concurrency }}
+      terratest_aws_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest' }}
+      terratest_skip_concurrency: ${{ steps.properties.outputs.test-skip-terratest_skip_concurrency }}
 
   ack:
     if: github.event.comment.id != ''
@@ -117,10 +117,10 @@ jobs:
     env:
       MAKE_INCLUDES: Makefile
       AWS_REGION: us-east-2
-      AWS_ROLE_TO_ASSUME: ${{ needs.context.outputs.iam_role }}
+      AWS_ROLE_TO_ASSUME: ${{ needs.context.outputs.terratest_aws_role }}
     continue-on-error: false
     strategy:
-      max-parallel: ${{ needs.context.outputs.concurrency == 'true' && 1 || 10 }}
+      max-parallel: ${{ needs.context.outputs.terratest_skip_concurrency == 'true' && 1 || 10 }}
       fail-fast: false # Don't fail fast to avoid locking TF State
       matrix:
         platform: [terraform, opentofu]
