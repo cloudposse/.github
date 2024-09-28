@@ -9,7 +9,7 @@ on:
         required: false
         default: '["ubuntu-latest"]'
 
-terratest_skip_concurrency:
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
