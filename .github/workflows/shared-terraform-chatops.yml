@@ -75,7 +75,7 @@ jobs:
       closed_at: ${{ steps.pr.outputs.closed_at }}
       labels: ${{ steps.pr.outputs.labels }}
       terratest_aws_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest' }}
-      terratest_skip_concurrency: ${{ steps.properties.outputs.test-skip-terratest_skip_concurrency }}
+      terratest_skip_concurrency: ${{ steps.properties.outputs.test-skip-concurrency }}
 
   ack:
     if: github.event.comment.id != ''
