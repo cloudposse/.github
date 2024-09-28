@@ -75,7 +75,7 @@ jobs:
       closed_at: ${{ steps.pr.outputs.closed_at }}
       labels: ${{ steps.pr.outputs.labels }}
       iam_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest' }}
-      concurrency: ${{ steps.properties.outputs.test-skip-concurrency == 'true' && 1 || 10 }}
+      concurrency: ${{ steps.properties.outputs.test-skip-concurrency }}
 
   ack:
     if: github.event.comment.id != ''
@@ -120,7 +120,7 @@ jobs:
       AWS_ROLE_TO_ASSUME: ${{ needs.context.outputs.iam_role }}
     continue-on-error: false
     strategy:
-      max-parallel: ${{ needs.context.outputs.concurrency }}
+      max-parallel: ${{ needs.context.outputs.concurrency == 'true' && 1 || 10 }}
       fail-fast: false # Don't fail fast to avoid locking TF State
       matrix:
         platform: [terraform, opentofu]
