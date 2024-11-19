@@ -520,17 +520,17 @@ pull_request_rules:
       comment:
         message: |
           > [!WARNING]
-          > #### Migration of Components to a New GitHub Organization
-          > **CODE FREEZE 11/12 - 11/17**
-          > We are in the process of migrating each component in this repository to individual repositories under a new GitHub organization.
-          > This change aims to improve the stability, maintainability, and usability of our components.
+          > #### Migration of Components to a New GitHub Organization Complete
+          > **Repoistort is now read-only**
+          > We migrated each component in this repository to individual repositories under a new GitHub organization.
+          > All future updates, contributions, and issues should be directed to the respective component repositories in the new organization.
           >
-          > [Learn more](https://github.com/cloudposse/terraform-aws-components/issues/1177) about the migration and what to expect.
+          > [Learn more](https://github.com/cloudposse/terraform-aws-components/issues/1177) about the migration.
       close:
         message: |
-          This pull request has been closed due to an active **code freeze** during the migration of components to a new GitHub organization.
-          Please reopen it after **11/17** in the new repository under [Cloud Posse's Terraform Component GitHub Organization](https://github.com/cloudposse-terraform-components),
-          if still applicable. Thank you for your understanding.
+          This pull request has been closed due to read-only state of the repo.
+          All future updates, contributions, and issues should be directed to the respective component repositories in the new organization [Cloud Posse's Terraform Component GitHub Organization](https://github.com/cloudposse-terraform-components),
+          Thank you for your understanding.
 
   #- name: mergeable
   #  conditions:
