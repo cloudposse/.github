@@ -510,27 +510,27 @@ pull_request_rules:
         remove:
           - rebase
 
-  - name: "Comment on PRs during code freeze and close them"
-    conditions:
-      - and:
-        - "base=main"  # or whichever branch the freeze applies to
-        - "created-at > 2024-11-12"  # Start date of the code freeze
-        - "repository-full-name=cloudposse/terraform-aws-components" # Apply only to cloudposse/terraform-aws-components
-    actions:
-      comment:
-        message: |
-          > [!WARNING]
-          > #### Migration of Components to a New GitHub Organization
-          > **CODE FREEZE 11/12 - 11/17**
-          > We are in the process of migrating each component in this repository to individual repositories under a new GitHub organization.
-          > This change aims to improve the stability, maintainability, and usability of our components.
-          >
-          > [Learn more](https://github.com/cloudposse/terraform-aws-components/issues/1177) about the migration and what to expect.
-      close:
-        message: |
-          This pull request has been closed due to an active **code freeze** during the migration of components to a new GitHub organization.
-          Please reopen it after **11/17** in the new repository under [Cloud Posse's Terraform Component GitHub Organization](https://github.com/cloudposse-terraform-components),
-          if still applicable. Thank you for your understanding.
+  # - name: "Comment on PRs during code freeze and close them"
+  #   conditions:
+  #     - and:
+  #       - "base=main"  # or whichever branch the freeze applies to
+  #       - "created-at > 2024-11-12"  # Start date of the code freeze
+  #       - "repository-full-name=cloudposse/terraform-aws-components" # Apply only to cloudposse/terraform-aws-components
+  #   actions:
+  #     comment:
+  #       message: |
+  #         > [!WARNING]
+  #         > #### Migration of Components to a New GitHub Organization
+  #         > **CODE FREEZE 11/12 - 11/17**
+  #         > We are in the process of migrating each component in this repository to individual repositories under a new GitHub organization.
+  #         > This change aims to improve the stability, maintainability, and usability of our components.
+  #         >
+  #         > [Learn more](https://github.com/cloudposse/terraform-aws-components/issues/1177) about the migration and what to expect.
+  #     close:
+  #       message: |
+  #         This pull request has been closed due to an active **code freeze** during the migration of components to a new GitHub organization.
+  #         Please reopen it after **11/17** in the new repository under [Cloud Posse's Terraform Component GitHub Organization](https://github.com/cloudposse-terraform-components),
+  #         if still applicable. Thank you for your understanding.
 
   #- name: mergeable
   #  conditions:
