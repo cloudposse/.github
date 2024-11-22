@@ -516,6 +516,7 @@ pull_request_rules:
         - "base=main"  # or whichever branch the freeze applies to
         - "created-at > 2024-11-12"  # Start date of the code freeze
         - "repository-full-name=cloudposse/terraform-aws-components" # Apply only to cloudposse/terraform-aws-components
+        - "label != force" # Skip PR auto close
     actions:
       comment:
         message: |
