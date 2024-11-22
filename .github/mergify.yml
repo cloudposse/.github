@@ -518,8 +518,8 @@ pull_request_rules:
         - "repository-full-name=cloudposse/terraform-aws-components" # Apply only to cloudposse/terraform-aws-components
         - "label != force" # Skip PR auto close
     actions:
-      comment:
-        message: |
+      close:
+        message: |-
           > [!WARNING]
           > #### Components have moved!
           > **Repository is now read-only**
@@ -527,8 +527,7 @@ pull_request_rules:
           > All future updates, contributions, and issues should be directed to the respective component repositories in the new organization.
           >
           > [Learn more](https://github.com/cloudposse/terraform-aws-components/issues/1177) about the migration.
-      close:
-        message: |
+        
           This pull request has been closed due to read-only state of the repo.
           All future updates, contributions, and issues should be directed to the respective component repositories in the new organization [Cloud Posse's Terraform Component GitHub Organization](https://github.com/cloudposse-terraform-components),
           Thank you for your understanding.
