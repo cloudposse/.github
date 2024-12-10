@@ -1,12 +1,12 @@
 # Code of Conduct
 
-This code of conduct governs the [SweetOps Slack Community](https://slack.sweetops.com/) and related [Open Source Projects](https://github.com/cloudposse). SweetOps is operated by Cloud Posse, a [DevOps Accelerator](https://devopsaccelerator.com/) based in Houston, TX.
+This code of conduct governs the [SweetOps Slack Community](https://cloudposse.com/slack) and related [Open Source Projects](https://github.com/cloudposse). SweetOps is operated by Cloud Posse, a [DevOps Accelerator](https://devopsaccelerator.com/) based in Houston, TX.
 
 > [!IMPORTANT]
 > **SweetOps is a collaborative DevOps community for engineers of all skill levels.**
 >
-> We want to make sure our community is as constructive as possible in order to help each other solve cool DevOps problems. 
-> Anything that goes against the spirit of this, isn’t cool. If you see something suspicious, derogatory, or 
+> We want to make sure our community is as constructive as possible in order to help each other solve cool DevOps problems.
+> Anything that goes against the spirit of this, isn’t cool. If you see something suspicious, derogatory, or
 > otherwise inappropriate, etc. please send an email to [abuse@cloudposse.com](mailto:abuse@cloudposse.com) with details.
 >
 
@@ -33,7 +33,7 @@ We invite all those who participate in SweetOps to help us create safe and posit
 - Use the `#random` channel if nothing else fits
 - Use threads when responding, especially in busy channels
 - Don’t use `@channel` and `@here` (we’ve disabled them)
-    
+
 
 ## Unacceptable Behavior
 
@@ -41,12 +41,12 @@ The following are behaviors we consider forms of harassment that are unacceptabl
 - Comments that may be considered sexist, racist, homophobic, transphobic or otherwise discriminatory or offensive in nature. (Everything you say in public is on the record)
 - Usernames that contain unwelcome, suggestive, derogatory or inappropriate terms.
 - Disrespect towards others is not tolerated.
-- Unprofessional jokes, innuendo, dismissive attitudes. 
-- All forms of intimidation or harassment are prohibited. 
-- Foul or obscene language (in any language!) 
+- Unprofessional jokes, innuendo, dismissive attitudes.
+- All forms of intimidation or harassment are prohibited.
+- Foul or obscene language (in any language!)
 - Disrespect towards differences of opinion.
 - Disparagement.
-- Deceptive or fraudulent activity. 
+- Deceptive or fraudulent activity.
 - Sustained disruptions (like spamming channels).
 - All forms of violence, threats of violence or violent language.
 
@@ -103,7 +103,7 @@ Moderators reserve the right to delete excessive self-promotional or commercial 
 Official moderators of our Slack community are:
 - Erik Osterman ([@osterman](https://github.com/osterman))
 - Andriy Knysh ([@aknysh](https://github.com/aknysh))
-    
+
 
 ## Enforcement & Consequences
 
@@ -119,7 +119,7 @@ Our community is public and free-for-everyone to join. In fact, we encourage you
 
 If you would like to invite someone to the team, they may join here:
 
-[https://slack.sweetops.com](/https://slack.sweetops.com/)
+[https://cloudposse.com/slack](https://cloudposse.com/slack)
 
 ## Open Source Collaboration
 
@@ -136,14 +136,14 @@ These sessions may be recorded, published and shared.
 We support a lot of Open Source projects. These projects abide by this Code of Conduct.
 
 - [https://github.com/cloudposse](https://github.com/cloudposse)
-    
+
 
 ## Contact
 
 We want to hear from you. Please let us know if there’s something we should add, amend or update as part of our Code of Conduct.
 
 | Contact Method      | Details                                                     |
-|---------------------|-------------------------------------------------------------|
+| ------------------- | ----------------------------------------------------------- |
 | **Email**           | [community@cloudposse.com](mailto:community@cloudposse.com) |
 | **Phone**           | [+1 800-358-9018](tel:+18003589018)                         |
 | **Mailing Address** | 440 N Barranca Ave #1430, Covina, CA 91723                  |
