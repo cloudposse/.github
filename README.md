@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/.github/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     <p align="right">
-<a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -35,8 +35,8 @@ This repository fulfills several unique functions functions for the Cloud Posse 
     - **[`SECURITY.md`](SECURITY.md)** - our security policy and how to report vulnerabilities
     - **[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)** - our code of conduct covering our community and projects
     - **[`SUPPORT.md`](SUPPORT.md)** - where to get support for our projects
-2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder. 
-   In the event that a new repo is initialized without these files, the repo will behave on github.com as if the default copies of these files were present in the repo. 
+2. It can also act as a source for defaults of some repo-level files that might be found in a new GitHub repo's `.github` folder.
+   In the event that a new repo is initialized without these files, the repo will behave on github.com as if the default copies of these files were present in the repo.
    These files include:
     - **[`.github/CODEOWNERS`](.github/CODEOWNERS)** - governs required approvals for pull requests
     - **[`FUNDING.yml`](FUNDING.yml)** - how to support the project financially

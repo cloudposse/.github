@@ -1,150 +1,149 @@
-
 # These are YAML anchor definitions to avoid repetition and make the file more readable
 shared:
   # Automated pull requests from bot users
   is_a_bot: &is_a_bot
     - or:
-      - "author=cloudpossebot"
-      - "author=github-actions[bot]"
-      - "author=dependabot[bot]"
-      - "author=renovate[bot]"
+        - "author=cloudpossebot"
+        - "author=github-actions[bot]"
+        - "author=dependabot[bot]"
+        - "author=renovate[bot]"
 
   # Not a bot user
   not_a_bot: &not_a_bot
     - and:
-      - "-author=cloudpossebot"
-      - "-author=github-actions[bot]"
-      - "-author=dependabot[bot]"
-      - "-author=renovate[bot]"
+        - "-author=cloudpossebot"
+        - "-author=github-actions[bot]"
+        - "-author=dependabot[bot]"
+        - "-author=renovate[bot]"
 
   # Contribution is from an external contributor, not part of the organization
   is_external_contributor: &is_external_contributor
     - and:
-      - "-author=@engineering"
-      - "-author=@contributors"
-      - "-author=@admins"
-      - "-author=@bots"
-      - "-author=@approvers"
-      - "-author=@security"
-      - and: *not_a_bot
+        - "-author=@engineering"
+        - "-author=@contributors"
+        - "-author=@admins"
+        - "-author=@bots"
+        - "-author=@approvers"
+        - "-author=@security"
+        - and: *not_a_bot
 
   # Default branches
   is_default_branch: &is_default_branch
     - and:
-      - "base=main"
-      - "base=master"
+        - "base=main"
+        - "base=master"
 
   # Release branches
   is_release_branch: &is_release_branch
     - and:
-      - "base~=^release/v\\d{1,2}$"
+        - "base~=^release/v\\d{1,2}$"
 
   # Not a work in progress
   not_wip: &not_wip
     - and:
-      - "-title~=^(wip|WIP)"
-      - "-label~=(WIP|wip|do-not-merge|do not merge|triage|stale|feedback|help needed)"
-      - '-draft'
+        - "-title~=^(wip|WIP)"
+        - "-label~=(WIP|wip|do-not-merge|do not merge|triage|stale|feedback|help needed)"
+        - "-draft"
 
   # Label indicates some action is needed
   needs_attention: &needs_attention
     - and:
-      - "label~=(triage|stale|feedback|help needed)"
+        - "label~=(triage|stale|feedback|help needed)"
 
   # Do not merge this PR
   do_not_merge: &do_not_merge
     - or:
-      - "label~=(do-not-merge|do not merge)"
-      - "title~=(do-not-merge|do not merge)"
+        - "label~=(do-not-merge|do not merge)"
+        - "title~=(do-not-merge|do not merge)"
 
   # Is a work in progress
   is_wip: &is_wip
     - or:
-      - "title~=^(wip|WIP)"
-      - "label~=(WIP|wip)"
-      - and: *do_not_merge
-      - and: *needs_attention
-      - 'draft'      
+        - "title~=^(wip|WIP)"
+        - "label~=(WIP|wip)"
+        - and: *do_not_merge
+        - and: *needs_attention
+        - "draft"
 
   # Not in conflict
   not_in_conflict: &not_in_conflict
     - and:
-      - "-conflict"
-      - "-label~=(conflict)"
+        - "-conflict"
+        - "-label~=(conflict)"
 
   # Properly titled and described
   pr_has_metadata: &pr_has_metadata
     - and:
-      - "title~=(^[0-9A-Za-z]+)"
-      - body~=[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}
-      - -body~=(Describe high-level what changed)
+        - "title~=(^[0-9A-Za-z]+)"
+        - body~=[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}
+        - -body~=(Describe high-level what changed)
 
   # Has reviews and no changes requested
   is_approved: &is_approved
     - and:
-      - '#approved-reviews-by>=1'
-      - '#changes-requested-reviews-by=0'
-      - "#review-threads-unresolved=0"
-      - "#commented-reviews-by=0"
+        - "#approved-reviews-by>=1"
+        - "#changes-requested-reviews-by=0"
+        - "#review-threads-unresolved=0"
+        - "#commented-reviews-by=0"
 
   # Checks are passing
   checks_are_passing: &checks_are_passing
     - and:
-      - "#check-pending=0"
-      - "#status-failure=0"
+        - "#check-pending=0"
+        - "#status-failure=0"
 
   # Only for terraform files
   require_terraform_checks_are_passing: &require_terraform_checks_are_passing
     - or:
-      - "-files~=\\.tf$"
-      - and:
-        - "check-success=test/bats"
-        - "check-success=test/terratest"
-        - -status-failure~=^(terratest|terraform)$
+        - "-files~=\\.tf$"
+        - and:
+            - "check-success=test/bats"
+            - "check-success=test/terratest"
+            - -status-failure~=^(terratest|terraform)$
 
   # CODEOWNERS check did not run or is not passing
   require_codeowners_checks_are_passing: &require_codeowners_checks_are_passing
     - or:
-      - "-files=CODEOWNERS"
-      - and:
-        - "check-success=validate-codeowners"
+        - "-files=CODEOWNERS"
+        - and:
+            - "check-success=validate-codeowners"
 
   # Has changes to terraform code
   is_terraform: &is_terraform
     - and:
-      - "files~=\\.tf$"
+        - "files~=\\.tf$"
 
   # It's not closed or merged
   is_open: &is_open
     - and:
-      - -merged
-      - -closed
+        - -merged
+        - -closed
 
   # Was recently updated one minute ago
   is_recent_commit: &is_recent_commit
     - and:
-      - commits[*].date_committer > 1 minutes ago
+        - commits[*].date_committer > 1 minutes ago
 
   # README.md is updated together with README.yaml
   readme_updated: &readme_updated
     - or:
-      - and:
-        - -files=README.md
-        - -files=README.yaml
-      - and:
-        - files=README.md
-        - files=README.yaml
+        - and:
+            - -files=README.md
+            - -files=README.yaml
+        - and:
+            - files=README.md
+            - files=README.yaml
 
   # Needs Cloud Posse review
   needs_cloudposse: &needs_cloudposse
     - or:
-      - "files~=(mergify|settings|dependabot|renovate|CODEOWNERS|\\.github|Makefile|Dockerfile)"
-      - "label~=(cloudposse)"
+        - "files~=(mergify|settings|dependabot|renovate|CODEOWNERS|\\.github|Makefile|Dockerfile)"
+        - "label~=(cloudposse)"
 
   # Has no changes
   has_no_changes: &has_no_changes
     - and:
-      - "#files=0"
+        - "#files=0"
 
 # All the rules for the Pull Request
 pull_request_rules:
@@ -291,7 +290,7 @@ pull_request_rules:
   - name: "remove triage label if approved"
     conditions:
       - and: *is_open
-      - '#approved-reviews-by>=1'
+      - "#approved-reviews-by>=1"
     actions:
       label:
         remove:
@@ -353,9 +352,9 @@ pull_request_rules:
       - and: *is_default_branch
       - "label~=(stale)"
       - or:
-        - "label~=(feedback)"
-        - '#commented-reviews-by > 0'
-        - '#changes-requested-reviews-by > 0'
+          - "label~=(feedback)"
+          - "#commented-reviews-by > 0"
+          - "#changes-requested-reviews-by > 0"
       - updated-at < 30 days ago
     actions:
       close:
@@ -405,9 +404,9 @@ pull_request_rules:
           - "no-changes"
       close:
         message: |
-          This pull request was automatically closed as it no longer contains any changes. 
-          
-          This typically happens when another merged pull request has already included this request's 
+          This pull request was automatically closed as it no longer contains any changes.
+
+          This typically happens when another merged pull request has already included this request's
           proposed modifications into the default branch.
 
   - name: welcome new contributors
@@ -422,7 +421,7 @@ pull_request_rules:
     actions:
       comment:
         message: |
-          Thanks @{{author}} for creating this pull request! 
+          Thanks @{{author}} for creating this pull request!
 
           A maintainer will review your changes shortly. Please don't be discouraged if it takes a while.
 
@@ -430,19 +429,19 @@ pull_request_rules:
 
           > [!TIP]
           > #### Need help or want to ask for a PR review to be expedited?
-          > Join us on [Slack](https://slack.cloudposse.com) in the `#pr-reviews` channel.
+          > Join us on [Slack](https://cloudposse.com/slack) in the `#pr-reviews` channel.
 
   - name: add triage label for new pull requests
     conditions:
       - and: *is_open
       - and: *not_a_bot
-      - '#label=0'
+      - "#label=0"
       # When the PR is approved, the triage label is removed. Do not add it back
-      - '#approved-reviews-by=0'
+      - "#approved-reviews-by=0"
       - or:
-        - created-at > 5 minutes ago
-        - commits[*].date_committer > 5 minutes ago
-        - updated-at > 7 days ago
+          - created-at > 5 minutes ago
+          - commits[*].date_committer > 5 minutes ago
+          - updated-at > 7 days ago
     actions:
       label:
         add:
@@ -491,7 +490,7 @@ pull_request_rules:
           > #### Cloud Posse Engineering Team Review Required
           > This pull request modifies files that require Cloud Posse's review. Please be patient, and a core maintainer will review your changes.
           >
-          > To expedite this process, reach out to us on [Slack](https://slack.cloudposse.com) in the `#pr-reviews` channel.
+          > To expedite this process, reach out to us on [Slack](https://cloudposse.com/slack) in the `#pr-reviews` channel.
 
   - name: rebase pull request when it's more than 10 commits behind main
     conditions:
@@ -513,10 +512,10 @@ pull_request_rules:
   - name: "Comment on PRs during code freeze and close them"
     conditions:
       - and:
-        - "base=main"  # or whichever branch the freeze applies to
-        - "created-at > 2024-11-12"  # Start date of the code freeze
-        - "repository-full-name=cloudposse/terraform-aws-components" # Apply only to cloudposse/terraform-aws-components
-        - "label != force" # Skip PR auto close
+          - "base=main" # or whichever branch the freeze applies to
+          - "created-at > 2024-11-12" # Start date of the code freeze
+          - "repository-full-name=cloudposse/terraform-aws-components" # Apply only to cloudposse/terraform-aws-components
+          - "label != force" # Skip PR auto close
     actions:
       close:
         message: |-
@@ -527,7 +526,6 @@ pull_request_rules:
           > All future updates, contributions, and issues should be directed to the respective component repositories in the new organization.
           >
           > [Learn more](https://github.com/cloudposse/terraform-aws-components/issues/1177) about the migration.
-        
 
   #- name: mergeable
   #  conditions:

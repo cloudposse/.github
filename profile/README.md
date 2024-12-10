@@ -1,6 +1,6 @@
 [![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
 <p align="right">
-  <a href="https://slack.cloudposse.com" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
+  <a href="https://cloudposse.com/slack" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
   <a href="https://cloudposse.com/office-hours/" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge" alt="Office Hours"></a>
   <a href="https://cloudposse.com/quiz/" title="Request Quote"><img src="https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge" alt="Request Quote"></a>
 </p>
@@ -18,11 +18,11 @@
 >
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 >
-> Just browsing? Kickstart your journey with [Atmos](https://atmos.tools), dive into discussions on [Slack](https://slack.cloudposse.com), and gain insights on our weekly [office hours](https://cloudposse.com/office-hours). Discover how Cloud Posse's open-source solutions can elevate your organization.
+> Just browsing? Kickstart your journey with [Atmos](https://atmos.tools), dive into discussions on [Slack](https://cloudposse.com/slack), and gain insights on our weekly [office hours](https://cloudposse.com/office-hours). Discover how Cloud Posse's open-source solutions can elevate your organization.
 >
 > <details>
 >   <summary><strong>💡 Learn More about Cloud Posse</strong></summary>
-> 
+>
 > ### Our Approach
 >
 > *After you work with Cloud Posse, your team will know what they're doing.*
@@ -39,9 +39,9 @@
 >
 > ### How it Works
 > *Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.*
-> 
+>
 > Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
-> 
+>
 > [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
 >
 > * [Reference Architecture](https://cloudposse.com/reference-architecture/)
@@ -50,7 +50,7 @@
 > * [FAQs](https://cloudposse.com/faq/)
 >
 > ### What We Do
-> 
+>
 > *Your team can operate like a pro today.*
 >
 > Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.

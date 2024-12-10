@@ -1,37 +1,37 @@
-github_repo: 'XXXXXXX'
+github_repo: "XXXXXXX"
 badges:
-- name: "Latest Release"
-  image: "https://img.shields.io/github/release/cloudposse/terraform-aws-msk-apache-kafka-cluster.svg"
-  url: "https://github.com/cloudposse/terraform-aws-msk-apache-kafka-cluster/releases/latest"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-msk-apache-kafka-cluster.svg"
+    url: "https://github.com/cloudposse/terraform-aws-msk-apache-kafka-cluster/releases/latest"
 
-- name: "Latest Release"
-  image: https://img.shields.io/github/release/cloudposse/terraform-aws-ec2-ami-backup.svg
-  url: https://travis-ci.org/cloudposse/terraform-aws-ec2-ami-backup/releases
+  - name: "Latest Release"
+    image: https://img.shields.io/github/release/cloudposse/terraform-aws-ec2-ami-backup.svg
+    url: https://travis-ci.org/cloudposse/terraform-aws-ec2-ami-backup/releases
 
-- name: "Slack Community"
-  image: "https://slack.cloudposse.com/badge.svg"
-  url: "https://slack.cloudposse.com"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/for-the-badge.svg"
+    url: "https://cloudposse.com/slack"
 
-- name: "Slack Community"
-  image: https://slack.cloudposse.com/badge.svg
-  url: https://slack.cloudposse.com
+  - name: "Slack Community"
+    image: https://slack.cloudposse.com/for-the-badge.svg
+    url: https://cloudposse.com/slack
 
-- name: "Unique Badge"
-  image: https://foobar.com/badge.svg
-  url: https://foobar.com
+  - name: "Unique Badge"
+    image: https://foobar.com/badge.svg
+    url: https://foobar.com
 
-- name: "Codefresh Build Status"
-  image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-web-app?type=cf-1"
-  url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5dbb22a15c2e97b3b73ab484"
+  - name: "Codefresh Build Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-web-app?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5dbb22a15c2e97b3b73ab484"
 
-- name: "Build Status"
-  image: "https://travis-ci.org/cloudposse/terraform-aws-ec2-ami-backup.svg?branch=master"
-  url: "https://travis-ci.org/cloudposse/terraform-aws-ec2-ami-backup"
+  - name: "Build Status"
+    image: "https://travis-ci.org/cloudposse/terraform-aws-ec2-ami-backup.svg?branch=master"
+    url: "https://travis-ci.org/cloudposse/terraform-aws-ec2-ami-backup"
 
-- name: GitHub Action Build Status
-  image: https://github.com/cloudposse/terraform-aws-lambda-elasticsearch-cleanup/workflows/Lambda/badge.svg?branch=master
-  url: https://github.com/cloudposse/terraform-aws-lambda-elasticsearch-cleanup/actions?query=workflow%3ALambda
+  - name: GitHub Action Build Status
+    image: https://github.com/cloudposse/terraform-aws-lambda-elasticsearch-cleanup/workflows/Lambda/badge.svg?branch=master
+    url: https://github.com/cloudposse/terraform-aws-lambda-elasticsearch-cleanup/actions?query=workflow%3ALambda
 
-- name: "Discourse Forum"
-  image: "https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg"
-  url: "https://ask.sweetops.com/"
+  - name: "Discourse Forum"
+    image: "https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg"
+    url: "https://ask.sweetops.com/"

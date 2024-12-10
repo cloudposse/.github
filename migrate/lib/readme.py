@@ -5,11 +5,11 @@
 # The first implementation attempted to use `yq` to parse the YAML file and update the badges section.
 # Unfortunately, yq loses whitespace, and rewrites any multi-line strings and quoted strings.
 # This caused the README.yaml to be reformatted and lose its original structure, which is not acceptable.
-# It turns out that many YAML processors (especially based on Go) do not properly handle whitespace, 
-# comments, and multi-line strings in YAML. 
+# It turns out that many YAML processors (especially based on Go) do not properly handle whitespace,
+# comments, and multi-line strings in YAML.
 # - https://github.com/mikefarah/yq/discussions/1584
 # - https://github.com/go-yaml/yaml/issues/827
-# 
+#
 
 import sys
 import os
@@ -46,13 +46,13 @@ def migrate_readme(readme_yaml="README.yaml"):
         return
 
     for data in documents:
-        
+
         github_repo = data.get('github_repo', None)
         if not github_repo or github_repo == "None":
             if 'GITHUB_REPO' in os.environ:
                 data['github_repo'] = os.environ['GITHUB_REPO']
                 github_repo = data['github_repo']
-            else:        
+            else:
                 print(f"github_repo is not set in the {readme_yaml} file.")
                 pass
 
@@ -69,7 +69,7 @@ def migrate_readme(readme_yaml="README.yaml"):
         new_badges = [
             {"name": "Latest Release", "image": f"https://img.shields.io/github/release/{github_repo}.svg?style=for-the-badge", "url": f"https://github.com/{github_repo}/releases/latest"},
             {"name": "Last Updated", "image": f"https://img.shields.io/github/last-commit/{github_repo}.svg?style=for-the-badge", "url": f"https://github.com/{github_repo}/commits"},
-            {"name": "Slack Community", "image": "https://slack.cloudposse.com/for-the-badge.svg", "url": "https://slack.cloudposse.com"}
+            {"name": "Slack Community", "image": "https://slack.cloudposse.com/for-the-badge.svg", "url": "https://cloudposse.com/slack"}
         ]
 
         # Add badges for specific workflow files if they exist
@@ -88,7 +88,7 @@ def migrate_readme(readme_yaml="README.yaml"):
         data['contributors'] = []
 
         add_newlines_before_comments(data)
-        
+
     # Write back the updated YAML with multiple documents
     with open(readme_yaml, 'w') as file:
         yaml.dump_all(documents, file)
