@@ -10,11 +10,11 @@ badges:
 
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/for-the-badge.svg"
-    url: "https://slack.cloudposse.com"
+    url: "https://cloudposse.com/slack"
 
   - name: "Slack Community"
     image: https://slack.cloudposse.com/for-the-badge.svg
-    url: https://slack.cloudposse.com
+    url: https://cloudposse.com/slack
 
   - name: "Unique Badge"
     image: https://foobar.com/badge.svg
