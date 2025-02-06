@@ -1,0 +1,142 @@
+# See https://runs-on.com/configuration/repo-config/
+
+runners:
+  default: &default
+    image: ubuntu22-full-x64
+    family:
+      # List all instance types that support encryption in transit and are x86_64 architecture
+      # and format as YAML array with wildcard suffix:
+      #  aws ec2 describe-instance-types \
+      #  --filters \
+      #  Name=network-info.encryption-in-transit-supported,Values=true \
+      #  Name=processor-info.supported-architecture,Values=x86_64 \
+      #  --query "InstanceTypes[*].[InstanceType]" \
+      #  --output text | cut -f 1 -d. | sort | uniq | awk '{print "      - " $0 ".*"}'
+      - c5a.*
+      - c5ad.*
+      - c5n.*
+      - c6a.*
+      - c6i.*
+      - c6id.*
+      - c6in.*
+      - c7a.*
+      - c7i.*
+      - c7i-flex.*
+      - d3.*
+      - g4ad.*
+      - g4dn.*
+      - g5.*
+      - g6.*
+      - g6e.*
+      - gr6.*
+      - hpc6a.*
+      - hpc6id.*
+      - hpc7a.*
+      - i3en.*
+      - i4i.*
+      - i7ie.*
+      - inf1.*
+      - inf2.*
+      - m5dn.*
+      - m5n.*
+      - m5zn.*
+      - m6a.*
+      - m6i.*
+      - m6id.*
+      - m6idn.*
+      - m6in.*
+      - m7a.*
+      - m7i.*
+      - m7i-flex.*
+      - p4d.*
+      - p5.*
+      - p5e.*
+      - p5en.*
+      - r5dn.*
+      - r5n.*
+      - r6a.*
+      - r6i.*
+      - r6id.*
+      - r6idn.*
+      - r6in.*
+      - r7a.*
+      - r7i.*
+      - r7iz.*
+      - trn1.*
+      - trn1n.*
+      - trn2.*
+      - u-12tb1.*
+      - u-3tb1.*
+      - u-6tb1.*
+      - u-9tb1.*
+      - x2idn.*
+      - x2iedn.*
+    cpu: [2, 16]
+    ram: [2, 64]
+    disk: default
+    spot: price-capacity-optimized
+    retry: when-interrupted
+    private: true
+    ssh: false
+    extras: ["s3-cache"]
+    tags:
+      - "gha-runner:runs-on/default"
+
+  common: *default
+  small: *default
+
+  medium:
+    <<: *default
+    cpu: [4, 32]
+    ram: [4, 64]
+    tags:
+      - "gha-runner:runs-on/medium"
+
+  large:
+      <<: *default
+      cpu: [8, 64]
+      ram: [12, 128]
+      disk: large
+      tags:
+        - "gha-runner:runs-on/large"
+
+  default-arm64: &default-arm64
+    <<: *default
+    image: ubuntu22-full-arm64
+    tags:
+      - "gha-runner:runs-on/default-arm64"
+      # List all instance types that support encryption in transit and are arm64 architecture
+      # and format as YAML array with wildcard suffix:
+      #  aws ec2 describe-instance-types \
+      #  --filters \
+      #  Name=network-info.encryption-in-transit-supported,Values=true \
+      #  Name=processor-info.supported-architecture,Values=arm64 \
+      #  --query "InstanceTypes[*].[InstanceType]" \
+      #  --output text | cut -f 1 -d. | sort | uniq | awk '{print "      - " $0 ".*"}'
+    family:
+      - c6gn.*
+      - c7g.*
+      - c7gd.*
+      - c7gn.*
+      - c8g.*
+      - i4g.*
+      - im4gn.*
+      - is4gen.*
+      - m7g.*
+      - m7gd.*
+      - m8g.*
+      - r7g.*
+      - r7gd.*
+      - r8g.*
+
+  small-arm64: *default-arm64
+  packages-arm64: *default-arm64
+
+  large-arm64:
+    <<: *default-arm64
+    cpu: [8, 64]
+    ram: [12, 128]
+    disk: large
+    tags:
+      - "gha-runner:runs-on/large-arm64"
+
