@@ -1,5 +1,23 @@
 # See https://runs-on.com/configuration/repo-config/
 
+# This file is used to define the baseline runs-on configuration for the organization.
+
+# See https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+# for comparison to GitHub hosted runners.
+# The short story is that GitHub hosted PUBLIC runners generally have:
+#    4 CPU, 16 GiB Ram, and 14 GB SSD disk
+# While GitHub hosted PRIVATE runners generally have:
+#    2 CPU, 7 GiB Ram, and 14 GB SSD disk
+
+# Note that the sizes reflect that Cloud Posse does not do heavy lifting on the self-hosted runners.
+# A Cloud Posse client might need much more CPU and Memory for their runners,
+# for example if they were running Node.js, compiling source, processing video, or doing data analysis.
+
+# Also note, you cannot use extras: ["s3-cache"] unless you also start with
+# a `runs-on/action` step, or else actions/upload-artifact and related steps will fail.
+# So we do not set extras: ["s3-cache"] here. Set "extras=s3-cache" in the workflow file instead,
+# when you have a `runs-on/action` step.
+
 runners:
   default: &default
     image: ubuntu22-full-x64
@@ -78,27 +96,44 @@ runners:
     retry: when-interrupted
     private: true
     ssh: false
-    extras: ["s3-cache"]
     tags:
       - "gha-runner:runs-on/default"
 
   common: *default
   small: *default
 
-  medium:
+  default-amd64: *default
+  common-amd64: *default
+  small-amd64: *default
+
+  medium: &medium
     <<: *default
-    cpu: [4, 32]
-    ram: [4, 64]
+    cpu: [2, 32]
+    ram: [8, 64]
     tags:
       - "gha-runner:runs-on/medium"
 
-  large:
+  medium-amd64: *medium
+
+  # This runner is used for running terraform commands
+  # Terraform is generally I/O bound and does not need a lot of CPU, but
+  # experience has shown that a single "apply" can easily exceed 4GB of memory.
+  terraform:
+    <<: *default
+    cpu: [2, 32]
+    ram: [8, 64]
+    tags:
+      - "gha-runner:runs-on/terraform"
+
+  large: &large
       <<: *default
-      cpu: [8, 64]
-      ram: [12, 128]
+      cpu: [4, 64]
+      ram: [16, 128]
       disk: large
       tags:
         - "gha-runner:runs-on/large"
+
+  large-amd64: *large
 
   default-arm64: &default-arm64
     <<: *default
@@ -132,10 +167,17 @@ runners:
   small-arm64: *default-arm64
   packages-arm64: *default-arm64
 
+  medium-arm64:
+    <<: *default-arm64
+    cpu: [2, 32]
+    ram: [8, 64]
+    tags:
+      - "gha-runner:runs-on/medium-arm64"
+
   large-arm64:
     <<: *default-arm64
-    cpu: [8, 64]
-    ram: [12, 128]
+    cpu: [4, 64]
+    ram: [16, 128]
     disk: large
     tags:
       - "gha-runner:runs-on/large-arm64"
