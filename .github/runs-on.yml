@@ -30,6 +30,10 @@ runners:
       #  Name=processor-info.supported-architecture,Values=x86_64 \
       #  --query "InstanceTypes[*].[InstanceType]" \
       #  --output text | cut -f 1 -d. | sort | uniq | awk '{print "      - " $0 ".*"}'
+      # 
+      # Limit to standard instance types (single quota):
+      #    A, C, D, H, I, M, R, T, Z
+      # 
       - c5a.*
       - c5ad.*
       - c5n.*
@@ -41,12 +45,6 @@ runners:
       - c7i.*
       - c7i-flex.*
       - d3.*
-      - g4ad.*
-      - g4dn.*
-      - g5.*
-      - g6.*
-      - g6e.*
-      - gr6.*
       - hpc6a.*
       - hpc6id.*
       - hpc7a.*
@@ -66,10 +64,6 @@ runners:
       - m7a.*
       - m7i.*
       - m7i-flex.*
-      - p4d.*
-      - p5.*
-      - p5e.*
-      - p5en.*
       - r5dn.*
       - r5n.*
       - r6a.*
@@ -83,12 +77,6 @@ runners:
       - trn1.*
       - trn1n.*
       - trn2.*
-      - u-12tb1.*
-      - u-3tb1.*
-      - u-6tb1.*
-      - u-9tb1.*
-      - x2idn.*
-      - x2iedn.*
     cpu: [2, 16]
     ram: [2, 64]
     disk: default
@@ -148,6 +136,10 @@ runners:
       #  Name=processor-info.supported-architecture,Values=arm64 \
       #  --query "InstanceTypes[*].[InstanceType]" \
       #  --output text | cut -f 1 -d. | sort | uniq | awk '{print "      - " $0 ".*"}'
+      #
+      # Limit to standard instance types (single quota):
+      #    A, C, D, H, I, M, R, T, Z
+      #
     family:
       - c6gn.*
       - c7g.*
