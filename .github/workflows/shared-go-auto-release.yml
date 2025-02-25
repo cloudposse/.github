@@ -165,6 +165,16 @@ jobs:
 
           echo "path=./${GORELEASER_CONFIG}" >> $GITHUB_OUTPUT
 
+      - name: Free space
+        run: |
+          sudo apt-get remove -y '^dotnet-.*'
+          sudo apt-get remove -y '^llvm-.*'
+          sudo apt-get remove -y 'php.*'
+          sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel
+          sudo apt-get autoremove -y
+          sudo apt-get clean
+          rm -rf /usr/share/dotnet/
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
