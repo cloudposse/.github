@@ -165,6 +165,23 @@ jobs:
 
           echo "path=./${GORELEASER_CONFIG}" >> $GITHUB_OUTPUT
 
+      - name: Check disk space before cleanup
+        if: success() || failure()
+        shell: bash
+        working-directory: source
+        run: |-
+          printf "\nPWD is %s\ndf -h %s\n\n" "$(pwd -P)" "$(pwd -P)"
+          df -h $(pwd -P)
+          if [[ -n $TMPDIR ]]; then
+            printf "\n\nTMPDIR set to %s\ndf -h %s\n\n" "$TMPDIR" "$TMPDIR"
+            df -h "$TMPDIR"
+          else 
+            printf "\n\nTMPDIR not set, showing space in /tmp\n\n"
+            df -h /tmp
+          fi
+          printf "\n\nAll disk space:\n"
+          df -h
+
       - name: Free space
         run: |
           sudo apt-get remove -y '^dotnet-.*'
@@ -174,6 +191,24 @@ jobs:
           sudo apt-get autoremove -y
           sudo apt-get clean
           rm -rf /usr/share/dotnet/
+
+      - name: Check disk space after cleanup
+        if: success() || failure()
+        shell: bash
+        working-directory: source
+        run: |-
+          printf "\nPWD is %s\ndf -h %s\n\n" "$(pwd -P)" "$(pwd -P)"
+          df -h $(pwd -P)
+          if [[ -n $TMPDIR ]]; then
+            printf "\n\nTMPDIR set to %s\ndf -h %s\n\n" "$TMPDIR" "$TMPDIR"
+            df -h "$TMPDIR"
+          else 
+            printf "\n\nTMPDIR not set, showing space in /tmp\n\n"
+            df -h /tmp
+          fi
+          printf "\n\nAll disk space:\n"
+          df -h
+
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
