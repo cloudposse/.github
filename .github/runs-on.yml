@@ -82,7 +82,7 @@ runners:
     disk: default
     spot: price-capacity-optimized
     retry: when-interrupted
-    private: true
+    private: false
     ssh: false
     tags:
       - "gha-runner:runs-on/default"
