@@ -239,7 +239,8 @@ jobs:
           df -h
 
   publish:
-    if: ${{ needs.draft.outputs.exists == 'false' }}
+    # if: ${{ needs.draft.outputs.exists == 'false' }}
+    if: false
     needs: [ goreleaser, draft ]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@nightlybuilds
     with:
