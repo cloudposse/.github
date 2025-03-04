@@ -1,4 +1,4 @@
-filter-by-commitish: false
+filter-by-commitish: true
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 version-template: '$MAJOR.$MINOR.$PATCH'
