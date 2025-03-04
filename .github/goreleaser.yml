@@ -55,7 +55,7 @@ release:
   mode: keep-existing
   make_latest: false
   name_template: '{{.Tag}}'
-  target_commitish: "refs/heads/{{ .Branch }}"
+  target_commitish: "{{ .Branch }}"
 
 changelog:
   skip: true
