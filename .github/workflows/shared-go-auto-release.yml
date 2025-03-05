@@ -143,8 +143,7 @@ jobs:
           sparse-checkout: |
             .github/goreleaser.yml
           sparse-checkout-cone-mode: false
-          # ref: main
-          ref: nightlybuilds
+          ref: main
           token: ${{ steps.github-app.outputs.token }}
 
       - name: Go releaser config
