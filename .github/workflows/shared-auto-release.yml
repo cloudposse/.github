@@ -94,7 +94,7 @@ jobs:
             true:
               # Is prerelease (nightly builds)
               true:
-                config: auto-pre-release.yml
+                config: auto-release.yml
                 latest: false
               # Is regular release
               false:
