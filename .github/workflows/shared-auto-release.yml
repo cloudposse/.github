@@ -92,10 +92,11 @@ jobs:
           config: |-
             true: 
               config: auto-release.yml
-              latest: true
+              latest: ${{ inputs.prerelease != 'true' }}
             false:
               config: auto-release-hotfix.yml
               latest: false
+
 
       # Drafts your next Release notes as Pull Requests are merged into "main"
       - uses: cloudposse/github-action-auto-release@v2
