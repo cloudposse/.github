@@ -61,6 +61,10 @@ on:
 permissions: {}
 
 jobs:
+  exists:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    
+
   release:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
@@ -111,7 +115,7 @@ jobs:
                 latest: false
 
       # Drafts your next Release notes as Pull Requests are merged into "main"
-      - uses: cloudposse/github-action-auto-release@v2
+      - uses: cloudposse/github-action-auto-release@test-auto-release-action
         id: drafter
         with:
           token: ${{ steps.github-app.outputs.token }}
