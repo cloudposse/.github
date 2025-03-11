@@ -61,10 +61,6 @@ on:
 permissions: {}
 
 jobs:
-  exists:
-    runs-on: ${{ fromJSON(inputs.runs-on) }}
-    
-
   release:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
