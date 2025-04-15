@@ -302,6 +302,8 @@ jobs:
           role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
           role-session-name: "terratest"
           mask-aws-account-id: "no"
+          # 2 hours token ttl
+          role-duration-seconds: "7200"
 
       - name: "Test `examples/complete` with terratest"
         run: |-
