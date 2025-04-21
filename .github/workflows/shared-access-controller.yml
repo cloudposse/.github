@@ -59,6 +59,7 @@ jobs:
                 - nitrocode
                 - gberenice
                 - RoseSecurity
+                - mergify[bot]
 
       - name: debug
         if: ${{ inputs.debug }}
