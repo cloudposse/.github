@@ -308,7 +308,7 @@ jobs:
       - name: "Test `examples/complete` with terratest"
         run: |-
           terraform --version
-          [[ -n "$$GITHUB_WORKSPACE" ]] && git config --global --add safe.directory "$$GITHUB_WORKSPACE" || true
+          git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
       - name: "Install Go"
         uses: actions/setup-go@v5
