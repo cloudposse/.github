@@ -308,7 +308,19 @@ jobs:
       - name: "Test `examples/complete` with terratest"
         run: |-
           terraform --version
-          make -C test/src
+          [[ -n "$$GITHUB_WORKSPACE" ]] && git config --global --add safe.directory "$$GITHUB_WORKSPACE" || true
+
+      - name: "Install Go"
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: "test/src/go.mod"
+          cache-dependency-path: "test/src/go.sum"
+
+      - name: "Test component"
+        uses: robherley/go-test-action@v0
+        with:
+          moduleDirectory: test/src
+          testArguments:  -v -timeout 60m
 
       - name: "Update GitHub Status for failure"
         if: ${{ failure() }}
