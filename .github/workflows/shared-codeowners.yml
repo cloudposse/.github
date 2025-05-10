@@ -1,0 +1,58 @@
+name: CI - Codeowners
+on:
+  workflow_call:
+    inputs:
+      is_fork:
+        description: "Run workflow in fork mode (decreased permissions and features)"
+        type: boolean
+        required: true
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+
+jobs:
+  syntax:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    name: Validate Codeowners (syntax)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: mszostok/codeowners-validator@v0.7.1
+        # Pull request from a fork
+        name: "Validate CODEOWNERS"
+        with:
+          checks: "syntax,duppatterns"
+          owner_checker_allow_unowned_patterns: "false"
+
+  owners:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    name: Validate Codeowners (owners)
+    if: ${{ false && ! inputs.is_fork }}
+    environment: release    
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+          
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.github-app.outputs.token }}
+
+      - uses: mszostok/codeowners-validator@v0.7.4
+        # Main branch / Pull request from the same repo
+        name: "Validate CODEOWNERS"
+        with:
+          # For now, remove "files" check to allow CODEOWNERS to specify non-existent
+          # files so we can use the same CODEOWNERS file for Terraform and non-Terraform repos
+          #   checks: "files,syntax,owners,duppatterns"
+          checks: "owners"
+          owner_checker_allow_unowned_patterns: "false"
+          # Admin GitHub access token is required only if the `owners` check is enabled
+          github_access_token: ${{ steps.github-app.outputs.token }}
+          
