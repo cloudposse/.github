@@ -1,0 +1,136 @@
+name: CI - Terraform
+on:
+  workflow_call:
+    inputs:
+      suggestions:
+        description: "Enable Reviewdog suggestions (pull request only)"
+        type: boolean
+        required: true
+      filter-mode:
+        description: "Reviewdog filter mode"
+        type: string
+        required: true
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+
+jobs:
+  format:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    name: Format HCL
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Terraform format
+        uses: dflook/terraform-fmt@v1
+
+      - name: Reviewdog suggester
+        if: ${{ inputs.suggestions }}
+        uses: reviewdog/action-suggester@v1
+        with:
+          tool_name: "terraform fmt -recursive"
+          cleanup: false
+          filter_mode: ${{ inputs.filter-mode }}
+
+      - name: Status check
+        shell: bash
+        run: git diff --exit-code
+
+  bats:
+    runs-on: ubuntu-latest
+    container: cloudposse/test-harness:latest
+    env:
+      MAKE_INCLUDES: Makefile
+      TF_PLUGIN_CACHE_DIR: /tmp
+      BATS_MODULE_TESTS: input-descriptions module-pinning provider-pinning output-descriptions
+      BATS_EXAMPLES_TESTS: input-descriptions lint output-descriptions
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run tests on modified modules
+        shell: bash -x -e -o pipefail {0}
+        run: |
+          # when running in test-harness, need to mark the directory safe for git operations
+          make git-safe-directory
+          MODIFIED_MODULES=($(find . -type f -name "*.tf" | xargs -I{} dirname {} | sort | uniq | grep  -v ^./.git/ || true))
+          pass=true
+          for relative_dir in "${MODIFIED_MODULES[@]}"; do
+            dir=$(realpath $relative_dir)
+            printf "\n\nBegin testing in $dir\n"
+            (
+              status=pass
+              cd $dir
+              [[ $relative_dir =~ ./examples/.* ]] && tests=$BATS_EXAMPLES_TESTS || tests=$BATS_MODULE_TESTS
+              for test in $tests; do
+                printf "\n\nRunning ${test} in $dir\n"
+                bats -t /test/terraform/${test}.bats || status=fail
+              done
+              [[ $status == "pass" ]]
+            ) || pass=false
+            printf "\n\nEnd of testing in $dir\n\n\n"
+          done
+          [[ $pass == "true" ]]
+
+  lint-find-dirs:
+    name: Find modules
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        # Ignore directories whose names start with .terraform or obsolete
+        run: |
+          matrix=$(find .  -type d \( -name '.terraform*' -o -name 'obsolete*' \) -prune -o \
+            -name '*.tf' \
+            -not -path '*/.terraform/*' \
+            -exec dirname {} \; \
+            | sort \
+            | uniq \
+            | jq --raw-input --slurp 'split("\n")| map(select(. != ""))')
+          echo "matrix=$(echo $matrix)" >> $GITHUB_OUTPUT
+    outputs:
+      tfdirs_matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  lint:
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    name: Lint (${{ matrix.tfdir }})
+    needs: lint-find-dirs
+    strategy:
+      fail-fast: false
+      matrix:
+        tfdir: ${{ fromJson(needs.lint-find-dirs.outputs.tfdirs_matrix) }}
+    env:
+      TFLINT_PLUGIN_DIR: ${{ github.workspace }}/.tflint.d/plugins
+      TFLINT_PLUGINS: aws
+      TFLINT_CACHE_VER: 1 # Increment this to force a cache refresh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - run: terraform init
+        working-directory: ${{ matrix.tfdir }}
+
+      - name: cache tflint plugins
+        id: cache-plugins
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.TFLINT_PLUGIN_DIR }}
+          key: tflint-plugins-${{ env.TFLINT_CACHE_VER }}
+
+      - name: tflint
+        uses: reviewdog/action-tflint@v1.22.0
+        with:
+          reporter: ${{ inputs.suggestions && 'github-pr-annotations' || 'local' }}
+          fail_on_error: ${{ inputs.suggestions }}
+          tflint_rulesets: ${{ env.TFLINT_PLUGINS }}
+          tflint_init: true
+          working_directory: ${{ matrix.tfdir }}
+          filter_mode: ${{ inputs.filter-mode }}
+          tflint_version: "v0.49.0"
