@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   ci-terraform:
-    uses: cloudposse/.github/.github/workflows/shared-ci-terraform.yml@main
+    uses: cloudposse/.github/.github/workflows/shared-сi-terraform.yml@main
     name: "CI"
     with:
       # Workaround for https://github.com/community/community/discussions/9099
