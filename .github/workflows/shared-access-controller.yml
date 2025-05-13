@@ -59,6 +59,7 @@ jobs:
                 - nitrocode
                 - gberenice
                 - RoseSecurity
+                - oycyc
                 - mergify[bot]
 
       - name: debug
