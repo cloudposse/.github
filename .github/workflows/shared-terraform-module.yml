@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   ci-terraform:
-    uses: cloudposse/.github/.github/workflows/shared-ci-terraform.yml@use-atmos-to-generate-readme
+    uses: cloudposse/.github/.github/workflows/shared-ci-terraform.yml@main
     name: "CI"
     with:
       # Workaround for https://github.com/community/community/discussions/9099
@@ -24,7 +24,7 @@ jobs:
       runs-on: ${{ inputs.runs-on }}
 
   ci-readme:
-    uses: cloudposse/.github/.github/workflows/shared-readme.yml@use-atmos-to-generate-readme
+    uses: cloudposse/.github/.github/workflows/shared-readme.yml@main
     name: "Readme"
     if: ${{ github.event_name == 'push' }}
     with:
