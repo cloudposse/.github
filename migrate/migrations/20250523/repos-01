@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-s3-bucket
+cloudposse/terraform-aws-ecs-alb-service-task
+cloudposse/terraform-aws-route53-record
+cloudposse/terraform-aws-route53-alias
+cloudposse/terraform-aws-transfer-sftp
+cloudposse/terraform-aws-ses-lambda-forwarder
+cloudposse/terraform-aws-datadog-lambda-forwarder
+cloudposse/terraform-aws-cloudtrail-s3-bucket
+cloudposse/terraform-aws-cloudfront-cdn
+cloudposse/terraform-aws-cloudfront-s3-cdn
+cloudposse/terraform-aws-lb-s3-bucket
+cloudposse/terraform-aws-vpc-flow-logs-s3-bucket
+cloudposse/terraform-aws-s3-website
+cloudposse/terraform-aws-s3-log-storage
+cloudposse/terraform-aws-ec2-client-vpn
+cloudposse/terraform-aws-mwaa

@@ -1,0 +1,16 @@
+cloudposse/terraform-module-test
+cloudposse/terraform-aws-documentdb-cluster
+cloudposse/terraform-aws-managed-prometheus
+cloudposse/terraform-aws-ecs-web-app
+cloudposse/terraform-aws-elasticache-redis
+cloudposse/terraform-aws-rds-cluster
+cloudposse/terraform-aws-backup
+cloudposse/terraform-aws-helm-release
+cloudposse/terraform-aws-iam-policy
+cloudposse/terraform-aws-alb
+cloudposse/terraform-aws-vpc-peering
+cloudposse/terraform-aws-budgets
+cloudposse/terraform-aws-vpn-connection
+cloudposse/terraform-aws-route53-cluster-hostname
+cloudposse/terraform-aws-lambda-elasticsearch-cleanup
+cloudposse/terraform-aws-elasticsearch
