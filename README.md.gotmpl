@@ -198,6 +198,12 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{- if eq "examples" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 
 
+{{ if has (ds "config") "terraform_docs" }}
+<!-- markdownlint-disable -->
+{{ (ds "config").terraform_docs }}
+<!-- markdownlint-restore -->
+{{ end }}
+
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
 {{ (include "includes" $file) }}
