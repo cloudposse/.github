@@ -38,7 +38,7 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.github-app.outputs.token }}
 
-      - uses: cloudposse-github-actions/readme@v1
+      - uses: cloudposse-github-actions/readme@use-atmos-to-generate-readme
         with:
           token: ${{ steps.github-app.outputs.token }}
           readme_enabled: true
