@@ -57,7 +57,7 @@ jobs:
         shell: bash -x -e -o pipefail {0}
         run: |
           # when running in test-harness, need to mark the directory safe for git operations
-          make git-safe-directory
+          git config --global --add safe.directory "$GITHUB_WORKSPACE";
           MODIFIED_MODULES=($(find . -type f -name "*.tf" | xargs -I{} dirname {} | sort | uniq | grep  -v ^./.git/ || true))
           pass=true
           for relative_dir in "${MODIFIED_MODULES[@]}"; do
