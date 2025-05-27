@@ -23,7 +23,7 @@ commands:
   steps:
     - "make -C test/src init"
 
-- name: test
+- name: test run
   description: Run tests
   steps:
     - "cd test/src && go mod tidy"
