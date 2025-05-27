@@ -18,6 +18,11 @@
 {{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
 {{- end -}}
 {{- $firstNonEmptySection := (tmpl.Exec "nonEmptySections" $sections) | strings.TrimSpace | regexp.Replace " .*" "" -}}
+
+{{/* Inspired https://github.com/Dirrk/action-docs/blob/master/src/default_template.tpl */}}
+{{- define "escape_chars" }}{{ . | strings.ReplaceAll "_" "\\_" | strings.ReplaceAll "|" "\\|" | strings.ReplaceAll "*" "\\*" }}{{- end }}
+{{- define "sanatize_string" }}{{ . | strings.ReplaceAll "\n\n" "<br><br>" | strings.ReplaceAll "  \n" "<br>" | strings.ReplaceAll "\n" "<br>" | tmpl.Exec "escape_chars" }}{{- end }}
+
 {{- define "tip_use_atmos" }}
 {{- if .is_terraform }}
 > [!TIP]
@@ -203,6 +208,29 @@ We literally have <a href="{{ $terraform_modules }}">*hundreds of other terrafor
 {{ (ds "config").terraform_docs }}
 <!-- markdownlint-restore -->
 {{ end }}
+
+{{- $action := (datasource "config") -}}
+{{ if has $action "inputs" }}
+## Inputs
+<!-- markdownlint-disable -->
+| Name | Description | Default | Required |
+|------|-------------|---------|----------|
+{{- range $key, $input := $action.inputs }}
+| {{ tmpl.Exec "escape_chars" $key }} | {{ if (has $input "description") }}{{ tmpl.Exec "sanatize_string" $input.description }}{{ else }}{{ tmpl.Exec "escape_chars" $key }}{{ end }} | {{ if (has $input "default") }}{{ tmpl.Exec "sanatize_string" $input.default }}{{ else }}N/A{{ end }} | {{ if (has $input "required") }}{{ $input.required }}{{ else }}false{{ end }} |
+{{- end }}
+<!-- markdownlint-restore -->
+{{- end }}
+
+{{ if has $action "outputs" }}
+## Outputs
+<!-- markdownlint-disable -->
+| Name | Description |
+|------|-------------|
+{{- range $key, $output := $action.outputs }}
+| {{ tmpl.Exec "escape_chars" $key }} | {{ if (has $output "description") }}{{ tmpl.Exec "sanatize_string" $output.description }}{{ else }}{{ tmpl.Exec "escape_chars" $key }}{{ end }} |
+{{- end }}
+<!-- markdownlint-restore -->
+{{- end }}
 
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
