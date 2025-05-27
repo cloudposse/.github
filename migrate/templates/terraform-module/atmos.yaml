@@ -1,2 +1,2 @@
 import:
-  - https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/atmos.terraform-module.yaml
+  - https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/atmos/terraform-module.yaml
