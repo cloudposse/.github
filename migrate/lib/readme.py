@@ -87,6 +87,17 @@ def migrate_readme(readme_yaml="README.yaml"):
         # Set 'contributors' section to an empty array, as we handle this now with an image
         data['contributors'] = []
 
+        if 'include' in data and isinstance(data['include'], list):
+            # Remove deprecated includes
+            include_to_remove = ['docs/terraform.md', 'docs/targets.md', 'docs/github-action.md']
+            data['include'] = [
+                file
+                for file in data['include']
+                if file not in include_to_remove
+            ]
+        else:
+            data['include'] = []
+
         add_newlines_before_comments(data)
 
     # Write back the updated YAML with multiple documents
