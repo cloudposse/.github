@@ -1,0 +1,36 @@
+docs:
+  generate:
+    readme:
+      base-dir: .
+      input:
+        - "./README.yaml"
+      template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
+      output: "./README.md"
+      terraform:
+        source: .
+        enabled: true
+        format: "markdown table"
+        show_providers: false
+        show_inputs: true
+        show_outputs: true
+        sort_by: "name"
+        hide_empty: false
+        indent_level: 2
+
+commands:
+- name: test init
+  description: Initialize tests
+  steps:
+    - "make -C test/src init"
+
+- name: test run
+  description: Run tests
+  steps:
+    - "cd test/src && go mod tidy"
+    - "cd test/src && go test -v -timeout 60m"
+
+- name: test clean
+  description: Clean tests
+  steps:
+    - "make -C test/src clean"
+    - "rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl"
