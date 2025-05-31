@@ -26,7 +26,7 @@ jobs:
       github_access_token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
   readme:
-    uses: cloudposse/.github/.github/workflows/shared-readme.yml@main
+    uses: cloudposse/.github/.github/workflows/shared-atmos-readme.yml@main
     with:
       runs-on: ${{ inputs.runs-on }}
     secrets: inherit
