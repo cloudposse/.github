@@ -228,27 +228,27 @@ pull_request_rules:
   #
   #        Could you fix it @{{author}}? 🙏
 
-  - name: "ask to rebuild readme"
-    conditions:
-      - and: *is_default_branch
-      - and: *is_open
-      - files=README.yaml
-      - -files=README.md
-    actions:
-      comment:
-        message: |
-          > [!IMPORTANT]
-          > `README.md` is out of date.
-          >
+  # - name: "ask to rebuild readme"
+  #   conditions:
+  #     - and: *is_default_branch
+  #     - and: *is_open
+  #     - files=README.yaml
+  #     - -files=README.md
+  #   actions:
+  #     comment:
+  #       message: |
+  #         > [!IMPORTANT]
+  #         > `README.md` is out of date.
+  #         >
 
-          Rebuild the `README.md` by running `make readme` and commit the changes.
+  #         Rebuild the `README.md` by running `make readme` and commit the changes.
 
-          ```shell
-          make init
-          make readme
-          ```
+  #         ```shell
+  #         make init
+  #         make readme
+  #         ```
 
-          Could you fix it @{{author}}? 🙏
+  #         Could you fix it @{{author}}? 🙏
 
   - name: "ask for title"
     conditions:
@@ -307,17 +307,17 @@ pull_request_rules:
         message: |
           This automated PR was closed due to merge conflicts.
 
-  - name: close stale PRs with merge conflicts
-    conditions:
-      - and: *is_open
-      - "conflict"
-      - commits[*].date_committer < 30 days ago
-      - updated-at < 7 days ago
-    actions:
-      close:
-        message: |
-          This PR was closed due to inactivity and merge conflicts. 😭
-          Please resolve the conflicts and reopen if necessary.
+  # - name: close stale PRs with merge conflicts
+  #   conditions:
+  #     - and: *is_open
+  #     - "conflict"
+  #     - commits[*].date_committer < 30 days ago
+  #     - updated-at < 7 days ago
+  #   actions:
+  #     close:
+  #       message: |
+  #         This PR was closed due to inactivity and merge conflicts. 😭
+  #         Please resolve the conflicts and reopen if necessary.
 
   - name: close stale pull request after 90 days
     conditions:
