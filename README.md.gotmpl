@@ -84,21 +84,32 @@
 <!-- markdownlint-disable -->
 {{ if $deprecated -}}
 # (deprecated) {{(ds "config").name}}
+<img src="https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge" alt="Deprecated"/>
 {{- else }}
   {{- if (file.Exists ".github/banner.png") -}}
     <a href="https://cpco.io/homepage"><img src="{{ $banner }}" alt="Project Banner"/></a><br/>
-    {{ if has (ds "config") "badges" }}<p align="right">{{- end -}}
   {{- else -}}
     # {{(ds "config").name}} <a href="{{ $homepage }}"><img align="right" src="{{ $logo }}" width="150" /></a>
   {{- end }}
 {{ end }}
-{{- if $deprecated -}}<img src="https://img.shields.io/badge/lifecycle-deprecated-critical?style=for-the-badge" alt="Deprecated"/>{{- end -}}
+
+{{ if not $deprecated -}}
+  {{ if and (file.Exists ".github/banner.png") (has (ds "config") "badges") }}<p align="right">{{- end -}}
+{{ end }}
+
 {{- if has (ds "config") "badges" -}}
   {{- range $badge := (ds "config").badges -}}
     {{- printf "<a href=\"%s\"><img src=\"%s\" alt=\"%s\"/></a>" $badge.url $badge.image $badge.name -}}
   {{- end -}}
-  {{- if (file.Exists ".github/banner.png") -}}</p>{{- end -}}
 {{- end }}
+
+{{- if has (ds "config") "get_support" -}}
+<a href="https://cloudposse.com/support/"><img src="https://img.shields.io/badge/Get_Support-success.svg?style=for-the-badge" alt="Get Support"/></a>
+{{- end }}
+
+{{ if not $deprecated -}}
+  {{ if and (file.Exists ".github/banner.png") (has (ds "config") "badges") }}</p>{{- end -}}
+{{ end }}
 <!-- markdownlint-restore -->
 
 <!--
