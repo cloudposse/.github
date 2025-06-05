@@ -309,18 +309,17 @@ Setup dependencies:
 
 To run tests:
 
-- Initialize all tests:  
-  ```sh
-  atmos test-init
-  ```
 - Run all tests:  
   ```sh
-  atmos test-run
+  atmos test run
   ```
 - Clean up test artifacts:  
   ```sh
-  atmos test-clean
+  atmos test clean
   ```
+- Explore additional test options:  
+  ```sh
+  atmos test --help
 
 The configuration for test commands is centrally managed. To review what's being imported, see the [`atmos.yaml`](https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/atmos/terraform-module.yaml) file.
 
