@@ -19,18 +19,18 @@ docs:
         indent_level: 2
 
 commands:
-- name: test init
+- name: "test-init"
   description: Initialize tests
   steps:
     - "make -C test/src init"
 
-- name: test run
+- name: "test-run"
   description: Run tests
   steps:
     - "cd test/src && go mod tidy"
     - "cd test/src && go test -v -timeout 60m"
 
-- name: test clean
+- name: "test-clean"
   description: Clean tests
   steps:
     - "make -C test/src clean"
