@@ -4,6 +4,7 @@ docs:
       base-dir: .
       input:
         - "./README.yaml"
+        - get_support: true        
       template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
       output: "./README.md"
       terraform:
