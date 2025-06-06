@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-ssm-tls-self-signed-cert
+cloudposse/terraform-aws-security-group
+cloudposse/terraform-aws-redshift-cluster
+cloudposse/terraform-aws-waf
+cloudposse/terraform-aws-config-storage
+cloudposse/terraform-aws-health-events
+cloudposse/terraform-aws-global-accelerator
+cloudposse/terraform-aws-iam-s3-user
+cloudposse/terraform-aws-route53-cluster-zone
+cloudposse/terraform-aws-iam-user
+cloudposse/terraform-aws-ec2-instance-group
+cloudposse/terraform-aws-organization-access-group
+cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+cloudposse/terraform-aws-rds-db-proxy
+cloudposse/terraform-aws-github-action-token-rotator
+cloudposse/terraform-aws-ssm-iam-role

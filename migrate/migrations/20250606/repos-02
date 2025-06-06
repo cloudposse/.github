@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-sns-topic
+cloudposse/terraform-aws-service-control-policies
+cloudposse/terraform-aws-api-gateway
+cloudposse/terraform-aws-elasticache-memcached
+cloudposse/terraform-aws-eks-iam-role
+cloudposse/terraform-aws-codebuild
+cloudposse/terraform-aws-config
+cloudposse/terraform-aws-guardduty
+cloudposse/terraform-aws-security-hub
+cloudposse/terraform-aws-code-deploy
+cloudposse/terraform-aws-mq-broker
+cloudposse/terraform-aws-nlb
+cloudposse/terraform-datadog-platform
+cloudposse/terraform-aws-vpc-peering-multi-account
+cloudposse/terraform-aws-tfstate-backend
+cloudposse/terraform-aws-ecs-cloudwatch-autoscaling

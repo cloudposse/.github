@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-datadog-integration
+cloudposse/terraform-aws-rds-cloudwatch-sns-alarms
+cloudposse/terraform-aws-cloudformation-stack-set
+cloudposse/terraform-aws-amplify-app
+cloudposse/terraform-aws-firewall-manager
+cloudposse/terraform-aws-rds
+cloudposse/terraform-aws-emr-cluster
+cloudposse/terraform-aws-ecr
+cloudposse/terraform-aws-iam-system-user
+cloudposse/terraform-aws-key-pair
+cloudposse/terraform-aws-lakeformation
+cloudposse/terraform-aws-inspector
+cloudposse/terraform-aws-iam-role
+cloudposse/terraform-aws-service-quotas
+cloudposse/terraform-aws-ssm-parameter-store
+cloudposse/terraform-aws-efs
