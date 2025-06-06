@@ -102,9 +102,11 @@ jobs:
                 latest: true
             # Is hotfix branch
             false:
-              # Is prerelease (nightly builds)            
-              # pre releases denied for hotfixes
-              true: {}
+              # Is prerelease (nightly builds)
+              # pre releases from `non default` branch are `feature` releases
+              true: 
+                config: auto-feature-release.yml
+                latest: false              
               # Is a regular release
               false:
                 config: auto-release-hotfix.yml
