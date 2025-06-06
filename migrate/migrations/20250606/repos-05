@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-vpc
+cloudposse/terraform-aws-glue
+cloudposse/terraform-aws-ec2-instance
+cloudposse/terraform-aws-dynamodb
+cloudposse/terraform-aws-ssm-patch-manager
+cloudposse/terraform-aws-utils
+cloudposse/terraform-aws-ecs-cluster
+cloudposse/terraform-aws-ec2-autoscale-group
+cloudposse/terraform-aws-alb-ingress
+cloudposse/terraform-aws-dynamic-subnets
+cloudposse/terraform-spacelift-cloud-infrastructure-automation
+cloudposse/terraform-aws-ecs-codepipeline
+cloudposse/terraform-aws-ec2-bastion-server
+cloudposse/terraform-aws-managed-grafana
+cloudposse/terraform-cloudflare-waf-rulesets
+cloudposse/terraform-aws-transit-gateway

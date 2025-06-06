@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-cloudtrail-cloudwatch-alarms
+cloudposse/terraform-aws-ses
+cloudposse/terraform-aws-kms-key
+cloudposse/terraform-aws-cloudformation-stack
+cloudposse/terraform-aws-msk-apache-kafka-cluster
+cloudposse/terraform-yaml-stack-config
+cloudposse/terraform-aws-athena
+cloudposse/terraform-aws-multi-az-subnets
+cloudposse/terraform-aws-dms
+cloudposse/terraform-aws-elastic-beanstalk-environment
+cloudposse/terraform-aws-sso
+cloudposse/terraform-aws-memorydb
+cloudposse/terraform-github-repository-webhooks
+cloudposse/terraform-aws-ssm-tls-ssh-key-pair
+cloudposse/terraform-aws-named-subnets
+cloudposse/terraform-external-module-artifact
