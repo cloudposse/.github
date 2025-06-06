@@ -499,12 +499,14 @@ pull_request_rules:
       - "#commits-behind>=10"
     actions:
       rebase:
+        bot_account: cloudpossebot
 
   - name: rebase pull requests one time when labeled with `rebase`
     conditions:
       - label=rebase
     actions:
-      rebase: {}
+      rebase:
+        bot_account: cloudpossebot
       label:
         remove:
           - rebase
