@@ -4,6 +4,7 @@ docs:
       base-dir: .
       input:
         - "./README.yaml"
+        - get_support: true        
       template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
       output: "./README.md"
       terraform:
@@ -18,19 +19,21 @@ docs:
         indent_level: 2
 
 commands:
-- name: test init
-  description: Initialize tests
-  steps:
-    - "make -C test/src init"
+- name: test
+  commands:
+  - name: "init"
+    description: Initialize tests
+    steps:
+      - "make -C test/src init"
 
-- name: test run
-  description: Run tests
-  steps:
-    - "cd test/src && go mod tidy"
-    - "cd test/src && go test -v -timeout 60m"
+  - name: "run"
+    description: Run tests
+    steps:
+      - "cd test/src && go mod tidy"
+      - "cd test/src && go test -v -timeout 60m"
 
-- name: test clean
-  description: Clean tests
-  steps:
-    - "make -C test/src clean"
-    - "rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl"
+  - name: "clean"
+    description: Clean tests
+    steps:
+      - "make -C test/src clean"
+      - "rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl"
