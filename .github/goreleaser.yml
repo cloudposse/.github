@@ -55,7 +55,7 @@ release:
   mode: keep-existing
   make_latest: false
   name_template: '{{.Tag}}'
-  target_commitish: "{{ .Branch }}"
+  target_commitish: '{{ if index .Env "GO_RELEASER_TARGET_COMMITISH"  }}{{ .Env.GO_RELEASER_TARGET_COMMITISH }}{{ else }}{{ .Branch }}{{ end }}'
   prerelease: auto
 
 changelog:
