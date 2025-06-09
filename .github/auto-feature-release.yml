@@ -36,5 +36,5 @@ categories:
   labels:
   - 'auto-update'
 
-change-template: ""
-template: ""
+change-template: "SKIP CHANGELOG FOR FEATURE RELEASE"
+template: "FEATURE RELEASE"
