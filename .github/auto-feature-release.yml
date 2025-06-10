@@ -1,0 +1,40 @@
+filter-by-commitish: false
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+prerelease-identifier: 'xyz'
+version-resolver:
+  major:
+    labels:
+    - 'major'
+  minor:
+    labels:
+    - 'minor'
+    - 'enhancement'
+  patch:
+    labels:
+    - 'auto-update'
+    - 'patch'
+    - 'fix'
+    - 'bugfix'
+    - 'bug'
+    - 'hotfix'
+    - 'no-release'
+  default: 'minor'
+
+categories:
+- title: '🚀 Enhancements'
+  labels:
+  - 'enhancement'
+  - 'patch'
+- title: '🐛 Bug Fixes'
+  labels:
+  - 'fix'
+  - 'bugfix'
+  - 'bug'
+  - 'hotfix'
+- title: '🤖 Automatic Updates'
+  labels:
+  - 'auto-update'
+
+change-template: "SKIP CHANGELOG FOR FEATURE RELEASE"
+template: "FEATURE RELEASE"
