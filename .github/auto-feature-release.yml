@@ -1,7 +1,7 @@
 filter-by-commitish: false
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
-prerelease-identifier: 'xyz'
+prerelease-identifier: 'test'
 version-resolver:
   major:
     labels:
