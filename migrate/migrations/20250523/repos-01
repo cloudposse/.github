@@ -1,6 +1,5 @@
 cloudposse/terraform-aws-s3-bucket
 cloudposse/terraform-aws-ecs-alb-service-task
-cloudposse/terraform-aws-route53-record
 cloudposse/terraform-aws-route53-alias
 cloudposse/terraform-aws-transfer-sftp
 cloudposse/terraform-aws-ses-lambda-forwarder
