@@ -96,7 +96,7 @@ jobs:
         with:
           path: source
           token: ${{ steps.github-app.outputs.token }}
-          ref: "DEV-3331/feature-branch-rc-2"
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Unshallow
         working-directory: source
@@ -220,7 +220,7 @@ jobs:
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
-          GO_RELEASER_TARGET_COMMITISH: "refs/heads/DEV-3331/feature-branch-rc-2"
+          GO_RELEASER_TARGET_COMMITISH: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Check disk space after
         if: success() || failure()
