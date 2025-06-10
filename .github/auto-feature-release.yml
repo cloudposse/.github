@@ -1,7 +1,7 @@
-filter-by-commitish: true
+filter-by-commitish: false
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
-prerelease-identifier: 'feature'
+prerelease-identifier: 'test'
 version-resolver:
   major:
     labels:
@@ -36,5 +36,5 @@ categories:
   labels:
   - 'auto-update'
 
-change-template: ""
-template: ""
+change-template: "SKIP CHANGELOG FOR FEATURE RELEASE"
+template: "FEATURE RELEASE"
