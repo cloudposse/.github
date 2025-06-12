@@ -28,6 +28,11 @@ on:
         required: false
         default: "zip"
         type: string
+      environment:
+        description: "Release environment that has secrets"
+        type: string
+        required: false
+        default: 'release'
 
     outputs:
       id:
@@ -73,13 +78,14 @@ jobs:
       publish: false
       summary-enabled: false
       prerelease: ${{ inputs.prerelease }}
+      environment: ${{ inputs.environment }}
     secrets: inherit
 
   goreleaser:
     if: ${{ needs.draft.outputs.exists == 'false' }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     needs: [ draft ]
-    environment: release
+    environment: ${{ inputs.environment }}
     steps:
       - uses: actions/create-github-app-token@v1
         id: github-app
@@ -247,4 +253,5 @@ jobs:
       publish: ${{ inputs.publish }}
       prerelease: ${{ inputs.prerelease }}
       summary-enabled: ${{ inputs.summary-enabled }}
+      environment: ${{ inputs.environment }}
     secrets: inherit
