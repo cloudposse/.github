@@ -28,6 +28,11 @@ on:
         required: false
         default: "zip"
         type: string
+      environment:
+        description: "Release environment that has secrets"
+        type: string
+        required: false
+        default: 'release'
 
     outputs:
       id:
@@ -73,13 +78,14 @@ jobs:
       publish: false
       summary-enabled: false
       prerelease: ${{ inputs.prerelease }}
+      environment: ${{ inputs.environment }}
     secrets: inherit
 
   goreleaser:
     if: ${{ needs.draft.outputs.exists == 'false' }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     needs: [ draft ]
-    environment: release
+    environment: ${{ inputs.environment }}
     steps:
       - uses: actions/create-github-app-token@v1
         id: github-app
@@ -96,6 +102,7 @@ jobs:
         with:
           path: source
           token: ${{ steps.github-app.outputs.token }}
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Unshallow
         working-directory: source
@@ -219,6 +226,7 @@ jobs:
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
+          GO_RELEASER_TARGET_COMMITISH: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Check disk space after
         if: success() || failure()
@@ -245,4 +253,5 @@ jobs:
       publish: ${{ inputs.publish }}
       prerelease: ${{ inputs.prerelease }}
       summary-enabled: ${{ inputs.summary-enabled }}
+      environment: ${{ inputs.environment }}
     secrets: inherit

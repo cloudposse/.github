@@ -22,6 +22,11 @@ on:
         required: false
         default: true
         type: boolean
+      environment:
+        description: "Release environment that has secrets"
+        type: string
+        required: false
+        default: 'release'
 
     outputs:
       id:
@@ -63,7 +68,7 @@ permissions: {}
 jobs:
   release:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
-    environment: release
+    environment: ${{ inputs.environment }}
     outputs:
       id: ${{ steps.drafter.outputs.id }}
       name: ${{ steps.drafter.outputs.name }}
@@ -113,7 +118,7 @@ jobs:
                 latest: false
 
       # Drafts your next Release notes as Pull Requests are merged into "main"
-      - uses: cloudposse/github-action-auto-release@v3
+      - uses: cloudposse/github-action-auto-release@v4
         id: drafter
         with:
           token: ${{ steps.github-app.outputs.token }}
