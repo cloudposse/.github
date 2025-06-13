@@ -127,3 +127,48 @@ jobs:
           latest: ${{ steps.context.outputs.latest }}
           summary-enabled: ${{ inputs.summary-enabled }}
           config-name: ${{ steps.context.outputs.config }}
+
+      - uses: actions/github-script@v7
+        if: ${{ inputs.environment == 'feature-releases' }}      
+        with:
+          result-encoding: string
+          retries: 3
+          script: |                        
+            // Function to create or update a comment for a pull request (PR) associated with a release
+            async function createCommentForPR(pr_id, release) {
+              // Parameters for fetching comments related to the PR
+              const parameters = {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr_id,
+                per_page: 100,
+              }
+              
+              // Constructing the message to be posted or updated as a comment
+              const messageId = `<!-- release-pr-comment:${release.id} -->`;
+              const message = `
+              ${messageId}
+              These changes were released in [${release.name}](${release.html_url}).
+              `;
+              
+              // Сreate a new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr_id,
+                body: message
+              });
+            }
+            
+            // Retrieving the ID of the current release
+            tag = ${{ step.drafter.output.tag_name }};
+            
+            // Fetching details of the current release
+            currentReleaseResponse = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,            
+              tag,
+            });
+            
+            currentRelease = currentReleaseResponse.data;            
+            await createCommentForPR(id, currentRelease);
