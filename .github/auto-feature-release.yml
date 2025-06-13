@@ -36,5 +36,11 @@ categories:
   labels:
   - 'auto-update'
 
-change-template: "SKIP CHANGELOG FOR FEATURE RELEASE"
-template: "FEATURE RELEASE"
+change-template: |
+  <details>
+    <summary>$TITLE @$AUTHOR (#$NUMBER)</summary>
+  $BODY
+  </details>
+template: |
+  "FEATURE RELEASE"
+  $CHANGES
