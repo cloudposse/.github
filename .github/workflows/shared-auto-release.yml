@@ -129,7 +129,7 @@ jobs:
           config-name: ${{ steps.context.outputs.config }}
 
       - uses: actions/github-script@v7
-        if: ${{ inputs.environment == 'feature-releases' && steps.drafter.output.tag_name != '' }}      
+        if: ${{ steps.context.outputs.config == 'auto-feature-release.yml' && steps.drafter.outputs.id != '' }}      
         with:
           result-encoding: string
           retries: 3
@@ -161,14 +161,14 @@ jobs:
             }
             
             // Retrieving the ID of the current release
-            tag = "${{ steps.drafter.output.tag_name }}";
+            releaseId = "${{ steps.drafter.output.id }}";
             
             // Fetching details of the current release
-            currentReleaseResponse = await github.rest.repos.getReleaseByTag({
+            currentReleaseResponse = await github.rest.repos.getRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,            
-              tag,
+              releaseId,
             });
             
             currentRelease = currentReleaseResponse.data;            
-            await createCommentForPR(id, currentRelease);
+            await createCommentForPR(context.payload.pull_request.number, currentRelease);
