@@ -177,6 +177,30 @@ labels:
     color: '#ffd9c4'
     description: 'Module requires Terraform 0.13 or later'
 
+  - name: size/xs
+    color: '#ffd9c4'
+    description: Extra small size PR
+
+  - name: size/s
+    color: '#ffd9c4'
+    description: Small size PR
+
+  - name: size/m
+    color: '#ffd9c4'
+    description: Medium size PR
+
+  - name: size/l
+    color: '#ffd9c4'
+    description: Large size PR
+
+  - name: size/xl
+    color: '#ffd9c4'
+    description: Extra large size PR
+
+  - name: stacked
+    color: '#ffd9c4'
+    description: Stacked
+
 # Note: `permission` is only valid on organization-owned repositories.
 # The permission to grant the collaborator. Can be one of:
 # * `pull` - can pull, but not push to or administer this repository.
@@ -199,4 +223,3 @@ teams:
     permission: write
   - name: security
     permission: pull
-
