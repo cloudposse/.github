@@ -129,7 +129,7 @@ jobs:
           config-name: ${{ steps.context.outputs.config }}
 
       - uses: actions/github-script@v7
-        if: ${{ inputs.environment == 'feature-releases' && steps.drafter.output.tag_name != "" }}      
+        if: ${{ inputs.environment == 'feature-releases' && steps.drafter.output.tag_name != '' }}      
         with:
           result-encoding: string
           retries: 3
