@@ -36,11 +36,11 @@ categories:
   labels:
   - 'auto-update'
 
-change-template: |
-  <details>
-    <summary>$TITLE @$AUTHOR (#$NUMBER)</summary>
-  $BODY
-  </details>
+change-template: "SKIP CHANGES FOR FEATURE RELEASES"
 template: |
-  "FEATURE RELEASE"
-  $CHANGES
+  ## 🚀 Feature Preview Release
+  
+  This is a **feature preview** based on an open pull request. It is intended for testing artifacts and validating functionality before the feature is merged.
+  
+  > [!WARNING]
+  > This release is temporary and may be removed at any time without notice.
