@@ -161,7 +161,7 @@ jobs:
             }
             
             // Retrieving the ID of the current release
-            tag = ${{ steps.drafter.output.tag_name }};
+            tag = "${{ steps.drafter.output.tag_name }}";
             
             // Fetching details of the current release
             currentReleaseResponse = await github.rest.repos.getReleaseByTag({
