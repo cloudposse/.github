@@ -218,7 +218,7 @@ jobs:
 
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v6
         with:
           workdir: source
           version: latest
