@@ -141,7 +141,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: "Update GitHub Status for cancelled"
-        if: ${{ canceled() }}
+        if: ${{ cancelled() }}
         uses: docker://cloudposse/github-status-updater
         with:
           args: >-
@@ -151,7 +151,7 @@ jobs:
             -repo "${{ needs.context.outputs.base_repo_name }}"
             -state failure
             -context "feature/release"
-            -description "Feature release creation canceled"
+            -description "Feature release creation cancelled"
             -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
