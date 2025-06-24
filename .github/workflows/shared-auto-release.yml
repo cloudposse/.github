@@ -128,37 +128,37 @@ jobs:
           summary-enabled: ${{ inputs.summary-enabled }}
           config-name: ${{ steps.context.outputs.config }}
 
-      - uses: actions/github-script@v7
-        if: ${{ steps.context.outputs.config == 'auto-feature-release.yml' && steps.drafter.outputs.id != '' }}      
-        with:
-          github-token: ${{ steps.github-app.outputs.token }}
-          result-encoding: string
-          retries: 3
-          script: |                        
-            // Function to create or update a comment for a pull request (PR) associated with a release
-            async function createCommentForPR(pr_id) {
-              // Parameters for fetching comments related to the PR
-              const parameters = {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: pr_id,
-                per_page: 100,
-              }
+      # - uses: actions/github-script@v7
+      #   if: ${{ steps.context.outputs.config == 'auto-feature-release.yml' && steps.drafter.outputs.id != '' }}      
+      #   with:
+      #     github-token: ${{ steps.github-app.outputs.token }}
+      #     result-encoding: string
+      #     retries: 3
+      #     script: |                        
+      #       // Function to create or update a comment for a pull request (PR) associated with a release
+      #       async function createCommentForPR(pr_id) {
+      #         // Parameters for fetching comments related to the PR
+      #         const parameters = {
+      #           owner: context.repo.owner,
+      #           repo: context.repo.repo,
+      #           issue_number: pr_id,
+      #           per_page: 100,
+      #         }
               
-              // Constructing the message to be posted or updated as a comment
-              const messageId = `<!-- release-pr-comment:${{ steps.drafter.outputs.id }} -->`;
-              const message = `
-              ${messageId}
-              These changes were released in [${{ steps.drafter.outputs.name }}](${{ steps.drafter.outputs.html_url }}).
-              `;
+      #         // Constructing the message to be posted or updated as a comment
+      #         const messageId = `<!-- release-pr-comment:${{ steps.drafter.outputs.id }} -->`;
+      #         const message = `
+      #         ${messageId}
+      #         These changes were released in [${{ steps.drafter.outputs.name }}](${{ steps.drafter.outputs.html_url }}).
+      #         `;
               
-              // Сreate a new comment
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: pr_id,
-                body: message
-              });
-            }
+      #         // Сreate a new comment
+      #         await github.rest.issues.createComment({
+      #           owner: context.repo.owner,
+      #           repo: context.repo.repo,
+      #           issue_number: pr_id,
+      #           body: message
+      #         });
+      #       }
                                     
-            await createCommentForPR(context.payload.pull_request.number);
+      #       await createCommentForPR(context.payload.pull_request.number);
