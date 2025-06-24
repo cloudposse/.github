@@ -149,7 +149,7 @@ jobs:
               const messageId = `<!-- release-pr-comment:${{ steps.drafter.outputs.id }} -->`;
               const message = `
               ${messageId}
-              These changes were released in [${{ steps.drafter.outputs.name }}](${${{ steps.drafter.outputs.html_url }}).
+              These changes were released in [${{ steps.drafter.outputs.name }}](${{ steps.drafter.outputs.html_url }}).
               `;
               
               // Сreate a new comment
