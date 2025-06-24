@@ -162,7 +162,7 @@ jobs:
             }
             
             // Retrieving the ID of the current release
-            releaseId = "${{ steps.drafter.output.id }}";
+            releaseId = "${{ steps.drafter.outputs.id }}";
             
             // Fetching details of the current release
             currentReleaseResponse = await github.rest.repos.getRelease({
