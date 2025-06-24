@@ -1,0 +1,175 @@
+name: "Shared Go Feature release"
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Overrides job runs-on setting (json-encoded list)"
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    # We need -e -o pipefail for consistency with GitHub Actions's default behavior
+    shell: bash -e -o pipefail {0}
+
+jobs:
+  access:
+    if: ${{ github.event.issue.pull_request &&
+            contains(github.event.comment.body, '/release') &&
+            github.event.issue.state == 'open' }}
+    uses: cloudposse/.github/.github/workflows/shared-access-controller.yml@main
+    with:
+      runs-on: ${{ inputs.runs-on }}
+      permission: create_feature_releases
+      user: ${{ github.event.comment.user.login }}
+
+  context:
+    name: Context
+    needs: [access]
+    if: ${{ needs.access.outputs.granted == 'true' }}
+    runs-on: ${{ fromJSON(inputs.runs-on) }}
+    steps:
+      - uses: cloudposse-github-actions/get-pr@v2
+        id: pr
+        with:
+          id: ${{ github.event.issue.number }}
+
+      - uses: actions/github-script@v7
+        id: properties
+        with:
+          result-encoding: string
+          script: |
+            const properites = await github.request('GET /repos/{owner}/{repo}/properties/values', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+              }
+            })
+            
+            properites.data.forEach((element) =>
+              core.setOutput(element.property_name, element.value)              
+            );
+
+    outputs:
+      base: ${{ fromJSON(steps.pr.outputs.json).base.sha }}
+      base_repo_owner: ${{ fromJSON(steps.pr.outputs.json).base.repo.owner.login }}
+      base_repo_name: ${{ fromJSON(steps.pr.outputs.json).base.repo.name }}
+      head_sha: ${{ fromJSON(steps.pr.outputs.json).head.sha }}
+      head_repo_owner: ${{ fromJSON(steps.pr.outputs.json).head.repo.owner.login }}
+      head_repo_name: ${{ fromJSON(steps.pr.outputs.json).head.repo.name }}
+      found: ${{ steps.pr.outputs.found }}
+      json: ${{ steps.pr.outputs.json }}
+      number: ${{ steps.pr.outputs.number }}
+      title: ${{ steps.pr.outputs.title }}
+      body: ${{ steps.pr.outputs.body }}
+      url: ${{ steps.pr.outputs.url }}
+      created_at: ${{ steps.pr.outputs.created_at }}
+      merged_at: ${{ steps.pr.outputs.merged_at }}
+      closed_at: ${{ steps.pr.outputs.closed_at }}
+      labels: ${{ steps.pr.outputs.labels }}
+      terratest_aws_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest' }}
+      terratest_skip_concurrency: ${{ steps.properties.outputs.test-skip-concurrency }}
+
+  ack:
+    if: github.event.comment.id != ''
+    needs: [context]
+    runs-on: ${{ fromJSON(inputs.runs-on) }}    
+    steps:
+      - name: "Add reaction"
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ needs.context.outputs.base_repo_owner }}/${{ needs.context.outputs.base_repo_name }}
+          comment-id: ${{ github.event.comment.id }}
+          token: ${{ github.token }}
+          reactions: '+1'
+
+  pending:
+    needs: [context]
+    runs-on: ${{ fromJSON(inputs.runs-on) }}    
+    steps:
+      - name: "Update GitHub Status for pending"
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.context.outputs.head_sha }}"
+            -owner "${{ needs.context.outputs.base_repo_owner }}"
+            -repo "${{ needs.context.outputs.base_repo_name }}"
+            -state pending
+            -context "feature/release"
+            -description "Feature release creation started by @${{ github.actor }}"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  release:
+    needs: [pending]  
+    uses: cloudposse/.github/.github/workflows/shared-go-auto-release.yml@main
+    with:
+      publish: true
+      prerelease: true
+      format: binary
+      environment: 'feature-releases'
+    secrets: inherit
+
+  finalize:
+    needs: [release, context]  
+    if: ${{ always() }}
+    runs-on: ${{ fromJSON(inputs.runs-on) }}    
+    steps:
+      - name: "Update GitHub Status for failure"
+        if: ${{ failure() }}
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.context.outputs.head_sha }}"
+            -owner "${{ needs.context.outputs.base_repo_owner }}"
+            -repo "${{ needs.context.outputs.base_repo_name }}"
+            -state failure
+            -context "feature/release"
+            -description "Feature release creation failed"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: "Update GitHub Status for cancelled"
+        if: ${{ canceled() }}
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.context.outputs.head_sha }}"
+            -owner "${{ needs.context.outputs.base_repo_owner }}"
+            -repo "${{ needs.context.outputs.base_repo_name }}"
+            -state failure
+            -context "feature/release"
+            -description "Feature release creation canceled"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: "Update GitHub Status for this success"
+        if: ${{ success() }}
+        uses: docker://cloudposse/github-status-updater
+        with:
+          args: >-
+            -action update_state
+            -ref "${{ needs.context.outputs.head_sha }}"
+            -owner "${{ needs.context.outputs.base_repo_owner }}"
+            -repo "${{ needs.context.outputs.base_repo_name }}"
+            -state success
+            -context "feature/release"
+            -description "TFeature release created"
+            -url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      
