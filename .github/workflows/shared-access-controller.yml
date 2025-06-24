@@ -61,6 +61,18 @@ jobs:
                 - RoseSecurity
                 - oycyc
                 - mergify[bot]
+                
+            create_feature_releases:
+              users:
+                - osterman
+                - goruha
+                - dudymas
+                - mcalhoun
+                - Nuru
+                - aknysh
+                - korenyoni
+                - milldr
+                - Benbentwo
 
       - name: debug
         if: ${{ inputs.debug }}
