@@ -133,6 +133,7 @@ jobs:
         with:
           result-encoding: string
           retries: 3
+          github-token: ${{ steps.github-app.outputs.token }}
           script: |                        
             // Function to create or update a comment for a pull request (PR) associated with a release
             async function createCommentForPR(pr_id, release) {
