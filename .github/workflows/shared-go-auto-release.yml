@@ -13,6 +13,11 @@ on:
         required: false
         default: false
         type: string
+      draft:
+        description: "Draft release"
+        required: false
+        default: false
+        type: string
       publish:
         description: "Whether to publish a new release immediately"
         required: false
