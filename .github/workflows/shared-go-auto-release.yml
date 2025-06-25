@@ -169,6 +169,12 @@ jobs:
             GORELEASER_CONFIG="../.configs/.github/goreleaser.yml"
           fi
 
+          if [[ "${{ inputs.draft }}" == "true" ] && [ -f .goreleaser.draft.yml ]]; then
+            echo 'Go releaser draft config exists and this is draft mode'
+            GORELEASER_CONFIG="./.goreleaser.draft.yml"          
+          fi
+          
+
           if [[ "${{ inputs.format }}" == "binary" ]]; then
             sed -i 's/{{ .Env.ARCHIVES_FORMAT }}/binary/g' $GORELEASER_CONFIG
           elif [[ "${{ inputs.format }}" == "zip" ]]; then
