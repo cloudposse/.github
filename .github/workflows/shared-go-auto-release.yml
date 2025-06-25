@@ -232,6 +232,7 @@ jobs:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
           GO_RELEASER_TARGET_COMMITISH: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+          GO_RELEASER_DRAFT_MODE: ${{ inputs.draft }}
 
       - name: Check disk space after
         if: success() || failure()
