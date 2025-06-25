@@ -17,15 +17,25 @@ builds:
   ldflags:
     - '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}'
   goos:
+{{ if and (index .Env "GO_RELEASER_DRAFT_MODE") (.Env.GO_RELEASER_TARGET_COMMITISH == "true") }}
+    - linux
+    - darwin
+{{ else }}
     - freebsd
     - windows
     - linux
     - darwin
+{{ end }}
   goarch:
+{{ if and (index .Env "GO_RELEASER_DRAFT_MODE") (.Env.GO_RELEASER_TARGET_COMMITISH == "true") }}
+    - amd64
+    - arm64
+{{ else }}
     - amd64
     - '386'
     - arm
     - arm64
+{{ end }}  
   binary: '{{ .ProjectName }}'
 
 archives:
