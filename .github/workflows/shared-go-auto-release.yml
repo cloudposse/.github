@@ -169,7 +169,7 @@ jobs:
             GORELEASER_CONFIG="../.configs/.github/goreleaser.yml"
           fi
 
-          if [[ "${{ inputs.draft }}" == "true" ] && [ -f .goreleaser.draft.yml ]]; then
+          if [[ "${{ inputs.draft }}" == "true" && -f .goreleaser.draft.yml ]]; then
             echo 'Go releaser draft config exists and this is draft mode'
             GORELEASER_CONFIG="./.goreleaser.draft.yml"          
           fi
