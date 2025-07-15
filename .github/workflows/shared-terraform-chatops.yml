@@ -210,6 +210,14 @@ jobs:
           make -C test/src clean init
           rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl
 
+      - uses: actions/create-github-app-token@v2
+        if: ${{ needs.context.outputs.uses_github == 'true' }}
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+          owner: 'cloudposse-tests'
+
       - name: Config
         shell: bash
         id: config
@@ -260,7 +268,7 @@ jobs:
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
         shell: bash
         run: |
           if [[ "$USES_DATADOG" == "true" ]]; then
