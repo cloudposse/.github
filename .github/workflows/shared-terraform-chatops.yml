@@ -245,7 +245,7 @@ jobs:
           echo "uses_cloudflare=${USES_CLOUDFLARE}" >> $GITHUB_OUTPUT
 
       - uses: actions/create-github-app-token@v2
-        if: ${{ needs.config.outputs.uses_github == 'true' }}
+        if: ${{ steps.config.outputs.uses_github == 'true' }}
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
