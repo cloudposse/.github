@@ -210,14 +210,6 @@ jobs:
           make -C test/src clean init
           rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl
 
-      - uses: actions/create-github-app-token@v2
-        if: ${{ needs.context.outputs.uses_github == 'true' }}
-        id: github-app
-        with:
-          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
-          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
-          owner: 'cloudposse-tests'
-
       - name: Config
         shell: bash
         id: config
@@ -251,6 +243,14 @@ jobs:
           echo "uses_datadog=${USES_DATADOG}" >> $GITHUB_OUTPUT
           echo "uses_tfe=${USES_TFE}" >> $GITHUB_OUTPUT
           echo "uses_cloudflare=${USES_CLOUDFLARE}" >> $GITHUB_OUTPUT
+
+      - uses: actions/create-github-app-token@v2
+        if: ${{ needs.config.outputs.uses_github == 'true' }}
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+          owner: 'cloudposse-tests'
 
       - name: "Inject secrets"
         env:
