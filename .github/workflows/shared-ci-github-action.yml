@@ -77,7 +77,7 @@ jobs:
           workflow_file_name: ${{ matrix.env }}
           ref: ${{ inputs.ref }}
           wait_interval: 10
-          client_payload: '{}'
+          client_payload: '{"ref":"${{ inputs.ref }}"}'
           propagate_failure: true
           trigger_workflow: true
           wait_workflow: true
