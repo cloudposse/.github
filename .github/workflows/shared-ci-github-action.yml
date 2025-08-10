@@ -17,6 +17,11 @@ on:
         required: false
         default: ${{ github.ref }}
         type: string
+      sha:
+        description: "The sha of the commit that triggered the workflow run"
+        required: false
+        default: ${{ github.sha }}
+        type: string
       tests-prefix:
         description: "Workflows file name prefix to run as tests"
         required: false
@@ -77,7 +82,7 @@ jobs:
           workflow_file_name: ${{ matrix.env }}
           ref: ${{ inputs.ref }}
           wait_interval: 10
-          client_payload: '{"ref":"${{ inputs.ref }}"}'
+          client_payload: '{"ref":"${{ inputs.ref }}","sha":"${{ inputs.sha }}"}'
           propagate_failure: true
           trigger_workflow: true
           wait_workflow: true
