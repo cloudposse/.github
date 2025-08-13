@@ -16,6 +16,7 @@ permissions:
 
 jobs:
   major-release-tagger:
+    if: ${{ github.event.release.prerelease == false }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
     steps:
@@ -30,6 +31,7 @@ jobs:
           token: ${{ steps.github-app.outputs.token }}
 
   release-branch-manager:
+    if: ${{ github.event.release.prerelease == false }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
     steps:
