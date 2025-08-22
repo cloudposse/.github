@@ -71,31 +71,31 @@ To add all repository bootstrapping files to a new repo:
 
 
 
-## ✨ Contributing
+> [!TIP]
+> #### Enterprise Support Available
+>
+> Get stuck? We offer **paid [on-demand support](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support)** for this project.
 
-This project is under active development, and we encourage contributions from our community.
 
+## Community 𐦂𖨆𐀪𖠋
 
-
-Many thanks to our outstanding contributors:
+This module is support by Cloud Posse and our active DevOps community. Try it out!
 
 <a href="https://github.com/cloudposse/.github/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=cloudposse/.github&max=24" />
 </a>
 
-For 🐛 bug reports & feature requests, please use the [issue tracker](https://github.com/cloudposse/.github/issues).
+<a href="https://cloudposse.com/office-hours">
+  <img src="https://img.shields.io/badge/Office_Hours-Join_Live-0A66C2?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live">
+</a>
+<a href="https://youtube.com/cloudposse">
+  <img src="https://img.shields.io/badge/YouTube-Subscribe-D191BF?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe">
+</a>
+<a href="https://cloudposse.com/slack">
+  <img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community">
+</a>
 
-In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
- 1. Review our [Code of Conduct](https://github.com/cloudposse/.github/?tab=coc-ov-file#code-of-conduct) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
- 2. **Fork** the repo on GitHub
- 3. **Clone** the project to your own machine
- 4. **Commit** changes to your own branch
- 5. **Push** your work back up to your fork
- 6. Submit a **Pull Request** so that we can review your changes
-
-**NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
-
-## Connect With Us 𐦂𖨆𐀪𖠋
+## ✨ Connect With Us
 
 We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, here’s where to find us:
 
@@ -108,15 +108,8 @@ We don’t just “talk” about this stuff—we live it every day. We publish, 
 <a href="https://cloudposse.com/blog">
   <img src="https://img.shields.io/badge/Blog-Updates-55C1B4?style=for-the-badge&logoColor=white" alt="Blog: Updates">
 </a>
-<a href="https://cloudposse.com/office-hours">
-  <img src="https://img.shields.io/badge/Office_Hours-Join_Live-0A66C2?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live">
-</a>
-<a href="https://youtube.com/cloudposse">
-  <img src="https://img.shields.io/badge/YouTube-Subscribe-D191BF?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe">
-</a>
-<a href="https://cloudposse.com/slack">
-  <img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community">
-</a>
+
+
 ## License
 
 <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License"></a>
