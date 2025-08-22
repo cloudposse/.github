@@ -1,0 +1,17 @@
+docs:
+  generate:
+    readme:
+      base-dir: .
+      input:
+        - "./README.yaml"
+        - get_support: false
+      template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
+      output: "./README.md"
+
+    "local/readme":
+      base-dir: .
+      input:
+        - "./README.yaml"
+        - get_support: false
+      template: ".//README.md.gotmpl"
+      output: "./README.md"
