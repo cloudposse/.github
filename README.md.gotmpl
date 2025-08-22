@@ -94,7 +94,7 @@
 {{ end }}
 
 {{ if not $deprecated -}}
-  {{ if and (file.Exists ".github/banner.png") (has (ds "config") "badges") }}<p align="right">{{- end -}}
+  {{ if and (file.Exists ".github/banner.png") (has (ds "config") "badges") }}<p align="center">{{- end -}}
 {{ end }}
 
 {{- if has (ds "config") "badges" -}}
