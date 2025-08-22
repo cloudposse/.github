@@ -6,7 +6,9 @@
 
 <p align="center"><a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a>
 
-</p># .github
+</p>
+
+  # .github
 
 <!-- markdownlint-restore -->
 
