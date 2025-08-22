@@ -99,7 +99,12 @@ This project is supported by Cloud Posse and our active DevOps community. Try it
   <img src="https://contrib.rocks/image?repo=cloudposse/.github&max=24" />
 </a>
 
-## ✨ Connect With Us
+## Built by Cloud Posse
+
+Spinning up AWS infrastructure takes longer than it should—and one wrong move costs weeks.
+[Cloud Posse helps teams ship production-ready AWS infrastructure](https://cloudposse.com)—without wasting time, headcount, or momentum.
+
+## Connect With Us ✨
 <a href="https://linkedin.com/in/cloudposse">
   <img src="https://img.shields.io/badge/LinkedIn-Follow-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow">
 </a>
