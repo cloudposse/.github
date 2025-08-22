@@ -103,14 +103,14 @@
   {{- end -}}
 {{- end }}
 
-{{- if has (ds "config") "get_support" -}}
-<a href="https://cloudposse.com/support/"><img src="https://img.shields.io/badge/Get_Support-success.svg?style=for-the-badge" alt="Get Support"/></a>
-{{- end }}
-
 {{ if not $deprecated -}}
   {{ if and (file.Exists ".github/banner.png") (has (ds "config") "badges") }}</p>{{- end -}}
+
+  # {{(ds "config").name}}
 {{ end }}
 <!-- markdownlint-restore -->
+
+
 
 <!--
 
@@ -327,7 +327,6 @@ This project is supported by Cloud Posse and our active DevOps community. Try it
   <img src="https://contrib.rocks/image?repo={{ printf "%s" (ds "config").github_repo}}&max=24" />
 </a>
 
-
 ## ✨ Connect With Us
 <a href="https://linkedin.com/in/cloudposse">
   <img src="https://img.shields.io/badge/LinkedIn-Follow-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow">
@@ -349,5 +348,3 @@ We don’t just “talk” about this stuff—we live it every day. We publish, 
 <a href="{{ printf $utm_link "https://cloudposse.com/readme/footer/link" "readme_footer_link" }}"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
 
 <img alt="Beacon" width="0" src="{{ printf "https://ga-beacon.cloudposse.com/UA-76589703-4/%s?pixel&cs=github&cm=readme&an=%s" (ds "config").github_repo (filepath.Base ((ds "config").github_repo)) }}"/>
-
-
