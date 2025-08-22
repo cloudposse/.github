@@ -78,9 +78,9 @@ To add all repository bootstrapping files to a new repo:
 
 
 ## Community 𐦂𖨆𐀪𖠋
-<a href="https://cloudposse.com/office-hours"><img src="https://img.shields.io/badge/Office_Hours-Join_Live-4A154B?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live"></a>
-<a href="https://youtube.com/cloudposse"><img src="https://img.shields.io/badge/YouTube-Subscribe-35244F?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe"></a>
-<a href="https://cloudposse.com/slack"><img src="https://img.shields.io/badge/Slack-Join_Community-3C2D83?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community"></a>
+<a href="https://cloudposse.com/office-hours"><img src="https://img.shields.io/badge/Office_Hours-Join_Live-7C3AED?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live"></a>
+<a href="https://youtube.com/cloudposse"><img src="https://img.shields.io/badge/YouTube-Subscribe-7C3AED?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe"></a>
+<a href="https://cloudposse.com/slack"><img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community"></a>
 
 This project is supported by Cloud Posse and our active DevOps community. Try it out!
 
