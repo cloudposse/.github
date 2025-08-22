@@ -1,9 +1,12 @@
 
 
 <!-- markdownlint-disable -->
-<a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/.github/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
-    <p align="right">
-<a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<a href="https://cpco.io/homepage"><img src="https://cloudposse.com/api/github/banner/cloudposse/.github" alt="Project Banner"/></a><br/>
+
+
+<p align="right"><a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a><a href="https://cloudposse.com/support/"><img src="https://img.shields.io/badge/Get_Support-success.svg?style=for-the-badge" alt="Get Support"/></a>
+
+</p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -56,6 +59,10 @@ This repository fulfills several unique functions functions for the Cloud Posse 
 To add all repository bootstrapping files to a new repo:
   1. Copy the `.github/workflows/auto-format.yml` file from this repository to the `.github/workflows` folder of the destination repository.
   2. Execute the `Auto-format` GitHub Action in the destination repository.
+
+
+
+
 
 
 
@@ -139,7 +146,7 @@ All other trademarks referenced herein are the property of their respective owne
 
 ## Copyrights
 
-Copyright © 2022-2024 [Cloud Posse, LLC](https://cloudposse.com)
+Copyright © 2022-2025 [Cloud Posse, LLC](https://cloudposse.com)
 
 
 
