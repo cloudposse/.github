@@ -78,13 +78,6 @@ To add all repository bootstrapping files to a new repo:
 
 
 ## Community 𐦂𖨆𐀪𖠋
-
-This module is support by Cloud Posse and our active DevOps community. Try it out!
-
-<a href="https://github.com/cloudposse/.github/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=cloudposse/.github&max=24" />
-</a>
-
 <a href="https://cloudposse.com/office-hours">
   <img src="https://img.shields.io/badge/Office_Hours-Join_Live-0A66C2?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live">
 </a>
@@ -95,10 +88,15 @@ This module is support by Cloud Posse and our active DevOps community. Try it ou
   <img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community">
 </a>
 
+This module is support by Cloud Posse and our active DevOps community. Try it out!
+
+<a href="https://github.com/cloudposse/.github/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cloudposse/.github&max=24" />
+</a>
+
+
+
 ## ✨ Connect With Us
-
-We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, here’s where to find us:
-
 <a href="https://linkedin.com/in/cloudposse">
   <img src="https://img.shields.io/badge/LinkedIn-Follow-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow">
 </a>
@@ -108,6 +106,8 @@ We don’t just “talk” about this stuff—we live it every day. We publish, 
 <a href="https://cloudposse.com/blog">
   <img src="https://img.shields.io/badge/Blog-Updates-55C1B4?style=for-the-badge&logoColor=white" alt="Blog: Updates">
 </a>
+
+We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, here’s where to find us:
 
 
 ## License
