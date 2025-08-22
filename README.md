@@ -1,7 +1,7 @@
 
 
 <!-- markdownlint-disable -->
-<a href="https://cpco.io/homepage"><img src="https://cloudposse.com/api/github/banner/cloudposse/.github" alt="Project Banner"/></a><br/>
+<a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support"><img src="https://cloudposse.com/api/github/banner/cloudposse/.github" alt="Project Banner"/></a><br/>
 
 
 <p align="center"><a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a>
@@ -78,8 +78,8 @@ To add all repository bootstrapping files to a new repo:
 
 
 ## Community 𐦂𖨆𐀪𖠋
-<a href="https://cloudposse.com/office-hours"><img src="https://img.shields.io/badge/Office_Hours-Join_Live-0A66C2?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live"></a>
-<a href="https://youtube.com/cloudposse"><img src="https://img.shields.io/badge/YouTube-Subscribe-D191BF?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe"></a>
+<a href="https://cloudposse.com/office-hours"><img src="https://img.shields.io/badge/Office_Hours-Join_Live-7C3AED?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live"></a>
+<a href="https://youtube.com/cloudposse"><img src="https://img.shields.io/badge/YouTube-Subscribe-8B5CF6?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe"></a>
 <a href="https://cloudposse.com/slack"><img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community"></a>
 
 This project is supported by Cloud Posse and our active DevOps community. Try it out!
@@ -94,9 +94,9 @@ Spinning up AWS infrastructure takes longer than it should—and one wrong move 
 [Cloud Posse helps teams ship production-ready AWS infrastructure](https://cloudposse.com)—without wasting time, headcount, or momentum.
 
 ## Connect With Us ✨
-<a href="https://linkedin.com/in/cloudposse"><img src="https://img.shields.io/badge/LinkedIn-Follow-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow"></a>
-<a href="https://cloudposse.com/newsletter"><img src="https://img.shields.io/badge/Newsletter-Subscribe-ECE295?style=for-the-badge&logoColor=222222" alt="Newsletter: Subscribe"></a>
-<a href="https://cloudposse.com/blog"><img src="https://img.shields.io/badge/Blog-Updates-55C1B4?style=for-the-badge&logoColor=white" alt="Blog: Updates"></a>
+<a href="https://linkedin.com/in/cloudposse"><img src="https://img.shields.io/badge/LinkedIn-Follow-6D28D9?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow"></a>
+<a href="https://cloudposse.com/newsletter"><img src="https://img.shields.io/badge/Newsletter-Subscribe-5B21B6?style=for-the-badge&logoColor=white" alt="Newsletter: Subscribe"></a>
+<a href="https://cloudposse.com/blog"><img src="https://img.shields.io/badge/Blog-Updates-4C1D95?style=for-the-badge&logoColor=white" alt="Blog: Updates"></a>
 
 We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, connect with us.
 
