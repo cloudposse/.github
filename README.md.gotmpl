@@ -269,12 +269,6 @@ For additional context, refer to some of these links.
 {{ if not $deprecated -}}
 {{- if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 
-> [!TIP]
-> #### Enterprise Support Available
->
-> Get stuck? We offer **paid [on-demand support]({{ $commercial_support }})** for all of our open source projects.
-
-
 {{- if and (file.Exists "test") (file.Exists "atmos.yaml") }}
 
 ## Running Terraform Tests

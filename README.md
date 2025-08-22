@@ -76,11 +76,6 @@ To add all repository bootstrapping files to a new repo:
 
 
 
-> [!TIP]
-> #### Enterprise Support Available
->
-> Get stuck? We offer **paid [on-demand support](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support)** for all of our open source projects.
-
 
 ## Community 𐦂𖨆𐀪𖠋
 <a href="https://cloudposse.com/office-hours">
