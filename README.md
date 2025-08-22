@@ -74,7 +74,7 @@ To add all repository bootstrapping files to a new repo:
 > [!TIP]
 > #### Enterprise Support Available
 >
-> Get stuck? We offer **paid [on-demand support](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support)** for this project.
+> Get stuck? We offer **paid [on-demand support](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support)** for all of our open source projects.
 
 
 ## Community 𐦂𖨆𐀪𖠋
@@ -88,12 +88,11 @@ To add all repository bootstrapping files to a new repo:
   <img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community">
 </a>
 
-This module is support by Cloud Posse and our active DevOps community. Try it out!
+This project is supported by Cloud Posse and our active DevOps community. Try it out!
 
 <a href="https://github.com/cloudposse/.github/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=cloudposse/.github&max=24" />
 </a>
-
 
 
 ## ✨ Connect With Us
@@ -107,51 +106,13 @@ This module is support by Cloud Posse and our active DevOps community. Try it ou
   <img src="https://img.shields.io/badge/Blog-Updates-55C1B4?style=for-the-badge&logoColor=white" alt="Blog: Updates">
 </a>
 
-We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, here’s where to find us:
+We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, connect with us.
 
-
-## License
-
-<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License"></a>
-
-<details>
-<summary>Preamble to the Apache License, Version 2.0</summary>
-<br/>
-<br/>
-
-Complete license is available in the [`LICENSE`](LICENSE) file.
-
-```text
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
-```
-</details>
-
-## Trademarks
-
-All other trademarks referenced herein are the property of their respective owners.
-
-
-## Copyrights
-
-Copyright © 2022-2025 [Cloud Posse, LLC](https://cloudposse.com)
-
-
+---
+© Copyright 2025 [Cloud Posse, LLC](https://cpco.io/copyright)
 
 <a href="https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_footer_link"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
 
 <img alt="Beacon" width="0" src="https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/.github?pixel&cs=github&cm=readme&an=.github"/>
+
+

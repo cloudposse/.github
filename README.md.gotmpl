@@ -272,7 +272,7 @@ For additional context, refer to some of these links.
 > [!TIP]
 > #### Enterprise Support Available
 >
-> Get stuck? We offer **paid [on-demand support]({{ $commercial_support }})** for this project.
+> Get stuck? We offer **paid [on-demand support]({{ $commercial_support }})** for all of our open source projects.
 
 
 {{- if and (file.Exists "test") (file.Exists "atmos.yaml") }}
@@ -321,12 +321,11 @@ Learn more about our [automated testing in our documentation](https://docs.cloud
   <img src="https://img.shields.io/badge/Slack-Join_Community-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community">
 </a>
 
-This module is support by Cloud Posse and our active DevOps community. Try it out!
+This project is supported by Cloud Posse and our active DevOps community. Try it out!
 
 <a href="https://github.com/{{ printf "%s" (ds "config").github_repo}}/graphs/contributors">
   <img src="https://contrib.rocks/image?repo={{ printf "%s" (ds "config").github_repo}}&max=24" />
 </a>
-
 
 
 ## ✨ Connect With Us
@@ -340,149 +339,15 @@ This module is support by Cloud Posse and our active DevOps community. Try it ou
   <img src="https://img.shields.io/badge/Blog-Updates-55C1B4?style=for-the-badge&logoColor=white" alt="Blog: Updates">
 </a>
 
-We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, here’s where to find us:
+We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, connect with us.
 
 {{- end }}
 
-{{ if eq (ds "config").license "APACHE2" }}
-## License
-
-<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License"></a>
-
-<details>
-<summary>Preamble to the Apache License, Version 2.0</summary>
-<br/>
-<br/>
-
-{{ if (file.Exists "LICENSE") -}}
-Complete license is available in the [`LICENSE`](LICENSE) file.
-{{- end }}
-
-```text
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
-```
-</details>
-{{- end }}
-{{- if eq (ds "config").license "CC-BY-NC-SA-4.0" }}
-## License
-
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY%20NC%20SA%204.0-blue.svg?style=for-the-badge" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"></a>
-
-This material may only be distributed subject to the terms and conditions set forth in the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License or later with the restrictions noted below (the latest version of the license is presently available at <https://creativecommons.org/licenses/by-nc-sa/4.0/>).
-
-**Attribution** You must attribute the work in the manner specified by the author or licensor.
-
-**Noncommercial** The licensor permits others to copy, distribute and transmit the work. In return, licensees may not use the work for commercial purposes — unless they get the licensor's permission.
-
-**Share Alike** The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.
-
-## Distribution
-
-Distribution of substantively modified versions of this document is prohibited without the explicit permission of the copyright holder.
-
-Distribution of the work or derivative of the work in any standard (paper) book form for commercial purposes is prohibited unless prior permission is obtained from the copyright holder.
-{{- end }}
-
-{{- if eq (ds "config").license "MIT" }}
-## License
-
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"></a>
-
-```text
-The MIT License (MIT)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-Source: <https://opensource.org/licenses/MIT>
-```
-{{- end }}
-
-{{- if eq (ds "config").license "ISC" }}
-## License
-
-<a href="https://opensource.org/licenses/ISC"><img src="https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge" alt="License: ISC"></a>
-
-```text
-ISC License (ISC)
-
-Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-Source: <https://opensource.org/licenses/ISC>
-```
-{{- end }}
-
-{{- if eq (ds "config").license "GPL3" }}
-## License
-
-<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge" alt="License: GPL v3"></a>
-
-```text
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-```
-{{- end }}
-
-## Trademarks
-
-All other trademarks referenced herein are the property of their respective owners.
-
-{{ if has (ds "config") "copyrights" }}
-## Copyrights
-
-{{ range $copyright := (ds "config").copyrights -}}
-{{ printf "Copyright © %s-%d [%s](%s)\n" $copyright.year time.Now.Year $copyright.name $copyright.url }}
-{{- end }}
-{{ else }}
 ---
-Copyright © 2017-{{ time.Now.Year }} [Cloud Posse, LLC](https://cpco.io/copyright)
-{{ end }}
+© Copyright {{ time.Now.Year }} [Cloud Posse, LLC](https://cpco.io/copyright)
 
 <a href="{{ printf $utm_link "https://cloudposse.com/readme/footer/link" "readme_footer_link" }}"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
 
 <img alt="Beacon" width="0" src="{{ printf "https://ga-beacon.cloudposse.com/UA-76589703-4/%s?pixel&cs=github&cm=readme&an=%s" (ds "config").github_repo (filepath.Base ((ds "config").github_repo)) }}"/>
+
+
