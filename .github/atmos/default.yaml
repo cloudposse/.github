@@ -17,3 +17,8 @@ docs:
         sort_by: "name"
         hide_empty: false
         indent_level: 2
+
+commands:
+- name: readme
+  steps:
+    - "atmos docs generate readme"
