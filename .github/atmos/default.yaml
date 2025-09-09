@@ -1,0 +1,19 @@
+docs:
+  generate:
+    readme:
+      base-dir: .
+      input:
+        - "./README.yaml"
+        - get_support: true        
+      template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
+      output: "./README.md"
+      terraform:
+        source: .
+        enabled: false
+        format: "markdown table"
+        show_providers: false
+        show_inputs: true
+        show_outputs: true
+        sort_by: "name"
+        hide_empty: false
+        indent_level: 2
