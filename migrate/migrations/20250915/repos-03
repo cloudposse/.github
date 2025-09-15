@@ -1,3 +1,3 @@
-cloudposse/github-action-major-release-tagger
-cloudposse/github-action-release-branch-manager
+cloudposse/github-action-datadog-notify
+cloudposse/github-action-pull-request-labeling
 cloudposse/github-action-atmos-dependencies-test
