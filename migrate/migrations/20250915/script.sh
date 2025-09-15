@@ -59,6 +59,26 @@ for workflow_file in .github/workflows/test*.yml .github/workflows/test*.yaml; d
     fi
 done
 
-
+# Remove includes from README.yaml if they contain docs/github-actions.md and/or docs/targets.md
+if [ -f "README.yaml" ]; then
+    # Create a temporary file to store the modified content
+    temp_file=$(mktemp)
+    
+    # Use grep to remove lines containing the specific docs files from includes
+    grep -v -E "docs/(github-action|target)\.md" README.yaml > "$temp_file"
+    
+    # Check if the includes section would be empty after removals
+    if grep -q "^include:" "$temp_file"; then
+        # Check if there are any remaining include items (lines starting with - after include:)
+        if ! awk '/^include:/{flag=1; next} flag && /^[^ ]/{exit} flag && /^\s*-/{found=1; exit} END{exit !found}' "$temp_file"; then
+            # Set includes to empty array if no items remain
+            sed -i '' 's/^include:.*/include: []/' "$temp_file"
+        fi
+    fi
+    # Replace the original file with the modified content
+    mv "$temp_file" README.yaml
+    
+    echo "Processed README.yaml to remove docs/github-actions.md and docs/targets.md from includes"
+fi
 # Merge the PR
 auto_merge
