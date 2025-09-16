@@ -7,3 +7,8 @@ docs:
         - "./README.yaml"
       template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
       output: "./README.md"
+
+commands:
+- name: readme
+  steps:
+    - "atmos docs generate readme"
