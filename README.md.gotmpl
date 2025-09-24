@@ -24,7 +24,7 @@
 {{- define "sanatize_string" }}{{ . | strings.ReplaceAll "\n\n" "<br><br>" | strings.ReplaceAll "  \n" "<br>" | strings.ReplaceAll "\n" "<br>" | tmpl.Exec "escape_chars" }}{{- end }}
 
 {{- define "tip_use_atmos" }}
-{{- if .is_terraform }}
+{{- if $is_terraform }}
 > [!TIP]
 > #### 👽 Use Atmos with Terraform
 > Cloud Posse uses [`atmos`](https://atmos.tools) to easily orchestrate multiple environments using Terraform. <br/>
@@ -38,7 +38,7 @@
 {{- end }}
 {{- end }}
 {{- define "tip_use_reference_architecture" -}}
-{{- if .is_terraform }}
+{{- if $is_terraform }}
 > [!TIP]
 > #### Use Terraform Reference Architectures for AWS
 >
