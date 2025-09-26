@@ -125,7 +125,7 @@ jobs:
           key: tflint-plugins-${{ env.TFLINT_CACHE_VER }}
 
       - name: tflint
-        uses: reviewdog/action-tflint@v1.22.0
+        uses: reviewdog/action-tflint@v1.25.0
         with:
           reporter: ${{ inputs.suggestions && 'github-pr-annotations' || 'local' }}
           fail_on_error: ${{ inputs.suggestions }}
