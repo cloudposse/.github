@@ -263,6 +263,7 @@ jobs:
           OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
           DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
+          DD_HOST: ${{ secrets.DD_HOST }}
           SPOTINST_TOKEN: ${{ secrets.SPOTINST_TOKEN }}
           SPOTINST_ACCOUNT: ${{ secrets.SPOTINST_ACCOUNT }}
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
@@ -274,6 +275,7 @@ jobs:
           if [[ "$USES_DATADOG" == "true" ]]; then
             printf "%s=%s\n"  DD_API_KEY "$DD_API_KEY" >> "$GITHUB_ENV"
             printf "%s=%s\n"  DD_APP_KEY "$DD_APP_KEY" >> "$GITHUB_ENV"
+            printf "%s=%s\n"  DD_HOST "$DD_HOST" >> "$GITHUB_ENV"
             echo exported Datadog
           fi
           if [[ "$USES_GITHUB" == "true" ]]; then
