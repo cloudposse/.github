@@ -41,3 +41,7 @@ commands:
     steps:
       - "make -C test/src clean"
       - "rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl"
+
+settings:
+  telemetry:
+    enabled: false
