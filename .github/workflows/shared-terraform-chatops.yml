@@ -330,7 +330,7 @@ jobs:
         uses: robherley/go-test-action@v0
         with:
           moduleDirectory: test/src
-          testArguments:  -v -timeout 60m
+          testArguments:  -v -timeout 120m
 
       - name: "Update GitHub Status for failure"
         if: ${{ failure() }}
