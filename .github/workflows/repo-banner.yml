@@ -38,7 +38,7 @@ jobs:
       run: |
         ln -s ${{github.workspace}} ${{github.workspace}}/github
 
-    - uses: actions-tools/yaml-outputs@49506207f91d468273fd5e73fbd18d6d2d9df9b1
+    - uses: actions-tools/yaml-outputs@4a86ace52e7a507fd84b9b666fe9650a7a587b2b
       id: readme
       with:
         file-path: 'README.yaml'
