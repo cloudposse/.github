@@ -83,7 +83,7 @@ jobs:
       exists: ${{ steps.drafter.outputs.exists }}
       
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v2
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
