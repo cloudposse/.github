@@ -267,7 +267,6 @@ For additional context, refer to some of these links.
 {{ printf "- [%s](%s) - %s" $reference.name $reference.url $reference.description }}{{ end }}
 
 {{ end}}
-{{ if not $deprecated -}}
 {{- if eq "" $firstNonEmptySection }}{{ template "tip_use_reference_architecture" $context }}{{- end }}
 
 {{- if eq (ds "config").license "APACHE2" }}
