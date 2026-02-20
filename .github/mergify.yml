@@ -8,6 +8,14 @@ shared:
         - "author=dependabot[bot]"
         - "author=renovate[bot]"
 
+  # Pull requests created or co-authored by GitHub Copilot
+  is_copilot_author: &is_copilot_author
+    or:
+      - "author=github-copilot[bot]"
+      - "author~=.*copilot.*"
+      - "body~=Co-authored-by:.*github-copilot"
+      - "body~=Co-authored-by:.*copilot"
+
   # Not a bot user
   not_a_bot: &not_a_bot
     - and:
@@ -398,6 +406,8 @@ pull_request_rules:
     conditions:
       - and: *is_open
       - and: *has_no_changes
+      - not:
+          *is_copilot_author
     actions:
       label:
         add:
