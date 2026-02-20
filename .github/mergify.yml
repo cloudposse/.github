@@ -12,9 +12,9 @@ shared:
   is_copilot_author: &is_copilot_author
     or:
       - "author=github-copilot[bot]"
-      - "author~=.*copilot.*"
-      - "body~=Co-authored-by:.*github-copilot"
-      - "body~=Co-authored-by:.*copilot"
+      - "author=Copilot"
+      - "author~=(?i).*copilot.*"
+      - "body~=(?i)Co-authored-by:.*copilot"
 
   # Not a bot user
   not_a_bot: &not_a_bot
