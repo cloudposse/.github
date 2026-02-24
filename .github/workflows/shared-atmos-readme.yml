@@ -38,7 +38,7 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.github-app.outputs.token }}
 
-      - uses: cloudposse-github-actions/readme@v1
+      - uses: cloudposse-github-actions/readme@v2
         with:
           token: ${{ steps.github-app.outputs.token }}
           readme_enabled: true
@@ -46,3 +46,4 @@ jobs:
           validate_readme: true
           commit_method: 'commit'
           commit_push_options: '--force-with-lease'
+          command: readme

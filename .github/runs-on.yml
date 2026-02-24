@@ -123,6 +123,16 @@ runners:
 
   large-amd64: *large
 
+  xlarge: &xlarge
+      <<: *default
+      cpu: [8, 64]
+      ram: [32, 128]
+      disk: large
+      tags:
+        - "gha-runner:runs-on/xlarge"
+
+  xlarge-amd64: *xlarge
+
   default-arm64: &default-arm64
     <<: *default
     image: ubuntu22-full-arm64
@@ -173,4 +183,12 @@ runners:
     disk: large
     tags:
       - "gha-runner:runs-on/large-arm64"
+
+  xlarge-arm64:
+    <<: *default-arm64
+    cpu: [8, 64]
+    ram: [32, 128]
+    disk: large
+    tags:
+      - "gha-runner:runs-on/xlarge-arm64"
 

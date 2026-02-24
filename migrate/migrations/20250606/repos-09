@@ -1,0 +1,13 @@
+cloudposse/terraform-aws-ecr-public
+cloudposse/terraform-aws-kinesis-stream
+cloudposse/terraform-aws-batch
+cloudposse/terraform-aws-rds-cluster-instance-group
+cloudposse/terraform-aws-cloudwatch-flow-logs
+cloudposse/terraform-aws-cicd
+cloudposse/terraform-aws-ssm-parameter-chamber-reader
+cloudposse/terraform-aws-organization-access-role
+cloudposse/terraform-aws-rds-replica
+cloudposse/terraform-aws-iam-account-settings
+cloudposse/terraform-aws-efs-cloudwatch-sns-alarms
+cloudposse/terraform-opsgenie-incident-management
+cloudposse/terraform-aws-step-functions

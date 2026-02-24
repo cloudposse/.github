@@ -13,6 +13,11 @@ on:
         required: false
         default: false
         type: string
+      draft:
+        description: "Draft release"
+        required: false
+        default: false
+        type: string
       publish:
         description: "Whether to publish a new release immediately"
         required: false
@@ -164,6 +169,12 @@ jobs:
             GORELEASER_CONFIG="../.configs/.github/goreleaser.yml"
           fi
 
+          if [[ "${{ inputs.draft }}" == "true" && -f .goreleaser.draft.yml ]]; then
+            echo 'Go releaser draft config exists and this is draft mode'
+            GORELEASER_CONFIG="./.goreleaser.draft.yml"          
+          fi
+          
+
           if [[ "${{ inputs.format }}" == "binary" ]]; then
             sed -i 's/{{ .Env.ARCHIVES_FORMAT }}/binary/g' $GORELEASER_CONFIG
           elif [[ "${{ inputs.format }}" == "zip" ]]; then
@@ -227,6 +238,7 @@ jobs:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
           GO_RELEASER_TARGET_COMMITISH: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+          GO_RELEASER_DRAFT_MODE: ${{ inputs.draft }}
 
       - name: Check disk space after
         if: success() || failure()

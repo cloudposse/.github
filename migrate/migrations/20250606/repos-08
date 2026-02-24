@@ -1,0 +1,16 @@
+cloudposse/terraform-aws-iam-assumed-roles
+cloudposse/terraform-aws-alb-target-group-cloudwatch-sns-alarms
+cloudposse/terraform-aws-efs-backup
+cloudposse/terraform-terraform-label
+cloudposse/terraform-aws-route53-resolver-dns-firewall
+cloudposse/terraform-aws-network-firewall
+cloudposse/terraform-tls-ssh-key-pair
+cloudposse/terraform-aws-macie
+cloudposse/terraform-aws-elastic-beanstalk-application
+cloudposse/terraform-aws-ec2-ami-backup
+cloudposse/terraform-aws-ec2-admin-server
+cloudposse/terraform-aws-refarch-utils
+cloudposse/terraform-aws-cloudwatch-events
+cloudposse/terraform-aws-ssm-parameter-store-policy-documents
+cloudposse/terraform-aws-ec2-ami-snapshot
+cloudposse/terraform-aws-dynamodb-autoscaler

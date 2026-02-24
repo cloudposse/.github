@@ -244,6 +244,14 @@ jobs:
           echo "uses_tfe=${USES_TFE}" >> $GITHUB_OUTPUT
           echo "uses_cloudflare=${USES_CLOUDFLARE}" >> $GITHUB_OUTPUT
 
+      - uses: actions/create-github-app-token@v2
+        if: ${{ steps.config.outputs.uses_github == 'true' }}
+        id: github-app
+        with:
+          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+          owner: 'cloudposse-tests'
+
       - name: "Inject secrets"
         env:
           USES_GITHUB: ${{ steps.config.outputs.uses_github }}
@@ -255,17 +263,19 @@ jobs:
           OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
           DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
+          DD_HOST: ${{ secrets.DD_HOST }}
           SPOTINST_TOKEN: ${{ secrets.SPOTINST_TOKEN }}
           SPOTINST_ACCOUNT: ${{ secrets.SPOTINST_ACCOUNT }}
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
         shell: bash
         run: |
           if [[ "$USES_DATADOG" == "true" ]]; then
             printf "%s=%s\n"  DD_API_KEY "$DD_API_KEY" >> "$GITHUB_ENV"
             printf "%s=%s\n"  DD_APP_KEY "$DD_APP_KEY" >> "$GITHUB_ENV"
+            printf "%s=%s\n"  DD_HOST "$DD_HOST" >> "$GITHUB_ENV"
             echo exported Datadog
           fi
           if [[ "$USES_GITHUB" == "true" ]]; then
@@ -320,7 +330,7 @@ jobs:
         uses: robherley/go-test-action@v0
         with:
           moduleDirectory: test/src
-          testArguments:  -v -timeout 60m
+          testArguments:  -v -timeout 120m
 
       - name: "Update GitHub Status for failure"
         if: ${{ failure() }}
