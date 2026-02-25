@@ -163,7 +163,9 @@ jobs:
         run: |-
           if [ -f .goreleaser.yml ]; then
             echo 'Go releaser config exists.'
-            GORELEASER_CONFIG="./.goreleaser.yml"
+            mkdir -f ../.configs/repo/
+            cp ./.goreleaser.yml ../.configs/repo/.goreleaser.yml
+            GORELEASER_CONFIG="../.configs/repo/.goreleaser.yml"            
           else
             echo 'Go releaser config does not exist. Use org wide config'
             GORELEASER_CONFIG="../.configs/.github/goreleaser.yml"
@@ -171,7 +173,9 @@ jobs:
 
           if [[ "${{ inputs.draft }}" == "true" && -f .goreleaser.draft.yml ]]; then
             echo 'Go releaser draft config exists and this is draft mode'
-            GORELEASER_CONFIG="./.goreleaser.draft.yml"          
+            mkdir -f ../.configs/repo/
+            cp ./.goreleaser.draft.yml ../.configs/repo/.goreleaser.draft.yml
+            GORELEASER_CONFIG="../.configs/repo/.goreleaser.draft.yml"
           fi
           
 
