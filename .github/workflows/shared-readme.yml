@@ -24,21 +24,21 @@ jobs:
     name: "Readme"
     environment: release
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v3
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ inputs.ref }}
           repository: ${{ inputs.repository }}
           fetch-depth: 0
           token: ${{ steps.github-app.outputs.token }}
 
-      - uses: cloudposse-github-actions/readme@v2
+      - uses: cloudposse-github-actions/readme@v3
         id: readme
         with:
           token: ${{ steps.github-app.outputs.token }}
