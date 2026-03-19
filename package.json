@@ -1,0 +1,12 @@
+{
+  "name": "@cloudposse/github-workflows",
+  "version": "1.0.0",
+  "description": "Shared GitHub workflows and release automation for Cloud Posse",
+  "private": true,
+  "scripts": {
+    "test": "node --test 'test/**/*.test.js'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
