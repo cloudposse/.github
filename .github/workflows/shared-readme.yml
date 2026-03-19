@@ -38,7 +38,7 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.github-app.outputs.token }}
 
-      - uses: cloudposse-github-actions/readme@v3
+      - uses: cloudposse-github-actions/readme@fix-commit-files-pattern
         id: readme
         with:
           token: ${{ steps.github-app.outputs.token }}
