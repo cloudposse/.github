@@ -8,7 +8,7 @@ const {
   isLLMUser,
   extractPRReferences,
   substituteLLMAuthors,
-} = require('../src/release-author-substitutor');
+} = require('../.github/actions/substitute-llm-authors/release-author-substitutor');
 
 describe('DEFAULT_LLM_USERS', () => {
   it('is a non-empty array', () => {
