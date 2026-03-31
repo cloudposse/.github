@@ -42,7 +42,7 @@ shared:
         - "base=master"
 
   # Release branches
-  is_release_branch: &is_release_branch
+  is_release_branch:
     - and:
         - "base~=^release/v\\d{1,2}$"
 
@@ -80,14 +80,14 @@ shared:
         - "-label~=(conflict)"
 
   # Properly titled and described
-  pr_has_metadata: &pr_has_metadata
+  pr_has_metadata:
     - and:
         - "title~=(^[0-9A-Za-z]+)"
         - body~=[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}\\s+[0-9A-Za-z]{3,}
         - -body~=(Describe high-level what changed)
 
   # Has reviews and no changes requested
-  is_approved: &is_approved
+  is_approved:
     - and:
         - "#approved-reviews-by>=1"
         - "#changes-requested-reviews-by=0"
@@ -95,7 +95,7 @@ shared:
         - "#commented-reviews-by=0"
 
   # Checks are passing
-  checks_are_passing: &checks_are_passing
+  checks_are_passing:
     - and:
         - "#check-pending=0"
         - "#status-failure=0"
@@ -110,7 +110,7 @@ shared:
             - -status-failure~=^(terratest|terraform)$
 
   # CODEOWNERS check did not run or is not passing
-  require_codeowners_checks_are_passing: &require_codeowners_checks_are_passing
+  require_codeowners_checks_are_passing:
     - or:
         - "-files=CODEOWNERS"
         - and:
@@ -133,7 +133,7 @@ shared:
         - commits[*].date_committer > 1 minutes ago
 
   # README.md is updated together with README.yaml
-  readme_updated: &readme_updated
+  readme_updated:
     - or:
         - and:
             - -files=README.md
@@ -198,11 +198,6 @@ pull_request_rules:
       merge:
         method: "squash"
 
-  - name: "delete the head branch after merge"
-    conditions:
-      - "merged"
-    actions:
-      delete_head_branch: {}
 
   - name: "ask to resolve conflict"
     conditions:
@@ -406,8 +401,7 @@ pull_request_rules:
     conditions:
       - and: *is_open
       - and: *has_no_changes
-      - not:
-          *is_copilot_author
+      - not: *is_copilot_author
     actions:
       label:
         add:
