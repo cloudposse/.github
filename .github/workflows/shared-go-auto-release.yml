@@ -103,7 +103,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -y git gnupg2
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: source
           token: ${{ steps.github-app.outputs.token }}
@@ -147,7 +147,7 @@ jobs:
           df -h
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.repository_owner }}/.github
           path: .configs
