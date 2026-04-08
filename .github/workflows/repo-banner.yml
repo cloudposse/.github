@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Fetch repo metadata
       id: metadata
@@ -27,7 +27,7 @@ jobs:
 
     - name: Checkout ${{ steps.metadata.outputs.owner_login}}/.github
       if: steps.metadata.outputs.repository_name != '.github'
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: '${{ steps.metadata.outputs.owner_login }}/.github'
         ref: 'main'

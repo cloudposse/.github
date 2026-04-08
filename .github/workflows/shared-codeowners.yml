@@ -18,7 +18,7 @@ jobs:
     name: Validate Codeowners (syntax)
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - uses: mszostok/codeowners-validator@v0.7.1
         # Pull request from a fork
@@ -40,7 +40,7 @@ jobs:
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
           
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ steps.github-app.outputs.token }}
 
