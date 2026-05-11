@@ -45,9 +45,6 @@ runners:
       - c7i.*
       - c7i-flex.*
       - d3.*
-      - hpc6a.*
-      - hpc6id.*
-      - hpc7a.*
       - i3en.*
       - i4i.*
       - i7ie.*
@@ -75,8 +72,6 @@ runners:
       - r7i.*
       - r7iz.*
       - trn1.*
-      - trn1n.*
-      - trn2.*
     cpu: [2, 16]
     ram: [2, 64]
     disk: default
