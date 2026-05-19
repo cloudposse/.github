@@ -12,6 +12,16 @@ on:
         required: false
         default: false
         type: string
+      llm-users:
+        description: >
+          JSON array of LLM/AI bot GitHub usernames whose PR authorship should be replaced
+          with the PR's human assignee in the release notes.
+          Example: '["github-copilot[bot]","devin-ai-integration[bot]"]'
+          Glob patterns with '*' are supported for flexible matching.
+          Defaults to a built-in list that includes GitHub Copilot and other common AI assistants.
+        required: false
+        default: ''
+        type: string
       runs-on:
         description: "Overrides job runs-on setting (json-encoded list)"
         type: string
@@ -127,6 +137,16 @@ jobs:
           latest: ${{ steps.context.outputs.latest }}
           summary-enabled: ${{ inputs.summary-enabled }}
           config-name: ${{ steps.context.outputs.config }}
+
+      # When a PR was authored by an LLM/AI assistant, replace the bot username with the
+      # PR's human assignee in the release notes so humans get proper credit.
+      - name: Substitute LLM authors in release notes
+        if: ${{ steps.drafter.outputs.id != '' }}
+        uses: ./.github/actions/substitute-llm-authors
+        with:
+          token: ${{ steps.github-app.outputs.token }}
+          release-id: ${{ steps.drafter.outputs.id }}
+          llm-users: ${{ inputs.llm-users }}
 
       # - uses: actions/github-script@v7
       #   if: ${{ steps.context.outputs.config == 'auto-feature-release.yml' && steps.drafter.outputs.id != '' }}      

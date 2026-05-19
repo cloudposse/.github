@@ -1,0 +1,142 @@
+name: "Substitute LLM Authors in Release Notes"
+description: >
+  Replaces LLM/AI bot author mentions in release notes with the PR's human assignee.
+  When a PR is authored by an AI assistant (e.g. GitHub Copilot), this action substitutes
+  the bot username with the human assignee so they receive proper credit in the changelog.
+  Logic mirrors the unit-tested module at release-author-substitutor.js.
+
+inputs:
+  token:
+    description: "GitHub token with repo read/write access for release and PR APIs"
+    required: true
+  release-id:
+    description: "The numeric ID of the release to update (from the release-drafter output)"
+    required: true
+  llm-users:
+    description: >
+      JSON array of LLM/AI bot GitHub usernames whose PR authorship should be replaced
+      with the PR's human assignee in the release notes.
+      Example: '["github-copilot[bot]","devin-ai-integration[bot]"]'
+      Glob patterns with '*' are supported for flexible matching.
+      Defaults to a built-in list that includes GitHub Copilot and other common AI assistants.
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Substitute LLM authors
+      uses: actions/github-script@v7
+      env:
+        LLM_USERS: ${{ inputs.llm-users }}
+        RELEASE_ID: ${{ inputs.release-id }}
+      with:
+        github-token: ${{ inputs.token }}
+        retries: 3
+        script: |
+          // Default list of LLM/AI assistant usernames.
+          // Logic mirrors the unit-tested module at release-author-substitutor.js.
+          const DEFAULT_LLM_USERS = [
+            'github-copilot[bot]',
+            'copilot',
+            'devin-ai-integration[bot]',
+            'amazon-q[bot]',
+            'codeium[bot]',
+          ];
+
+          const llmUsersInput = process.env.LLM_USERS;
+          const llmUsers = (llmUsersInput && llmUsersInput.trim())
+            ? JSON.parse(llmUsersInput)
+            : DEFAULT_LLM_USERS;
+
+          function isLLMUser(username) {
+            const norm = username.toLowerCase();
+            return llmUsers.some(llmUser => {
+              const nu = llmUser.toLowerCase();
+              if (nu.includes('*')) {
+                const regexStr = nu.split('*').map(s => s.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('.*');
+                return new RegExp(`^${regexStr}$`).test(norm);
+              }
+              return norm === nu;
+            });
+          }
+
+          function extractPRReferences(body) {
+            const prPattern = /@([a-zA-Z0-9_.\-[\]]+)\s+\(#(\d+)\)/g;
+            const matches = [];
+            let match;
+            // fullMatch is omitted here (unused); see release-author-substitutor.js for full shape
+            while ((match = prPattern.exec(body)) !== null) {
+              matches.push({ author: match[1], prNumber: parseInt(match[2], 10) });
+            }
+            return matches;
+          }
+
+          function substituteLLMAuthors(body, prSubstitutions) {
+            let updatedBody = body;
+            for (const { prNumber, oldAuthor, newAuthor } of prSubstitutions) {
+              const escapedAuthor = oldAuthor.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+              const pattern = new RegExp(`@${escapedAuthor}(\\s+\\(#${prNumber}\\))`, 'g');
+              updatedBody = updatedBody.replace(pattern, `@${newAuthor}$1`);
+            }
+            return updatedBody;
+          }
+
+          const releaseId = parseInt(process.env.RELEASE_ID, 10);
+
+          const { data: release } = await github.rest.repos.getRelease({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            release_id: releaseId,
+          });
+
+          const body = release.body || '';
+          const prRefs = extractPRReferences(body);
+          const llmPRRefs = prRefs.filter(ref => isLLMUser(ref.author));
+
+          if (llmPRRefs.length === 0) {
+            core.info('No LLM-authored PRs found in release notes');
+            return;
+          }
+
+          const prSubstitutions = [];
+
+          for (const prRef of llmPRRefs) {
+            try {
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prRef.prNumber,
+              });
+
+              const humanAssignee = (pr.assignees || []).find(a => !isLLMUser(a.login));
+              if (humanAssignee) {
+                prSubstitutions.push({
+                  prNumber: prRef.prNumber,
+                  oldAuthor: prRef.author,
+                  newAuthor: humanAssignee.login,
+                });
+                core.info(`PR #${prRef.prNumber}: substituting @${prRef.author} with @${humanAssignee.login}`);
+              } else {
+                core.info(`PR #${prRef.prNumber}: no human assignee found for @${prRef.author}, keeping original`);
+              }
+            } catch (error) {
+              core.warning(`Failed to get assignees for PR #${prRef.prNumber}: ${error.message}`);
+            }
+          }
+
+          if (prSubstitutions.length === 0) {
+            core.info('No substitutions needed');
+            return;
+          }
+
+          const updatedBody = substituteLLMAuthors(body, prSubstitutions);
+
+          await github.rest.repos.updateRelease({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            release_id: releaseId,
+            body: updatedBody,
+          });
+
+          core.info(`Release notes updated: ${prSubstitutions.length} LLM author(s) replaced with human assignee(s)`);
