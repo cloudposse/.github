@@ -83,7 +83,7 @@ jobs:
       exists: ${{ steps.drafter.outputs.exists }}
       
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v3
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
@@ -128,7 +128,7 @@ jobs:
           summary-enabled: ${{ inputs.summary-enabled }}
           config-name: ${{ steps.context.outputs.config }}
 
-      # - uses: actions/github-script@v7
+      # - uses: actions/github-script@v9
       #   if: ${{ steps.context.outputs.config == 'auto-feature-release.yml' && steps.drafter.outputs.id != '' }}      
       #   with:
       #     github-token: ${{ steps.github-app.outputs.token }}

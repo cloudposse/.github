@@ -35,12 +35,12 @@ jobs:
     if: ${{ needs.access.outputs.granted == 'true' }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
-      - uses: cloudposse-github-actions/get-pr@v2
+      - uses: cloudposse-github-actions/get-pr@v3
         id: pr
         with:
           id: ${{ github.event.issue.number }}
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v9
         id: properties
         with:
           result-encoding: string
@@ -83,7 +83,7 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}    
     steps:
       - name: "Add reaction"
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           repository: ${{ needs.context.outputs.base_repo_owner }}/${{ needs.context.outputs.base_repo_name }}
           comment-id: ${{ github.event.comment.id }}

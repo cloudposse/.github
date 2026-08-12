@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v3
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
@@ -35,7 +35,7 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v3
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
@@ -48,7 +48,7 @@ jobs:
   release-commenter:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v9
         with:
           result-encoding: string
           retries: 3
