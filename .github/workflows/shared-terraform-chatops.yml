@@ -244,7 +244,7 @@ jobs:
           echo "uses_tfe=${USES_TFE}" >> $GITHUB_OUTPUT
           echo "uses_cloudflare=${USES_CLOUDFLARE}" >> $GITHUB_OUTPUT
 
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         if: ${{ steps.config.outputs.uses_github == 'true' }}
         id: github-app
         with:
