@@ -46,7 +46,7 @@ jobs:
 
     - name: Format Repo Metadata
       id: meta
-      uses: actions/github-script@v7
+      uses: actions/github-script@v9
       env:
         README_NAME: ${{steps.readme.outputs.name}}
         REPOSITORY_NAME: ${{ steps.metadata.outputs.repository_name }}

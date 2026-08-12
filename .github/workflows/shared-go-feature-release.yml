@@ -40,7 +40,7 @@ jobs:
         with:
           id: ${{ github.event.issue.number }}
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v9
         id: properties
         with:
           result-encoding: string
