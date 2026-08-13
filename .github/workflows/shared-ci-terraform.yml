@@ -29,7 +29,7 @@ jobs:
 
       - name: Reviewdog suggester
         if: ${{ inputs.suggestions }}
-        uses: reviewdog/action-suggester@3d5391db5affb50a46eb4629e908a4e2c5dd20b2 # v1.22.0
+        uses: reviewdog/action-suggester@2558ba17e65a9039e73764a73009fc05fef28a46 # v1.24.3
         with:
           tool_name: "terraform fmt -recursive"
           cleanup: false
@@ -125,7 +125,7 @@ jobs:
           key: tflint-plugins-${{ env.TFLINT_CACHE_VER }}
 
       - name: tflint
-        uses: reviewdog/action-tflint@2fa60920754fb622564b410ad421ab596adb628a # v1.22.0
+        uses: reviewdog/action-tflint@54a5e5aed57dcfbb4662ec548de876df33d6288d # v1.25.0
         with:
           reporter: ${{ inputs.suggestions && 'github-pr-annotations' || 'local' }}
           fail_on_error: ${{ inputs.suggestions }}
