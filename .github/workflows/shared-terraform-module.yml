@@ -43,7 +43,7 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     name: "CI / Labels Validate"
     steps:
-      - uses: cloudposse/github-action-release-label-validator@2286f78dd9bff786e9195635f739bd6a5dce6a58 # 1.0.0
+      - uses: cloudposse/github-action-release-label-validator@ecf4734605595d7796cbfdd27bddf38b68b010f1 # 1.1.0
 
   ci:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
