@@ -19,15 +19,15 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Fetch repo metadata
       id: metadata
-      uses: ahmadnassri/action-metadata@v2
+      uses: ahmadnassri/action-metadata@c292173f9b88cf71f2dddff1fea0a3c524f5713d # v2.1.2
 
     - name: Checkout ${{ steps.metadata.outputs.owner_login}}/.github
       if: steps.metadata.outputs.repository_name != '.github'
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         repository: '${{ steps.metadata.outputs.owner_login }}/.github'
         ref: 'main'
@@ -46,7 +46,7 @@ jobs:
 
     - name: Format Repo Metadata
       id: meta
-      uses: actions/github-script@v9
+      uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
       env:
         README_NAME: ${{steps.readme.outputs.name}}
         REPOSITORY_NAME: ${{ steps.metadata.outputs.repository_name }}
@@ -102,7 +102,7 @@ jobs:
 
     - name: Generate banner image
       id: screenshot
-      uses: cloudposse-github-actions/screenshot@main
+      uses: cloudposse-github-actions/screenshot@6240c8f6d9d557816eb0692a64d24386e0f3ebb6 # main
       with:
         url: "file://${{github.workspace}}/github/banner/index.html"
         output: "${{ steps.meta.outputs.output }}"
@@ -117,7 +117,7 @@ jobs:
         viewportHeight: 320
         omitBackground: true
 
-    - uses: stefanzweifel/git-auto-commit-action@v7
+    - uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
       name: Commit artifact
       id: auto-commit
       env:

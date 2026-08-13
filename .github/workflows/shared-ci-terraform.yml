@@ -22,14 +22,14 @@ jobs:
     name: Format HCL
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Terraform format
-        uses: dflook/terraform-fmt@v1
+        uses: dflook/terraform-fmt@c6e82d524f3ef6f84ba00b8fec05940c4b60bbed # v1.49.0-dockerhub
 
       - name: Reviewdog suggester
         if: ${{ inputs.suggestions }}
-        uses: reviewdog/action-suggester@v1.22.0
+        uses: reviewdog/action-suggester@3d5391db5affb50a46eb4629e908a4e2c5dd20b2 # v1.22.0
         with:
           tool_name: "terraform fmt -recursive"
           cleanup: false
@@ -49,7 +49,7 @@ jobs:
       BATS_EXAMPLES_TESTS: input-descriptions lint output-descriptions
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -81,7 +81,7 @@ jobs:
     name: Find modules
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - id: set-matrix
         # Ignore directories whose names start with .terraform or obsolete
@@ -110,22 +110,22 @@ jobs:
       TFLINT_PLUGINS: aws
       TFLINT_CACHE_VER: 1 # Increment this to force a cache refresh
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: hashicorp/setup-terraform@v4
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
 
       - run: terraform init
         working-directory: ${{ matrix.tfdir }}
 
       - name: cache tflint plugins
         id: cache-plugins
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ env.TFLINT_PLUGIN_DIR }}
           key: tflint-plugins-${{ env.TFLINT_CACHE_VER }}
 
       - name: tflint
-        uses: reviewdog/action-tflint@v1.22.0
+        uses: reviewdog/action-tflint@2fa60920754fb622564b410ad421ab596adb628a # v1.22.0
         with:
           reporter: ${{ inputs.suggestions && 'github-pr-annotations' || 'local' }}
           fail_on_error: ${{ inputs.suggestions }}

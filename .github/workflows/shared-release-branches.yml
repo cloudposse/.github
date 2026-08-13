@@ -20,13 +20,13 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
     steps:
-      - uses: actions/create-github-app-token@v3
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
-      - uses: cloudposse/github-action-major-release-tagger@v2
+      - uses: cloudposse/github-action-major-release-tagger@853c309982b8cd78c46a4cdc17cca6720d52541a # 2.0.0
         with:
           token: ${{ steps.github-app.outputs.token }}
 
@@ -35,20 +35,20 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     environment: release
     steps:
-      - uses: actions/create-github-app-token@v3
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
-      - uses: cloudposse/github-action-release-branch-manager@v2
+      - uses: cloudposse/github-action-release-branch-manager@d1eac0bfdfcf2c3e2c1a9669a6c5783a448bee65 # 2.0.0
         with:
           token: ${{ steps.github-app.outputs.token }}
 
   release-commenter:
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
-      - uses: actions/github-script@v9
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           result-encoding: string
           retries: 3
