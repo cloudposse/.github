@@ -18,9 +18,9 @@ jobs:
     name: Validate Codeowners (syntax)
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: mszostok/codeowners-validator@v0.7.1
+      - uses: mszostok/codeowners-validator@2f478ec3b2c8a321d46fca773f6285a447234f6a # v0.7.1
         # Pull request from a fork
         name: "Validate CODEOWNERS"
         with:
@@ -33,18 +33,18 @@ jobs:
     if: ${{ false && ! inputs.is_fork }}
     environment: release    
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: github-app
         with:
           app-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
           
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ steps.github-app.outputs.token }}
 
-      - uses: mszostok/codeowners-validator@v0.7.4
+      - uses: mszostok/codeowners-validator@7f3f5e28c6d7b8dfae5731e54ce2272ca384592f # v0.7.4
         # Main branch / Pull request from the same repo
         name: "Validate CODEOWNERS"
         with:

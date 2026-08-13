@@ -35,12 +35,12 @@ jobs:
     if: ${{ needs.access.outputs.granted == 'true' }}
     runs-on: ${{ fromJSON(inputs.runs-on) }}
     steps:
-      - uses: cloudposse-github-actions/get-pr@v2
+      - uses: cloudposse-github-actions/get-pr@6db391bee79f3640fca3026877ced2f2b1f2a992 # v3.1.0
         id: pr
         with:
           id: ${{ github.event.issue.number }}
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         id: properties
         with:
           result-encoding: string
@@ -83,7 +83,7 @@ jobs:
     runs-on: ${{ fromJSON(inputs.runs-on) }}    
     steps:
       - name: "Add reaction"
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
         with:
           repository: ${{ needs.context.outputs.base_repo_owner }}/${{ needs.context.outputs.base_repo_name }}
           comment-id: ${{ github.event.comment.id }}
@@ -126,7 +126,7 @@ jobs:
         platform: [terraform, opentofu]
     steps:
       - name: "Checkout code for ChatOps"
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: ${{ needs.context.outputs.head_repo_owner }}/${{ needs.context.outputs.head_repo_name }}
           ref: ${{ needs.context.outputs.head_sha }}
@@ -244,7 +244,7 @@ jobs:
           echo "uses_tfe=${USES_TFE}" >> $GITHUB_OUTPUT
           echo "uses_cloudflare=${USES_CLOUDFLARE}" >> $GITHUB_OUTPUT
 
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         if: ${{ steps.config.outputs.uses_github == 'true' }}
         id: github-app
         with:
@@ -305,13 +305,13 @@ jobs:
         if: ${{ steps.config.outputs.uses_aws == 'true' || 
                 steps.config.outputs.uses_datadog == 'true' || 
                 steps.config.outputs.uses_spotinst == 'true' }}
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@e6de054238d6b7531b4efff3b6587d9aade6a06c # v6.2.3
         id: aws
         with:
           aws-region: ${{ env.AWS_REGION }}
           role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
           role-session-name: "terratest"
-          mask-aws-account-id: "no"
+          mask-aws-account-id: "false"
           # 2 hours token ttl
           role-duration-seconds: "7200"
 
@@ -321,13 +321,13 @@ jobs:
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
       - name: "Install Go"
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: "test/src/go.mod"
           cache-dependency-path: "test/src/go.sum"
 
       - name: "Test component"
-        uses: robherley/go-test-action@v0
+        uses: robherley/go-test-action@2f859e0c8769d755d3174eecb9af8f64660827f3 # v1.1.0
         with:
           moduleDirectory: test/src
           testArguments:  -v -timeout 120m
