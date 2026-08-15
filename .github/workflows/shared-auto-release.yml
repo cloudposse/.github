@@ -118,7 +118,7 @@ jobs:
                 latest: false
 
       # Drafts your next Release notes as Pull Requests are merged into "main"
-      - uses: cloudposse/github-action-auto-release@725f1601ce164d51f2c1c19055126aef267fd08e # v4.0.0
+      - uses: cloudposse/github-action-auto-release@8f9b7192d095af697c5900235e4aecf930663f28 # v4.0.1
         id: drafter
         with:
           token: ${{ steps.github-app.outputs.token }}
