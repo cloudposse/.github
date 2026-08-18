@@ -48,8 +48,6 @@ runners:
       - i3en.*
       - i4i.*
       - i7ie.*
-      - inf1.*
-      - inf2.*
       - m5dn.*
       - m5n.*
       - m5zn.*
@@ -71,7 +69,6 @@ runners:
       - r7a.*
       - r7i.*
       - r7iz.*
-      - trn1.*
     cpu: [2, 16]
     ram: [2, 64]
     disk: default
