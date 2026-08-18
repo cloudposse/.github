@@ -88,11 +88,7 @@ shared:
 
   # Has reviews and no changes requested
   is_approved: &is_approved
-    - and:
-        - "#approved-reviews-by>=1"
-        - "#changes-requested-reviews-by=0"
-        - "#review-threads-unresolved=0"
-        - "#commented-reviews-by=0"
+    "github-review-decision=APPROVED"
 
   # Checks are passing
   checks_are_passing: &checks_are_passing
