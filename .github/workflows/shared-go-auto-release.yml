@@ -74,7 +74,9 @@ on:
         description: Tag exists so skip new release issue
         value: ${{ jobs.publish.outputs.exists }}
 
-permissions: {}
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   draft:
