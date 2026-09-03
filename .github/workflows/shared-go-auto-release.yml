@@ -292,6 +292,11 @@ jobs:
           path: source/
           format: spdx-json
           output-file: source/dist/atmos-sbom.spdx.json
+          # We upload the SBOM to the GitHub release ourselves in the next
+          # step, so skip the action's own GH Actions workflow-artifact
+          # upload — it depends on the runner's internal artifact-caching
+          # proxy, which has been unreliable on our self-hosted runners.
+          upload-artifact: false
 
       - name: "Attest SBOM"
         uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
