@@ -287,13 +287,15 @@ jobs:
       - name: "Generate and attest source-tree SBOM"
         uses: anchore/sbom-action@3ad7283483fc7af8ff2b4ea19663c2d5ca935e26 # v0.24.2
         with:
-          path: .
+          github-token: ${{ steps.github-app.outputs.token }}
+          path: source/
           format: spdx-json
           output-file: source/dist/atmos-sbom.spdx.json
 
       - name: "Attest SBOM"
         uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
+          github-token: ${{ steps.github-app.outputs.token }}
           subject-path: ${{ steps.checksums.outputs.file }}
           sbom-path: source/dist/atmos-sbom.spdx.json
 
