@@ -282,33 +282,33 @@ jobs:
       # anchor for a release that ships multiple platform binaries. Separate
       # from .goreleaser.yml's per-archive sboms: block (bound to individual
       # archives, uploaded to the release directly by GoReleaser itself).
-      - name: "Generate and attest source-tree SBOM"
-        uses: anchore/sbom-action@3ad7283483fc7af8ff2b4ea19663c2d5ca935e26 # v0.24.2
-        with:
-          github-token: ${{ steps.github-app.outputs.token }}
-          path: source/
-          format: spdx-json
-          output-file: source/dist/atmos-sbom.spdx.json
-          # We upload the SBOM to the GitHub release ourselves in the next
-          # step, so skip the action's own GH Actions workflow-artifact
-          # upload — it depends on the runner's internal artifact-caching
-          # proxy, which has been unreliable on our self-hosted runners.
-          upload-artifact: false
+      # - name: "Generate and attest source-tree SBOM"
+      #   uses: anchore/sbom-action@3ad7283483fc7af8ff2b4ea19663c2d5ca935e26 # v0.24.2
+      #   with:
+      #     github-token: ${{ steps.github-app.outputs.token }}
+      #     path: source/
+      #     format: spdx-json
+      #     output-file: source/dist/atmos-sbom.spdx.json
+      #     # We upload the SBOM to the GitHub release ourselves in the next
+      #     # step, so skip the action's own GH Actions workflow-artifact
+      #     # upload — it depends on the runner's internal artifact-caching
+      #     # proxy, which has been unreliable on our self-hosted runners.
+      #     upload-artifact: false
 
-      - name: "Attest SBOM"
-        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
-        with:
-          github-token: ${{ steps.github-app.outputs.token }}
-          subject-path: source/
-          sbom-path: source/dist/atmos-sbom.spdx.json
+      # - name: "Attest SBOM"
+      #   uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+      #   with:
+      #     github-token: ${{ steps.github-app.outputs.token }}
+      #     subject-path: source/
+      #     sbom-path: source/dist/atmos-sbom.spdx.json
 
-      - name: "Upload source-tree SBOM to the release"
-        env:
-          GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
-          TAG: ${{ fromJSON(steps.releaser.outputs.metadata).tag }}
-        run: |
-          gh release upload "$TAG" source/dist/atmos-sbom.spdx.json \
-            --repo "${{ github.repository }}" --clobber
+      # - name: "Upload source-tree SBOM to the release"
+      #   env:
+      #     GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
+      #     TAG: ${{ fromJSON(steps.releaser.outputs.metadata).tag }}
+      #   run: |
+      #     gh release upload "$TAG" source/dist/atmos-sbom.spdx.json \
+      #       --repo "${{ github.repository }}" --clobber
 
       - name: Check disk space after
         if: success() || failure()
