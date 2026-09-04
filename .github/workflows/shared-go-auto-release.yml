@@ -299,7 +299,7 @@ jobs:
         uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
           github-token: ${{ steps.github-app.outputs.token }}
-          subject-path: ${{ steps.checksums.outputs.file }}
+          subject-path: source/
           sbom-path: source/dist/atmos-sbom.spdx.json
 
       - name: "Upload source-tree SBOM to the release"
