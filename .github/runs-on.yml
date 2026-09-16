@@ -71,7 +71,9 @@ runners:
       - r7iz.*
     cpu: [2, 16]
     ram: [2, 64]
-    disk: default
+    # gp3 includes 3,000 IOPS and 125 MiB/s; provisioning more throughput was
+    # the dominant EBS cost and is unnecessary for the baseline runner.
+    volume: 40gb:gp3:125mbs:3000iops
     spot: price-capacity-optimized
     retry: when-interrupted
     private: false
@@ -109,7 +111,7 @@ runners:
       <<: *default
       cpu: [4, 64]
       ram: [16, 128]
-      disk: large
+      volume: 120gb:gp3:125mbs:3000iops
       tags:
         - "gha-runner:runs-on/large"
 
@@ -119,7 +121,7 @@ runners:
       <<: *default
       cpu: [8, 64]
       ram: [32, 128]
-      disk: large
+      volume: 120gb:gp3:125mbs:3000iops
       tags:
         - "gha-runner:runs-on/xlarge"
 
@@ -172,7 +174,7 @@ runners:
     <<: *default-arm64
     cpu: [4, 64]
     ram: [16, 128]
-    disk: large
+    volume: 120gb:gp3:125mbs:3000iops
     tags:
       - "gha-runner:runs-on/large-arm64"
 
@@ -180,7 +182,6 @@ runners:
     <<: *default-arm64
     cpu: [8, 64]
     ram: [32, 128]
-    disk: large
+    volume: 120gb:gp3:125mbs:3000iops
     tags:
       - "gha-runner:runs-on/xlarge-arm64"
-
