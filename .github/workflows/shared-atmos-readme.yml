@@ -38,7 +38,7 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.github-app.outputs.token }}
 
-      - uses: cloudposse-github-actions/readme@c52e0a99fff073281646416093a43fbf6859f54e # v2.0.1
+      - uses: cloudposse-github-actions/readme@bdc647d2f22afb3404641c2fd4c12b6ff43cee2d # v3.1.0
         with:
           token: ${{ steps.github-app.outputs.token }}
           readme_enabled: true
