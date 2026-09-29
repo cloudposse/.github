@@ -74,7 +74,7 @@ jobs:
       merged_at: ${{ steps.pr.outputs.merged_at }}
       closed_at: ${{ steps.pr.outputs.closed_at }}
       labels: ${{ steps.pr.outputs.labels }}
-      terratest_aws_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-ue2-sandbox-gha-iam-terratest' }}
+      terratest_aws_role: ${{ steps.properties.outputs.test-aws-role || 'arn:aws:iam::799847381734:role/cptest-test-gbl-sandbox-gha-iam-terratest' }}
       terratest_skip_concurrency: ${{ steps.properties.outputs.test-skip-concurrency }}
 
   ack:
