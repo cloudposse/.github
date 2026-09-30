@@ -91,9 +91,9 @@ jobs:
 
       - name: Context
         id: context
-        uses: cloudposse/github-action-yaml-config-query@9ac217bcc3e90df15bc14c7ce41606ba84ddf6a8 # 0.1.4
+        uses: cloudposse/github-action-yaml-config-query@b6aa644f1a9c6e2542ab6495e65578d36bc6c324 # 1.0.1
         with:
-          query: .${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}.${{ inputs.prerelease }}
+          query: ."${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}"."${{ inputs.prerelease }}"
           config: |-
             # Is default branch
             true:
