@@ -18,8 +18,7 @@ jobs:
     uses: cloudposse/.github/.github/workflows/shared-scheduled-context.yml@main
     with:
       runs-on: ${{ inputs.runs-on }}
-    secrets:
-      secrets: inherit
+    secrets: inherit
 
   readme:
     uses: cloudposse/.github/.github/workflows/shared-atmos-readme.yml@main
