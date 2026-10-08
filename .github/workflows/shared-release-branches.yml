@@ -23,7 +23,7 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: github-app
         with:
-          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          client-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
       - uses: cloudposse/github-action-major-release-tagger@853c309982b8cd78c46a4cdc17cca6720d52541a # 2.0.0
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: github-app
         with:
-          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+          client-id: ${{ vars.BOT_GITHUB_APP_ID }}
           private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
 
       - uses: cloudposse/github-action-release-branch-manager@d1eac0bfdfcf2c3e2c1a9669a6c5783a448bee65 # 2.0.0
@@ -175,4 +175,3 @@ jobs:
             for (id of pull_requests.filter(onlyUnique)) {
               await createCommentForPR(id, currentRelease);
             }
-
