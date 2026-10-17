@@ -12,7 +12,8 @@
 {{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
 {{- $referrals := printf $utm_link "https://cloudposse.com/referrals" "referrals" -}}
-{{- $cta := printf "<a href=\"%s\"><img alt=\"Consulting\" src=\"https://img.shields.io/badge/CONSULTING-8B5CF6.svg?style=for-the-badge&logoColor=white\"/></a>" $commercial_support -}}
+{{- $consulting := printf $utm_link "https://cloudposse.com/meet/consultation" "consulting" -}}
+{{- $cta := printf "<a href=\"%s\"><img alt=\"Consulting\" src=\"https://img.shields.io/badge/CONSULTING-8B5CF6.svg?style=for-the-badge&logoColor=white\"/></a>" $consulting -}}
 {{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
 {{- $sections := slice "introduction" "quickstart" "examples" -}}
 {{- define "nonEmptySections" -}}
@@ -41,44 +42,15 @@
 {{- define "tip_use_reference_architecture" -}}
 {{- if .is_terraform }}
 > [!TIP]
-> #### Use Terraform Reference Architectures for AWS
+> #### Need help with Terraform or AWS?
 >
-> Use Cloud Posse's ready-to-go [terraform architecture blueprints](https://cloudposse.com/reference-architecture/) for AWS to get up and running quickly.
+> Cloud Posse is a cloud infrastructure consulting team and the creators of [Atmos](https://atmos.tools). We help engineering teams work through problems with Terraform, AWS architecture, and infrastructure delivery.
 >
-> ✅ We build it together with your team.<br/>
-> ✅ Your team owns everything.<br/>
-> ✅ 100% Open Source and backed by fanatical support.<br/>
->
-> {{ .cta }}
-> <details><summary>📚 <strong>Learn More</strong></summary>
->
-> <br/>
->
-> Cloud Posse is the leading [**DevOps Accelerator**]({{ .commercial_support }}) for funded startups and enterprises.
->
-> *Your team can operate like a pro today.*
->
-> Ensure that your team succeeds by using Cloud Posse's proven process and turnkey blueprints. Plus, we stick around until you succeed.
-> #### Day-0:  Your Foundation for Success
-> - **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
-> - **Deployment Strategy.** Adopt a proven deployment strategy with GitHub Actions, enabling automated, repeatable, and reliable software releases.
-> - **Site Reliability Engineering.** Gain total visibility into your applications and services with Datadog, ensuring high availability and performance.
-> - **Security Baseline.** Establish a secure environment from the start, with built-in governance, accountability, and comprehensive audit logs, safeguarding your operations.
-> - **GitOps.** Empower your team to manage infrastructure changes confidently and efficiently through Pull Requests, leveraging the full power of GitHub Actions.
+> ✅ We start by understanding the problem.<br/>
+> ✅ You agree on the scope and deliverables before we start.<br/>
+> ✅ Your team can operate what we build.<br/>
 >
 > {{ .cta }}
->
-> #### Day-2: Your Operational Mastery
-> - **Training.** Equip your team with the knowledge and skills to confidently manage the infrastructure, ensuring long-term success and self-sufficiency.
-> - **Support.** Benefit from a seamless communication over Slack with our experts, ensuring you have the support you need, whenever you need it.
-> - **Troubleshooting.** Access expert assistance to quickly resolve any operational challenges, minimizing downtime and maintaining business continuity.
-> - **Code Reviews.** Enhance your team’s code quality with our expert feedback, fostering continuous improvement and collaboration.
-> - **Bug Fixes.** Rely on our team to troubleshoot and resolve any issues, ensuring your systems run smoothly.
-> - **Migration Assistance.** Accelerate your migration process with our dedicated support, minimizing disruption and speeding up time-to-value.
-> - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
->
-> {{ .cta }}
-> </details>
 {{- end -}}
 {{- end }}
 
