@@ -40,6 +40,25 @@ commands:
       fi
       tflint --config "$CONFIG" --recursive
 
+- name: deprecations
+  description: Find and fix deprecated Terraform syntax with TFLint (legacy splat, interpolation-only, two-argument lookup)
+  commands:
+  - name: check
+    description: Report deprecated syntax; exits non-zero if any is found
+    dependencies:
+      tools:
+        tflint: "0.59.1"
+    steps:
+      - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --recursive"
+
+  - name: fix
+    description: Automatically rewrite deprecated syntax in place
+    dependencies:
+      tools:
+        tflint: "0.59.1"
+    steps:
+      - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --recursive --fix"
+
 - name: test
   commands:
   - name: "init"
