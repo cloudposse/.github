@@ -1,5 +1,8 @@
 ---
 # Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
+# Each job checks out, installs Atmos and runs one Atmos command. The logic lives in
+# the shared Atmos config (cloudposse/.github/.github/atmos/terraform-module.yaml), not in YAML here.
+# Atmos CI mode (`ci:` in atmos.yaml) writes job summaries and annotations.
 name: Branch
 on:
   pull_request:
@@ -20,9 +23,76 @@ on:
   merge_group:
     types: [checks_requested]
 
-permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
 
 jobs:
-  terraform-module:
-    uses: cloudposse/.github/.github/workflows/shared-terraform-module.yml@main
+  lint:
+    # Legacy name: the "Terraform Modules" ruleset requires this check. Rename to "Lint" with the ruleset update.
+    name: terraform-module / CI / Format HCL
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: cloudposse/github-action-setup-atmos@9e8d1e2db56fe851a85871d5993d63e182b66536 # v3.6.0
+        with:
+          install-wrapper: false
+      - run: atmos lint
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: cloudposse/github-action-setup-atmos@9e8d1e2db56fe851a85871d5993d63e182b66536 # v3.6.0
+        with:
+          install-wrapper: false
+      - run: atmos test
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  # Not yet Atmos commands; still shared workflows.
+  codeowners:
+    uses: cloudposse/.github/.github/workflows/shared-codeowners.yml@main
+    with:
+      is_fork: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+    secrets: inherit
+
+  labels:
+    name: Labels Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cloudposse/github-action-release-label-validator@ecf4734605595d7796cbfdd27bddf38b68b010f1 # 1.1.0
+
+  readme:
+    if: ${{ github.event_name == 'push' }}
+    uses: cloudposse/.github/.github/workflows/shared-atmos-readme.yml@main
+    secrets: inherit
+
+  ci:
+    # Legacy name: required by the "Terraform Modules" ruleset.
+    name: terraform-module / ci
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [lint, test, codeowners, labels, readme]
+    steps:
+      - run: |
+          echo '${{ toJSON(needs) }}'  # easier debug
+          ! ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
+
+  release:
+    if: ${{ github.event_name == 'push' }}
+    needs: [ci]
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@main
+    with:
+      publish: true
     secrets: inherit

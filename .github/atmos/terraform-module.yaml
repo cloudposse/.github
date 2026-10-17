@@ -60,7 +60,7 @@ commands:
     - "atmos docs generate readme"
 
 - name: lint
-  description: Check Terraform formatting, run TFLint and lint the GitHub Actions workflows (`atmos ci validate`) (replaces the bats lint, pinning and description checks)
+  description: Check Terraform formatting, run TFLint, check provider constraints, validate and lint the GitHub Actions workflows (`atmos ci validate`) (replaces the bats lint, pinning and description checks)
   dependencies:
     tools:
       opentofu: "1.12.5"
@@ -71,12 +71,25 @@ commands:
     - "atmos ci validate"
     - |
       # Use the module's own .tflint.hcl if it has one, else the shared Cloud Posse policy.
-      CONFIG=.tflint.hcl
+      CONFIG="$PWD/.tflint.hcl"
       if [ ! -f "$CONFIG" ]; then
         CONFIG="$(mktemp)"
         curl -fsSL https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/tflint/.tflint.hcl -o "$CONFIG"
       fi
       tflint --config "$CONFIG" --recursive
+    - |
+      # Provider constraints in versions.tf must use >= only (no ~>, <, =, != or bare versions).
+      if find . -name versions.tf -not -path '*/.terraform/*' -print0 | xargs -0 grep -nE '^[[:space:]]*version[[:space:]]*=[[:space:]]*"(~>|<|=|!=|[0-9])'; then
+        echo "versions.tf: constrain providers with >= only" >&2
+        exit 1
+      fi
+    - |
+      # Validate every directory that contains Terraform files (module root and examples).
+      status=0
+      for dir in $(find . -name '*.tf' -not -path '*/.terraform/*' -exec dirname {} \; | sort -u); do
+        (cd "$dir" && tofu init -backend=false -input=false >/dev/null && tofu validate) || status=1
+      done
+      exit $status
 
 - name: deprecations
   description: Find and fix deprecated Terraform syntax with TFLint (legacy splat, interpolation-only, two-argument lookup)
