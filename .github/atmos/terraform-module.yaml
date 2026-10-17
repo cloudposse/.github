@@ -118,7 +118,7 @@ commands:
       tflint: "0.59.1"
   steps:
     # Managed files (workflows, AGENTS.md, CODEOWNERS, settings, dependabot, context.tf, emulator stack). Fully overwritten.
-    - "atmos scaffold generate github.com/cloudposse/.github//.github/scaffolds/terraform-module . --ref main --update --merge-strategy=theirs --merge-driver=text --defaults --skip-hooks"
+    - "atmos scaffold generate github.com/cloudposse/.github//.github/scaffolds/terraform-module . --ref v1 --update --merge-strategy=theirs --merge-driver=text --defaults --skip-hooks"
     - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --only terraform_unused_declarations --recursive --fix"
     - "tofu fmt -recursive"
     - "atmos docs generate readme"

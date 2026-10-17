@@ -1,0 +1,8 @@
+# Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
+# Atmos configuration, powered by https://atmos.tools
+#
+# Shared Cloud Posse module config, pinned to a floating major tag: compatible changes
+# flow in automatically; a breaking change ships as the next major (v2) and arrives
+# through `atmos fix`. Local overrides go in atmos.d/.
+import:
+  - https://raw.githubusercontent.com/cloudposse/.github/refs/tags/{{ .Config.shared_config_version }}/.github/atmos/terraform-module.yaml

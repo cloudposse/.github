@@ -2,7 +2,7 @@ apiVersion: atmos/v1
 kind: AtmosScaffoldConfig
 metadata:
   name: terraform-module
-  description: Cloud Posse Terraform module. Managed files only (workflows, AGENTS.md, CODEOWNERS, settings, dependabot, context.tf, emulator stack). Never touches module code.
+  description: Cloud Posse Terraform module. Managed files only (workflows, AGENTS.md, CODEOWNERS, atmos.yaml, settings, dependabot, context.tf, emulator stack). Never touches module code.
   author: Cloud Posse
   version: 0.1.0
 spec:
@@ -21,8 +21,18 @@ spec:
       type: input
       default: ""
 
+    - name: shared_config_version
+      label: Shared config version
+      description: Floating major tag of cloudposse/.github that the module's atmos.yaml imports
+      type: input
+      default: "v1"
+      validation:
+        pattern: "^v[0-9]+$"
+
 
   files:
+    - path: atmos.yaml.tmpl
+      target: atmos.yaml
     - path: AGENTS.md.tmpl
       target: AGENTS.md
     - path: context.tf
