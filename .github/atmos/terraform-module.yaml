@@ -60,13 +60,13 @@ commands:
       - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --recursive --fix"
 
 - name: fix
-  description: Apply every safe automatic fix (deprecated syntax, formatting, README). Does not remove unused variables, since that changes the module interface.
+  description: Apply every automatic fix (deprecated syntax, unused declarations, formatting, README). Removing unused variables changes the module interface, so only run this as part of a major release and review the diff.
   dependencies:
     tools:
       terraform: "1.10.3"
       tflint: "0.59.1"
   steps:
-    - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --recursive --fix"
+    - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --only terraform_unused_declarations --recursive --fix"
     - "terraform fmt -recursive"
     - "atmos docs generate readme"
 
