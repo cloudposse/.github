@@ -18,6 +18,42 @@ docs:
         hide_empty: false
         indent_level: 2
 
+# Test wiring: the module's `examples/complete` is the Atmos component under test, run against an
+# emulator. Per-module stack manifests live in tests/stacks (catalog/emulator.yaml is managed by the
+# scaffold; deploy/test.yaml holds the example's inputs and is owned by the module).
+components:
+  terraform:
+    command: tofu
+    base_path: examples
+    apply_auto_approve: false
+    deploy_run_init: true
+    init_run_reconfigure: true
+    auto_generate_backend_file: false
+
+stacks:
+  base_path: tests/stacks
+  included_paths:
+    - "deploy/**/*"
+  name_template: "{{ .vars.stage }}"
+
+# One identity binds the example to the emulator (no providers.tf needed). Pinned to the `test`
+# stack's instance so another running emulator on the same machine cannot make it ambiguous.
+auth:
+  identities:
+    local-aws:
+      kind: aws/emulator
+      emulator: test/aws
+      default: true
+
+ci:
+  enabled: true
+  summary:
+    enabled: true
+  output:
+    enabled: true
+  annotations:
+    enabled: true
+
 commands:
 - name: readme
   steps:
@@ -27,10 +63,10 @@ commands:
   description: Check Terraform formatting and run TFLint (replaces the bats lint, pinning and description checks)
   dependencies:
     tools:
-      terraform: "1.10.3"
+      opentofu: "1.12.5"
       tflint: "0.59.1"
   steps:
-    - "terraform fmt -check -recursive -diff"
+    - "tofu fmt -check -recursive -diff"
     - |
       # Use the module's own .tflint.hcl if it has one, else the shared Cloud Posse policy.
       CONFIG=.tflint.hcl
@@ -63,31 +99,25 @@ commands:
   description: Apply every automatic fix (deprecated syntax, unused declarations, formatting, README). Removing unused variables changes the module interface, so only run this as part of a major release and review the diff.
   dependencies:
     tools:
-      terraform: "1.10.3"
+      opentofu: "1.12.5"
       tflint: "0.59.1"
   steps:
+    # Managed files (workflows, AGENTS.md, CODEOWNERS, settings, dependabot, context.tf, emulator stack). Fully overwritten.
+    - "atmos scaffold generate github.com/cloudposse/.github//.github/scaffolds/terraform-module . --ref main --update --merge-strategy=theirs --merge-driver=text --defaults --skip-hooks"
     - "tflint --only terraform_deprecated_index --only terraform_deprecated_interpolation --only terraform_deprecated_lookup --only terraform_unused_declarations --recursive --fix"
-    - "terraform fmt -recursive"
+    - "tofu fmt -recursive"
     - "atmos docs generate readme"
 
 - name: test
-  commands:
-  - name: "init"
-    description: Initialize tests
-    steps:
-      - "make -C test/src init"
-
-  - name: "run"
-    description: Run tests
-    steps:
-      - "cd test/src && go mod tidy"
-      - "cd test/src && go test -v -timeout 60m"
-
-  - name: "clean"
-    description: Clean tests
-    steps:
-      - "make -C test/src clean"
-      - "rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl"
+  description: Run the module's tests. Unit tests (`tests/*.tftest.hcl`, mocked provider) run offline; then `examples/complete` is applied and asserted against an AWS emulator (started and stopped by hooks in `tests/stacks`).
+  dependencies:
+    tools:
+      opentofu: "1.12.5"
+  steps:
+    - "tofu init -backend=false -input=false"
+    - "tofu test"
+    - "atmos validate stacks"
+    - "atmos terraform test complete -s test"
 
 settings:
   telemetry:
