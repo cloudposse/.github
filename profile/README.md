@@ -1,91 +1,45 @@
-[![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cpco.io/homepage)
-<p align="right">
-  <a href="https://cloudposse.com/slack" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
-  <a href="https://cloudposse.com/office-hours/" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-2891E8.svg?style=for-the-badge" alt="Office Hours"></a>
-  <a href="https://cloudposse.com/quiz/" title="Request Quote"><img src="https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge" alt="Request Quote"></a>
+[![Banner](https://github.com/cloudposse/.github/blob/main/profile/banner/image.png?raw=true)](https://cloudposse.com?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=banner)
+<p align="center">
+  <a href="https://cloudposse.com/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack" title="Slack Community"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"></a>
+  <a href="https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours" title="Office Hours"><img src="https://img.shields.io/badge/Office_Hours-Join_Live-7C3AED?style=for-the-badge&logoColor=white" alt="Office Hours"></a>
+  <a href="https://cloudposse.com/meet/consultation?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=discuss_your_project" title="Discuss your project"><img src="https://img.shields.io/badge/Discuss_your_project-8B5CF6?style=for-the-badge&logoColor=white" alt="Discuss your project"></a>
 </p>
 
-> [!IMPORTANT]
-> ### We're a DevOps Accelerator for Funded Startups and Enterprises
->
-> Skip the consultants and the DIY headaches.
->
-> Use our ready-to-go [terraform architecture blueprints](https://cloudposse.com/) for AWS to get up and running quickly.
->
-> ✅ Production-ready AWS infrastructure in weeks, not months<br/>
-> ✅ Backed by our fanatical support<br/>
-> ✅ So good, we offer a money-back guarantee<br/>
->
-> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
->
-> Just browsing? Kickstart your journey with [Atmos](https://atmos.tools), dive into discussions on [Slack](https://cloudposse.com/slack), and gain insights on our weekly [office hours](https://cloudposse.com/office-hours). Discover how Cloud Posse's open-source solutions can elevate your organization.
->
-> <details>
->   <summary><strong>💡 Learn More about Cloud Posse</strong></summary>
->
-> ### Our Approach
->
-> *After you work with Cloud Posse, your team will know what they're doing.*
->
-> You will have a plan in place to handle deploying every new service your company builds. You will have peace of mind knowing that everything is defined with infrastructure as code and confident in your ability to deliver. Your team will have learned to fish and become autonomous. And guess what? We are here to pull you out if you ever get stuck in the mud.
->
-> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
-> * [Case Studies](https://cloudposse.com/case-studies/)
-> * [Foundational Infrastructure](https://cloudposse.com/reference-architecture/foundational-infrastructure/)
-> * [Foundational Platform](https://cloudposse.com/reference-architecture/foundational-platform/)
-> * [Foundational Release Engineering](https://cloudposse.com/reference-architecture/foundational-release-engineering/)
-> * [Foundational SRE](https://cloudposse.com/reference-architecture/foundational-sre/)
-> * [Foundational Security & Compliance](https://cloudposse.com/reference-architecture/foundational-security-and-compliance/)
->
-> ### How it Works
-> *Use the industry's most robust AWS reference architecture for terraform to solve your most challenging problems of compliance and observability.*
->
-> Our plan ensures you have a platform built for scale and we'll guide you along the way so you can make informed decisions. After you graduate from our accelerator, we offer long-term support to help you grow.
->
-> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
->
-> * [Reference Architecture](https://cloudposse.com/reference-architecture/)
-> * [Our Toolchain](https://cloudposse.com/toolchain/)
-> * [Getting Started](https://cloudposse.com/get-started/)
-> * [FAQs](https://cloudposse.com/faq/)
->
-> ### What We Do
->
-> *Your team can operate like a pro today.*
->
-> Ensure that your team succeeds by using our proven process and turnkey blueprints. Plus, we stick around until you succeed.
->
-> [![Request Quote](https://img.shields.io/badge/Request_Quote-success.svg?style=for-the-badge)](https://cloudposse.com/quiz/)
->
-> * [What is a DevOps Accelerator](https://cloudposse.com/devops-accelerator/)
-> * [The Big Picture](https://cloudposse.com/big-picture/)
-> </details>
+## Unblock the infrastructure work holding your team back.
 
+Cloud Posse is a cloud infrastructure consulting team and the creators of [Atmos](https://atmos.tools). We help engineering teams work through problems with Terraform, AWS architecture, and infrastructure delivery.
 
-[![README Footer][readme_footer_img]][readme_footer_link]
-[![Beacon][beacon]][website]
+Tell us what's getting in your way. We'll figure out the next step together, then agree on the work before we start.
 
-  [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=docs
-  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=website
-  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=github
-  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=jobs
-  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=hire
-  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=linkedin
-  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=testimonial
-  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours
-  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=discourse
-  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=email
-  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support
-  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=we_love_open_source
-  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=terraform_modules
-  [readme_header_img]: https://cloudposse.com/readme/header/img
-  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_header_link
-  [readme_footer_img]: https://cloudposse.com/readme/footer/img
-  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_footer_link
-  [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_commercial_support_link
-  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/.github?pixel&cs=github&cm=readme&an=.github
+**[Discuss your project](https://cloudposse.com/meet/consultation?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=discuss_your_project)**
+
+### Where we usually help
+
+- **A single AWS account** that has outgrown itself: we plan and implement a multi-account architecture with clear access boundaries.
+- **Legacy Terraform no one wants to touch**: we untangle modules and state and plan incremental upgrades, so your team can maintain it with confidence.
+- **Infrastructure built by hand**: we bring existing resources under version control and set up repeatable provisioning and review workflows.
+
+### How we work
+
+1. **Talk through the problem.** If a paid assessment would help, we'll discuss that separately. Not every project needs one.
+2. **Agree on the work.** You get a proposal with the scope, deliverables, estimate, and acceptance criteria before committing to anything.
+3. **Build it together.** We implement the agreed work with your team and document the decisions and workflows, so you can operate what we build.
+
+## Open source
+
+Everything we build in the open is free to use.
+
+- **[Atmos](https://github.com/cloudposse/atmos)**: the universal tool for DevOps and cloud automation. Orchestrate Terraform, OpenTofu, and more with stacks and components. [Learn more](https://atmos.tools).
+- **[Terraform modules](https://github.com/orgs/cloudposse/repositories?q=terraform-aws-)**: well-tested, composable building blocks for AWS.
+- **[Terraform components](https://github.com/cloudposse-terraform-components)**: root modules designed for use with Atmos.
+- **[Documentation](https://docs.cloudposse.com?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=docs)**: guides, design decisions, and how-tos.
+
+You don't need to adopt Atmos, Atmos Pro, or our reference architecture to work with us. We recommend tools based on your problem and your constraints.
+
+## Community
+
+Join our free [Slack community](https://cloudposse.com/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack), drop into weekly [office hours](https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours), or follow us on [YouTube](https://youtube.com/cloudposse) and [LinkedIn](https://linkedin.com/in/cloudposse).
+
+**Know a team that needs help with Terraform or AWS?** [Introduce them to Cloud Posse](https://cloudposse.com/referrals?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=referrals) and earn 10% of collected service fees from their first paid assessment or consulting project, up to $5,000.
+
+[![README Footer](https://cloudposse.com/readme/footer/img)](https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_footer_link)
