@@ -11,6 +11,7 @@
 {{- $commercial_support := printf $utm_link "https://cpco.io/commercial-support" "commercial_support" -}}
 {{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
+{{- $referrals := printf $utm_link "https://cloudposse.com/referrals" "referrals" -}}
 {{- $cta := printf "<a href=\"%s\"><img alt=\"Get Price\" src=\"https://img.shields.io/badge/get%%20price-8B5CF6.svg?style=for-the-badge&logoColor=white\"/></a>" $commercial_support -}}
 {{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
 {{- $sections := slice "introduction" "quickstart" "examples" -}}
@@ -315,6 +316,8 @@ This project is supported by Cloud Posse and our active DevOps community. Try it
 
 Spinning up AWS infrastructure takes longer than it should—and one wrong move costs weeks.
 [Cloud Posse helps teams ship production-ready AWS infrastructure](https://cloudposse.com)—without wasting time, headcount, or momentum.
+
+**Know a team that needs help with Terraform or AWS?** [Introduce them to Cloud Posse]({{ $referrals }}) and earn 10% of collected service fees from their first paid assessment or consulting project, up to $5,000.
 
 ## Connect With Us ✨
 <a href="https://linkedin.com/in/cloudposse"><img src="https://img.shields.io/badge/LinkedIn-Follow-5B21B6?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow"></a>
