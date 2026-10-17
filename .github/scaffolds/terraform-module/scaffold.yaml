@@ -1,0 +1,47 @@
+apiVersion: atmos/v1
+kind: AtmosScaffoldConfig
+metadata:
+  name: terraform-module
+  description: Cloud Posse Terraform module. Managed files only (workflows, AGENTS.md, CODEOWNERS, atmos.yaml, settings, dependabot, context.tf, emulator stack). Never touches module code.
+  author: Cloud Posse
+  version: 0.1.0
+spec:
+  fields:
+    - name: module_name
+      label: Module name
+      description: Repository name, e.g. terraform-aws-kinesis-stream
+      type: input
+      required: true
+      validation:
+        pattern: "^terraform-[a-z0-9]+-[a-z0-9-]+$"
+
+    - name: description
+      label: Description
+      description: One-line description (also used for the repository settings)
+      type: input
+      default: ""
+
+    - name: shared_config_version
+      label: Shared config version
+      description: Floating major tag of cloudposse/.github that the module's atmos.yaml imports
+      type: input
+      default: "v1"
+      validation:
+        pattern: "^v[0-9]+$"
+
+
+  files:
+    - path: atmos.yaml.tmpl
+      target: atmos.yaml
+    - path: AGENTS.md.tmpl
+      target: AGENTS.md
+    - path: context.tf
+    - path: tests/stacks/catalog/emulator.yaml
+    - path: .github/CODEOWNERS
+    - path: .github/settings.yml.tmpl
+      target: .github/settings.yml
+    - path: .github/dependabot.yml
+    - path: .github/workflows/branch.yml
+    - path: .github/workflows/chatops.yml
+    - path: .github/workflows/release.yml
+    - path: .github/workflows/scheduled.yml

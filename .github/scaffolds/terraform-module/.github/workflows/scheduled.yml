@@ -1,0 +1,17 @@
+---
+# Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
+name: scheduled
+on:
+  workflow_dispatch: { }  # Allows manually trigger this workflow
+  schedule:
+    - cron: "0 3 * * *"
+
+permissions:
+  pull-requests: write
+  id-token: write
+  contents: write
+
+jobs:
+  scheduled:
+    uses: cloudposse/.github/.github/workflows/shared-terraform-scheduled.yml@main
+    secrets: inherit

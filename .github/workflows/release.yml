@@ -1,0 +1,17 @@
+---
+# Maintains the floating major tag (v1, v2, ...) that module repos import the shared Atmos config from.
+name: release
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  major-release-tagger:
+    uses: cloudposse/.github/.github/workflows/shared-release-branches.yml@main
+    secrets: inherit
