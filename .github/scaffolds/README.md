@@ -16,5 +16,5 @@ atmos scaffold generate <source> . --update --merge-strategy=theirs --merge-driv
 Managed files are fully owned by the scaffold and are overwritten on update. Put repo-specific agent notes in `docs/AGENTS.local.md`, which `AGENTS.md` points to and the scaffold does not manage.
 
 Notes
-- Only `*.tmpl` files are rendered (use `target:` in `scaffold.yaml` to drop the suffix). Everything else is copied verbatim, so GitHub `${{ }}` expressions are safe.
+- Every file in the template directory is generated into the target, so keep docs outside it (this file lives one level up). Only `*.tmpl` files are rendered (use `target:` in `scaffold.yaml` to drop the suffix). Everything else is copied verbatim, so GitHub `${{ }}` expressions are safe.
 - `context.tf` is a copy of the `terraform-null-label` export. `atmos vendor pull` cannot currently write to the repository root. Keep it equal to the latest `exports/context.tf` in `cloudposse/terraform-null-label`.
