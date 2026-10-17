@@ -23,6 +23,23 @@ commands:
   steps:
     - "atmos docs generate readme"
 
+- name: lint
+  description: Check Terraform formatting and run TFLint (replaces the bats lint, pinning and description checks)
+  dependencies:
+    tools:
+      terraform: "1.10.3"
+      tflint: "0.59.1"
+  steps:
+    - "terraform fmt -check -recursive -diff"
+    - |
+      # Use the module's own .tflint.hcl if it has one, else the shared Cloud Posse policy.
+      CONFIG=.tflint.hcl
+      if [ ! -f "$CONFIG" ]; then
+        CONFIG="$(mktemp)"
+        curl -fsSL https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/tflint/.tflint.hcl -o "$CONFIG"
+      fi
+      tflint --config "$CONFIG" --recursive
+
 - name: test
   commands:
   - name: "init"
