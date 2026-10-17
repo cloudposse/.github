@@ -1,0 +1,18 @@
+# Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
+# Order is important: the last matching pattern has the highest precedence
+
+# Default owners for everything
+*                      @cloudposse/engineering @cloudposse/contributors
+
+# Cloud Posse must review changes to GitHub config and agent instructions
+.github/*              @cloudposse/engineering
+AGENTS.md              @cloudposse/engineering
+
+# Terraform, docs and README sources can be reviewed by contributors/approvers
+**/*.tf                @cloudposse/engineering @cloudposse/contributors @cloudposse/approvers
+README.yaml            @cloudposse/engineering @cloudposse/contributors @cloudposse/approvers
+README.md              @cloudposse/engineering @cloudposse/contributors @cloudposse/approvers
+docs/*.md              @cloudposse/engineering @cloudposse/contributors @cloudposse/approvers
+
+# Cloud Posse Admins must review changes to CODEOWNERS
+.github/CODEOWNERS     @cloudposse/admins

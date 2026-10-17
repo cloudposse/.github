@@ -1,0 +1,10 @@
+# Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]

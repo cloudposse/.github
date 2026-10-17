@@ -1,0 +1,15 @@
+# Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
+name: release
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  terraform-module:
+    uses: cloudposse/.github/.github/workflows/shared-release-branches.yml@main
+    secrets: inherit
