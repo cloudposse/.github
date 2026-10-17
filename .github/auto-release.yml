@@ -21,12 +21,24 @@ version-resolver:
   default: 'minor'
 
 categories:
+# Categories for the release labels the version-resolver above already
+# understands: major = breaking, minor = feature, patch = fix. Previously
+# `patch` was filed under Enhancements and `minor`/`major` matched nothing, so
+# fixes read as enhancements, no Bug Fixes chapter appeared, and features were
+# listed uncategorized at the top of the notes with no heading.
+- title: '💥 Breaking Changes'
+  labels:
+  - 'major'
+- title: '✨ Features'
+  labels:
+  - 'minor'
+  - 'feature'
 - title: '🚀 Enhancements'
   labels:
   - 'enhancement'
-  - 'patch'
 - title: '🐛 Bug Fixes'
   labels:
+  - 'patch'
   - 'fix'
   - 'bugfix'
   - 'bug'

@@ -1,3 +1,5 @@
+version: 2
+
 # Visit https://goreleaser.com for documentation on how to customize this
 # behavior.
 #before:
@@ -26,10 +28,15 @@ builds:
     - '386'
     - arm
     - arm64
+  ignore:
+    # Go 1.24+ dropped support for windows/arm (32-bit ARM).
+    # https://go.dev/doc/go1.24#ports
+    - goos: windows
+      goarch: arm
   binary: '{{ .ProjectName }}'
 
 archives:
-- format: "{{ .Env.ARCHIVES_FORMAT }}"
+- formats: ["{{ .Env.ARCHIVES_FORMAT }}"]
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
 
 checksum:
@@ -59,4 +66,4 @@ release:
   prerelease: auto
 
 changelog:
-  skip: true
+  disable: true

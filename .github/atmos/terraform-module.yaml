@@ -19,6 +19,10 @@ docs:
         indent_level: 2
 
 commands:
+- name: readme
+  steps:
+    - "atmos docs generate readme"
+
 - name: test
   commands:
   - name: "init"
@@ -37,3 +41,7 @@ commands:
     steps:
       - "make -C test/src clean"
       - "rm -rf examples/*/.terraform examples/*/.terraform.lock.hcl"
+
+settings:
+  telemetry:
+    enabled: false

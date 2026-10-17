@@ -45,14 +45,9 @@ runners:
       - c7i.*
       - c7i-flex.*
       - d3.*
-      - hpc6a.*
-      - hpc6id.*
-      - hpc7a.*
       - i3en.*
       - i4i.*
       - i7ie.*
-      - inf1.*
-      - inf2.*
       - m5dn.*
       - m5n.*
       - m5zn.*
@@ -74,12 +69,11 @@ runners:
       - r7a.*
       - r7i.*
       - r7iz.*
-      - trn1.*
-      - trn1n.*
-      - trn2.*
     cpu: [2, 16]
     ram: [2, 64]
-    disk: default
+    # gp3 includes 3,000 IOPS and 125 MiB/s; provisioning more throughput was
+    # the dominant EBS cost and is unnecessary for the baseline runner.
+    volume: 40gb:gp3:125mbs:3000iops
     spot: price-capacity-optimized
     retry: when-interrupted
     private: false
@@ -117,11 +111,21 @@ runners:
       <<: *default
       cpu: [4, 64]
       ram: [16, 128]
-      disk: large
+      volume: 120gb:gp3:125mbs:3000iops
       tags:
         - "gha-runner:runs-on/large"
 
   large-amd64: *large
+
+  xlarge: &xlarge
+      <<: *default
+      cpu: [8, 64]
+      ram: [32, 128]
+      volume: 120gb:gp3:125mbs:3000iops
+      tags:
+        - "gha-runner:runs-on/xlarge"
+
+  xlarge-amd64: *xlarge
 
   default-arm64: &default-arm64
     <<: *default
@@ -170,7 +174,14 @@ runners:
     <<: *default-arm64
     cpu: [4, 64]
     ram: [16, 128]
-    disk: large
+    volume: 120gb:gp3:125mbs:3000iops
     tags:
       - "gha-runner:runs-on/large-arm64"
 
+  xlarge-arm64:
+    <<: *default-arm64
+    cpu: [8, 64]
+    ram: [32, 128]
+    volume: 120gb:gp3:125mbs:3000iops
+    tags:
+      - "gha-runner:runs-on/xlarge-arm64"

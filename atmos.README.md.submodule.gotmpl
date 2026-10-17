@@ -1,0 +1,18 @@
+{{- defineDatasource "config" .Env.README_YAML -}}
+{{- $readme_file := (ds "config").readme | file.Read -}}
+
+{{- $parts := strings.Split "<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->" $readme_file -}}
+
+{{- index $parts 0 -}}
+
+{{ if has (ds "config") "terraform_docs" }}
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- markdownlint-disable -->
+{{ (ds "config").terraform_docs }}
+<!-- markdownlint-restore -->
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+{{ end }}
+
+{{- $parts := strings.Split "<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->" $readme_file -}}
+
+{{- index $parts 1 -}}

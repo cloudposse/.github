@@ -1,18 +1,13 @@
 
 
 <!-- markdownlint-disable -->
-<a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=commercial_support"><img src="https://cloudposse.com/api/github/banner/cloudposse/.github" alt="Project Banner"/></a><br/>
+<a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/.github/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
 
 
-<p align="center"><a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a>
+<p align="right"><a href="https://github.com/cloudposse/.github/commits/main/"><img src="https://img.shields.io/github/last-commit/cloudposse/.github/main?style=for-the-badge" alt="Last Update"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a><a href="https://cloudposse.com/support/"><img src="https://img.shields.io/badge/Get_Support-success.svg?style=for-the-badge" alt="Get Support"/></a>
 
 </p>
-
-  # .github
-
 <!-- markdownlint-restore -->
-
-
 
 <!--
 
@@ -76,32 +71,116 @@ To add all repository bootstrapping files to a new repo:
 
 
 
+## ✨ Contributing
 
-## Community 𐦂𖨆𐀪𖠋
-<a href="https://cloudposse.com/office-hours"><img src="https://img.shields.io/badge/Office_Hours-Join_Live-7C3AED?style=for-the-badge&logoColor=white" alt="Office Hours: Join Live"></a>
-<a href="https://youtube.com/cloudposse"><img src="https://img.shields.io/badge/YouTube-Subscribe-8B5CF6?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube: Subscribe"></a>
-<a href="https://cloudposse.com/slack"><img src="https://img.shields.io/badge/Slack-Join_Community-6D28D9?style=for-the-badge&logo=slack&logoColor=white" alt="Slack: Join Community"></a>
+This project is under active development, and we encourage contributions from our community.
 
-This project is supported by Cloud Posse and our active DevOps community. Try it out!
+
+
+Many thanks to our outstanding contributors:
 
 <a href="https://github.com/cloudposse/.github/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=cloudposse/.github&max=24" />
 </a>
 
-## Built by Cloud Posse
+For 🐛 bug reports & feature requests, please use the [issue tracker](https://github.com/cloudposse/.github/issues).
 
-Spinning up AWS infrastructure takes longer than it should—and one wrong move costs weeks.
-[Cloud Posse helps teams ship production-ready AWS infrastructure](https://cloudposse.com)—without wasting time, headcount, or momentum.
+In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
+ 1. Review our [Code of Conduct](https://github.com/cloudposse/.github/?tab=coc-ov-file#code-of-conduct) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
+ 2. **Fork** the repo on GitHub
+ 3. **Clone** the project to your own machine
+ 4. **Commit** changes to your own branch
+ 5. **Push** your work back up to your fork
+ 6. Submit a **Pull Request** so that we can review your changes
 
-## Connect With Us ✨
-<a href="https://linkedin.com/in/cloudposse"><img src="https://img.shields.io/badge/LinkedIn-Follow-5B21B6?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn: Follow"></a>
-<a href="https://cloudposse.com/newsletter"><img src="https://img.shields.io/badge/Newsletter-Subscribe-4C1D95?style=for-the-badge&logoColor=white" alt="Newsletter: Subscribe"></a>
-<a href="https://cloudposse.com/blog"><img src="https://img.shields.io/badge/Blog-Updates-7C3AED?style=for-the-badge&logoColor=white" alt="Blog: Updates"></a>
+**NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
 
-We don’t just “talk” about this stuff—we live it every day. We publish, we speak, we share what’s working (and what’s not) in real time. If you want to stay plugged in, connect with us.
 
----
-© Copyright 2025 [Cloud Posse, LLC](https://cpco.io/copyright)
+## Running Terraform Tests
+
+We use [Atmos](https://atmos.tools) to streamline how Terraform tests are run. It centralizes configuration and wraps common test workflows with easy-to-use commands.
+
+All tests are located in the [`test/`](test) folder.
+
+Under the hood, tests are powered by Terratest together with our internal [Test Helpers](https://github.com/cloudposse/test-helpers) library, providing robust infrastructure validation.
+
+Setup dependencies:
+- Install Atmos ([installation guide](https://atmos.tools/install/))
+- Install Go [1.24+ or newer](https://go.dev/doc/install)
+- Install Terraform or OpenTofu
+
+To run tests:
+
+- Run all tests:  
+  ```sh
+  atmos test run
+  ```
+- Clean up test artifacts:  
+  ```sh
+  atmos test clean
+  ```
+- Explore additional test options:  
+  ```sh
+  atmos test --help
+  ```
+The configuration for test commands is centrally managed. To review what's being imported, see the [`atmos.yaml`](https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/atmos/terraform-module.yaml) file.
+
+Learn more about our [automated testing in our documentation](https://docs.cloudposse.com/community/contribute/automated-testing/) or implementing [custom commands](https://atmos.tools/core-concepts/custom-commands/) with atmos.
+
+### 🌎 Slack Community
+
+Join our [Open Source Community](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=slack) on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+
+### 📰 Newsletter
+
+Sign up for [our newsletter](https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=newsletter) and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
+Dropped straight into your Inbox every week — and usually a 5-minute read.
+
+### 📆 Office Hours <a href="https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours"><img src="https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png" align="right" /></a>
+
+[Join us every Wednesday via Zoom](https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=office_hours) for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
+It's **FREE** for everyone!
+## License
+
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License"></a>
+
+<details>
+<summary>Preamble to the Apache License, Version 2.0</summary>
+<br/>
+<br/>
+
+Complete license is available in the [`LICENSE`](LICENSE) file.
+
+```text
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+```
+</details>
+
+## Trademarks
+
+All other trademarks referenced herein are the property of their respective owners.
+
+
+## Copyrights
+
+Copyright © 2022-2025 [Cloud Posse, LLC](https://cloudposse.com)
+
+
 
 <a href="https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/.github&utm_content=readme_footer_link"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
 

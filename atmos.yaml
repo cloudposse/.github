@@ -1,17 +1,12 @@
-docs:
-  generate:
-    readme:
-      base-dir: .
-      input:
-        - "./README.yaml"
-        - get_support: false
-      template: "https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/README.md.gotmpl"
-      output: "./README.md"
+# Atmos Configuration — powered by https://atmos.tools
+#
+# This configuration enables centralized, DRY, and consistent project scaffolding using Atmos.
+#
+# Included features:
+# - Organizational custom commands: https://atmos.tools/core-concepts/custom-commands
+# - Automated README generation: https://atmos.tools/cli/commands/docs/generate
+#
 
-    "local/readme":
-      base-dir: .
-      input:
-        - "./README.yaml"
-        - get_support: false
-      template: ".//README.md.gotmpl"
-      output: "./README.md"
+# Import shared configuration used by all modules
+import:
+  - https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/atmos/default.yaml
