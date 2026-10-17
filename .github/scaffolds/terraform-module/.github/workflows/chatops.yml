@@ -1,3 +1,4 @@
+---
 # Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
 # Comment `/terratest` on a pull request to run the tests. The shared workflow gates on the comment and the commenter.
 name: chatops

@@ -60,13 +60,16 @@ commands:
     - "atmos docs generate readme"
 
 - name: lint
-  description: Check Terraform formatting and run TFLint (replaces the bats lint, pinning and description checks)
+  description: Check Terraform formatting, run TFLint and lint the GitHub Actions workflows (actionlint) (replaces the bats lint, pinning and description checks)
   dependencies:
     tools:
       opentofu: "1.12.5"
       tflint: "0.59.1"
+      rhysd/actionlint: "1.7.7"
   steps:
     - "tofu fmt -check -recursive -diff"
+    # GitHub Actions workflows: syntax, expressions, shell scripts, reusable-workflow inputs.
+    - "actionlint"
     - |
       # Use the module's own .tflint.hcl if it has one, else the shared Cloud Posse policy.
       CONFIG=.tflint.hcl

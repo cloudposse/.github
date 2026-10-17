@@ -1,12 +1,22 @@
+---
 # Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
 name: Branch
 on:
   pull_request:
-    branches: [main, release/**]
+    branches:
+      - main
+      - release/**
     types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
-    branches: [main, release/v*]
-    paths-ignore: ['.github/**', 'docs/**', 'examples/**', 'tests/**', 'README.md']
+    branches:
+      - main
+      - release/v*
+    paths-ignore:
+      - '.github/**'
+      - 'docs/**'
+      - 'examples/**'
+      - 'tests/**'
+      - 'README.md'
   merge_group:
     types: [checks_requested]
 

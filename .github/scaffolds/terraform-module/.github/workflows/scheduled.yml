@@ -1,7 +1,8 @@
+---
 # Managed by the terraform-module scaffold. Do not edit; run `atmos fix`.
 name: scheduled
 on:
-  workflow_dispatch: {}
+  workflow_dispatch: { }  # Allows manually trigger this workflow
   schedule:
     - cron: "0 3 * * *"
 
