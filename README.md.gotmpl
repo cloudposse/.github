@@ -12,7 +12,7 @@
 {{- $office_hours := printf $utm_link "https://cloudposse.com/office-hours" "office_hours" -}}
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
 {{- $referrals := printf $utm_link "https://cloudposse.com/referrals" "referrals" -}}
-{{- $cta := printf "<a href=\"%s\"><img alt=\"Get Price\" src=\"https://img.shields.io/badge/get%%20price-8B5CF6.svg?style=for-the-badge&logoColor=white\"/></a>" $commercial_support -}}
+{{- $cta := printf "<a href=\"%s\"><img alt=\"Consulting\" src=\"https://img.shields.io/badge/CONSULTING-8B5CF6.svg?style=for-the-badge&logoColor=white\"/></a>" $commercial_support -}}
 {{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
 {{- $sections := slice "introduction" "quickstart" "examples" -}}
 {{- define "nonEmptySections" -}}
