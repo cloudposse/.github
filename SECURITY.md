@@ -40,8 +40,8 @@ These targets apply to Cloud Posse's actively maintained software products, incl
 | --- | --- |
 | Critical | 7 days, or 72 hours where the vulnerability is reachable in the product and an upstream fix is available |
 | High | 30 days |
-| Medium | 90 days |
-| Low | Next regular release |
+| Medium | 60 days |
+| Low | 90 days, or a recorded risk acceptance |
 
 Targets are measured from confirmation of the vulnerability rather than from the date it was reported.
 
