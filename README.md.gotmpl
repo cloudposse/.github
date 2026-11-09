@@ -13,7 +13,7 @@
 {{- $newsletter := printf $utm_link "https://cpco.io/newsletter" "newsletter" -}}
 {{- $cta := printf "<a href=\"%s\"><img alt=\"Request Quote\" src=\"https://img.shields.io/badge/request%%20quote-success.svg?style=for-the-badge\"/></a>" $commercial_support -}}
 {{- $context := dict "is_terraform" $is_terraform "utm_link" $utm_link "commercial_support" $commercial_support "cta" $cta -}}
-{{- $sections := slice "introduction" "quickstart" "examples" -}}
+{{- $sections := coll.Slice "introduction" "quickstart" "examples" -}}
 {{- define "nonEmptySections" -}}
 {{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
 {{- end -}}
@@ -77,7 +77,7 @@
 > - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
 >
 > {{ .cta }}
-> 
+>
 </details>
 {{- end -}}
 {{- end }}
@@ -318,15 +318,15 @@ Setup dependencies:
 
 To run tests:
 
-- Run all tests:  
+- Run all tests:
   ```sh
   atmos test run
   ```
-- Clean up test artifacts:  
+- Clean up test artifacts:
   ```sh
   atmos test clean
   ```
-- Explore additional test options:  
+- Explore additional test options:
   ```sh
   atmos test --help
   ```
