@@ -1,0 +1,79 @@
+{
+    "extends": [
+            "config:recommended",
+            ":preserveSemverRanges",
+            ":rebaseStalePrs"
+        ],
+    "baseBranches": ["main"],
+    "labels": ["auto-update"],
+    "dependencyDashboardAutoclose": true,
+    "enabledManagers": [
+        "terraform", 
+        "regex",
+        "github-actions",
+        "gomod"
+    ],
+    "terraform": {
+        "ignorePaths": ["**/context.tf", "**/examples/obsolete*/**"]
+    },
+    "timezone": "America/New_York",
+    "packageRules": [
+        {
+            "description": "Group all Go modules in test/src/ and restrict updates to minor and patch versions",
+            "matchPaths": ["test/src/**"],
+            "matchManagers": ["gomod"],
+            "matchPackagePatterns": ["^github\\.com/"],
+            "matchRepositoryPatterns": ["^cloudposse/terraform-.*"],
+            "groupName": "All Go Modules in test/src/",
+            "groupSlug": "test-src",
+            "updateTypes": ["minor", "patch"],
+            "labels": ["no-release"]
+        },
+        {
+            "description": "Group all Terraform updates and restrict updates to minor and patch versions",
+            "matchPaths": ["**.tf", "!examples/**"],
+            "matchManagers": ["terraform"],
+            "matchPackagePatterns": ["^terraform-.*"],
+            "matchRepositoryPatterns": ["^cloudposse/terraform-.*"],
+            "groupName": "All Terraform Code",
+            "groupSlug": "terraform",
+            "updateTypes": ["minor", "patch"],
+            "schedule": ["every 4 weeks on wednesday at 04:00 am"]
+        },
+        {
+            "description": "Group all Terraform updates of examples and restrict updates to minor and patch versions",
+            "matchPaths": ["examples/**.tf", "!examples/obsolete/**"],
+            "matchManagers": ["terraform"],
+            "matchPackagePatterns": ["^terraform-.*"],
+            "matchRepositoryPatterns": ["^cloudposse/terraform-.*"],
+            "groupName": "All Terraform Examples",
+            "groupSlug": "terraform-examples",
+            "updateTypes": ["minor", "patch"],
+            "schedule": ["every 4 weeks on wednesday at 04:00 am"],
+            "labels": ["no-release"]
+        },        
+        {
+            "description": "Update all GitHub Actions in .github/workflows",
+            "matchPaths": [".github/workflows/**"],
+            "matchManagers": ["github-actions"],
+            "groupName": "All GitHub Actions",
+            "groupSlug": "github-actions",
+            "updateTypes": ["minor", "patch"],
+            "schedule": ["every 4 weeks on wednesday at 04:00 am"],
+            "labels": ["no-release"]
+        }
+    ],
+    "regexManagers": [
+        {
+          "description": "Update Composite GitHub Actions in action.yml files",
+          "fileMatch": ["^action.yml$"],
+          "matchStrings": [
+            "uses:\\s*(?<depName>[a-zA-Z0-9._-]+/[a-zA-Z0-9._-]+)@(?<currentValue>[^\\s]+)"
+          ],
+          "datasourceTemplate": "github-tags",
+          "groupSlug": "composite-github-actions",
+          "updateTypes": ["minor", "patch"],
+          "schedule": ["every 4 weeks on wednesday at 04:00 am"]      
+        }
+      ]
+  }
